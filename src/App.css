@@ -1,7 +1,12 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
+.newcolor {
+  background-color: rgba(6,78,92,var(--tw-bg-opacity));
+  /* background-color: rgb(0, 207, 253); */
+}
+/* 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +40,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

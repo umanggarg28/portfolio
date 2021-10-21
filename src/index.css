@@ -1,13 +1,215 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* @import url("https://unpkg.com/@tailwindcss/typography@0.4.x/dist/typography.min.css"); */
+@import url("https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100;300&family=Roboto:wght@100;400&family=Source+Code+Pro:wght@200;300&display=swap');
+
+.cursive {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  /* color: #e6f1ff; */
+  /* color: #ccd6f6; */
+  color: #fff;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.prose img {
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+}
+
+.heading-font {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
+.box-transparent {
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-left: 150px;
+  margin-right: 20px;
+  /* use this for sections */
+  /* background-color: #0000000d; */
+  /* box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02); */
+}
+
+.whittish {
+  /* color: #e6f1ff; */
+  /* color: #ccd6f6; */
+  color: #fff;
+  /* color: #F1514A; */
+}
+
+.srccode-font {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.bright {
+  color: #3afcff;
+  /* color: #F1514A; */
+}
+
+.sec-color {
+  color: #3afcff;
+  font-family: 'Roboto', sans-serif;
+}
+
+.pri-font {
+  font-family: 'Source Code Pro', monospace;
+  letter-spacing: 4px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.pri-font:focus {
+    outline: 2px dashed green;
+    outline-offset: 3px;
+    color: #3afcff;
+}
+
+.pri-font:hover {
+  color: #3afcff;
+}
+
+.home-name {
+  font-size: 80px;
+}
+
+.sub-heading {
+  /* color: #a8b2d1; */
+  color: #fff;
+  font-size: 60px;
+  font-weight: 600;
+}
+
+.description {
+  max-width: 550px;
+  font-weight: 400;
+  word-break: break-word;
+}
+
+html, body { height: 100% }
+
+body {
+  /* display: flex;
+  align-items: center; */
+  background-color: #001F41;
+  /* background-color: #001629; */
+}
+
+.hOvuuP {
+  width: 40px;
+  position: fixed;
+  bottom: 0px;
+  left: 40px;
+  right: auto;
+  z-index: 10;
+  color: #a8b2d1;
+}
+
+.dVLQAC {
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+.dVLQAC li a {
+  padding: 10px;
+}
+
+.dVLQAC li a svg {
+  width: 20px;
+  height: 20px;
+}
+
+.dVLQAC::after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 90px;
+  margin: 0px auto;
+  background-color: #a8b2d1;
+}
+
+.jSIwrL {
+  width: 40px;
+  position: fixed;
+  bottom: 0px;
+  left: auto;
+  right: 40px;
+  z-index: 10;
+  color: #a8b2d1;
+}
+
+.jJFfEJ a {
+  margin: 20px auto;
+  padding: 10px;
+  font-family: 'Source Code Pro', monospace;
+  font-size: var(--fz-xxs);
+  line-height: var(--fz-lg);
+  letter-spacing: 0.1em;
+  -webkit-writing-mode: vertical-rl;
+  writing-mode: vertical-rl;
+}
+
+.jJFfEJ::after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 90px;
+  margin: 0px auto;
+  background-color: #a8b2d1;
+}
+
+svg.feather {
+  fill: none;
+}
+
+
+.container {
+  /* max-width: 500px; */
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  /* background-color: #0a192f; */
+  /* background-color: #00162d; */
+  /* #fff; */
+  /* box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02); */
+  /* background: #001f4112; */
+  /* box-shadow: rgb(2 12 27 / 20%) 0px 10px 30px -10px; */
+  z-index: 99;
+  /* backdrop-filter: blur(20px); */
+  transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+}
+
+
+.home-pic-box {
+  width:40%;
+  min-width: 550px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-left: 0px;
+  /* margin-top:-50px; */
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+
+*{
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
 }
