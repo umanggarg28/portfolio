@@ -1,10 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import Rellax from "rellax";
-import TextAnimation from "react-animate-text";
-import { useSpring, animated } from "react-spring";
-import CursorHorizontalSync from "./AnimationComp";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
-import sanityClient from "../client";
+import MainHero from "./MainHero";
+import Education from "./Education";
+import Experience from "./Experience";
+import Skills from "./Skills";
+import Project from "./Project";
+import About from "./About";
+
 
 export default function Home() {
   // Little helpers ...
@@ -14,39 +17,9 @@ export default function Home() {
     }https://awv3node-homepage.surge.sh/build/assets/${name}.svg${
       wrap ? ")" : ""
     }`;
-  const Pink = ({ children }) => (
-    <span style={{ color: "#FF6AC1" }}>{children}</span>
-  );
-  const Yellow = ({ children }) => (
-    <span style={{ color: "#EFF59B" }}>{children}</span>
-  );
-  const Lightblue = ({ children }) => (
-    <span style={{ color: "#9AEDFE" }}>{children}</span>
-  );
-  const Green = ({ children }) => (
-    <span style={{ color: "#57EE89" }}>{children}</span>
-  );
-  const Blue = ({ children }) => (
-    <span style={{ color: "#57C7FF" }}>{children}</span>
-  );
-  const Gray = ({ children }) => (
-    <span style={{ color: "#909090" }}>{children}</span>
-  );
 
-  const [flip, set] = useState(false);
-  const props = useSpring({
-    to: { opacity: 0 },
-    from: { opacity: 1 },
-    reset: false,
-    reverse: true,
-    delay: 1000,
-    onRest: () => set(!flip),
-  });
-
-  const container = useRef(null);
   const parallax = useRef(null);
 
-  const [author, setAuthorData] = useState(null);
 
   useEffect(() => {
     new Rellax(".animate", {
@@ -57,113 +30,134 @@ export default function Home() {
       vertical: true,
       horizontal: false,
     });
-    sanityClient.fetch(`*[_type == "author"]{
-      name,
-      image,
-      bio
-    }`).then((data) => setAuthorData(data))
-    .catch(console.error);
-  }, []);
 
-  console.log(author);
+}, []);
+
 
   return (
     <div>
-      {/* <section className="flex justify-center min-h-screen pt-12 px-30 lg:pt-52 px-8">   */}
-      <Parallax ref={parallax} pages={3}>
+      <Parallax ref={parallax} pages={7}>
+        <ParallaxLayer
+          offset={0}
+          speed={1}
+          style={{ backgroundImage: 'linear-gradient( -40deg, #240b36 0%, #c31432 100%)'}} //main background-color
+        />
         <ParallaxLayer
           offset={1}
           speed={1}
-          style={{ backgroundColor: "#805E73"}}
+          style={{ backgroundImage: 'linear-gradient( 99deg, rgba(115,18,81,1) 10.6%, rgba(28,28,28,1) 118% )'}} //about background-color
         />
         <ParallaxLayer
           offset={2}
           speed={1}
-          style={{ backgroundColor: "#87BCDE" }}
+          style={{ backgroundImage: 'linear-gradient(to right, #ad5389, #3c1053)' }} //experience background-color
+        />
+        <ParallaxLayer
+          offset={3}
+          speed={1}
+          style={{ backgroundImage :  "linear-gradient(to right, #000428, #004e92)"}} //projects background-color
         />
 
         <ParallaxLayer
+          offset={4}
+          speed={1}
+          style={{ backgroundImage: "linear-gradient(to right, #23074d, #cc5333)"}} //skills background-color
+        />
+
+        <ParallaxLayer
+          offset={5}
+          speed={1}
+          style={{ backgroundImage :  "linear-gradient(to right, #360033, #0b8793)"}} //education background-color
+        />
+
+        <ParallaxLayer
+          offset={6}
+          speed={1}
+          style={{ backgroundImage :  "linear-gradient(to right, #360033, #0b8793)"}} //education background-color
+        />
+
+        {/* <ParallaxLayer
           offset={0}
           speed={0}
-          factor={3}
-          // style={{
-          //   backgroundImage: url("stars", true),
-          //   backgroundSize: "cover",
-          // }}
-        />
+          factor={4}
+          style={{
+            backgroundImage: url("stars", true),
+            backgroundSize: "cover",
+          }}
+        /> */}
 
-        <ParallaxLayer
+        {/* <ParallaxLayer
           offset={1.3}
           speed={-0.3}
           style={{ pointerEvents: "none" }}
         >
           <img
             src={url("satellite4")}
-            style={{ width: "15%", marginLeft: "70%" }}
+            style={{ width: "10%", marginLeft: "35%", opacity: 0.7 }}
           />
-        </ParallaxLayer>
+        </ParallaxLayer> */}
 
-        <ParallaxLayer offset={1} speed={0.8} style={{ opacity: 0.1 }}>
+        {/* <ParallaxLayer offset={1} speed={0.8} style={{ opacity: 0.3 }}>
           <img
-            src={url("cloud")}
-            style={{ display: "block", width: "20%", marginLeft: "55%" }}
+            src={education7}
+            style={{ display: "block", width: "10%", marginLeft: "30%", marginTop: "2%"   }}
           />
           <img
-            src={url("cloud")}
-            style={{ display: "block", width: "10%", marginLeft: "15%" }}
+            src={education2}
+            style={{ display: "block", width: "10%", marginLeft: "5%" }}
           />
-        </ParallaxLayer>
+        </ParallaxLayer> */}
 
-        <ParallaxLayer offset={1.75} speed={0.5} style={{ opacity: 0.1 }}>
+        {/* <ParallaxLayer offset={1.75} speed={0.5} style={{ opacity: 0.2 }}>
           <img
-            src={url("cloud")}
-            style={{ display: "block", width: "20%", marginLeft: "70%" }}
+            src={education1}
+            style={{ display: "block", width: "15%", marginLeft: "30%" }}
           />
           <img
-            src={url("cloud")}
-            style={{ display: "block", width: "20%", marginLeft: "40%" }}
+            src={education4}
+            style={{ display: "block", width: "40%", marginLeft: "40%"}}
           />
-        </ParallaxLayer>
+        </ParallaxLayer> */}
 
-        <ParallaxLayer offset={1} speed={0.2} style={{ opacity: 0.2 }}>
+        {/* <ParallaxLayer offset={1} speed={0.2} style={{ opacity: 0.5 }}>
           <img
-            src={url("cloud")}
-            style={{ display: "block", width: "10%", marginLeft: "10%" }}
+            src={education6}
+            style={{ display: "block", width: "10%", marginLeft: "25%", marginTop: "2%" }}
           />
           <img
-            src={url("cloud")}
-            style={{ display: "block", width: "20%", marginLeft: "75%" }}
+            src={education4}
+            style={{ display: "block", width: "18%", marginLeft: "77%" }}
           />
-        </ParallaxLayer>
+        </ParallaxLayer> */}
 
-        <ParallaxLayer offset={1.6} speed={-0.1} style={{ opacity: 0.4 }}>
+        {/* <ParallaxLayer offset={1.6} speed={-0.1} style={{ opacity: 0.4 }}>
           <img
             src={url("cloud")}
             style={{ display: "block", width: "20%", marginLeft: "60%" }}
           />
           <img
-            src={url("cloud")}
-            style={{ display: "block", width: "25%", marginLeft: "30%" }}
+            src={education5}
+            style={{ display: "block", width: "15%", marginLeft: "50%" }}
           />
           <img
             src={url("cloud")}
             style={{ display: "block", width: "10%", marginLeft: "80%" }}
           />
-        </ParallaxLayer>
+        </ParallaxLayer> */}
 
-        <ParallaxLayer offset={2.6} speed={0.4} style={{ opacity: 0.6 }}>
+        {/* <ParallaxLayer offset={1.8} speed={0.4} style={{ opacity: 0.6 }}>
           <img
-            src={url("cloud")}
-            style={{ display: "block", width: "20%", marginLeft: "5%" }}
+            src={education9}
+            style={{ display: "block", width: "15%", marginLeft: "5%" }}
           />
           <img
-            src={url("cloud")}
+            src={education9}
             style={{ display: "block", width: "15%", marginLeft: "75%" }}
           />
-        </ParallaxLayer>
+        </ParallaxLayer> */}
 
-        <ParallaxLayer
-          offset={2.5}
+        {/* <ParallaxLayer
+          offset={3}
           speed={-0.4}
           style={{
             display: "flex",
@@ -173,21 +167,21 @@ export default function Home() {
           }}
         >
           <img src={url("earth")} style={{ width: "60%" }} />
-        </ParallaxLayer>
+        </ParallaxLayer> */}
 
-        <ParallaxLayer
-          offset={2}
+        {/* <ParallaxLayer
+          offset={3}
           speed={-0.3}
           style={{
             backgroundSize: "80%",
             backgroundPosition: "center",
             backgroundImage: url("clients", true),
           }}
-        />
+        /> */}
 
         <ParallaxLayer
           offset={0}
-          speed={0.1}
+          speed={0}
           onClick={() => parallax.current.scrollTo(1)}
           style={{
             display: "flex",
@@ -195,36 +189,13 @@ export default function Home() {
             justifyContent: "center",
           }}
         >
-          <div className="box-transparent">
-            <TextAnimation charInterval="50">
-              <p className="srccode-font bright">Hello! I'm</p>
-            </TextAnimation>
-            <br></br>
-            <animated.h1
-              style={props}
-              className="text-xl text-green-100 font-bold cursive leading-none lg:leading-snug home-name"
-            >
-              Umang.
-            </animated.h1>
-            <h3 className="sub-heading">I build things for the web.</h3>
-            <br></br>
-            <div className="description">
-              <p className="srccode-font bright">
-                I'm a software engineer specializing in building (and
-                occasionally designing) exceptional digital experiences.
-                Currently, I'm focused on building accessible, human-centered
-                products at Upstatement.
-              </p>
-            </div>
-          </div>
-          <div className="home-pic-box" ref={container}>
-            <CursorHorizontalSync />
-          </div>
+        <MainHero />
         </ParallaxLayer>
 
         <ParallaxLayer
+          id="about"
           offset={1}
-          speed={0.1}
+          speed={0}
           onClick={() => parallax.current.scrollTo(2)}
           style={{
             display: "flex",
@@ -232,11 +203,67 @@ export default function Home() {
             justifyContent: "center",
           }}
         >
-          <img src={url("bash")} style={{ width: "40%" }} />
+        <About />
         </ParallaxLayer>
 
         <ParallaxLayer
+          id="experience"
           offset={2}
+          // speed={0.1}
+          onClick={() => parallax.current.scrollTo(3)}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Experience />
+        </ParallaxLayer>
+
+        <ParallaxLayer
+          id="projects"
+          offset={3}
+          // speed={0.1}
+          onClick={() => parallax.current.scrollTo(4)}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Project />
+        </ParallaxLayer>
+
+        <ParallaxLayer
+          id="skills"
+          offset={4}
+          // speed={0.1}
+          onClick={() => parallax.current.scrollTo(5)}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Skills />
+        </ParallaxLayer>
+
+        <ParallaxLayer
+          id="education"
+          offset={5}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+          onClick={() => parallax.current.scrollTo(6)}
+        >
+          <Education />
+        </ParallaxLayer>
+
+        <ParallaxLayer
+          id="contact"
+          offset={6}
           speed={-0}
           style={{
             display: "flex",
@@ -245,7 +272,6 @@ export default function Home() {
           }}
           onClick={() => parallax.current.scrollTo(0)}
         >
-          <img src={url("clients-main")} style={{ width: "40%" }} />
         </ParallaxLayer>
       </Parallax>
     </div>

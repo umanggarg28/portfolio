@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
-import { BrowserRouter, Route, Switch } from "react-router-dom"
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"
 import Home from "./components/Home"
-import About from "./components/About"
+import MainHero from "./components/MainHero"
 import Experience from "./components/Experience"
 import Education from "./components/Education"
 import Skills from "./components/Skills"
@@ -9,6 +9,7 @@ import SinglePost from "./components/SinglePost"
 import Post from "./components/Post"
 import Project from "./components/Project"
 import NavBar from "./components/NavBar"
+
 
 function App() {
 
@@ -33,13 +34,15 @@ function App() {
     <NavBar navColor={navColor} navSize={navSize}/>
       <Switch>
         <Route component={Home} path="/" exact />
-        <Route component={About} path="/about" />
+        <Route component={NavBar} path="/page" exact />
+        <Route render={() => <Redirect to="/" />} />
+        {/* <Route component={About} path="/about" />
         <Route component={Experience} path="/experience" />
         <Route component={Education} path="/education" />
         <Route component={Skills} path="/skills" />
         <Route component={SinglePost} path="/post/:slug" />
         <Route component={Post} path="/post" />
-        <Route component={Project} path="/project" />
+        <Route component={Project} path="/project" /> */}
       </Switch>
       <div orientation="left" class="side__StyledSideElement-sc-1duznzb-0 hOvuuP">
         <ul class="social__StyledSocialList-anu6nt-0 dVLQAC fade-enter-done">

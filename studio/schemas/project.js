@@ -20,6 +20,10 @@ export default {
             type: "text",
         },
         {
+            name: "technologies_used",
+            type: "string"
+        },
+        {
             name: "projectType",
             title: "Project type",
             type: "string",

@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
+import { HashLink, NavHashLink } from 'react-router-hash-link';
 import { SocialIcon } from "react-social-icons";
 import "../App.css";
+import logo from '../header1.svg';
+import Education from "./Education";
+import LogoAnimation from "./logoAnimation";
+
 
 export default function NavBar({ navColor, navSize }) {
   return (
@@ -12,59 +17,56 @@ export default function NavBar({ navColor, navSize }) {
             backgroundColor: navColor,
             height: navSize,
             transition: "all 1s",
+            paddingRight: 20,
+            paddingLeft: 10,
           }}
         >
-          <NavLink
+          <HashLink
             to="/"
             exact
             activeClassName="text-white"
-            className="float-left bright heading-font inline-flex items-center my-4 px-3 ml-4 text-white-200 text-4xl tracking-widest"
+            className="float-left bright heading-font inline-flex items-center tracking-widest"
           >
-            UG
-          </NavLink>
+            {/* <img className="header-logo" src={logo} alt="logo"/> */}
+            < LogoAnimation />
+          </HashLink>
           <div className="float-right">
-            <NavLink
-              to="/about"
-              activeClassName="text-red-100 bg-red-700"
+            <HashLink
+              smooth to="#about"
+              activeClassName="text-red-100 nav_item_active bg-red-700"
               className="pri-font whittish inline-flex item-center px-3 my-6 text-red-200"
-            >
-              <span className="bright">01.</span>ABOUT
-            </NavLink>
-            <NavLink
-              to="/experience"
-              activeClassName="text-red-100 bg-red-700"
+            >ABOUT
+            </HashLink>
+            <HashLink
+              smooth to="#experience"
+              activeClassName="text-red-100 nav_item_active bg-red-700"
               className="pri-font whittish inline-flex item-center px-3 my-6 text-red-200"
-            >
-              <span className="bright">02.</span>EXPERIENCE
-            </NavLink>
-            <NavLink
-              to="/education"
-              activeClassName="text-red-100 bg-red-700"
+            >EXPERIENCE
+            </HashLink>
+            <HashLink
+              smooth to="#projects"
+              activeClassName="text-red-100 nav_item_active bg-red-700"
               className="pri-font whittish inline-flex item-center px-3 my-6 text-red-200"
-            >
-              <span className="bright">01.</span>EDUCATION
-            </NavLink>
-            <NavLink
-              to="/skills"
-              activeClassName="text-red-100 bg-red-700"
+            >PROJECTS
+            </HashLink>
+            <HashLink
+              smooth to="#skills"
+              activeClassName="text-red-100 nav_item_active bg-red-700"
               className="pri-font whittish inline-flex item-center px-3 my-6 text-red-200"
-            >
-              <span className="bright">01.</span>SKILLS
-            </NavLink>
-            <NavLink
-              to="/project"
-              activeClassName="text-red-100 bg-red-700"
+            >SKILLS
+            </HashLink>
+            <HashLink
+              smooth to="#education"
+              activeClassName="text-red-100 nav_item_active bg-red-700"
               className="pri-font whittish inline-flex item-center px-3 my-6 text-red-200"
-            >
-              <span className="bright">03.</span>WORK
-            </NavLink>
-            <NavLink
-              to="/contact"
-              activeClassName="text-red-100 bg-red-700"
+            >EDUCATION
+            </HashLink>
+            <HashLink
+              smooth to="#contact"
+              activeClassName="text-red-100 nav_item_active bg-red-700"
               className="pri-font whittish inline-flex item-center px-3 my-6 text-red-200"
-            >
-              <span className="bright">04.</span>CONTACT
-            </NavLink>
+            >CONTACT
+            </HashLink>
           </div>
         </nav>
       </div>

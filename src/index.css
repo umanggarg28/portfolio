@@ -1,10 +1,22 @@
 /* @import url("https://unpkg.com/@tailwindcss/typography@0.4.x/dist/typography.min.css"); */
 @import url("https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css");
 @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100;300&family=Roboto:wght@100;400&family=Source+Code+Pro:wght@200;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+body {
+  /* font-family: 'BlinkMacSystemFont'!important; */
+  font-family: 'Nanum Pen Script'!important;
+}
+@font-face {
+  font-family: "BlinkMacSystemFont", San Francisco;
+  font-weight: 400;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+}
 
 .cursive {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 700;
+  /* font-family: 'San Francisco', sans-serif; */
+  font-family: "BlinkMacSystemFont", San Francisco;
+  /* font-weight: 700; */
   /* color: #e6f1ff; */
   /* color: #ccd6f6; */
   color: #fff;
@@ -17,15 +29,21 @@
 }
 
 .heading-font {
-  font-family: 'Roboto', sans-serif;
-  font-weight: bold;
+  /* font-family: 'San Francisco', sans-serif; */
+  font-family: "BlinkMacSystemFont", San Francisco;
+  /* font-weight: bold; */
+  color: #ff7170!important;
+}
+
+.header-logo {
+  height: 70px;
 }
 
 .box-transparent {
   margin: 0 auto;
   padding-top: 40px;
   padding-left: 150px;
-  margin-right: 20px;
+  /* margin-right: 20px; */
   /* use this for sections */
   /* background-color: #0000000d; */
   /* box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02); */
@@ -39,26 +57,34 @@
 }
 
 .srccode-font {
-  font-family: 'Source Code Pro', monospace;
-  font-size: 16px;
-  font-weight: 600;
+  /* font-family: 'San Francisco', monospace; */
+  /* font-family: "BlinkMacSystemFont", San Francisco; */
+  /* font-family: 'ui-monospace'; */
+  font-size: 20px;
+  font-weight: 100;
+  font-weight: 300;
 }
 
 .bright {
-  color: #3afcff;
+  /* color: #3afcff; */
+  /* color: #0dbc79; */
   /* color: #F1514A; */
+  color: white;
 }
 
 .sec-color {
-  color: #3afcff;
-  font-family: 'Roboto', sans-serif;
+  /* color: #3afcff; */
+  color: #0dbc79;
+  /* font-family: 'San Francisco', sans-serif; */
+  font-family: "BlinkMacSystemFont", San Francisco;
 }
 
 .pri-font {
-  font-family: 'Source Code Pro', monospace;
-  letter-spacing: 4px;
-  font-weight: bold;
-  font-size: 14px;
+  /* font-family: 'San Francisco', monospace; */
+  font-family: "Nanum Pen Script", San Francisco;
+  letter-spacing: 1.5px;
+  /* font-weight: bold; */
+  font-size: 22px;
 }
 
 .pri-font:focus {
@@ -72,20 +98,514 @@
 }
 
 .home-name {
-  font-size: 80px;
+  font-size: 90px;
+  font-weight: bold;
 }
 
 .sub-heading {
   /* color: #a8b2d1; */
-  color: #fff;
-  font-size: 60px;
-  font-weight: 600;
+  /* color: #fff; */
+  display: -webkit-inline-box;;
+  font-size: 66px;
+  font-weight: 900;
+  background: -webkit-linear-gradient(
+-70deg, #ff7170 0%, #ffe57f 100%);
+  /* background: -webkit-linear-gradient(
+-70deg, #a2facf 0%, #64acff 100%); */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  margin-bottom: -20px;
+}
+
+.sub-heading span {
+  z-index: -99;
+  color: transparent;
+   text-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
 .description {
   max-width: 550px;
-  font-weight: 400;
+  /* font-weight: 400; */
   word-break: break-word;
+}
+
+.about-description {
+  font-size: 24px;
+  color: white;
+  letter-spacing: 1px;
+  font-weight: 200;
+  font-family: "BlinkMacSystemFont", San Francisco;
+}
+
+.about-display {
+  margin: 0px auto;
+  padding: 100px 0px;
+  max-width: 1000px;
+}
+
+.inner {
+  font-size: 16px;
+  color: white;
+  letter-spacing: 1px;
+  font-weight: 200;
+  font-family: "BlinkMacSystemFont", San Francisco;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 50px;
+}
+
+.inner p {
+  margin: 0px 0px 15px;
+}
+
+.inner p:last-child, p:last-of-type {
+  margin: 0px;
+}
+
+.about-me {
+  font-size: 20px;
+}
+
+ul.skills-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(140px, 200px));
+  gap: 0px 10px;
+  padding: 0px;
+  margin: 20px 0px 0px;
+  overflow: hidden;
+  list-style: none;
+}
+
+.project-heading {
+font-size: 62px;
+font-weight: 600;
+background: -webkit-linear-gradient(
+    -70deg, #a2facf 0%, #64acff 100%);
+-webkit-background-clip: text;
+background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.project-heading::after {
+  content: "";
+  display: inline-block;
+  position: relative;
+  top: -20px;
+  width: 300px;
+  height: 1px;
+  margin-left: 20px;
+  background-color: #a8b2d1;
+}
+
+.about-heading {
+  font-size: 62px;
+  font-weight: 600;
+  background: -webkit-linear-gradient(
+      -70deg, #ff7170 0%, #64acff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  }
+  
+  .about-heading::after {
+    content: "";
+    display: inline-block;
+    position: relative;
+    top: -20px;
+    width: 300px;
+    height: 1px;
+    margin-left: 20px;
+    background-color: #a8b2d1;
+  }
+
+.skills-heading {
+  font-size: 62px;
+  font-weight: 600;
+  background: -webkit-linear-gradient(
+-70deg, #ff7170 0%, #ffe57f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.skills-heading::after {
+    content: "";
+    display: inline-block;
+    position: relative;
+    top: -20px;
+    width: 300px;
+    height: 1px;
+    margin-left: 20px;
+    background-color: #a8b2d1;
+}
+
+.education-description {
+  display: block;
+  margin: 5px;
+  padding-top: 20px;
+  /* background-color: #b8e5d3; */
+  /* background-image: url('https://awv3node-homepage.surge.sh/build/assets/bash.svg'); */
+  /* background-repeat: no-repeat; */
+  width: 700px;
+  /* background-size: contain; */
+  /* background-position: center; */
+  max-width: 760px;
+  font-size: 20px;
+  color: white;
+  letter-spacing: 1px;
+  font-weight: 200;
+  font-family: "BlinkMacSystemFont", San Francisco;
+}
+
+.education-display {
+  display: block;
+  margin-right: 60px;
+}
+
+.education-heading {
+  font-size: 64px;
+  font-weight: 600;
+  background: -webkit-linear-gradient(
+-70deg, #ffe57f 0%, #64acff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.education-heading::after {
+  content: "";
+  display: inline-block;
+  position: relative;
+  top: -20px;
+  width: 300px;
+  height: 1px;
+  margin-left: 20px;
+  background-color: #a8b2d1;
+}
+
+.education-data-heading {
+  /* background-image: linear-gradient(
+    90deg, rgb(37, 47, 255) -100%, rgb(37, 106, 243) -50%, rgb(124, 192, 226) 0%, rgb(37, 106, 243) 50%, rgb(37, 47, 255) 100%); */
+    -webkit-text-fill-color: transparent; 
+    /* background-image: linear-gradient(to right, #237A57 30%, #093028 70%); */
+    background-image: linear-gradient(to right, #db469f 0%, #2188ff 100%);
+    -webkit-background-clip: text;
+    font-size: 34px;
+    line-height: 1.2105263158;
+    font-weight: 600;
+    letter-spacing: .012em;
+}
+
+.education-data-degree {
+  float: left;
+  color: white;
+  font-size: 24px;
+}
+
+.education-data-dates {
+  float: right;
+  color: #a1a1a6;
+  font-size: 24px;
+}
+
+.education-place {
+  font-size: 20px;
+  line-height: 1.2353641176;
+  /* font-weight: 500; */
+  letter-spacing: -0.022em;
+  /* color: #86868b; */
+  color: white;
+}
+
+.education-gpa {
+  color: #a1a1a6;
+  font-size: 14px;
+  line-height: 1.4705882353;
+  font-weight: 100;
+  letter-spacing: -0.022em;
+}
+
+.skills-data-heading {
+  /* background-image: linear-gradient(
+    90deg, rgb(37, 47, 255) -100%, rgb(37, 106, 243) -50%, rgb(124, 192, 226) 0%, rgb(37, 106, 243) 50%, rgb(37, 47, 255) 100%); */
+    -webkit-text-fill-color: transparent; 
+    background-image: linear-gradient(to right, #db469f 0%, #2188ff 100%);
+    -webkit-background-clip: text;
+    font-size: 24px;
+    letter-spacing: 1px;
+    font-weight: 200;
+    color: #ffffff;
+    white-space: pre-wrap;
+    font-family: "BlinkMacSystemFont", San Francisco;
+}
+
+.skills-data-degree {
+  float: left;
+  color: #ffffff;
+  white-space: pre-wrap;
+  font-size: 16px!important;
+  font-family: "BlinkMacSystemFont", San Francisco;
+  letter-spacing: 1px;
+  font-weight: 200;
+}
+
+.skills-description {
+  display: block;
+  margin: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: none;
+  width: 550px;
+  max-width: 760px;
+}
+
+.skills-display {
+  display: block;
+}
+
+.bar-mask {
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+  height: 6px;
+  z-index: 1;
+}
+
+.badge {
+  margin-right: 2em;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 20px;
+  min-width: 5em;
+  position: relative;
+  z-index: 1;
+  color: #1d1d1f;
+}
+
+.badge .badge-content {
+  position: relative;
+  z-index: 1;
+  color: #86868b;
+}
+
+.bar {
+  width: 30%;
+  background: linear-gradient(
+45deg,#ff9fe1,#8727ff);
+transform: matrix(1, 0, 0, 1, 0, 0);
+  opacity: 1;
+  height: 100%;
+  transform-origin: left;
+  border-radius: inherit;
+}
+
+.experience-heading {
+  width: 100%;
+  margin-left: 20%;
+  font-size: 64px;
+  font-weight: 600;
+  background: -webkit-linear-gradient(
+-70deg, #a2facf 0%, #64acff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.experience-heading::after {
+  content: "";
+  display: inline-block;
+  position: relative;
+  top: -20px;
+  width: 300px;
+  height: 1px;
+  margin-left: 20px;
+  background-color: #a8b2d1;
+}
+
+.experience-tab {
+  color: #082754!important;
+  font-size: 18px!important;
+  letter-spacing: 1px;
+  font-weight: 200;
+  font-family: "BlinkMacSystemFont", San Francisco;
+}
+
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+  color: #fff!important;
+}
+
+.experience-description {
+  display: block;
+  margin: 5px;
+  padding-top: 30px;
+  color: #ffffff;
+  white-space: pre-wrap;
+  font-size: 16px!important;
+  letter-spacing: 1px;
+  font-weight: 200;
+  font-family: "BlinkMacSystemFont", San Francisco;
+}
+
+.experience-display {
+  display: block;
+  /* width:75%; */
+  font-family: 'Nanum Pen Script'!important;
+}
+
+.experience-data-heading {
+  font-size: 34px!important;
+  line-height: 1.2105263158;
+  font-weight: 600;
+  letter-spacing: .012em;
+  background: -webkit-linear-gradient(
+-70deg, #ffe57f 0%, #64acff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+  font-weight: 200;
+  font-family: "BlinkMacSystemFont", San Francisco;
+}
+
+.experience-jobtitle {
+  background: -webkit-linear-gradient(
+    -70deg, #a2facf 0%, #64acff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;  
+  font-size: 24px;
+  letter-spacing: 1px;
+  font-weight: 400;
+  font-family: "BlinkMacSystemFont", San Francisco;
+}
+
+
+.experience-data-dates {
+  float: right;
+  color: #082754;
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-weight: 200;
+  font-family: "BlinkMacSystemFont", San Francisco;
+}
+
+.experience-place {
+  font-size: 20px;
+  line-height: 1.2353641176;
+  font-weight: 500;
+  letter-spacing: -0.022em;
+  color: #082754;
+  letter-spacing: 1px;
+  font-weight: 200;
+  font-family: "BlinkMacSystemFont", San Francisco;
+}
+
+.project-display {
+  display: block;
+  font-family: 'Nanum Pen Script'!important;
+  margin-right: 80px;
+  margin-top: 40px;
+}
+
+.projects-grid {
+  list-style: none;
+  margin-top: 0px!important;
+  padding: 0px;
+  /* margin: 50px 0px 0px; */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+  position: relative;
+}
+
+.project-individual {
+  position: relative;
+  cursor: default;
+  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0s, opacity 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0s, transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+  visibility: visible;
+  opacity: 1;
+  transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  border-radius: 2px;
+  background: #112240;
+  /* box-shadow: 0 10px 30px -15px #020c1bb3; */
+}
+
+.project-inner {
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  height: 100%;
+  padding: 2rem1.75rem;
+}
+
+.project-inner:focus-within  {
+  transform: translateY(-7px);
+}
+
+.project-top {
+  display: flow-root;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-bottom: 15px;
+  color: white; 
+  font-size: 16px;
+  letter-spacing: 1px;
+  font-weight: 400;
+  font-family: "BlinkMacSystemFont", San Francisco;
+}
+
+.project-title {
+  margin: 0 px 0 px 10px;
+}
+
+.project-description {
+  color: #ccd6f6;
+  white-space: pre-wrap;
+  font-size: 16px!important;
+  letter-spacing: 1px;
+  font-weight: 200;
+  font-family: "BlinkMacSystemFont", San Francisco;
+}
+ .project-tech-list {
+  display: flex;
+  align-items: flex-end;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  padding: 0px;
+  margin: 20px 0 px 0 px;
+  list-style: none;
+  font-family: "BlinkMacSystemFont", San Francisco;
+  font-size: 10px!important;
+  justify-content: space-evenly;
+  color: #a8b2d1;
+}
+
+.contact-btn {
+  /* border-color: #3bf0e4; */
+  border-color:#ffe57f;
+  border-radius: 20px;
+}
+
+.nav_item_active {
+  color: #ffe57f;
+}
+
+.contact-btn:hover {
+  /* background: -webkit-linear-gradient(
+    -70deg, #3bf0e4 0%, #bca1f7 100%); */
+    border: black;
+    background: -webkit-linear-gradient(
+-70deg, #ff7170 0%, #ffe57f 100%);
 }
 
 html, body { height: 100% }
@@ -93,10 +613,19 @@ html, body { height: 100% }
 body {
   /* display: flex;
   align-items: center; */
-  background-color: #001F41;
+  /* background: radial-gradient(at 85% 55%,#082754 0%, #040e21 40%); */
+  /* background:-webkit-linear-gradient( 
+    -70deg, #136a8a 0%, #267871 100%); */
+  /* background:-webkit-linear-gradient( 
+    -40deg, #240b36 0%, #c31432  100%); */
+    background: -webkit-linear-gradient( -40deg, #240b36 0%, #c31432  100%);
+    /* font-family: 'ui-monospace'!important; */
   /* background-color: #001629; */
 }
 
+.light-gray {
+  color: #8193b2;
+}
 .hOvuuP {
   width: 40px;
   position: fixed;
@@ -148,7 +677,10 @@ body {
 .jJFfEJ a {
   margin: 20px auto;
   padding: 10px;
-  font-family: 'Source Code Pro', monospace;
+  /* font-family: 'San Francisco', monospace; */
+  /* font-family: "BlinkMacSystemFont", San Francisco; */
+  font-family: 'Nanum Pen Script'!important;
+  font-size: 24px!important;
   font-size: var(--fz-xxs);
   line-height: var(--fz-lg);
   letter-spacing: 0.1em;
@@ -171,7 +703,7 @@ svg.feather {
 
 
 .container {
-  /* max-width: 500px; */
+  max-width: 100%;
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
@@ -190,12 +722,22 @@ svg.feather {
 
 
 .home-pic-box {
-  width:40%;
+  /* width:40%; */
   min-width: 550px;
   margin: 0 auto;
-  padding: 20px;
+  /* padding: 20px; */
   margin-left: 0px;
   /* margin-top:-50px; */
+}
+
+.education-pic-box {
+    margin-right: 30px;
+    width: 500px;
+}
+
+.experience-pic-box {
+  margin-right: 5%;
+  /* width: 500px; */
 }
 
 .background {
@@ -207,9 +749,33 @@ svg.feather {
   z-index: -1;
 }
 
+.css-35zqo5-MuiTabs-root {
+  overflow: unset!important;
+}
+
+.css-f7gkvu {
+  background: none!important;
+}
+
 *{
   -ms-overflow-style: none;
 }
 ::-webkit-scrollbar {
   display: none;
 }
+
+/* utility color */
+/* .text-gradient-mint-blue-dark {
+  background: -webkit-linear-gradient(
+-70deg, #a2facf 0%, #64acff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+} */
+
+/* background:-webkit-linear-gradient( 
+  -70deg, #2c3e50 0%, #4ca1af 100%); */
+
+/* background: -webkit-linear-gradient(
+-70deg, #ff7170 0%, #ffe57f 100%); */

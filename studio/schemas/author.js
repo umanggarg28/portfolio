@@ -9,6 +9,14 @@ export default {
       type: 'string',
     },
     {
+      name: 'main_page_headline',
+      type: 'text'
+    },
+    {
+      name: 'featured_skills',
+      type: 'string'
+    },
+    {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -28,15 +36,7 @@ export default {
     {
       name: 'bio',
       title: 'Bio',
-      type: 'array',
-      of: [
-        {
-          title: 'Block',
-          type: 'block',
-          styles: [{title: 'Normal', value: 'normal'}],
-          lists: [],
-        },
-      ],
+      type: 'text'
     },
   ],
   preview: {

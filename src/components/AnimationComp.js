@@ -1,7 +1,7 @@
 import { useLottie, useLottieInteractivity } from "lottie-react";
 
 const style = {
-    height: 350,
+    height: 400,
     marginRight: 70,
     // border: 3,
     // borderStyle: "solid",
@@ -25,7 +25,7 @@ const style = {
           {
             position: { x: [0, 1], y: [-1, 2] },
             type: "seek",
-            frames: [0, 200],
+            frames: [0, 100],
           },
           {
             position: { x: -1, y: -1 },
