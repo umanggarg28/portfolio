@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import landscape from '../landscape.svg'
 import gsap from "gsap";
 

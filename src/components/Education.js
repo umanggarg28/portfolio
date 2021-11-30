@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import sanityClient from "../client";
 import Moment from 'moment';
-import * as LottiePlayer from "@lottiefiles/lottie-player";
-import {Animated} from "react-animated-css";
 
 export default function Education({parallax}) {
 

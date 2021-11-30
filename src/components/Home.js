@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import Rellax from "rellax";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import MainHero from "./MainHero";
@@ -11,13 +11,6 @@ import Contact from "./Contact";
 
 
 export default function Home() {
-  // Little helpers ...
-  const url = (name, wrap = false) =>
-    `${
-      wrap ? "url(" : ""
-    }https://awv3node-homepage.surge.sh/build/assets/${name}.svg${
-      wrap ? ")" : ""
-    }`;
 
   const parallax = useRef(null);
 

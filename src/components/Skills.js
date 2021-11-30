@@ -5,13 +5,6 @@ export default function Skills({parallax}) {
 
   const [skills, setSkillsData] = useState(null);
 
-  const url = (name, wrap = false) =>
-    `${
-      wrap ? "url(" : ""
-    }https://awv3node-homepage.surge.sh/build/assets/${name}.svg${
-      wrap ? ")" : ""
-    }`;
-
   useEffect(() => {
 
     sanityClient.fetch(`*[_type == "skills"]{

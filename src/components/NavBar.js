@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { HashLink, NavHashLink } from 'react-router-hash-link';
+import React from "react";
+import { HashLink } from 'react-router-hash-link';
 import "../App.css";
 
 export default function NavBar({ navColor, navSize }) {

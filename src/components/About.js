@@ -66,7 +66,7 @@ export default function About({parallax}) {
 
         const normalWalk = ({ peep, props }) => {
         const {
-            startX,
+            // startX,
             startY,
             endX
         } = props
@@ -238,7 +238,6 @@ export default function About({parallax}) {
         }
 
         function render () {
-        canvas.width = canvas.width
         ctx.save()
         ctx.scale(devicePixelRatio, devicePixelRatio)
         

@@ -5,7 +5,6 @@ import Typography from '@mui/material/Typography';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Moment from 'moment';
-import ExperienceAnimation from "./experienceAnimation";
 
 export default function Experience({parallax}) {
 
@@ -44,12 +43,12 @@ export default function Experience({parallax}) {
   };
 
 
-  const url = (name, wrap = false) =>
-    `${
-      wrap ? "url(" : ""
-    }https://awv3node-homepage.surge.sh/build/assets/${name}.svg${
-      wrap ? ")" : ""
-    }`;
+  // const url = (name, wrap = false) =>
+  //   `${
+  //     wrap ? "url(" : ""
+  //   }https://awv3node-homepage.surge.sh/build/assets/${name}.svg${
+  //     wrap ? ")" : ""
+  //   }`;
 
   useEffect(() => {
 
