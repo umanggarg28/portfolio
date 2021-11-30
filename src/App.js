@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"
 import Home from "./components/Home"
 import NavBar from "./components/NavBar"
@@ -7,16 +7,16 @@ import "@lottiefiles/lottie-player";
 
 function App() {
 
-  const [navSize, setnavSize] = useState("3rem");
-  const [navColor, setnavColor] = useState("transparent");
+  // const [navSize, setnavSize] = useState("3rem");
+  // const [navColor, setnavColor] = useState("transparent");
 
   useEffect(() => {
 
-    const listenScrollEvent = () => {
+    // const listenScrollEvent = () => {
       console.log("fired");
       // window.pageYOffset > 10 ? setnavColor("#fff") : setnavColor("black");
       // window.pageYOffset > 10 ? setnavSize("5rem") : setnavSize("10rem");
-    };
+    // };
 
   //   var cursor = {
   //     delay: 8,
@@ -140,7 +140,7 @@ function App() {
 
   return (
     <BrowserRouter>
-    <NavBar navColor={navColor} navSize={navSize}/>
+    <NavBar navColor='transparent' navSize="3rem"/>
       <Switch>
         <Route component={Home} path="/" exact />
         <Route component={NavBar} path="/page" exact />
