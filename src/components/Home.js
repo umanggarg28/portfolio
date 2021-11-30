@@ -7,6 +7,7 @@ import Experience from "./Experience";
 import Skills from "./Skills";
 import Project from "./Project";
 import About from "./About";
+import Contact from "./Contact";
 
 
 export default function Home() {
@@ -39,46 +40,136 @@ export default function Home() {
       <Parallax ref={parallax} pages={7}>
         <ParallaxLayer
           offset={0}
-          speed={1}
-          style={{ backgroundImage: 'linear-gradient( -40deg, #240b36 0%, #c31432 100%)'}} //main background-color
-        />
+          style={{ 
+            // background: '#1b1363'
+            // backgroundImage: 'linear-gradient(to top, #86377b 20%, #27273c 80%)'
+        }} //main background-color
+        >
+          <div>
+          <lottie-player
+              autoplay
+              loop
+              mode="bounce"
+              id="heroAnim"
+              data-preserve-aspect-ratio ="xMidYMid slice"
+              // src="https://assets7.lottiefiles.com/packages/lf20_zprb9vzj.json"
+              // src="https://assets9.lottiefiles.com/packages/lf20_lq0d2x0h.json" rocket
+              src="https://assets4.lottiefiles.com/packages/lf20_pQHwaL.json"
+              // src="https://assets8.lottiefiles.com/packages/lf20_kov0rtv5.json"
+              style={{
+                  height: '100%'
+              }}
+              ></lottie-player>
+              </div>
+        </ParallaxLayer>
+
+
         <ParallaxLayer
           offset={1}
-          speed={1}
-          style={{ backgroundImage: 'linear-gradient( 99deg, rgba(115,18,81,1) 10.6%, rgba(28,28,28,1) 118% )'}} //about background-color
-        />
+        >
+            <div>
+          <lottie-player
+              autoplay
+              loop
+              mode="bounce"
+              id="aboutbg"
+              src="https://assets7.lottiefiles.com/private_files/lf30_3zjr9l1k.json"
+              style={{
+                  height: '100%'
+              }}
+              ></lottie-player>
+          </div>
+        </ParallaxLayer>
+
+
         <ParallaxLayer
           offset={2}
-          speed={1}
-          style={{ backgroundImage: 'linear-gradient(to right, #ad5389, #3c1053)' }} //experience background-color
-        />
+        >
+          <div>
+            <lottie-player
+              autoplay
+              loop
+              mode="bounce"
+              id="experiencebg"
+              background='linear-gradient(to right, #000428, #004e92)'
+              src="https://assets8.lottiefiles.com/packages/lf20_pbgzoeho.json"
+              style={{
+                  height: '100%'
+              }}
+              ></lottie-player>
+          </div>
+        </ParallaxLayer>
+
+
         <ParallaxLayer
           offset={3}
-          speed={1}
-          style={{ backgroundImage :  "linear-gradient(to right, #000428, #004e92)"}} //projects background-color
-        />
+          // style={{ backgroundImage :  "linear-gradient(to right, #000428, #004e92)"}} //projects background-color
+        >
+          <div>
+            <lottie-player
+              autoplay
+              loop
+              mode="normal"
+              id="projectsbg"
+              src="https://assets6.lottiefiles.com/packages/lf20_xROXkJ.json"
+              style={{
+                  height: '100%'
+              }}
+              ></lottie-player>
+          </div>
+        </ParallaxLayer>
 
         <ParallaxLayer
           offset={4}
-          speed={1}
-          style={{ backgroundImage: "linear-gradient(to right, #23074d, #cc5333)"}} //skills background-color
-        />
+        >
+          <div>
+            <lottie-player
+                autoplay
+                loop
+                id="skillsbg"
+                mode="normal"
+                src="https://assets7.lottiefiles.com/datafiles/csP6U2eWv5hDhkq/data.json"
+                style={{
+                    height: '100%'
+                }}
+                ></lottie-player>
+            </div>
+      </ParallaxLayer>
 
         <ParallaxLayer
           offset={5}
-          speed={1}
-          style={{ backgroundImage :  "linear-gradient(to right, #360033, #0b8793)"}} //education background-color
-        />
+        >
+        <div>
+          <lottie-player
+              autoplay
+              loop
+              id="educationbg"
+              mode="bounce"
+              background=  "linear-gradient(to right, #360033, #0b8793)"
+              // background='linear-gradient(to right, #23074d, #cc5333)'
+              src="https://assets9.lottiefiles.com/packages/lf20_p11ajyds.json"
+              // background='linear-gradient( 99deg, #1C0F55 10.6%, rgba(28,28,28,1) 118% )'
+              // src="https://assets4.lottiefiles.com/packages/lf20_WAPsSQ.json"
+              // src="https://assets2.lottiefiles.com/packages/lf20_qsgqcwag.json" underwater
+              style={{
+                  height: '100%'
+              }}
+              ></lottie-player>
+          </div>
+          </ParallaxLayer>
 
         <ParallaxLayer
           offset={6}
-          speed={1}
           style={{ backgroundImage :  "linear-gradient(to right, #360033, #0b8793)"}} //education background-color
         />
+        {/* <ParallaxLayer
+          offset={7}
+          style={{ backgroundImage :  "linear-gradient(to right, #360033, #0b8793)"}} //education background-color
+        /> */}
 
         {/* <ParallaxLayer
           offset={0}
-          speed={0}
+          speed={0.2}
           factor={4}
           style={{
             backgroundImage: url("stars", true),
@@ -180,98 +271,99 @@ export default function Home() {
         /> */}
 
         <ParallaxLayer
+          id="mainHero"
           offset={0}
-          speed={0}
-          onClick={() => parallax.current.scrollTo(1)}
+          // speed={0.1}
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
           }}
         >
-        <MainHero />
+        <MainHero parallax={parallax}/>
         </ParallaxLayer>
 
         <ParallaxLayer
           id="about"
           offset={1}
-          speed={0}
-          onClick={() => parallax.current.scrollTo(2)}
+          // speed={0.1}
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            // backgroundImage: 'linear-gradient( 99deg, rgba(115,18,81,1) 10.6%, rgba(28,28,28,1) 118% )'
           }}
         >
-        <About />
+        <About parallax={parallax} />
         </ParallaxLayer>
 
         <ParallaxLayer
           id="experience"
           offset={2}
           // speed={0.1}
-          onClick={() => parallax.current.scrollTo(3)}
           style={{
-            display: "flex",
+            // display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            // backgroundImage: 'linear-gradient(to right, #ad5389, #3c1053)'
           }}
         >
-          <Experience />
+          <Experience parallax={parallax} />
         </ParallaxLayer>
 
         <ParallaxLayer
           id="projects"
           offset={3}
           // speed={0.1}
-          onClick={() => parallax.current.scrollTo(4)}
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            // backgroundImage :  'linear-gradient(to right, #000428, #004e92)'
           }}
         >
-          <Project />
+          <Project parallax={parallax} />
         </ParallaxLayer>
 
         <ParallaxLayer
           id="skills"
           offset={4}
           // speed={0.1}
-          onClick={() => parallax.current.scrollTo(5)}
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            // backgroundImage: "linear-gradient(to right, #23074d, #cc5333)"
           }}
         >
-          <Skills />
+          <Skills parallax={parallax} />
         </ParallaxLayer>
 
         <ParallaxLayer
           id="education"
           offset={5}
+          // speed={0.1}
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            // backgroundImage :  "linear-gradient(to right, #360033, #0b8793)"
           }}
-          onClick={() => parallax.current.scrollTo(6)}
         >
-          <Education />
+          <Education parallax={parallax} />
         </ParallaxLayer>
 
         <ParallaxLayer
           id="contact"
           offset={6}
-          speed={-0}
+          // speed={0.1}
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
           }}
-          onClick={() => parallax.current.scrollTo(0)}
         >
+        <Contact parallax={parallax}/>
         </ParallaxLayer>
       </Parallax>
     </div>

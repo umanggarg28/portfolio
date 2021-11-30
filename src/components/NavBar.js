@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react";
-// import { NavLink } from "react-router-dom";
 import { HashLink, NavHashLink } from 'react-router-hash-link';
-import { SocialIcon } from "react-social-icons";
 import "../App.css";
-import logo from '../header1.svg';
-import Education from "./Education";
-import LogoAnimation from "./logoAnimation";
-
 
 export default function NavBar({ navColor, navSize }) {
   return (
@@ -22,15 +16,26 @@ export default function NavBar({ navColor, navSize }) {
           }}
         >
           <HashLink
-            to="/"
+            smooth to="#mainHero"
             exact
             activeClassName="text-white"
-            className="float-left bright heading-font inline-flex items-center tracking-widest"
           >
-            {/* <img className="header-logo" src={logo} alt="logo"/> */}
-            < LogoAnimation />
+            <div className="float-left bright heading-font inline-flex items-center tracking-widest">
+            <lottie-player
+              autoplay
+              loop
+              mode="normal"
+              id="logoLottie"
+              src="https://assets4.lottiefiles.com/packages/lf20_buulmwlq.json" // Logo
+              // src="https://assets8.lottiefiles.com/packages/lf20_cc80aute.json"
+              style={{height: 175,
+                      marginLeft: -20,
+                      marginTop: -20
+                    }}
+            ></lottie-player>
+            </div>
           </HashLink>
-          <div className="float-right">
+          <div className="nav-right float-right">
             <HashLink
               smooth to="#about"
               activeClassName="text-red-100 nav_item_active bg-red-700"

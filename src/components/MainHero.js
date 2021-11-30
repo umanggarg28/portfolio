@@ -4,7 +4,7 @@ import TextAnimation from "react-animate-text";
 import { useSpring, animated } from "react-spring";
 import sanityClient from "../client";
 
-export default function MainHero() {
+export default function MainHero({parallax}) {
 
     const [author, setAuthorData] = useState(null);
 
@@ -19,8 +19,10 @@ export default function MainHero() {
     });
 
     const container = useRef(null);
+    
 
     useEffect(() => {
+
         new Rellax(".animate", {
           speed: -10,
           center: false,
@@ -53,15 +55,16 @@ export default function MainHero() {
                 >
                     {author && author[0].name}
                 </animated.h1>
-                <h3 className="sub-heading">I build things for the <span>web</span>
+                <h3 className="sub-heading">I build things for the web
                 <lottie-player
+                    id="webAnim"
                     autoplay
                     // controls
                     loop
                     mode="normal"
                     // src="https://assets9.lottiefiles.com/packages/lf20_5inj20n2.json"
                     src="https://assets3.lottiefiles.com/packages/lf20_bfdhvjtv.json"
-                    style={{height: 150, marginLeft: -150, marginTop: -35, width: '55%'}}
+                    style={{height: 250, marginLeft: -150, marginTop: -75, width: '55%'}}
                 ></lottie-player>
                 </h3>
                 <div className="description">
@@ -71,22 +74,42 @@ export default function MainHero() {
                 </div>
                 <br></br>
                 <br></br>
-                <button className="contact-btn bg-transparent text-white font-normal hover:text-white py-2 px-4 border hover:border-transparent rounded float-right">Get in touch</button>
             </div>
             <div className="home-pic-box" ref={container}>
-                {/* <CursorHorizontalSync /> */}
                 <lottie-player
-                autoplay
+                hover
                 loop
                 mode="normal"
-                id="aboutAnim"
-                src="https://assets1.lottiefiles.com/packages/lf20_tpozrkv0.json"
+                id="mainAnim"
+                // src="https://assets1.lottiefiles.com/packages/lf20_tpozrkv0.json"
+                // src="https://assets9.lottiefiles.com/packages/lf20_tpbyhgfu.json"
+                // src="https://assets4.lottiefiles.com/packages/lf20_kw2yp643.json"
+                // src="https://assets10.lottiefiles.com/packages/lf20_gy6w24sr.json"
+                // src="https://assets8.lottiefiles.com/packages/lf20_ufkgreod.json"
+                // src="https://assets3.lottiefiles.com/packages/lf20_ri0tw20g.json"
+                // src="https://assets4.lottiefiles.com/packages/lf20_xhgpxevg.json"
+                // src="https://assets2.lottiefiles.com/packages/lf20_xhgpxevg.json"
+                // src="https://assets9.lottiefiles.com/packages/lf20_k82barmh.json"
                 style={{
-                    height: 400,
-                    marginRight: 70,
-                    marginTop: 20,
+                    height: 750,
+                    marginRight: 80,
+                    marginTop:80
                 }}
                 ></lottie-player>
+            </div>
+            <div className="button-box">
+                <button onClick={() => parallax.current.scrollTo(1)} className="contact-btn py-2 px-4">
+                    <lottie-player
+                            hover
+                            loop
+                            mode="normal"
+                            id="scrollButton1"
+                            src="https://assets9.lottiefiles.com/packages/lf20_tlje6641.json"
+                            style={{
+                                height: 100
+                            }}
+                    ></lottie-player>
+            </button>
             </div>
     </React.Fragment>
   );

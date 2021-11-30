@@ -7,7 +7,7 @@ import Tab from '@mui/material/Tab';
 import Moment from 'moment';
 import ExperienceAnimation from "./experienceAnimation";
 
-export default function Experience() {
+export default function Experience({parallax}) {
 
   function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -71,8 +71,21 @@ export default function Experience() {
 
   return (
     <React.Fragment>
-      <div className="experience-display text-white rounded-lg sm:rounded-t-xl p-4 pb-6 sm:p-8 lg:p-4 lg:pb-6 xl:p-8 space-y-6 sm:space-y-8 lg:space-y-6 xl:space-y-8">
-      <h3 className="experience-heading">Where I've worked</h3>
+    <div className="experience-header-container" style={{display: 'block'}}>
+    <h3 className="experience-heading">Where I've worked</h3>
+          <lottie-player
+              id="experienceAnim"
+              autoplay
+              // controls
+              loop
+              mode="normal"
+              src="https://assets1.lottiefiles.com/packages/lf20_q7fhy4ya.json"
+              style={{height: 80, marginLeft: 240, marginTop: -80, width: '55%'}}
+            />
+    </div>
+    <div className="experience-content-box">
+      <div style={{display: 'flex'}}>
+      <div className="experience-display text-white">
       <Box
         sx={{ flexGrow: 2, bgcolor: 'background.paper', display: 'flex', marginLeft: 20 }}
       >
@@ -93,9 +106,7 @@ export default function Experience() {
         <TabPanel value={value} index={index}>
             <p className="experience-jobtitle">{experienceData.job_title} @</p>
             <h3 className="experience-data-heading">{experienceData.company_name}</h3>
-            <div style={{float: 'left'}}>
-              <p className="experience-place">{experienceData.place}</p>
-            </div>
+            <p className="experience-place">{experienceData.place}</p>
             <div className="experience-data-dates">
               <p>{Moment(experienceData.date_from).format('MMM yyyy')} - {Moment(experienceData.date_to).format('MMM yyyy')}</p>
             </div>
@@ -113,11 +124,29 @@ export default function Experience() {
           id="experienceAnim"
           src="https://assets7.lottiefiles.com/packages/lf20_hske6rvv.json"
           style={{
-            // height: 600,
-            marginRight: 30
+            height: 600,
+            marginRight: 30,
+            marginTop: -150
           }}
         ></lottie-player>
-      </div>
+        </div>      
+        </div>
+        </div>
+        <div className="button-box">
+        <button className="contact-btn" onClick={() => parallax.current.scrollTo(3)}>
+          <lottie-player
+                  hover
+                  loop
+                  mode="normal"
+                  id="scrollButton1"
+                  src="https://assets9.lottiefiles.com/packages/lf20_tlje6641.json"
+                  style={{
+                      height: 100,
+                      marginTop: -60
+                  }}
+          ></lottie-player>
+        </button>
+        </div>
     </React.Fragment>
   );
 }

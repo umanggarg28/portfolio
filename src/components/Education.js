@@ -1,19 +1,12 @@
 import React, { useEffect, useState } from "react";
 import sanityClient from "../client";
 import Moment from 'moment';
-import EducationAnimation from "./educationAnimation";
 import * as LottiePlayer from "@lottiefiles/lottie-player";
+import {Animated} from "react-animated-css";
 
-export default function Education() {
+export default function Education({parallax}) {
 
   const [education, setEducationData] = useState(null);
-
-  const url = (name, wrap = false) =>
-    `${
-      wrap ? "url(" : ""
-    }https://awv3node-homepage.surge.sh/build/assets/${name}.svg${
-      wrap ? ")" : ""
-    }`;
 
   useEffect(() => {
     sanityClient
@@ -44,21 +37,38 @@ export default function Education() {
 
   return (
     <React.Fragment>
-      <div className="education-pic-box">
-        {/* <EducationAnimation /> */}
-        <lottie-player
-          autoplay
-          // controls
-          loop
-          mode="normal"
-          id="secondLottie"
-          // src="https://assets6.lottiefiles.com/private_files/lf30_YWyaYi.json"
-          src="https://assets8.lottiefiles.com/packages/lf20_1omohnse.json"
-          style={{height: 500}}
-        ></lottie-player>
-      </div>
+      <div id="education-top-div" className="inline-grid">
+              <div className="education-header-container">
+                <h3 className="education-heading">Schools and stuff</h3>
+                <lottie-player
+                  id="schoolAnim"
+                  autoplay
+                  // controls
+                  loop
+                  mode="normal"
+                  src="https://assets10.lottiefiles.com/packages/lf20_6kyyqxp7.json"
+                  style={{height: 70, marginLeft: -70, marginTop: -150, width: '55%'}}
+                />
+                </div>
+                <div className="education-pic-box">
+                  <lottie-player
+                    autoplay
+                    // controls
+                    loop
+                    mode="normal"
+                    id="secondLottie"
+                    // src="https://assets8.lottiefiles.com/packages/lf20_1omohnse.json"
+                    src="https://assets10.lottiefiles.com/private_files/lf30_G9r0Hr.json"
+                    
+                  ></lottie-player>
+                </div>
+            </div>
+
+
       <div className="education-display">
-      <h3 className="education-heading">Schools and stuff</h3>
+      <div style={{display: 'grid'}}>
+ 
+      </div>
       <div className="education-description max-w-sm overflow-hidden">
       {education && education.map((educationData, index) => (
           <div key={index} class="px-6 py-4">
@@ -80,6 +90,20 @@ export default function Education() {
       ))}
       </div>        
       </div>
+      <div className="button-box">
+      <button onClick={() => parallax.current.scrollTo(6)} className="contact-btn py-2 px-4">
+                <lottie-player
+                        autoplay
+                        loop
+                        mode="normal"
+                        id="scrollButton"
+                        src="https://assets6.lottiefiles.com/packages/lf20_RbdjIx.json"
+                        style={{
+                            height: 60
+                        }}
+                ></lottie-player>
+            </button>
+            </div>
     </React.Fragment>
   );
 }

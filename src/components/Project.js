@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import sanityClient from "../client"
 
-export default function Project() {
+export default function Project({parallax}) {
     const [projectData, setProjectData] = useState(null);
 
     useEffect(() => {
@@ -21,22 +21,34 @@ export default function Project() {
 
     return (
         <React.Fragment>
-            <div className="experience-pic-box">
-            <lottie-player
+            <div className="project-header-container" style={{display: '-webkit-box'}}>
+                <h3 className="project-heading">Some projects</h3>
+                <lottie-player
+                    autoplay
+                    // controls
+                    loop
+                    mode="normal"
+                    src="https://assets5.lottiefiles.com/packages/lf20_ocl4sv6m.json"
+                    style={{height: 60, marginLeft: -85, marginTop: -140, width: '55%'}}
+                    />
+                <div className="project-pic-box">
+             <lottie-player
                 autoplay
                 loop
                 mode="normal"
                 id="project"
-                // src="https://assets8.lottiefiles.com/packages/lf20_znhs1kb6.json"
-                src="https://assets9.lottiefiles.com/private_files/lf30_vypf4qkd.json"
+                src="https://assets10.lottiefiles.com/packages/lf20_fmpbqwvd.json"
                 style={{
-                    height: 500,
-                    marginLeft: 100
+                    height: 400,
+                    marginRight: -20,
+                    marginLeft: 40,
+                    marginTop: -40
                 }}
                 ></lottie-player>
             </div>
+            </div>
+            <div className="project-content-box" style={{display: 'flex'}}>
             <div className="project-display text-white rounded-lg sm:rounded-t-xl p-4 pb-6 sm:p-8 lg:p-4 lg:pb-6 xl:p-8 space-y-6 sm:space-y-8 lg:space-y-6 xl:space-y-8">
-            <h3 className="project-heading">Some projects</h3>
             <ul className="projects-grid">
                 {projectData && projectData.map((project, index) => (
                 <li className="project-individual rounded-lg p-4 pb-6 lg:p-4 lg:pb-6 space-y-6 lg:space-y-6">
@@ -50,29 +62,6 @@ export default function Project() {
                         rel="noopener noreferrer"
                         >{project.title}</a>
                     </h3>
-                    {/* <div>
-                        <span>
-                            <strong>Finished on</strong>:{" "}
-                            {new Date(project.date).toLocaleDateString()}
-                        </span>
-                        <span>
-                            <strong>Company</strong>:{" "}
-                            {project.place}
-                        </span>
-                        <span>
-                            <strong>Type</strong>:{" "}
-                            {project.projectType}
-                        </span>
-                        <a
-                            href={project.link}
-                            rel="noopener noreferrer"
-                            target="_blank"
-                        >
-                            Visit the project{" "}
-                            <span>
-                            </span>
-                        </a>
-                        </div> */}
                     </div>
                     <div className="project-description" >
                         <p>{project.description}</p>
@@ -92,6 +81,21 @@ export default function Project() {
                 </li>
                 ))}
             </ul>
+            </div>
+            </div>
+            <div className="button-box">
+            <button onClick={() => parallax.current.scrollTo(4)} className="contact-btn py-2 px-4">
+                <lottie-player
+                        autoplay
+                        loop
+                        mode="normal"
+                        id="scrollButton"
+                        src="https://assets6.lottiefiles.com/packages/lf20_RbdjIx.json"
+                        style={{
+                            height: 60
+                        }}
+                ></lottie-player>
+            </button>
             </div>
         </React.Fragment>
     );
