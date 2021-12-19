@@ -63,6 +63,13 @@ body {
   margin-left: 40px;
 }
 
+.lazy-div {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
 .about-pic-box {
   margin-left: 5%;
   margin-right: 5%;
@@ -73,9 +80,6 @@ body {
 
 .box-transparent {
   margin: 0 auto;
-  padding-top: 60px;
-  padding-left: 200px;
-  width: 120%;
   /* margin-right: 20px; */
   /* use this for sections */
   /* background-color: #0000000d; */
@@ -144,6 +148,7 @@ body {
   display: -webkit-inline-box;;
   font-size: 78px;
   font-weight: 900;
+  font-family: "Nanum Pen Script", San Francisco;
   /* background: -webkit-linear-gradient(
 -70deg, #ff7170 0%, #ffe57f 100%); */
   background: -webkit-linear-gradient(
@@ -153,7 +158,6 @@ body {
   -webkit-text-fill-color: transparent;
   -webkit-box-decoration-break: clone;
   margin-bottom: -20px;
-  font-family: "Nanum Pen Script", San Francisco;
 }
 
 .sub-heading span {
@@ -194,7 +198,7 @@ body {
   font-weight: 200;
   /* font-family: "BlinkMacSystemFont", San Francisco; */
   font-family: 'Cera Pro Light';
-  margin-top: 15%;
+  padding: 30px;
   /* display: grid;
   grid-template-columns: 3fr 2fr;
   gap: 50px; */
@@ -222,21 +226,67 @@ ul.skills-list {
   list-style: none;
 }
 
-.project-heading {
-  margin-left: 10%;
-  display: block;
-  margin-top: 7%;
-  width: 100%;
-  font-size: 46px;
-  font-family: 'Cera Pro Medium';
-  background: -webkit-linear-gradient(
-      -70deg, #a2facf 0%, #64acff 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+
+.content-main-dad {
+  display: flex;
+  padding-left: 10vh;
+  padding-right: 10vh;
 }
 
-.project-heading::after {
+.header-container {
+  margin-left: 10%;
+  display: flex;
+  margin-top: 15vh;
+}
+
+.content-box {
+  display: flex;
+}
+
+.content {
+  margin-top: 3vh;
+  margin-right: 4vh;
+  float: left;
+  font-family: 'Cera Pro Medium'!important;
+}
+
+.lottie-main {
+  margin-left: 2vh;
+  margin-right: 15vh;
+  display: block;
+}
+
+.button-box {
+  display: block;
+  text-align: center;
+}
+
+.box-content {
+  margin-left: 30vh;
+  margin-top: 20vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+.heading-project {
+  /* font-size: 38px!important;
+  font-family: 'Cera Pro Medium'!important; */
+  background: -webkit-linear-gradient(
+      -70deg, #a2facf 0%, #64acff 100%)!important;
+  -webkit-background-clip: text!important;
+  background-clip: text!important;
+  -webkit-text-fill-color: transparent!important;
+}
+
+.heading-project::after {
   content: "";
   display: inline-block;
   position: relative;
@@ -247,55 +297,46 @@ ul.skills-list {
   background-color: #a8b2d1;
 }
 
-.about-heading {
-  margin-bottom: 75px;
-  display: block;
-  margin-left: 5%;
-  font-size: 50px;
-  width: max-content;
-  font-weight: 600;
+.heading-about{
+  /* font-size: 50px!important;
+  font-weight: 600!important; */
   background: -webkit-linear-gradient(
-      -70deg, #ff7170 0%, #64acff 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+      -70deg, #ff7170 0%, #64acff 100%)!important;
+  -webkit-background-clip: text!important;
+  background-clip: text!important;
+  -webkit-text-fill-color: transparent!important;
   }
   
-  .about-heading::after {
+  .heading-about::after {
     content: "";
     display: inline-block;
     position: relative;
     top: -20px;
     width: 200px;
     height: 1px;
-    margin-left: 50px;
+    margin-left: 20px;
     background-color: #a8b2d1;
   }
 
-.skills-heading {
-  margin-left: 10%;
-  display: block;
-  margin-top: 7%;
-  width: 100%;
-  margin-left: 160px;
-  font-size: 50px;
-  font-weight: 600;
+.heading-skills {
+  /* font-size: 50px!important;
+  font-weight: 600!important; */
   background: -webkit-linear-gradient(
--70deg, #ff7170 0%, #ffe57f 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+-70deg, #ff7170 0%, #ffe57f 100%)!important;
+  -webkit-background-clip: text!important;
+  background-clip: text!important;
+  -webkit-text-fill-color: transparent!important;
 }
 
-.skills-heading::after {
-    content: "";
-    display: inline-block;
-    position: relative;
-    top: -20px;
-    width: 400px;
-    height: 1px;
-    margin-left: 10px;
-    background-color: #a8b2d1;
+.heading-skills::after {
+  content: "";
+  display: inline-block;
+  position: relative;
+  top: -20px;
+  width: 350px;
+  height: 1px;
+  margin-left: 20px;
+  background-color: #a8b2d1;
 }
 
 .education-description {
@@ -317,27 +358,17 @@ ul.skills-list {
   font-family: 'Cera Pro Light';
 }
 
-.education-display {
-  display: block;
-  margin-right: 60px;
-}
-
-.education-heading {
-  margin-left: 10%;
-  display: block;
-  margin-top: 7%;
-  width: 100%;
-  font-size: 50px;
-  margin-left: 160px;
-  font-weight: 600;
+.heading-education {
+  /* font-size: 50px!important;
+  font-weight: 600!important; */
   background: -webkit-linear-gradient(
--70deg, #ffe57f 0%, #64acff 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+-70deg, #ffe57f 0%, #64acff 100%)!important;
+  -webkit-background-clip: text!important;
+  background-clip: text!important;
+  -webkit-text-fill-color: transparent!important;
 }
 
-.education-heading::after {
+.heading-education::after {
   content: "";
   display: inline-block;
   position: relative;
@@ -365,6 +396,10 @@ ul.skills-list {
   float: left;
   color: white;
   font-size: 24px;
+  letter-spacing: 1px;
+  font-weight: 200;
+  /* font-family: "BlinkMacSystemFont", San Francisco; */
+  font-family: 'Cera Pro Light';
 }
 
 .education-data-dates {
@@ -400,7 +435,7 @@ ul.skills-list {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: 1px;
-  font-weight: 200;
+  font-weight: 100;
   /* font-family: "BlinkMacSystemFont", San Francisco; */
   font-family: 'Cera Pro Light';
 }
@@ -413,7 +448,7 @@ ul.skills-list {
   /* font-family: "BlinkMacSystemFont", San Francisco; */
   font-family: 'Cera Pro Light';
   letter-spacing: 1px;
-  font-weight: 200;
+  font-weight: 100;
 }
 
 .skills-description {
@@ -470,29 +505,35 @@ transform: matrix(1, 0, 0, 1, 0, 0);
   border-radius: inherit;
 }
 
-.experience-heading {
-  margin-left: 10%;
-  margin-right: 7%;
-  display: block;
-  margin-top: 7%;
-  width: 100%;
-  font-size: 50px;
-  font-weight: 600;
-  background: -webkit-linear-gradient(
--70deg, #a2facf 0%, #64acff 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+.heading {
+  font-size: 70px!important;
+  font-weight: 600!important;
+  -webkit-background-clip: text!important;
+  background-clip: text!important;
+  -webkit-text-fill-color: transparent!important;
+  font-size: 78px;
+  font-weight: 900;
+  font-family: "Nanum Pen Script", San Francisco;
 }
 
-.experience-heading::after {
+.heading-experience {
+  /* font-size: 50px!important;
+  font-weight: 600!important; */
+  background: -webkit-linear-gradient(
+-70deg, #a2facf 0%, #64acff 100%);
+  -webkit-background-clip: text!important;
+  background-clip: text!important;
+  -webkit-text-fill-color: transparent!important;
+}
+
+.heading-experience::after {
   content: "";
   display: inline-block;
   position: relative;
   top: -20px;
   width: 300px;
   height: 1px;
-  margin-left: 100px;
+  margin-left: 20px;
   background-color: #a8b2d1;
 }
 
@@ -523,16 +564,6 @@ transform: matrix(1, 0, 0, 1, 0, 0);
   height: 300px;
   width: 500px;
   overflow: scroll;
-}
-
-.experience-display {
-  /* display: block; */
-  /* width:75%; */
-  /* font-family: 'Nanum Pen Script'!important; */
-  margin-top: 3%;
-  margin-right: 15px;
-  float: left;
-  font-family: 'Cera Pro Medium'!important;
 }
 
 .experience-data-heading {
@@ -616,8 +647,14 @@ transform: matrix(1, 0, 0, 1, 0, 0);
   opacity: 1;
   transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
   border-radius: 2px;
-  background: #112240;
+  background: #0434565e;
+  /* background: #112240; */
   /* box-shadow: 0 10px 30px -15px #020c1bb3; */
+}
+
+.project-individual:hover {
+  background: #cb831596;
+  cursor: pointer;
 }
 
 .project-inner {
@@ -657,9 +694,10 @@ transform: matrix(1, 0, 0, 1, 0, 0);
 }
 
 .project-description {
-  color: #ccd6f6;
+  /* color: #ccd6f6; */
+  color: #ffffff;
   white-space: pre-wrap;
-  font-size: 16px!important;
+  font-size: 14px!important;
   letter-spacing: 1px;
   font-weight: 200;
   /* font-family: "BlinkMacSystemFont", San Francisco; */
@@ -683,8 +721,8 @@ transform: matrix(1, 0, 0, 1, 0, 0);
 
 .contact-btn {
   /* border-color: #3bf0e4; */
-  position: absolute;
-  margin-top: 45%;
+  /* position: absolute; */
+  /* margin-top: 45%; */
 }
 
 .nav_item_active {
@@ -811,6 +849,7 @@ svg.feather {
 
 
 .home-pic-box {
+  display: none;
   width:80%;
   min-width: 550px;
   margin: 0 auto;
@@ -829,15 +868,6 @@ svg.feather {
   margin-left: 5px;
   display: flow-root;
   padding-top: 3%;
-}
-
-.experience-pic-box {
-  margin-left: 5px;
-  margin-right: 7%;
-  display: flow-root;
-  padding-top: 3%;
-  /* width: 40%; */
-  /* width: 500px; */
 }
 
 .project-pic-box {
@@ -1086,9 +1116,7 @@ pappu {
     height: 100vh!important;
     width: max-content;
   }
-  #about {
-    display: inline-block!important;
-  }
+
   .about-pic-box {
     display: block;
     margin: 0px auto;

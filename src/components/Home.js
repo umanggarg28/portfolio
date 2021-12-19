@@ -9,7 +9,6 @@ import Project from "./Project";
 import About from "./About";
 import Contact from "./Contact";
 
-
 export default function Home() {
 
   const parallax = useRef(null);
@@ -45,6 +44,7 @@ export default function Home() {
               mode="bounce"
               id="heroAnim"
               data-preserve-aspect-ratio ="xMidYMid slice"
+              // background="darkslategray"
               // src="https://assets7.lottiefiles.com/packages/lf20_zprb9vzj.json"
               // src="https://assets9.lottiefiles.com/packages/lf20_lq0d2x0h.json" rocket
               src="https://assets4.lottiefiles.com/packages/lf20_pQHwaL.json"
@@ -153,8 +153,20 @@ export default function Home() {
 
         <ParallaxLayer
           offset={6}
-          style={{ backgroundImage :  "linear-gradient(to right, #360033, #0b8793)"}} //education background-color
-        />
+          ><div>
+            <lottie-player
+                autoplay
+                loop
+                id="contactbg"
+                mode="bounce"
+                background=  "darkslategray"
+                src="https://assets10.lottiefiles.com/packages/lf20_zxbzlgot.json"
+                style={{
+                    height: '100%'
+                }}
+                ></lottie-player>
+          </div>
+        </ParallaxLayer>
         {/* <ParallaxLayer
           offset={7}
           style={{ backgroundImage :  "linear-gradient(to right, #360033, #0b8793)"}} //education background-color
@@ -268,7 +280,6 @@ export default function Home() {
           offset={0}
           // speed={0.1}
           style={{
-            display: "flex",
             alignItems: "center",
             justifyContent: "center",
           }}
@@ -281,7 +292,6 @@ export default function Home() {
           offset={1}
           // speed={0.1}
           style={{
-            display: "flex",
             alignItems: "center",
             justifyContent: "center",
             // backgroundImage: 'linear-gradient( 99deg, rgba(115,18,81,1) 10.6%, rgba(28,28,28,1) 118% )'
@@ -295,7 +305,6 @@ export default function Home() {
           offset={2}
           // speed={0.1}
           style={{
-            // display: "flex",
             alignItems: "center",
             justifyContent: "center",
             // backgroundImage: 'linear-gradient(to right, #ad5389, #3c1053)'
@@ -323,7 +332,6 @@ export default function Home() {
           offset={4}
           // speed={0.1}
           style={{
-            display: "flex",
             alignItems: "center",
             justifyContent: "center",
             // backgroundImage: "linear-gradient(to right, #23074d, #cc5333)"

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import sanityClient from "../client";
+import LazyShow from "./LazyShow";
 
 export default function Skills({parallax}) {
 
@@ -20,43 +21,46 @@ export default function Skills({parallax}) {
 
   return (
     <React.Fragment>
-      <div style={{display: 'inline-grid'}}>
-                <div className="skills-header-container">
-                <h3 className="skills-heading">Professional Skills</h3>
-                <lottie-player
-                  autoplay
-                  // controls
-                  loop
-                  mode="normal"
-                  src="https://assets9.lottiefiles.com/packages/lf20_qp95sgvg.json"
-                  style={{height: 80, marginLeft: 390, marginTop: -160, width: '55%'}}
-                />
+          <section className="main-container">
+            <div className="header-container">
+               <div className="lottie-container">
+                    <lottie-player
+                      hover
+                      loop
+                      mode="normal"
+                      src="https://assets10.lottiefiles.com/packages/lf20_optuv2ro.json"
+                      style={{width: 70, marginRight: '2vh'}}
+                    />
                 </div>
-                <div className="skills-pic-box">
-                  <lottie-player
-                    id="skillsAnim"
-                    autoplay
-                    loop
-                    mode="normal"
-                    src="https://assets6.lottiefiles.com/packages/lf20_miikvucn.json"
-                    style={{height: 300,
-                      marginTop: 40
-                    }}
-                  ></lottie-player>
-                </div>
+                <h3 className="heading heading-skills">Professional Skills</h3>
             </div>
-
-
-      <div className="skills-display">
-      <div className="skills-description max-w-sm overflow-hidden">
-      {skills && skills.map((skillsData) => (
-        <div class="px-6 py-4">
-        <h3 className="skills-data-heading">{skillsData.skill_category}</h3>
-          <p className="skills-data-degree">{skillsData.language}</p>
-          </div>
-      ))}
-      </div>
-      </div>
+            <LazyShow>
+              <div className="content-main-dad">
+                <div className="lottie-main">
+                    <lottie-player
+                      id="skillsAnim"
+                      autoplay
+                      loop
+                      mode="normal"
+                      src="https://assets6.lottiefiles.com/packages/lf20_miikvucn.json"
+                      style={{width: 500,
+                        marginTop: 40,
+                        marginLeft:40
+                      }}
+                    ></lottie-player>
+                  </div>
+                  <div className="content-box">
+                        <div className="content text-white">
+                        {skills && skills.map((skillsData) => (
+                          <div class="px-6 py-4">
+                          <h3 className="skills-data-heading">{skillsData.skill_category}</h3>
+                            <p className="skills-data-degree">{skillsData.language}</p>
+                            </div>
+                        ))}
+                        </div>
+                    </div>
+                    </div>
+              </LazyShow>         
       <div className="button-box">
       <button onClick={() => parallax.current.scrollTo(5)} className="contact-btn py-2 px-4">
           <lottie-player
@@ -66,11 +70,11 @@ export default function Skills({parallax}) {
                   id="scrollButton1"
                   src="https://assets9.lottiefiles.com/packages/lf20_tlje6641.json"
                   style={{
-                      height: 100
                   }}
           ></lottie-player>
         </button>
         </div>
+        </section>
     </React.Fragment>
   );
 }

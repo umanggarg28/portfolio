@@ -45,7 +45,7 @@ export default function MainHero({parallax}) {
     return (
         <React.Fragment>
             <div className="box-transparent">
-                <br></br>
+                <div className="box-content">
                 <TextAnimation charInterval="50">
                     <p className="about-description bright">Hello! I'm</p>
                 </TextAnimation>
@@ -72,8 +72,7 @@ export default function MainHero({parallax}) {
                         {author && author[0].main_page_headline}
                     </p>
                 </div>
-                <br></br>
-                <br></br>
+                </div>
             </div>
             <div className="home-pic-box" ref={container}>
                 <lottie-player
@@ -98,15 +97,16 @@ export default function MainHero({parallax}) {
                 ></lottie-player>
             </div>
             <div className="button-box">
-                <button onClick={() => parallax.current.scrollTo(1)} className="contact-btn py-2 px-4">
+                <button onClick={() => parallax.current.scrollTo(1)} className="contact-btn">
                     <lottie-player
-                            hover
+                            autoplay
                             loop
                             mode="normal"
                             id="scrollButton1"
-                            src="https://assets9.lottiefiles.com/packages/lf20_tlje6641.json"
+                            src="https://assets2.lottiefiles.com/packages/lf20_go4bqcz3.json"
                             style={{
-                                height: 100
+                                width: 60,
+                                marginTop:'2vh'
                             }}
                     ></lottie-player>
             </button>
