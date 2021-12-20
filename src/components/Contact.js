@@ -1,12 +1,17 @@
 import React from "react";
+import LazyShow from "./LazyShow";
 
 export default function Contact({parallax}) {
 
     return (
         <React.Fragment>
-            <div>
-            <div>
-            <lottie-player
+            {/* <LazyShow>
+                  <div className="content-box" style={{textAlign: "center"}}>
+                    <h1>I AM THE GOAT</h1>
+                </div>
+              </LazyShow>    */}
+
+            {/* <lottie-player
                 hover
                 loop
                 mode="normal"
@@ -16,9 +21,8 @@ export default function Contact({parallax}) {
                 style={{
                     height: 200
                 }}
-                ></lottie-player>
-            </div>
-            </div>
+                ></lottie-player> */}
+
             <button onClick={() => parallax.current.scrollTo(0)} className="contact-btn py-2 px-4">
                 <lottie-player
                         autoplay

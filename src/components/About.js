@@ -40,9 +40,10 @@ export default function About({parallax}) {
             <lottie-player
                 autoplay
                 loop
-                mode="bounce"
+                mode="normal"
                 id="aboutAnim"
-                src="https://assets8.lottiefiles.com/packages/lf20_rcymylpo.json"
+                // src="https://assets8.lottiefiles.com/packages/lf20_rcymylpo.json"
+                src="https://assets9.lottiefiles.com/private_files/lf30_mqvces5q.json"
                 style={{
                     width: '60vh'
                 }}

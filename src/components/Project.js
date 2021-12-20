@@ -44,7 +44,8 @@ export default function Project({parallax}) {
                         loop
                         mode="normal"
                         id="project"
-                        src="https://assets10.lottiefiles.com/packages/lf20_fmpbqwvd.json"
+                        // src="https://assets10.lottiefiles.com/packages/lf20_fmpbqwvd.json"
+                        src="https://assets3.lottiefiles.com/packages/lf20_ihsy8p2a.json"
                         style={{
                             width: 400,
                             marginTop: -40
@@ -91,7 +92,7 @@ export default function Project({parallax}) {
                     </div>
                 </div>
                 </LazyShow>     
-                        
+
             <div className="button-box">
             <button onClick={() => parallax.current.scrollTo(4)} className="contact-btn py-2 px-4">
                 <lottie-player

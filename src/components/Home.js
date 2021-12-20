@@ -158,9 +158,10 @@ export default function Home() {
                 autoplay
                 loop
                 id="contactbg"
-                mode="bounce"
-                background=  "darkslategray"
-                src="https://assets10.lottiefiles.com/packages/lf20_zxbzlgot.json"
+                mode="normal"
+                // background=  "darkslategray"
+                src="https://assets7.lottiefiles.com/packages/lf20_gTE2BO.json"
+                // src="https://assets10.lottiefiles.com/packages/lf20_zxbzlgot.json"
                 style={{
                     height: '100%'
                 }}
