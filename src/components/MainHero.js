@@ -18,7 +18,7 @@ export default function MainHero({parallax}) {
       onRest: () => set(!flip),
     });
 
-    const container = useRef(null);
+    // const container = useRef(null);
     
 
     useEffect(() => {

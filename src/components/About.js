@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import sanityClient from "../client";
 import LazyShow from "./LazyShow";
-import { motion } from "framer-motion";
 
 export default function About({parallax}) {
 

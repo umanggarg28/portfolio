@@ -1,5 +1,5 @@
 import React from "react";
-import LazyShow from "./LazyShow";
+// import LazyShow from "./LazyShow";
 
 export default function Contact({parallax}) {
 
