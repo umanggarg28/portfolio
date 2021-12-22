@@ -44,6 +44,7 @@ export default function MainHero({parallax}) {
 
     return (
         <React.Fragment>
+        <section className="main-container">
             <div className="box-transparent">
                 <div className="box-content">
                 <TextAnimation charInterval="50">
@@ -59,7 +60,6 @@ export default function MainHero({parallax}) {
                 <lottie-player
                     id="webAnim"
                     autoplay
-                    // controls
                     loop
                     mode="normal"
                     // src="https://assets9.lottiefiles.com/packages/lf20_5inj20n2.json"
@@ -74,13 +74,13 @@ export default function MainHero({parallax}) {
                 </div>
                 </div>
             </div>
-            <div className="home-pic-box" ref={container}>
+            {/* <div className="home-pic-box" ref={container}>
                 <lottie-player
                 hover
                 loop
                 mode="normal"
-                id="mainAnim"
-                // src="https://assets1.lottiefiles.com/packages/lf20_tpozrkv0.json"
+                id="mainAnim" */}
+                {/* // src="https://assets1.lottiefiles.com/packages/lf20_tpozrkv0.json"
                 // src="https://assets9.lottiefiles.com/packages/lf20_tpbyhgfu.json"
                 // src="https://assets4.lottiefiles.com/packages/lf20_kw2yp643.json"
                 // src="https://assets10.lottiefiles.com/packages/lf20_gy6w24sr.json"
@@ -88,14 +88,14 @@ export default function MainHero({parallax}) {
                 // src="https://assets3.lottiefiles.com/packages/lf20_ri0tw20g.json"
                 // src="https://assets4.lottiefiles.com/packages/lf20_xhgpxevg.json"
                 // src="https://assets2.lottiefiles.com/packages/lf20_xhgpxevg.json"
-                // src="https://assets9.lottiefiles.com/packages/lf20_k82barmh.json"
-                style={{
+                // src="https://assets9.lottiefiles.com/packages/lf20_k82barmh.json" */}
+                {/* style={{
                     height: 750,
                     marginRight: 80,
                     marginTop:80
                 }}
                 ></lottie-player>
-            </div>
+            </div> */}
             <div className="button-box">
                 <button onClick={() => parallax.current.scrollTo(1)} className="contact-btn">
                     <lottie-player
@@ -109,8 +109,9 @@ export default function MainHero({parallax}) {
                                 marginTop:'2vh'
                             }}
                     ></lottie-player>
-            </button>
+                </button>
             </div>
+            </section>
     </React.Fragment>
   );
 }
