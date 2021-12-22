@@ -38,8 +38,8 @@ const LazyShow = ({ children }) => {
         x: 0,
         opacity: 1,
         transition: {
-          duration: 1,
-          ease: "easeOut"
+          duration: 2,
+          ease: "linear"
         }
       });
     }

@@ -1,9 +1,50 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import sanityClient from "../client"
-import LazyShow from "./LazyShow";
+import { motion, useAnimation } from "framer-motion";
 
 export default function Project({parallax}) {
+
+    function useOnScreen(ref, rootMargin = "0px") {
+        // State and setter for storing whether element is visible
+        const [isIntersecting, setIntersecting] = useState(false);
+      
+        useEffect(() => {
+          let currentRef = null;
+          const observer = new IntersectionObserver(
+            ([entry]) => {
+              // Update our state when observer callback fires
+              setIntersecting(entry.isIntersecting);
+            },
+            {
+              rootMargin
+            }
+          );
+          if (ref.current) {
+            currentRef = ref.current;
+            observer.observe(currentRef);
+          }
+          return () => {
+            observer.unobserve(currentRef);
+          };
+        }, [ref, rootMargin]); // Empty array ensures that effect is only run on mount and unmount
+      
+        return isIntersecting;
+      }
+
     const [projectData, setProjectData] = useState(null);
+    const rootRef = useRef();
+    const onScreen = useOnScreen(rootRef);
+    const controls = useAnimation();
+
+    useEffect(() => {
+        if (onScreen) {
+        controls.start(i => ({
+          opacity: 1,
+          x: 0,
+          transition: { delay: i * 0.2 },
+        }))
+        }
+      }, [onScreen, controls])
 
     useEffect(() => {
         sanityClient.fetch(`*[_type == "project"]{
@@ -36,7 +77,6 @@ export default function Project({parallax}) {
                 <h3 className="heading heading-project">Some projects</h3>
             </div>
 
-            <LazyShow>
             <div className="content-main-dad">
                     <div className="lottie-main" style={{marginRight: '2vh'}}>
                     <lottie-player
@@ -54,11 +94,17 @@ export default function Project({parallax}) {
                     </div>
                     <div className="content-box">
                         <div className="content text-white">
-                        {/* <div className="project-content-box" style={{display: 'flex'}}>
-                         <div className="project-display text-white rounded-lg sm:rounded-t-xl p-4 pb-6 sm:p-8 lg:p-4 lg:pb-6 xl:p-8 space-y-6 sm:space-y-8 lg:space-y-6 xl:space-y-8"> */}
-                        <ul className="projects-grid">
+                        <ul 
+                                ref={rootRef}
+                                className="projects-grid"
+                            >
                             {projectData && projectData.map((project, index) => (
-                            <li className="project-individual rounded-lg p-4 pb-6 lg:p-4 lg:pb-6 space-y-6 lg:space-y-6">
+                            <motion.li
+                                initial={{ opacity: 0, x: -100 }}
+                                custom={index}
+                                animate={controls}
+                                className="project-individual rounded-lg p-4 pb-6 lg:p-4 lg:pb-6 space-y-6 lg:space-y-6"
+                            >
                             <header>
                                 <div className="project-top">
                                 <h3>
@@ -85,13 +131,12 @@ export default function Project({parallax}) {
                                     {project.technologies_used && project.technologies_used.split(',').map((item)=> <li>{item.toUpperCase()}{"\n"}</li>)}
                                 </ul>
                             </footer>
-                            </li>
+                            </motion.li>
                             ))}
                         </ul>
                         </div>
                     </div>
                 </div>
-                </LazyShow>     
 
             <div className="button-box">
             <button onClick={() => parallax.current.scrollTo(4)} className="contact-btn py-2 px-4">

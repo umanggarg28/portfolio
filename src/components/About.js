@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import sanityClient from "../client";
 import LazyShow from "./LazyShow";
+import { motion } from "framer-motion";
 
 export default function About({parallax}) {
 
@@ -21,7 +22,8 @@ export default function About({parallax}) {
     return (
         <React.Fragment>
         <section className="main-container">
-        <div className="header-container">
+        <div
+        className="header-container">
             <div className="lottie-container">
                 <lottie-player
                     id="userAnim"
