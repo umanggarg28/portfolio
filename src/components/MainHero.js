@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Rellax from "rellax";
 import TextAnimation from "react-animate-text";
 import { useSpring, animated } from "react-spring";
