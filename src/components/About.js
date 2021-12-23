@@ -29,6 +29,9 @@ export default function About({parallax}) {
                     hover
                     loop
                     mode="normal"
+                    rendererSettings= {
+                        preserveAspectRatio= "xMidYMid slice"
+                    }
                     src="https://assets7.lottiefiles.com/packages/lf20_3hj053ag.json"
                     style={{width: 80, marginRight: '2vh'}}
                 />
@@ -43,6 +46,9 @@ export default function About({parallax}) {
                 loop
                 mode="normal"
                 id="aboutAnim"
+                rendererSettings= {
+                    preserveAspectRatio= "xMidYMid slice"
+                }
                 // src="https://assets8.lottiefiles.com/packages/lf20_rcymylpo.json"
                 src="https://assets9.lottiefiles.com/private_files/lf30_mqvces5q.json"
                 style={{
