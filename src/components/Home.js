@@ -43,7 +43,7 @@ export default function Home() {
               loop
               mode="bounce"
               id="heroAnim"
-              data-preserve-aspect-ratio ="xMidYMax meet"
+              data-preserve-aspect-ratio ="xMidYMid slice"
               // data-preserve-aspect-ratio ="none"
               // background="darkslategray"
               // src="https://assets7.lottiefiles.com/packages/lf20_zprb9vzj.json"
