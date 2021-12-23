@@ -1078,8 +1078,8 @@ pappu {
     display: block;
   }
   #heroAnim {
-    height: 100%!important;
-    /* width: max-content; */
+    height: 100vh!important;
+    width: max-content;
   }
   nav {
     padding: unset;
