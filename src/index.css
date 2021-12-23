@@ -1062,13 +1062,13 @@ pappu {
   .nav-right{
     display: none;
   }
-  #mainHero {
+  /* #mainHero { */
     /* display: flex; */
     /* display: inline-block!important;
     padding: unset;
     margin: unset; */
-    height: 100vh!important;
-  }
+    /* height: 100vh!important; */
+  /* } */
   #logoLottie{
     height: 35vw!important;
   }
