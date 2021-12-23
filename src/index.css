@@ -1068,7 +1068,6 @@ pappu {
     padding: unset;
     margin: unset; */
     height: 100vh!important;
-    width: max-content!important;
   }
   #logoLottie{
     height: 35vw!important;
@@ -1078,8 +1077,8 @@ pappu {
     display: block;
   }
   #heroAnim {
-    height: 100vh!important;
     width: max-content;
+    height: 100vh!important;
   }
   nav {
     padding: unset;
