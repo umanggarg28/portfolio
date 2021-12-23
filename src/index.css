@@ -1076,7 +1076,6 @@ pappu {
     display: block;
   }
   #heroAnim {
-    width: max-content;
     height: 100vh!important;
   }
   nav {
