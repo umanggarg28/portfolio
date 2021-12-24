@@ -1089,9 +1089,9 @@ pappu {
     margin-top: 10vh;
   }
 
-  .container{
-    height: 20vh;
-  }
+  /* .container{ */
+    /* height: 20vh; */
+  /* } */
  
   .home-name {
     font-size: 50px;
