@@ -1032,17 +1032,58 @@ pappu {
 
 @media only screen and (max-width: 600px) {
   .main-container{
+    margin: unset!important;
     width: 100%;
     min-height: 100vh;
     text-align: center;
-    display: grid;
     align-items: center;
     justify-content: center;
+    padding: 2vh;
   }
 
-  .box-transparent {
-    margin-left: 4vh;
-    margin-right: 4vh;
+  .header-container {
+    margin: unset;
+    display: flex;
+    margin-top: 5vh;
+  }
+
+  .lottie-container {
+    display: none;
+  }
+
+  .heading {
+    font-size: 50px!important;
+  }
+
+  .heading::after {
+    top: -40px;
+  }
+
+  .lazy-div {
+    display: block;
+    justify-content: space-evenly;
+    align-items: center;
+}
+  .content-main-dad {
+    display: grid;
+    padding: unset;
+  }
+
+  .content-box {
+    display: unset;
+  }
+
+  .lottie-main {
+    /* margin: unset; */
+    display: none;
+  }
+
+  .content {
+    margin: unset;
+  }
+
+  #aboutAnim {
+    width: 30vh!important;
   }
 
   .about-description {
@@ -1145,9 +1186,13 @@ pappu {
   }
   .inner {
     margin: unset;
-    margin-left: 20px;
-    margin-right: 20px;
+    padding: unset;
   }
+
+  .button-box {
+    margin-top: 5vh;
+  }
+
   .about-me{
     font-size: 4.2vw;
   }
