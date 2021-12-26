@@ -10,9 +10,8 @@ function App() {
 
   useEffect(() => {
 
-    ReactGa.initialize('G-J2L80SXLPJ');
-
-    ReactGa.pageview('/')
+    ReactGa.initialize('G-J2L80SXLPJ')
+    ReactGa.pageview(window.location.pathname)
 
   }, []);
 
