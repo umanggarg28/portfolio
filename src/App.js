@@ -3,15 +3,15 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"
 import Home from "./components/Home"
 import NavBar from "./components/NavBar"
 import "@lottiefiles/lottie-player";
-import ReactGa from 'react-ga'
+// import ReactGa from 'react-ga'
 
 
 function App() {
 
   useEffect(() => {
 
-    ReactGa.initialize('G-J2L80SXLPJ')
-    ReactGa.pageview(window.location.pathname)
+    // ReactGa.initialize('G-J2L80SXLPJ')
+    // ReactGa.pageview(window.location.pathname)
 
   }, []);
 
