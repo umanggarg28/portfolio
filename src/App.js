@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"
 import Home from "./components/Home"
 import NavBar from "./components/NavBar"
@@ -8,14 +8,23 @@ import "@lottiefiles/lottie-player";
 
 function App() {
 
-  useEffect(() => {
+  const [isLoading, setIsLoading] = useState(true);
 
-    // ReactGa.initialize('G-J2L80SXLPJ')
-    // ReactGa.pageview(window.location.pathname)
+  const handleLoading = () => {
+    setTimeout(
+      function() {
+        setIsLoading(false);
+      },
+     6500
+   );
+  }
 
-  }, []);
+  useEffect(()=>{
+    window.addEventListener("load",handleLoading);
+    return () => window.removeEventListener("load",handleLoading);
+    },[])
 
-  return (
+  return !isLoading ? (
     <BrowserRouter>
     <NavBar navColor='transparent' navSize="3rem"/>
       <Switch>
@@ -40,7 +49,18 @@ function App() {
       {/* <div class="cursor-dot-outline"></div>
       <div class="cursor-dot"></div> */}
     </BrowserRouter>
-  )
+    ) : (
+        <div className="lottie-container">
+          <lottie-player
+              id="loadingAnim"
+              autoplay
+              loop
+              mode="normal"
+              src="https://assets4.lottiefiles.com/packages/lf20_buulmwlq.json"
+              style={{width: 200, margin: '0 auto', marginTop: '20%'}}
+          />
+        </div>
+    )
 }
 
 export default App;
