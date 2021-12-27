@@ -32,8 +32,8 @@ function App() {
           <li><a href="https://codepen.io/" aria-label="Codepen" target="_blank" rel="noreferrer"><svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-codepen"><title>CodePen</title><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon><line x1="12" y1="22" x2="12" y2="15.5"></line><polyline points="22 8.5 12 15.5 2 8.5"></polyline><polyline points="2 15.5 12 8.5 22 15.5"></polyline><line x1="12" y1="2" x2="12" y2="8.5"></line></svg></a></li>
         </ul>
       </div>
-      <div orientation="right" class="side__StyledSideElement-sc-1duznzb-0 jSIwrL">
-        <div class="email__StyledLinkWrapper-sc-2epoq-0 jJFfEJ fade-enter-done">
+      <div orientation="right" className="side__StyledSideElement-sc-1duznzb-0 jSIwrL">
+        <div className="email__StyledLinkWrapper-sc-2epoq-0 jJFfEJ fade-enter-done">
           <a href="mailto:umanggarg28@gmail.com">umanggarg28@gmail.com</a>
         </div>
       </div>

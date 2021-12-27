@@ -361,7 +361,6 @@ export default function Home() {
           offset={6}
           // speed={0.1}
           style={{
-            display: "flex",
             alignItems: "center",
             justifyContent: "center",
           }}

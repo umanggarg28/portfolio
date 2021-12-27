@@ -200,6 +200,19 @@ body {
   gap: 50px; */
 }
 
+.contact-inner {
+  font-size: 20px;
+  color: white;
+  letter-spacing: 1px;
+  font-weight: 200;
+  /* font-family: "BlinkMacSystemFont", San Francisco; */
+  font-family: 'Cera Pro Light';
+  padding: 30px;
+  /* display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 50px; */
+}
+
 .inner p {
   margin: 0px 0px 15px;
 }
@@ -509,6 +522,14 @@ transform: matrix(1, 0, 0, 1, 0, 0);
   -webkit-text-fill-color: transparent!important;
   font-size: 78px;
   font-weight: 900;
+  font-family: "Nanum Pen Script", San Francisco;
+}
+
+#btn-contact {
+  font-size: 26px;
+  -webkit-background-clip: text!important;
+  background-clip: text!important;
+  font-weight: 100;
   font-family: "Nanum Pen Script", San Francisco;
 }
 
