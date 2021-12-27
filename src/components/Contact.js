@@ -17,7 +17,6 @@ export default function Contact({parallax}) {
                             <p className="contact-inner">
                             I’m actively looking for any new opportunities in the US, and my inbox is always open. Have a job for me? I'd love to get in touch. Or even if you have a question or just want to say hi, I’ll try my best to get back to you!
                             </p>
-                            <br></br>
                             <button id="btn-contact" style={{position: 'relative', zIndex: 9999}} className="font-normal hover:text-white py-2 px-4" href="mailto:umanggarg28@gmail.com">Say Hello</button>
                                 <lottie-player
                                     hover
