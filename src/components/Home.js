@@ -42,7 +42,7 @@ export default function Home() {
               autoplay
               loop
               mode="bounce"
-              id="heroAnim"
+              id="mainherobg"
               // data-preserve-aspect-ratio ="xMinYMin slice"
               data-preserve-aspect-ratio ="xMinYMid slice"
               // background="darkslategray"

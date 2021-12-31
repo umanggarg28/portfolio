@@ -1057,6 +1057,11 @@ pappu {
 }
 
 @media only screen and (max-width: 600px) {
+
+#mainherobg, #aboutbg, #projectsbg, #experiencebg, #educationbg, #contactbg {
+  display: none;
+}
+
   .main-container{
     margin: unset!important;
     width: 100%;

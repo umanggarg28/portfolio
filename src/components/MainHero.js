@@ -3,6 +3,7 @@ import Rellax from "rellax";
 import TextAnimation from "react-animate-text";
 import { useSpring, animated } from "react-spring";
 import sanityClient from "../client";
+import LazyShow from "./LazyShow";
 
 export default function MainHero({parallax}) {
 
@@ -46,6 +47,7 @@ export default function MainHero({parallax}) {
         <React.Fragment>
         <section className="main-container">
             <div className="box-transparent">
+            <LazyShow>
                 <div className="box-content">
                 <TextAnimation charInterval="50">
                     <p className="about-description bright">Hello! I'm</p>
@@ -73,6 +75,7 @@ export default function MainHero({parallax}) {
                     </p>
                 </div>
                 </div>
+            </LazyShow>
             </div>
             {/* <div className="home-pic-box" ref={container}>
                 <lottie-player

@@ -57,7 +57,7 @@ function App() {
               loop
               mode="normal"
               src="https://assets4.lottiefiles.com/packages/lf20_buulmwlq.json"
-              style={{width: 200, margin: '0 auto', marginTop: '20%'}}
+              style={{width: 250, margin: '0 auto', marginTop: '15%'}}
           />
         </div>
     )
