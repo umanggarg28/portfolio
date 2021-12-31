@@ -44,7 +44,7 @@ export default function Home() {
               mode="bounce"
               id="mainherobg"
               // data-preserve-aspect-ratio ="xMinYMin slice"
-              data-preserve-aspect-ratio ="xMinYMid slice"
+              data-preserve-aspect-ratio ="xMidYMid slice"
               // background="darkslategray"
               // src="https://assets7.lottiefiles.com/packages/lf20_zprb9vzj.json"
               // src="https://assets9.lottiefiles.com/packages/lf20_lq0d2x0h.json" rocket
