@@ -1062,6 +1062,11 @@ pappu {
   display: none;
 }
 
+#mainherobg {
+  width: 166vh;
+  height: 100vh;
+}
+
   .main-container{
     margin: unset!important;
     width: 100%;
