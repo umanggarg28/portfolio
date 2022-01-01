@@ -245,7 +245,7 @@ ul.skills-list {
 .header-container {
   margin-left: 10%;
   display: flex;
-  margin-top: 15vh;
+  margin-top: 10vh;
 }
 
 .content-box {
@@ -1088,7 +1088,7 @@ pappu {
   .header-container {
     margin: unset;
     display: flex;
-    margin-top: 10vh;
+    margin-top: 7vh;
   }
 
   .lottie-container {
