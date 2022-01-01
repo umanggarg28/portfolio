@@ -126,7 +126,9 @@ export default function Home() {
                 id="skillsbg"
                 data-preserve-aspect-ratio ="none"
                 mode="normal"
-                src="https://assets7.lottiefiles.com/datafiles/csP6U2eWv5hDhkq/data.json"
+                // background= "linear-gradient(to right, #748dd6, #748dd6)"
+                // src="https://assets7.lottiefiles.com/datafiles/csP6U2eWv5hDhkq/data.json"
+                src="https://assets5.lottiefiles.com/packages/lf20_yolfhtxf.json"
                 style={{
                     height: '100%'
                 }}
