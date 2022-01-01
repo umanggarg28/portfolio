@@ -1148,6 +1148,7 @@ pappu {
   /* } */
   #logoLottie{
     height: 35vw!important;
+    margin: unset;
   }
   .heading-font {
     /* height: 40px; */
@@ -1163,7 +1164,7 @@ pappu {
   }
   .box-content{
     margin: unset;
-    margin-top: 10vh;
+    margin-top: 20vh;
   }
 
   /* .container{ */
@@ -1226,7 +1227,7 @@ pappu {
   }
 
   .button-box {
-    margin-top: 5vh;
+    margin-top: 10%;
   }
 
   .about-me{
