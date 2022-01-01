@@ -1124,6 +1124,14 @@ pappu {
     display: unset;
   }
 
+  .block {
+    display: unset;
+  }
+
+  .container {
+    display: none;
+  }
+
   .lottie-main {
     /* margin: unset; */
     display: none;
