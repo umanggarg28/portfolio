@@ -1058,13 +1058,11 @@ pappu {
 
 @media only screen and (max-width: 600px) {
 
-#aboutbg, #projectsbg, #experiencebg, #educationbg, #contactbg {
-  display: none;
-}
+  #mainherobg, #aboutbg, #projectsbg, #experiencebg, #educationbg, #contactbg {
+  height: 100vh;}
 
 #mainherobg {
   width: 166vh;
-  height: 100vh;
 }
 
   .main-container{
@@ -1134,6 +1132,7 @@ pappu {
   .description {
     word-spacing: 2px;
     margin: unset;
+    margin-bottom: 15%;
   }
 
   .nav-right{
@@ -1226,9 +1225,9 @@ pappu {
     padding: unset;
   }
 
-  .button-box {
+  /* .button-box {
     margin-top: 10%;
-  }
+  } */
 
   .about-me{
     font-size: 4.2vw;
@@ -1264,9 +1263,6 @@ pappu {
     margin-bottom: 25vw;
   }
 
-  #scrollButton{
-    height: 60px!important;
-  }
   .experience-place {
     display: block;
   }
