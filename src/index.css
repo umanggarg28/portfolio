@@ -1088,7 +1088,7 @@ pappu {
   .header-container {
     margin: unset;
     display: flex;
-    margin-top: 5vh;
+    margin-top: 10vh;
   }
 
   .lottie-container {
@@ -1272,7 +1272,7 @@ pappu {
   } */
 
   .about-me{
-    font-size: 4vw;
+    font-size: 3.8vw;
   }
   #canvas {
     display: none;
@@ -1310,7 +1310,7 @@ pappu {
     margin: unset!important;
   }
   .experience-tab, .experience-jobtitle, .experience-description, .experience-data-dates {
-    font-size: 4.2vw!important;
+    font-size: 4.0vw!important;
   }
   .experience-data-heading {
     font-size: 20px!important;
@@ -1328,7 +1328,7 @@ pappu {
   }
   .experience-description{
     width: auto;
-    height: 80vw;
+    height: 70vw;
   }
   #experienceAnim{
     display: none;
@@ -1381,7 +1381,7 @@ pappu {
       padding: unset;
     }
     .projects-grid {
-      height: 130vw;
+      height: 110vw;
       overflow: scroll;
     }
 
