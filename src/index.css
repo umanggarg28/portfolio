@@ -1108,6 +1108,10 @@ pappu {
     margin: unset!important;
   }
 
+  .css-35zqo5-MuiTabs-root {
+    display: block;
+  }
+
   .content-box {
     display: unset;
   }
@@ -1235,7 +1239,7 @@ pappu {
   } */
 
   .about-me{
-    font-size: 4.2vw;
+    font-size: 3.5vw;
   }
   #canvas {
     display: none;
