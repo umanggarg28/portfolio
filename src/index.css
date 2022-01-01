@@ -1087,7 +1087,7 @@ pappu {
 
   .header-container {
     margin: unset!important;
-    display: flex;
+    display: flow-root;
     padding-top: 10vh;
   }
 
