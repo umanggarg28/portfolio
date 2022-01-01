@@ -126,7 +126,7 @@ export default function Home() {
                 id="skillsbg"
                 data-preserve-aspect-ratio ="none"
                 mode="normal"
-                // background= "linear-gradient(to right, #748dd6, #748dd6)"
+                background= "linear-gradient(to right, #e96ace, #e96ace)"
                 // src="https://assets7.lottiefiles.com/datafiles/csP6U2eWv5hDhkq/data.json"
                 src="https://assets5.lottiefiles.com/packages/lf20_yolfhtxf.json"
                 style={{
