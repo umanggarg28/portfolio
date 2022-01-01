@@ -1059,10 +1059,11 @@ pappu {
 @media only screen and (max-width: 600px) {
 
   #mainherobg, #aboutbg, #projectsbg, #experiencebg, #educationbg, #contactbg {
-  height: 100vh;}
+  height: 100vh;
+  width: max-content;}
 
 #mainherobg {
-  width: 166vh;
+  width: 166vh!important;
 }
 
   .main-container{
@@ -1267,11 +1268,6 @@ pappu {
     display: none;
   }
 
-  /* experience section  */
-  #experiencebg {
-    height: 100vh!important;
-    width: max-content;
-  }
   #experience {
     display: inline-block!important;
   }
