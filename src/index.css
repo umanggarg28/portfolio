@@ -1116,8 +1116,13 @@ pappu {
     background: none;
   }
 
+  .css-9l3uo3 {
+    word-break: break-word;
+  }
+
   .css-1vr8b6v{
     overflow: unset;
+    word-break: break-word;
   }
 
   .content-box {
