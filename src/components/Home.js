@@ -126,9 +126,10 @@ export default function Home() {
                 id="skillsbg"
                 data-preserve-aspect-ratio ="none"
                 mode="normal"
-                background= "linear-gradient(to right, #e96ace, #e96ace)"
-                // src="https://assets7.lottiefiles.com/datafiles/csP6U2eWv5hDhkq/data.json"
-                src="https://assets5.lottiefiles.com/packages/lf20_yolfhtxf.json"
+                // background="background: -webkit-linear-gradient(-70deg, #a2facf 0%, #64acff 100%);"
+                // background= "linear-gradient(to right, #e96ace, #e96ace)"
+                src="https://assets7.lottiefiles.com/datafiles/csP6U2eWv5hDhkq/data.json"
+                // src="https://assets5.lottiefiles.com/packages/lf20_yolfhtxf.json"
                 style={{
                     height: '100%'
                 }}
@@ -342,6 +343,7 @@ export default function Home() {
           offset={4}
           // speed={0.1}
           style={{
+            display: "flex",
             alignItems: "center",
             justifyContent: "center",
             // backgroundImage: "linear-gradient(to right, #23074d, #cc5333)"
