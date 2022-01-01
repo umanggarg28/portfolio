@@ -1377,13 +1377,6 @@ pappu {
     }
 
     /* skills section  */
-  #skillsbg {
-    height: 100vh!important;
-    width: max-content;
-  }
-  #skills {
-    display: inline-block!important;
-  }
   .skills-pic-box {
     display: block;
     margin: 0px auto;
@@ -1431,13 +1424,6 @@ pappu {
   }
 
   /* education section  */
-  #educationbg {
-    height: 100vh!important;
-    width: max-content;
-  }
-  #education {
-    display: inline-block!important;
-  }
   .education-pic-box {
     display: block;
     margin: 0px auto;
