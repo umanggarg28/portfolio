@@ -79,7 +79,7 @@ export default function Education({parallax}) {
                                 <div className="bar"></div>
                               </div>
                               <div className="badge">
-                                <div className="badge-content">{educationData.gpa}</div>
+                                <div className="badge-content">GPA: {educationData.gpa}</div>
                               </div>
                               </div>
                           ))}
@@ -87,7 +87,7 @@ export default function Education({parallax}) {
                  </div>
             </div>
             </LazyShow>              
-              
+
       <div className="button-box">
       <button onClick={() => parallax.current.scrollTo(6)} className="contact-btn py-2 px-4">
                 <lottie-player
