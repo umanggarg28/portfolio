@@ -1064,7 +1064,7 @@ pappu {
 
   #skillsbg {
     height: 100vh!important;
-    width: max-content;
+    width: max-content!important;
   }
 
 #mainherobg {
