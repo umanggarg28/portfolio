@@ -1147,7 +1147,7 @@ pappu {
     /* height: 100vh!important; */
   /* } */
   #logoLottie{
-    height: 35vw!important;
+    width: 20vh!important;
     margin: unset;
   }
   .heading-font {
