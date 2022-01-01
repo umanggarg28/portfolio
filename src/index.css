@@ -1073,7 +1073,8 @@ pappu {
     text-align: center;
     align-items: center;
     justify-content: center;
-    padding: 2vh;
+    padding-left: 2vh;
+    padding-right: 2vh;
   }
 
   .header-container {
@@ -1333,13 +1334,10 @@ pappu {
   }
 
     /* projects section  */
-    #projectsbg {
-      height: 100vh!important;
-      width: max-content;
-    }
-    #projects {
+
+    /* #projects {
       display: inline-block!important;
-    }
+    } */
     .project-pic-box {
       display: none;
       margin: 0px;
