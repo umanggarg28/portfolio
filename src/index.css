@@ -1112,6 +1112,14 @@ pappu {
     display: block;
   }
 
+  #experiencebg {
+    background: none;
+  }
+
+  .css-1vr8b6v{
+    overflow: none;
+  }
+
   .content-box {
     display: unset;
   }
