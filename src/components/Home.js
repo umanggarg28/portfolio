@@ -67,6 +67,7 @@ export default function Home() {
               loop
               mode="bounce"
               id="aboutbg"
+              data-preserve-aspect-ratio ="none"
               src="https://assets7.lottiefiles.com/private_files/lf30_3zjr9l1k.json"
               style={{
                   height: '100%'
@@ -85,6 +86,7 @@ export default function Home() {
               loop
               mode="bounce"
               id="experiencebg"
+              data-preserve-aspect-ratio ="none"
               background='linear-gradient(to right, #000428, #004e92)'
               src="https://assets8.lottiefiles.com/packages/lf20_pbgzoeho.json"
               style={{
@@ -105,6 +107,7 @@ export default function Home() {
               loop
               mode="normal"
               id="projectsbg"
+              data-preserve-aspect-ratio ="none"
               src="https://assets6.lottiefiles.com/packages/lf20_xROXkJ.json"
               style={{
                   height: '100%'
@@ -121,6 +124,7 @@ export default function Home() {
                 autoplay
                 loop
                 id="skillsbg"
+                data-preserve-aspect-ratio ="none"
                 mode="normal"
                 src="https://assets7.lottiefiles.com/datafiles/csP6U2eWv5hDhkq/data.json"
                 style={{
@@ -138,6 +142,7 @@ export default function Home() {
               autoplay
               loop
               id="educationbg"
+              data-preserve-aspect-ratio ="none"
               mode="bounce"
               background=  "linear-gradient(to right, #360033, #0b8793)"
               // background='linear-gradient(to right, #23074d, #cc5333)'
@@ -159,6 +164,7 @@ export default function Home() {
                 autoplay
                 loop
                 id="contactbg"
+                data-preserve-aspect-ratio ="none"
                 mode="normal"
                 // background=  "darkslategray"
                 src="https://assets7.lottiefiles.com/packages/lf20_gTE2BO.json"
