@@ -1078,7 +1078,7 @@ pappu {
   .header-container {
     margin: unset;
     display: flex;
-    margin-top: 5vh;
+    margin-top: 10vh;
   }
 
   .lottie-container {
@@ -1086,7 +1086,7 @@ pappu {
   }
 
   .heading {
-    font-size: 50px!important;
+    font-size: 44px!important;
   }
 
   .heading::after {
@@ -1097,10 +1097,15 @@ pappu {
     display: block;
     justify-content: space-evenly;
     align-items: center;
+    margin-top: -30px;
 }
   .content-main-dad {
     display: grid;
     padding: unset;
+  }
+
+  #scrollButton1{
+    margin: unset!important;
   }
 
   .content-box {
@@ -1132,7 +1137,7 @@ pappu {
   .description {
     word-spacing: 2px;
     margin: unset;
-    margin-bottom: 15%;
+    margin-bottom: 10%;
   }
 
   .nav-right{
@@ -1146,7 +1151,7 @@ pappu {
     /* height: 100vh!important; */
   /* } */
   #logoLottie{
-    width: 20vh!important;
+    width: 16vh!important;
     margin: unset;
   }
   .heading-font {
