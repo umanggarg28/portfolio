@@ -72,10 +72,11 @@ export default function NavBar({ navColor, navSize }) {
               className="pri-font whittish inline-flex item-center px-3 my-6 text-red-200"
             >CONTACT
             </HashLink>
-            {/* <HashLink
+            <HashLink
               activeClassName="text-red-100 nav_item_active bg-red-700"
               className="pri-font whittish inline-flex item-center px-3 my-6 text-red-200"
-              to="/files/Resume.pdf" target="_blank" download>Resume</HashLink> */}
+              to="/files/Resume.pdf" target="_blank" download>Resume
+            </HashLink>
           </div>
         </nav>
       </div>
