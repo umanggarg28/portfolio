@@ -64,7 +64,7 @@ export default function Project({parallax}) {
     return (
         <React.Fragment>    
         <section className="main-container">
-            <div className="header-container" style={{marginTop: '10vh'}}>
+            <div className="header-container" style={{marginTop: '10vh!important'}}>
                     <div className="lottie-container">
                         <lottie-player
                             autoplay
