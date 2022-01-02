@@ -1103,6 +1103,36 @@ pappu {
     top: -40px;
   }
 
+  .heading-experience::after {
+    margin: unset;
+    width: 250px;
+    background-color: #a8b2d1;
+  }
+
+  .heading-project::after {
+    margin: unset;
+    width: 200px;
+    background-color: #a8b2d1;
+  }
+
+  .heading-skills::after {
+    margin: unset;
+    width: 250px;
+    background-color: #a8b2d1;
+  }
+
+  .heading-education::after {
+    margin: unset;
+    width: 250px;
+    background-color: #a8b2d1;
+  }
+
+  .heading-contact::after {
+    margin: unset;
+    width: 200px;
+    background-color: #a8b2d1;
+  }
+
   .lazy-div {
     display: block;
     justify-content: space-evenly;
@@ -1125,6 +1155,12 @@ pappu {
 
   #experiencebg {
     background: none;
+  }
+
+  .project-individual {
+    padding: unset;
+    padding:10px;
+    padding-bottom: 1rem;
   }
 
   .css-9l3uo3 {
