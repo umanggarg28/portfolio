@@ -1,8 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import sanityClient from "../client";
 import LazyShow from "./LazyShow";
+import anime from "animejs";
 
-export default function Skills({parallax}) {
+export default function Skills({useOnScreen, parallax}) {
+
+  const rootRef = React.createRef();
+
+  const onScreen = useOnScreen(rootRef);
+
+    useEffect(() => {
+        if (onScreen) {
+          var textWrapper = document.querySelector('.skillsHeadingAnim');
+          textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+  
+          anime.timeline({loop: false})
+              .add({
+                  targets: '.skillsHeadingAnim .letter',
+                  scale: [4,1],
+                  opacity: [0,1],
+                  translateZ: 0,
+                  easing: "easeOutExpo",
+                  duration: 950,
+                  delay: (el, i) => 70*i
+              }).add({
+                  targets: '.skillsHeadingAnim',
+                  opacity: 1,
+                  duration: 1000,
+                  easing: "easeOutExpo",
+                  delay: 1000
+              });
+          }
+      }, [onScreen]);
 
   const [skills, setSkillsData] = useState(null);
 
@@ -15,9 +44,6 @@ export default function Skills({parallax}) {
       .catch(console.error);
 
   }, []);
-
-  console.log("skills data:");
-  console.log(skills);
 
   return (
     <React.Fragment>
@@ -32,7 +58,7 @@ export default function Skills({parallax}) {
                       style={{width: 70, marginRight: '2vh'}}
                     />
                 </div>
-                <h3 className="heading heading-skills">Professional Skills</h3>
+                <h1 ref={rootRef} className="skillsHeadingAnim heading heading-skills">Professional Skills</h1>
             </div>
             <LazyShow>
               <div className="content-main-dad">

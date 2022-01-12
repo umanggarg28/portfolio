@@ -1,13 +1,42 @@
-import React from "react";
+import React, {useEffect} from "react";
 import LazyShow from "./LazyShow";
+import anime from "animejs";
 
-export default function Contact({parallax}) {
+export default function Contact({useOnScreen, parallax}) {
+
+    const rootRef = React.createRef();
+
+    const onScreen = useOnScreen(rootRef);
+
+    useEffect(() => {
+        if (onScreen) {
+          var textWrapper = document.querySelector('.contactHeadingAnim');
+          textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+  
+          anime.timeline({loop: false})
+              .add({
+                  targets: '.contactHeadingAnim .letter',
+                  scale: [4,1],
+                  opacity: [0,1],
+                  translateZ: 0,
+                  easing: "easeOutExpo",
+                  duration: 950,
+                  delay: (el, i) => 70*i
+              }).add({
+                  targets: '.contactHeadingAnim',
+                  opacity: 1,
+                  duration: 1000,
+                  easing: "easeOutExpo",
+                  delay: 1000
+              });
+          }
+      }, [onScreen]);
 
     return (
         <React.Fragment>
         <section className="main-container">
             <div className="header-container">
-                <h3 className="heading heading-experience">Get in touch</h3>
+                <h1 ref={rootRef} className="contactHeadingAnim heading heading-experience">Get in touch</h1>
             </div>
             <LazyShow>
                 <div className="content-main-dad" style={{margin: '0 auto'}}>
@@ -17,13 +46,14 @@ export default function Contact({parallax}) {
                             <p className="contact-inner">
                             I’m actively looking for any new opportunities in the US, and my inbox is always open. Have a job for me? I'd love to get in touch. Or even if you have a question or just want to say hi, I’ll try my best to get back to you!
                             </p>
-                            <a id="btn-contact" style={{position: 'relative', zIndex: 9999}} className="font-normal hover:text-white py-2 px-4" target="_blank" rel="noreferrer" href="mailto:umanggarg28@gmail.com">Say Hello!</a>
+                            <a id="btn-contact" style={{position: 'relative', zIndex: 9999}} className="font-normal hover:text-white py-2 px-4" target="_blank" rel="noreferrer" href="mailto:umanggarg28@gmail.com"> Say Hello!</a>
                                 <lottie-player
                                     hover
                                     loop
                                     mode="normal"
-                                    src="https://assets6.lottiefiles.com/packages/lf20_uwos7l6e.json"
-                                    style={{width: 200, marginTop: -160, marginLeft: 65}}
+                                    // src="https://assets6.lottiefiles.com/packages/lf20_uwos7l6e.json"
+                                    src="https://assets9.lottiefiles.com/packages/lf20_osjfyiii.json"
+                                    style={{width: 240, marginTop: -122, marginLeft: 43}}
                                 />
                         </div>
                         </div>

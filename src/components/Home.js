@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Rellax from "rellax";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import MainHero from "./MainHero";
@@ -12,6 +12,35 @@ import Contact from "./Contact";
 export default function Home() {
 
   const parallax = useRef(null);
+
+  function useOnScreen(ref, rootMargin = "0px") {
+    // State and setter for storing whether element is visible
+    const [isIntersecting, setIntersecting] = useState(false);
+  
+    useEffect(() => {
+      let currentRef = null;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          // Update our state when observer callback fires
+          setIntersecting(entry.isIntersecting);
+        },
+        {
+          rootMargin
+        }
+      );
+      if (ref.current) {
+        currentRef = ref.current;
+        observer.observe(currentRef);
+      }
+      return () => {
+        observer.unobserve(currentRef);
+      };
+    }, [ref, rootMargin]); // Empty array ensures that effect is only run on mount and unmount
+  
+    return isIntersecting;
+  }
+
+    const rootRef = useRef();
 
 
   useEffect(() => {
@@ -308,7 +337,7 @@ export default function Home() {
             // backgroundImage: 'linear-gradient( 99deg, rgba(115,18,81,1) 10.6%, rgba(28,28,28,1) 118% )'
           }}
         >
-        <About parallax={parallax} />
+        <About useOnScreen={useOnScreen} rootRef={rootRef} parallax={parallax} />
         </ParallaxLayer>
 
         <ParallaxLayer
@@ -321,7 +350,7 @@ export default function Home() {
             // backgroundImage: 'linear-gradient(to right, #ad5389, #3c1053)'
           }}
         >
-          <Experience parallax={parallax} />
+          <Experience useOnScreen={useOnScreen} rootRef={rootRef} parallax={parallax} />
         </ParallaxLayer>
 
         <ParallaxLayer
@@ -335,7 +364,7 @@ export default function Home() {
             // backgroundImage :  'linear-gradient(to right, #000428, #004e92)'
           }}
         >
-          <Project parallax={parallax} />
+          <Project useOnScreen={useOnScreen} rootRef={rootRef} parallax={parallax} />
         </ParallaxLayer>
 
         <ParallaxLayer
@@ -349,7 +378,7 @@ export default function Home() {
             // backgroundImage: "linear-gradient(to right, #23074d, #cc5333)"
           }}
         >
-          <Skills parallax={parallax} />
+          <Skills useOnScreen={useOnScreen} rootRef={rootRef} parallax={parallax} />
         </ParallaxLayer>
 
         <ParallaxLayer
@@ -363,7 +392,7 @@ export default function Home() {
             // backgroundImage :  "linear-gradient(to right, #360033, #0b8793)"
           }}
         >
-          <Education parallax={parallax} />
+          <Education useOnScreen={useOnScreen} rootRef={rootRef} parallax={parallax} />
         </ParallaxLayer>
 
         <ParallaxLayer
@@ -375,7 +404,7 @@ export default function Home() {
             justifyContent: "center",
           }}
         >
-        <Contact parallax={parallax}/>
+        <Contact useOnScreen={useOnScreen} rootRef={rootRef} parallax={parallax}/>
         </ParallaxLayer>
       </Parallax>
     </div>

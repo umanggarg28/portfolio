@@ -1,39 +1,39 @@
 import React, { useEffect, useState, useRef } from "react"
 import sanityClient from "../client"
 import { motion, useAnimation } from "framer-motion";
+import anime from "animejs";
 
-export default function Project({parallax}) {
+export default function Project({useOnScreen, parallax}) {
 
-    function useOnScreen(ref, rootMargin = "0px") {
-        // State and setter for storing whether element is visible
-        const [isIntersecting, setIntersecting] = useState(false);
-      
-        useEffect(() => {
-          let currentRef = null;
-          const observer = new IntersectionObserver(
-            ([entry]) => {
-              // Update our state when observer callback fires
-              setIntersecting(entry.isIntersecting);
-            },
-            {
-              rootMargin
-            }
-          );
-          if (ref.current) {
-            currentRef = ref.current;
-            observer.observe(currentRef);
+    const rootRef = React.createRef();
+    
+    const onScreen = useOnScreen(rootRef);
+
+    useEffect(() => {
+        if (onScreen) {
+          var textWrapper = document.querySelector('.projectHeadingAnim');
+          textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+  
+          anime.timeline({loop: false})
+              .add({
+                  targets: '.projectHeadingAnim .letter',
+                  scale: [4,1],
+                  opacity: [0,1],
+                  translateZ: 0,
+                  easing: "easeOutExpo",
+                  duration: 950,
+                  delay: (el, i) => 70*i
+              }).add({
+                  targets: '.projectHeadingAnim',
+                  opacity: 1,
+                  duration: 1000,
+                  easing: "easeOutExpo",
+                  delay: 1000
+              });
           }
-          return () => {
-            observer.unobserve(currentRef);
-          };
-        }, [ref, rootMargin]); // Empty array ensures that effect is only run on mount and unmount
-      
-        return isIntersecting;
-      }
+      }, [onScreen]);
 
     const [projectData, setProjectData] = useState(null);
-    const rootRef = useRef();
-    const onScreen = useOnScreen(rootRef);
     const controls = useAnimation();
 
     useEffect(() => {
@@ -74,7 +74,7 @@ export default function Project({parallax}) {
                             style={{width: 70, marginRight: '2vh', marginLeft: '2vh'}}
                         />
                     </div>
-                <h3 className="heading heading-project">Some projects</h3>
+                <h1 ref={rootRef} className="projectHeadingAnim heading heading-project">Some projects</h1>
             </div>
 
             <div className="content-main-dad">

@@ -1,9 +1,39 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import sanityClient from "../client";
 import Moment from 'moment';
 import LazyShow from "./LazyShow";
+import anime from "animejs";
 
-export default function Education({parallax}) {
+export default function Education({useOnScreen, parallax}) {
+
+  const rootRef = React.createRef();
+
+  const onScreen = useOnScreen(rootRef);
+
+    useEffect(() => {
+        if (onScreen) {
+          console.log('education fired')
+          var textWrapper = document.querySelector('.educationHeadingAnim');
+          textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+  
+          anime.timeline({loop: false})
+              .add({
+                  targets: '.educationHeadingAnim .letter',
+                  scale: [4,1],
+                  opacity: [0,1],
+                  translateZ: 0,
+                  easing: "easeOutExpo",
+                  duration: 950,
+                  delay: (el, i) => 70*i
+              }).add({
+                  targets: '.educationHeadingAnim',
+                  opacity: 1,
+                  duration: 1000,
+                  easing: "easeOutExpo",
+                  delay: 1000
+              });
+          }
+      }, [onScreen]);
 
   const [education, setEducationData] = useState(null);
 
@@ -21,18 +51,7 @@ export default function Education({parallax}) {
       )
       .then((data) => setEducationData(data))
       .catch(console.error);
-
-      // const MyLottie = document.getElementById("secondLottie");
-      // MyLottie.getLottie().goToAndStop(45, true);
-
-        // document
-        // .getElementById("secondLottie")
-        // .getLottie()
-        // .playSegments([100, 300], true);
   }, []);
-
-  console.log("education data:");
-  console.log(education);
 
   return (
     <React.Fragment>
@@ -48,7 +67,7 @@ export default function Education({parallax}) {
                   style={{width: 80, marginRight:'2vh'}}
                 />
             </div>
-            <h3 className="heading heading-education">Schools and stuff</h3>
+            <h1 ref={rootRef} className="educationHeadingAnim heading heading-education">Schools and stuff</h1>
         </div>
         <LazyShow>
           <div className="content-main-dad">

@@ -1,8 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import sanityClient from "../client";
 import LazyShow from "./LazyShow";
+import anime from "animejs";
 
-export default function About({parallax}) {
+export default function About({useOnScreen, parallax}) {
+
+    const rootRef = React.createRef();
+
+    const onScreen = useOnScreen(rootRef);
+
+    useEffect(() => {
+        if (onScreen) {
+            console.log('about fired')
+          var textWrapper = document.querySelector('.aboutHeadingAnim');
+          textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+  
+          anime.timeline({loop: false})
+              .add({
+                  targets: '.aboutHeadingAnim .letter',
+                  scale: [4,1],
+                  opacity: [0,1],
+                  translateZ: 0,
+                  easing: "easeOutExpo",
+                  duration: 950,
+                  delay: (el, i) => 70*i
+              }).add({
+                  targets: '.aboutHeadingAnim',
+                  opacity: 1,
+                  duration: 1000,
+                  easing: "easeOutExpo",
+                  delay: 1000
+              });
+          }
+      }, [onScreen]);
 
     const [author, setAuthorData] = useState(null);
 
@@ -16,6 +46,7 @@ export default function About({parallax}) {
           }`).then((data) => setAuthorData(data))
           .catch(console.error);
     }, []);
+
 
 
     return (
@@ -33,7 +64,7 @@ export default function About({parallax}) {
                     style={{width: 80, marginRight: '2vh'}}
                 />
                 </div>
-            <h3 className="heading heading-about">A bit about me</h3>
+            <h1 ref={rootRef} className="aboutHeadingAnim heading heading-about">A bit about me</h1>
         </div>
         <LazyShow>
             <div className="content-main-dad">

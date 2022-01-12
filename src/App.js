@@ -5,7 +5,6 @@ import NavBar from "./components/NavBar"
 import "@lottiefiles/lottie-player";
 // import ReactGa from 'react-ga'
 
-
 function App() {
 
   const [isLoading, setIsLoading] = useState(true);
@@ -15,16 +14,18 @@ function App() {
       function() {
         setIsLoading(false);
       },
-     6500
+     500
    );
   }
+  
 
   useEffect(()=>{
     window.addEventListener("load",handleLoading);
     return () => window.removeEventListener("load",handleLoading);
     },[])
 
-  return !isLoading ? (
+
+    return !isLoading ? (
     <BrowserRouter>
     <NavBar navColor='transparent' navSize="3rem"/>
       <Switch>

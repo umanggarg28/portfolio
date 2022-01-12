@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import sanityClient from "../client";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -6,8 +6,37 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Moment from 'moment';
 import LazyShow from "./LazyShow";
+import anime from "animejs";
 
-export default function Experience({parallax}) {
+export default function Experience({useOnScreen, parallax}) {
+
+  const rootRef = React.createRef();
+  
+  const onScreen = useOnScreen(rootRef);
+
+    useEffect(() => {
+        if (onScreen) {
+          var textWrapper = document.querySelector('.experienceHeadingAnim');
+          textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+  
+          anime.timeline({loop: false})
+              .add({
+                  targets: '.experienceHeadingAnim .letter',
+                  scale: [4,1],
+                  opacity: [0,1],
+                  translateZ: 0,
+                  easing: "easeOutExpo",
+                  duration: 950,
+                  delay: (el, i) => 70*i
+              }).add({
+                  targets: '.experienceHeadingAnim',
+                  opacity: 1,
+                  duration: 1000,
+                  easing: "easeOutExpo",
+                  delay: 1000
+              });
+          }
+      }, [onScreen]);
 
   function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -83,7 +112,7 @@ export default function Experience({parallax}) {
               style={{width: 80, marginRight: '2vh'}}
             />
       </div>
-      <h3 className="heading heading-experience">Where I've worked</h3>
+      <h1 ref={rootRef} className="experienceHeadingAnim heading heading-experience">Where I've worked</h1>
     </div>
 
     <LazyShow>

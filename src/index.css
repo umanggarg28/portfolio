@@ -27,6 +27,7 @@ body {
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
 }
 
+
 .cursive {
   /* font-family: 'San Francisco', sans-serif; */
   /* font-family: "BlinkMacSystemFont", San Francisco; */
@@ -34,6 +35,16 @@ body {
   /* color: #e6f1ff; */
   /* color: #ccd6f6; */
   color: #fff;
+}
+
+.ml3, .aboutHeadingAnim, .educationHeadingAnim, .experienceHeadingAnim, .projectHeadingAnim, .skillsHeadingAnim, .contactHeadingAnim {
+  font-weight: 900;
+  font-size: 3.5em;
+}
+
+.ml3 .letter, .aboutHeadingAnim .letter, .educationHeadingAnim .letter, .experienceHeadingAnim .letter, .projectHeadingAnim .letter, .skillsHeadingAnim .letter, .contactHeadingAnim .letter {
+  display: inline-block;
+  line-height: 1em;
 }
 
 .prose img {
@@ -53,7 +64,7 @@ body {
   height: 70px;
 }
 
-#canvas {
+/* #canvas {
   width: 100%;
   height: 55vh;
   margin-top: 100px;
@@ -61,14 +72,217 @@ body {
   margin: 0 auto;
   margin-bottom: 250px;
   margin-left: 40px;
+} */
+
+@media (min-width:641px) and (max-width:961px)  {
+
+  .box-content {
+    margin-top: 15vh!important;
+    margin-left: 12vh!important;
+  }
+
+  .container {
+    display: none;
+  }
+  
+  .home-name {
+    font-size: 72px!important;
+  }
+  
+  #webAnim{
+    display: none;
+  }
+  
+  #scrollButton1{
+    margin-top: 0px;
+  }
+  
+  .sub-heading {
+    margin-bottom: 0px;
+    font-size: 4em!important;
+  }
+  
+  .description {
+    margin-top: 5px!important;
+    font-size: 2em;
+  }
+
+  .about-me {
+    font-size: 2em;
+  }
+  
+  .about-description {
+    font-size: 1.2em;
+  }
+  
+  #about, #education, #experience, #project, #skills, #contact {
+    display: -webkit-inline-box;
+  }
+  
+  #aboutbg {
+    /* height: 100vh; */
+    width: max-content;
+  }
+  
+  .lottie-container {
+    display: none;
+  }
+  
+  .lottie-main {
+    display: none!important;
+  }
+  
+  .header-container {
+    margin-left: 0px!important;
+    margin: 0 auto;
+  }
+  
+  .heading {
+    font-size: 4em!important;
+    margin-left: 10px;
+    margin-top: 20px;
+    margin: 0 auto;
+  }
+
+  .heading-project {
+    margin-top: -75px!important;
+  }
+
+  .heading::after {
+    display: none!important;
+  }
+  
+  .content-main-dad{
+    padding-left: 10vh!important;
+    padding-right: 10vh!important;
+    margin-top: 3vh;
+  }
+
+  .css-19kzrtu {
+    width: 350px;
+  }
+  
+  .content {
+    margin-top: 0px!important;
+    margin-right: 0px!important;
+    /* max-height: 350px; */
+  }
+  
+  .inner {
+    padding-bottom: 0px!important;
+    padding-top: 0px!important;
+  }
+  
+  .css-f7gkvu{
+    margin-left: 0px!important;
+  }
+
+    #mainherobg, #aboutbg, #experiencebg, #educationbg, #projectsbg, #skillsbg {
+    height: 100vh!important;
+    width: max-content!important;
+  }
+
+  .button-box {
+    padding-top: 4vh;
+  }
+
 }
 
-.lazy-div {
+@media (min-width:1024px) and (max-width:1281px) {
+  #mainherobg, #aboutbg, #experiencebg, #educationbg, #projectsbg, #skillsbg {
+    height: 100vh!important;
+    width: max-content!important;
+  }
+}
+
+@media (min-width:961px) and (max-width:1025px)  {
+
+
+.box-content {
+  margin-top: 15vh!important;
+}
+
+.home-name {
+  font-size: 72px!important;
+}
+
+#webAnim{
+  display: none;
+}
+
+#scrollButton1{
+  margin-top: 0px;
+}
+
+.sub-heading {
+  margin-bottom: 0px;
+}
+
+.description {
+  margin-top: 0px!important;
+}
+
+.about-description {
+  font-size: 1.2em;
+}
+
+#about, #education, #experience, #project, #skills, #contact {
+  display: -webkit-inline-box;
+}
+
+#aboutbg {
+  /* height: 100vh; */
+  width: max-content;
+}
+
+.lottie-container {
+  display: none;
+}
+
+.lottie-main {
+  display: none!important;
+}
+
+.header-container {
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: 3.5em!important;
+  margin-left: 10px;
+  margin-top: 20px;
+}
+
+.content-main-dad{
+  margin-left: 4vh;
+  margin-right: 4vh;
+}
+
+.content {
+  margin-top: 0px!important;
+  margin-left: 4vh;
+  max-height: 350px;
+}
+
+.inner {
+  padding-bottom: 0px!important;
+  padding-top: 0px!important;
+}
+
+.css-f7gkvu{
+  margin-left: 0px!important;
+}
+
+}
+
+
+
+/* .lazy-div {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-}
+} */
 
 .about-pic-box {
   margin-left: 5%;
@@ -222,7 +436,7 @@ body {
 }
 
 .about-me {
-  font-size: 20px;
+  font-size: 1.2em;
 }
 
 ul.skills-list {
@@ -250,6 +464,7 @@ ul.skills-list {
 
 .content-box {
   display: flex;
+  overflow: scroll;
 }
 
 .content {
@@ -288,11 +503,12 @@ ul.skills-list {
 .heading-project {
   /* font-size: 38px!important;
   font-family: 'Cera Pro Medium'!important; */
-  background: -webkit-linear-gradient(
+  /* background: -webkit-linear-gradient(
       -70deg, #a2facf 0%, #64acff 100%)!important;
   -webkit-background-clip: text!important;
   background-clip: text!important;
-  -webkit-text-fill-color: transparent!important;
+  -webkit-text-fill-color: transparent!important; */
+  color: #a1f9cf;
 }
 
 .heading-project::after {
@@ -307,13 +523,11 @@ ul.skills-list {
 }
 
 .heading-about{
-  /* font-size: 50px!important;
-  font-weight: 600!important; */
-  background: -webkit-linear-gradient(
-      -70deg, #ff7170 0%, #64acff 100%)!important;
-  -webkit-background-clip: text!important;
-  background-clip: text!important;
-  -webkit-text-fill-color: transparent!important;
+  /* background: -webkit-linear-gradient(
+      -70deg, #ff7170 0%, #64acff 100%)!important; */
+  /* -webkit-background-clip: text!important; */
+  /* background-clip: text!important; */
+    color:#c596f1;
   }
   
   .heading-about::after {
@@ -330,11 +544,12 @@ ul.skills-list {
 .heading-skills {
   /* font-size: 50px!important;
   font-weight: 600!important; */
-  background: -webkit-linear-gradient(
+  /* background: -webkit-linear-gradient(
 -70deg, #ff7170 0%, #ffe57f 100%)!important;
   -webkit-background-clip: text!important;
   background-clip: text!important;
-  -webkit-text-fill-color: transparent!important;
+  -webkit-text-fill-color: transparent!important; */
+  color: #ff7170;
 }
 
 .heading-skills::after {
@@ -359,7 +574,7 @@ ul.skills-list {
   /* background-size: contain; */
   /* background-position: center; */
   max-width: 760px;
-  font-size: 20px;
+  font-size: 1.25em;
   color: white;
   letter-spacing: 1px;
   font-weight: 200;
@@ -370,11 +585,12 @@ ul.skills-list {
 .heading-education {
   /* font-size: 50px!important;
   font-weight: 600!important; */
-  background: -webkit-linear-gradient(
+  /* background: -webkit-linear-gradient(
 -70deg, #ffe57f 0%, #64acff 100%)!important;
   -webkit-background-clip: text!important;
   background-clip: text!important;
-  -webkit-text-fill-color: transparent!important;
+  -webkit-text-fill-color: transparent!important; */
+  color: #ffffff;
 }
 
 .heading-education::after {
@@ -453,7 +669,7 @@ ul.skills-list {
   float: left;
   color: #ffffff;
   white-space: pre-wrap;
-  font-size: 20px!important;
+  font-size: 1.2em!important;
   /* font-family: "BlinkMacSystemFont", San Francisco; */
   font-family: 'Cera Pro Light';
   letter-spacing: 1px;
@@ -490,7 +706,7 @@ ul.skills-list {
   margin-right: 2em;
   box-sizing: border-box;
   display: inline-block;
-  font-size: 20px;
+  font-size: 1.2em;
   min-width: 5em;
   position: relative;
   z-index: 1;
@@ -515,22 +731,18 @@ transform: matrix(1, 0, 0, 1, 0, 0);
 }
 
 .heading {
-  font-size: 70px!important;
+  font-size: 70px;
   font-weight: 600!important;
-  -webkit-background-clip: text!important;
-  background-clip: text!important;
-  -webkit-text-fill-color: transparent!important;
-  font-size: 78px;
-  font-weight: 900;
   font-family: "Nanum Pen Script", San Francisco;
 }
 
 #btn-contact {
-  font-size: 26px;
+  font-size: 14px;
   -webkit-background-clip: text!important;
   background-clip: text!important;
   font-weight: 100;
-  font-family: "Nanum Pen Script", San Francisco;
+  color: #fff;
+  /* font-family: "Nanum Pen Script", San Francisco; */
 }
 
 #btn-contact:hover {
@@ -541,11 +753,12 @@ transform: matrix(1, 0, 0, 1, 0, 0);
 .heading-experience {
   /* font-size: 50px!important;
   font-weight: 600!important; */
-  background: -webkit-linear-gradient(
+  /* background: -webkit-linear-gradient(
 -70deg, #a2facf 0%, #64acff 100%);
   -webkit-background-clip: text!important;
   background-clip: text!important;
-  -webkit-text-fill-color: transparent!important;
+  -webkit-text-fill-color: transparent!important; */
+  color: #64acff;
 }
 
 .heading-experience::after {
@@ -621,7 +834,7 @@ transform: matrix(1, 0, 0, 1, 0, 0);
 .experience-data-dates {
   float: right;
   color: #59c8df;
-  font-size: 20px;
+  font-size: 1.2em;
   letter-spacing: 1px;
   font-weight: 200;
   /* font-family: "BlinkMacSystemFont", San Francisco; */
@@ -629,7 +842,7 @@ transform: matrix(1, 0, 0, 1, 0, 0);
 }
 
 .experience-place {
-  font-size: 20px;
+  font-size: 1.2em;
   line-height: 1.2353641176;
   font-weight: 500;
   letter-spacing: -0.022em;
@@ -1056,11 +1269,15 @@ pappu {
 	border-radius: 4px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 641px) {
 
   #mainherobg, #aboutbg, #projectsbg, #experiencebg, #educationbg, #contactbg {
   height: 100vh;
   width: max-content;}
+
+  #experiencebg, #educationbg, #contactbg {
+    height: 100vh!important;
+  }
 
   #skillsbg {
     height: 100vh!important;
@@ -1088,7 +1305,7 @@ pappu {
   .header-container {
     margin: unset!important;
     display: flow-root;
-    padding-top: 10vh;
+    padding-top: 5vh;
   }
 
   .lottie-container {
@@ -1173,9 +1390,9 @@ pappu {
     min-width: 150px;
   }
 
-  .content-box {
+  /* .content-box {
     display: unset;
-  }
+  } */
 
   .block {
     display: unset;
@@ -1192,6 +1409,7 @@ pappu {
 
   .content {
     margin: unset;
+    max-height: 440px;
   }
 
   #aboutAnim {
@@ -1199,7 +1417,7 @@ pappu {
   }
 
   .about-description {
-    font-size: 22px;
+    font-size: 1.5em;
   }
 
   .sub-heading {
@@ -1308,7 +1526,7 @@ pappu {
   } */
 
   .about-me{
-    font-size: 3.8vw;
+    font-size: 0.75em;
   }
   #canvas {
     display: none;
@@ -1364,7 +1582,6 @@ pappu {
   }
   .experience-description{
     width: auto;
-    height: 65vw;
   }
   #experienceAnim{
     display: none;
