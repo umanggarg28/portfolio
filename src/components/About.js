@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import sanityClient from "../client";
 import LazyShow from "./LazyShow";
 import anime from "animejs";

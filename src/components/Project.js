@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react"
+import React, { useEffect, useState } from "react"
 import sanityClient from "../client"
 import { motion, useAnimation } from "framer-motion";
 import anime from "animejs";
