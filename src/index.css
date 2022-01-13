@@ -889,7 +889,6 @@ transform: matrix(1, 0, 0, 1, 0, 0);
 
 .project-individual:hover {
   background: #cb831596;
-  cursor: pointer;
 }
 
 .project-inner {
@@ -926,6 +925,11 @@ transform: matrix(1, 0, 0, 1, 0, 0);
 
 .project-title {
   margin: 0 px 0 px 10px;
+  cursor: pointer;
+}
+
+.project-top:hover {
+  color: #a1f9cf;
 }
 
 .project-description {

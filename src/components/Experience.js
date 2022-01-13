@@ -169,7 +169,7 @@ export default function Experience({useOnScreen, parallax}) {
 
         <div className="button-box">
         <button className="contact-btn" onClick={() => parallax.current.scrollTo(3)}>
-          <lottie-player
+          {/* <lottie-player
                   hover
                   loop
                   mode="normal"
@@ -178,7 +178,17 @@ export default function Experience({useOnScreen, parallax}) {
                   style={{
                       marginTop: -50
                   }}
-          ></lottie-player>
+          ></lottie-player> */}
+          <lottie-player
+                    autoplay
+                    loop
+                    mode="normal"
+                    id="scrollButton"
+                    src="https://assets6.lottiefiles.com/packages/lf20_RbdjIx.json"
+                    style={{
+                        width: 50
+                    }}
+            ></lottie-player>
         </button>
         </div>
         </section>

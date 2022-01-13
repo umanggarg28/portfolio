@@ -67,11 +67,10 @@ export default function Contact({useOnScreen, parallax}) {
                             autoplay
                             loop
                             mode="normal"
-                            id="scrollButton1"
-                            src="https://assets9.lottiefiles.com/packages/lf20_tlje6641.json"
+                            id="scrollButton"
+                            src="https://assets6.lottiefiles.com/packages/lf20_RbdjIx.json"
                             style={{
-                                height: 100,
-                                marginTop: -30
+                                width: 50
                             }}
                     ></lottie-player>
                 </button>
