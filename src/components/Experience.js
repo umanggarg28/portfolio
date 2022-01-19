@@ -101,69 +101,71 @@ export default function Experience({useOnScreen, parallax}) {
   return (
     <React.Fragment>
     <section className="main-container">
-    <div className="header-container">
-    <div className="lottie-container">
-          <lottie-player
-              id="experienceAnim"
-              hover
-              loop
-              mode="normal"
-              src="https://assets1.lottiefiles.com/packages/lf20_lhijyuoc.json"
-              style={{width: 80, marginRight: '2vh'}}
-            />
-      </div>
-      <h1 ref={rootRef} className="experienceHeadingAnim heading heading-experience">Where I've worked</h1>
-    </div>
+        <div className="header-container">
+            <div className="lottie-container">
+                  <lottie-player
+                      id="experienceAnim"
+                      hover
+                      loop
+                      mode="normal"
+                      src="https://assets1.lottiefiles.com/packages/lf20_lhijyuoc.json"
+                      style={{width: 80, marginRight: '2vh'}}
+                    />
+              </div>
+              <h1 ref={rootRef} className="experienceHeadingAnim heading heading-experience">Where I've worked</h1>
+          </div>
 
     <LazyShow>
-    <div className="content-main-dad">
-    <div className="content-box">
-      <div className="content text-white">
-        <Box
-          sx={{ flexGrow: 2, bgcolor: 'background.paper', display: 'flex', marginLeft: 20 }}
-        >
-          <Tabs
-            orientation="vertical"
-            variant="scrollable"
-            value={value}
-            onChange={handleChange}
-            aria-label="experience tab"
-            sx={{ borderRight: 1, borderColor: 'divider' }}
-          >
-            {experience && experience.map((experienceData, index) => (
-                <Tab className="experience-tab" label={experienceData.company_name}
-                  {...a11yProps(index)} />
+        <div className="content-main-dad">
+          <div className="content-box">
+            <div className="content text-white">
+            <div className="content-bg-experience">
+              <Box
+                sx={{ flexGrow: 2, bgcolor: 'background.paper', display: 'flex', marginLeft: 20 }}
+              >
+                <Tabs
+                  orientation="vertical"
+                  variant="scrollable"
+                  value={value}
+                  onChange={handleChange}
+                  aria-label="experience tab"
+                  sx={{ borderRight: 1, borderColor: 'divider' }}
+                >
+                  {experience && experience.map((experienceData, index) => (
+                      <Tab className="experience-tab" label={experienceData.company_name}
+                        {...a11yProps(index)} />
+                    ))}
+                </Tabs>
+                {experience && experience.map((experienceData, index) => (
+                <TabPanel value={value} index={index}>
+                    <p className="experience-jobtitle">{experienceData.job_title} @</p>
+                    <h3 className="experience-data-heading">{experienceData.company_name}</h3>
+                    <p className="experience-place">{experienceData.place}</p>
+                    <div className="experience-data-dates">
+                      <p>{Moment(experienceData.date_from).format('MMM yyyy')} - {Moment(experienceData.date_to).format('MMM yyyy')}</p>
+                    </div>
+                    <p className="experience-description">{experienceData.description}</p>
+                    {/* <p>{experienceData.link}</p> */}
+                  </TabPanel>
               ))}
-          </Tabs>
-          {experience && experience.map((experienceData, index) => (
-          <TabPanel value={value} index={index}>
-              <p className="experience-jobtitle">{experienceData.job_title} @</p>
-              <h3 className="experience-data-heading">{experienceData.company_name}</h3>
-              <p className="experience-place">{experienceData.place}</p>
-              <div className="experience-data-dates">
-                <p>{Moment(experienceData.date_from).format('MMM yyyy')} - {Moment(experienceData.date_to).format('MMM yyyy')}</p>
+              </Box>
               </div>
-              <p className="experience-description">{experienceData.description}</p>
-              {/* <p>{experienceData.link}</p> */}
-            </TabPanel>
-        ))}
-        </Box>
-      </div>
-      <div className="lottie-main">
-        <lottie-player
-            autoplay
-            loop
-            mode="normal"
-            id="experienceAnim"
-            src="https://assets7.lottiefiles.com/packages/lf20_hske6rvv.json"
-            style={{
-              width: 350,
-              marginTop:'-15vh',
-              paddingTop: '3%'
-            }}
-          ></lottie-player>
-        </div>      
-        </div>
+            </div>
+          </div>
+          <div className="lottie-main">
+            <lottie-player
+                autoplay
+                loop
+                mode="normal"
+                id="experienceAnim"
+                src="https://assets7.lottiefiles.com/packages/lf20_hske6rvv.json"
+                style={{
+                  width: 300,
+                  // marginTop:'-15vh',
+                  paddingTop: '3%'
+                }}
+              ></lottie-player>
+            </div>      
         </div>
         </LazyShow>
 

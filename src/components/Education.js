@@ -83,7 +83,7 @@ export default function Education({useOnScreen, parallax}) {
                   ></lottie-player>
                 </div>
                 <div className="content-box">
-                        <div className="content text-white">
+                        <div className="content content-bg-education text-white">
                           {education && education.map((educationData, index) => (
                               <div key={index} class="px-6 py-4">
                               <h3 className="education-data-heading">{educationData.university_name}</h3>

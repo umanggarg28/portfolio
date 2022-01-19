@@ -155,7 +155,7 @@ body {
   .content-main-dad{
     padding-left: 10vh!important;
     padding-right: 10vh!important;
-    margin-top: 3vh;
+    margin-top: 1vh;
   }
 
   .css-19kzrtu {
@@ -464,7 +464,44 @@ ul.skills-list {
 
 .content-box {
   display: flex;
-  overflow: scroll;
+  /* overflow: scroll; */
+}
+
+.content-bg-about {
+    background: linear-gradient(
+145deg, #23054d, #2a065b);
+    box-shadow: 20px 20px 60px #210548, -20px -20px 60px #2d0762;
+    border-radius: 25px;
+    opacity: 0.9;
+}
+
+.content-bg-experience {
+  padding: 10px;
+  overflow: unset!important;
+  overflow-x: unset;
+  margin-left: 6vh;
+    border-radius: 25px;
+    background: linear-gradient(145deg, #01072d, #043873);
+    box-shadow:  20px 20px 60px #0a2052, -20px -20px 60px #030f2a;
+                opacity: 0.9;
+}
+
+.content-bg-skills {
+  padding: 10px!important;
+  opacity: 0.9;
+  border-radius: 25px;
+  background: linear-gradient(145deg, #33204c, #3d255a);
+  box-shadow:  20px 20px 60px #301e47,
+             -20px -20px 60px #160c3e;
+}
+
+.content-bg-education {
+  padding: 10px!important;
+  opacity: 0.9;
+  border-radius: 25px;
+  background: linear-gradient(145deg, #3d345e, #217e90);
+  box-shadow:  20px 20px 60px #1a6473,
+              -20px -20px 60px #39355c;
 }
 
 .content {
@@ -881,14 +918,16 @@ transform: matrix(1, 0, 0, 1, 0, 0);
   visibility: visible;
   opacity: 1;
   transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  border-radius: 2px;
-  background: #0434565e;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #0d1a2a, #0f1f32);
+  box-shadow:  20px 20px 60px #0c1928,
+             -20px -20px 60px #102136;
   /* background: #112240; */
   /* box-shadow: 0 10px 30px -15px #020c1bb3; */
 }
 
 .project-individual:hover {
-  background: #cb831596;
+  background: #172c46;
 }
 
 .project-inner {
@@ -1128,12 +1167,14 @@ svg.feather {
 
 .css-35zqo5-MuiTabs-root {
   overflow: unset!important;
+  max-width: 190px;
 }
 
 .css-f7gkvu {
   background: none!important;
+  margin: unset !important;;
     margin-right: 15px;
-    margin-left: 15%;
+    /* margin-left: 15%; */
 }
 
 *{

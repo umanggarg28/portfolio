@@ -76,7 +76,7 @@ export default function Skills({useOnScreen, parallax}) {
                     ></lottie-player>
                   </div>
                   <div className="content-box">
-                        <div className="content text-white">
+                        <div className="content content-bg-skills text-white">
                         {skills && skills.map((skillsData) => (
                           <div class="px-6 py-4">
                           <h3 className="skills-data-heading">{skillsData.skill_category}</h3>

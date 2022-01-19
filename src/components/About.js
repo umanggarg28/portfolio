@@ -81,7 +81,7 @@ export default function About({useOnScreen, parallax}) {
                 }}
                 ></lottie-player>
             </div>
-            <div className="content-box">
+            <div className="content-box content-bg-about">
             <div className="content text-white">
             {/* <div className="about-display text-white rounded-lg sm:rounded-t-xl p-4 pb-6 sm:p-8 lg:p-4 lg:pb-6 xl:p-8 space-y-6 sm:space-y-8 lg:space-y-6 xl:space-y-8">                 */}
                 <div className="inner">
