@@ -40,8 +40,20 @@ export default function Contact({useOnScreen, parallax}) {
             </div>
             <LazyShow>
                 <div className="content-main-dad" style={{margin: '0 auto'}}>
+                    <div className="lottie-main" style={{marginRight: 0}}>
+                    <lottie-player
+                        autoplay
+                        loop
+                        mode="normal"
+                        id="contactAnim"
+                        src="https://assets10.lottiefiles.com/packages/lf20_vpzw63hs.json"
+                        style={{
+                            width: '60vh'
+                        }}
+                        ></lottie-player>
+                    </div>
                     <div className="content-box">
-                    <div className="max-w-sm overflow-hidden">
+                    {/* <div className="max-w-sm overflow-hidden"> */}
                         <div style={{textAlign: 'center'}} className="px-6 py-4">
                             <p className="contact-inner">
                             I’m actively looking for any new opportunities in the US, and my inbox is always open. Have a job for me? I'd love to get in touch. Or even if you have a question or just want to say hi, I’ll try my best to get back to you!
@@ -52,10 +64,10 @@ export default function Contact({useOnScreen, parallax}) {
                                     loop
                                     mode="normal"
                                     // src="https://assets6.lottiefiles.com/packages/lf20_uwos7l6e.json"
-                                    src="https://assets9.lottiefiles.com/packages/lf20_osjfyiii.json"
+                                    // src="https://assets9.lottiefiles.com/packages/lf20_osjfyiii.json"
                                     style={{width: 240, marginTop: -122, marginLeft: 43}}
                                 />
-                        </div>
+                        {/* </div> */}
                         </div>
                     </div>
                 </div>

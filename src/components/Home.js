@@ -199,7 +199,8 @@ export default function Home() {
                 data-preserve-aspect-ratio ="none"
                 mode="normal"
                 // background=  "darkslategray"
-                src="https://assets7.lottiefiles.com/packages/lf20_gTE2BO.json"
+                // src="https://assets7.lottiefiles.com/packages/lf20_gTE2BO.json"
+              src="https://assets4.lottiefiles.com/packages/lf20_WAPsSQ.json"
                 // src="https://assets10.lottiefiles.com/packages/lf20_zxbzlgot.json"
                 style={{
                     height: '100%'

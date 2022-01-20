@@ -84,8 +84,8 @@ export default function Project({useOnScreen, parallax}) {
                         loop
                         mode="normal"
                         id="project"
-                        // src="https://assets10.lottiefiles.com/packages/lf20_fmpbqwvd.json"
-                        src="https://assets3.lottiefiles.com/packages/lf20_ihsy8p2a.json"
+                        // src="https://assets3.lottiefiles.com/packages/lf20_ihsy8p2a.json"
+                        src="https://assets1.lottiefiles.com/packages/lf20_eiubpejs.json"
                         style={{
                             width: 400,
                             marginTop: -40

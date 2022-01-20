@@ -774,7 +774,7 @@ transform: matrix(1, 0, 0, 1, 0, 0);
 }
 
 #btn-contact {
-  font-size: 14px;
+  font-size: 20px;
   -webkit-background-clip: text!important;
   background-clip: text!important;
   font-weight: 100;
@@ -783,8 +783,8 @@ transform: matrix(1, 0, 0, 1, 0, 0);
 }
 
 #btn-contact:hover {
-  z-index: 0;
-  color:transparent;
+  /* z-index: 0; */
+  color:#64acff;
 }
 
 .heading-experience {
