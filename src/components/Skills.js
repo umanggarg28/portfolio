@@ -68,7 +68,8 @@ export default function Skills({useOnScreen, parallax}) {
                       autoplay
                       loop
                       mode="normal"
-                      src="https://assets6.lottiefiles.com/packages/lf20_miikvucn.json"
+                      // src="https://assets6.lottiefiles.com/packages/lf20_miikvucn.json"
+                      src="https://assets2.lottiefiles.com/packages/lf20_lln7m43m.json"
                       style={{width: 500,
                         marginTop: 40,
                         marginLeft:40

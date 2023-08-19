@@ -191,19 +191,23 @@ export default function Home() {
 
         <ParallaxLayer
           offset={6}
-          ><div>
+          ><div style={{height: '100vh'}}>
             <lottie-player
                 autoplay
                 loop
                 id="contactbg"
-                data-preserve-aspect-ratio ="none"
+                // data-preserve-aspect-ratio ="none"
                 mode="normal"
                 // background=  "darkslategray"
                 // src="https://assets7.lottiefiles.com/packages/lf20_gTE2BO.json"
               src="https://assets4.lottiefiles.com/packages/lf20_WAPsSQ.json"
                 // src="https://assets10.lottiefiles.com/packages/lf20_zxbzlgot.json"
                 style={{
-                    height: '100%'
+                    // height: '100%',
+                    width: 'max-content'
+                    // position: 'absolute',
+                    // top: 0,
+                    // bottom: 0,
                 }}
                 ></lottie-player>
           </div>

@@ -140,7 +140,7 @@ body {
   .heading {
     font-size: 4em!important;
     margin-left: 10px;
-    margin-top: 20px;
+    margin-top: 15px;
     margin: 0 auto;
   }
 
@@ -250,7 +250,7 @@ body {
 .heading {
   font-size: 3.5em!important;
   margin-left: 10px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .content-main-dad{
@@ -459,7 +459,7 @@ ul.skills-list {
 .header-container {
   margin-left: 10%;
   display: flex;
-  padding-top: 10vh;
+  padding-top: 6vh;
 }
 
 .content-box {
@@ -565,6 +565,8 @@ ul.skills-list {
   /* -webkit-background-clip: text!important; */
   /* background-clip: text!important; */
     color:#c596f1;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
   
   .heading-about::after {

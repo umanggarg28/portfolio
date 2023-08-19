@@ -28,8 +28,8 @@ export default function NavBar({ navColor, navSize }) {
               id="logoLottie"
               src="https://assets4.lottiefiles.com/packages/lf20_buulmwlq.json" // Logo
               // src="https://assets8.lottiefiles.com/packages/lf20_cc80aute.json"
-              style={{height: 175,
-                      marginLeft: -20,
+              style={{height: 150,
+                      marginLeft: -30,
                       marginTop: -20
                     }}
             ></lottie-player>
