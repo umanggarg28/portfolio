@@ -36,11 +36,11 @@ export default function Contact({useOnScreen, parallax}) {
         <React.Fragment>
         <section className="main-container">
             <div className="header-container">
-                <h1 ref={rootRef} className="contactHeadingAnim heading heading-experience">Get in touch</h1>
+                <h1 ref={rootRef} className="contactHeadingAnim heading content heading-experience">Get in touch</h1>
             </div>
             <LazyShow>
                 <div className="content-main-dad" style={{margin: '0 auto'}}>
-                    <div className="lottie-main" style={{marginRight: 0}}>
+                    {/* <div className="lottie-main" style={{marginRight: 0}}>
                     <lottie-player
                         autoplay
                         loop
@@ -51,14 +51,14 @@ export default function Contact({useOnScreen, parallax}) {
                             width: '60vh'
                         }}
                         ></lottie-player>
-                    </div>
+                    </div> */}
                     <div className="content-box">
                     {/* <div className="max-w-sm overflow-hidden"> */}
                         <div style={{textAlign: 'center'}} className="px-6 py-4">
                             <p className="contact-inner">
                             I’m actively looking for any new opportunities in the US, and my inbox is always open. Have a job for me? I'd love to get in touch. Or even if you have a question or just want to say hi, I’ll try my best to get back to you!
                             </p>
-                            <a id="btn-contact" style={{position: 'relative', zIndex: 9999}} className="font-normal hover:text-white py-2 px-4" target="_blank" rel="noreferrer" href="mailto:umanggarg28@gmail.com"> Say Hello!</a>
+                            <a id="btn-contact" style={{fontSize:34, position: 'relative', zIndex: 9999}} className="font-normal hover:text-white py-2 px-4" target="_blank" rel="noreferrer" href="mailto:umanggarg28@gmail.com"> Say Hello!</a>
                                 <lottie-player
                                     hover
                                     loop

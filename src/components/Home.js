@@ -8,6 +8,7 @@ import Skills from "./Skills";
 import Project from "./Project";
 import About from "./About";
 import Contact from "./Contact";
+import { width } from "@mui/system";
 
 export default function Home() {
 
@@ -42,20 +43,6 @@ export default function Home() {
 
     const rootRef = useRef();
 
-
-  useEffect(() => {
-    new Rellax(".animate", {
-      speed: -10,
-      center: false,
-      wrapper: null,
-      round: true,
-      vertical: true,
-      horizontal: false,
-    });
-
-}, []);
-
-
   return (
     <div>
       <Parallax ref={parallax} pages={7}>
@@ -69,9 +56,9 @@ export default function Home() {
           <div>
           <lottie-player
               autoplay
-              loop
-              mode="bounce"
+              mode="normal"
               id="mainherobg"
+              background= "#045757" //"#4477CE", #053F5E", "#1F6E8C", "#0B5269", "#045757"
               // data-preserve-aspect-ratio ="xMinYMin slice"
               data-preserve-aspect-ratio ="none"
               // background="darkslategray"
@@ -105,9 +92,31 @@ export default function Home() {
           </div>
         </ParallaxLayer>
 
-
         <ParallaxLayer
           offset={2}
+        >
+        <div>
+          <lottie-player
+              autoplay
+              loop
+              id="educationbg"
+              data-preserve-aspect-ratio ="none"
+              mode="bounce"
+              // background=  "linear-gradient(to right, #aa076b, #61045f)"
+              background='linear-gradient(to right, #23074d, #cc5333)'
+              src="https://assets9.lottiefiles.com/packages/lf20_p11ajyds.json"
+              // background='linear-gradient( 99deg, #1C0F55 10.6%, rgba(28,28,28,1) 118% )'
+              // src="https://assets4.lottiefiles.com/packages/lf20_WAPsSQ.json"
+              // src="https://assets2.lottiefiles.com/packages/lf20_qsgqcwag.json" underwater
+              style={{
+                  height: '100%'
+              }}
+              ></lottie-player>
+          </div>
+          </ParallaxLayer>
+
+        <ParallaxLayer
+          offset={3}
         >
           <div>
             <lottie-player
@@ -118,6 +127,7 @@ export default function Home() {
               data-preserve-aspect-ratio ="none"
               background='linear-gradient(to right, #000428, #004e92)'
               src="https://assets8.lottiefiles.com/packages/lf20_pbgzoeho.json"
+              // src="https://lottie.host/0548b74f-f884-42b7-8a78-531d4a5d13d6/kFsSOrIlN2.json"
               style={{
                   height: '100%'
               }}
@@ -127,7 +137,7 @@ export default function Home() {
 
 
         <ParallaxLayer
-          offset={3}
+          offset={4}
           // style={{ backgroundImage :  "linear-gradient(to right, #000428, #004e92)"}} //projects background-color
         >
           <div>
@@ -146,7 +156,7 @@ export default function Home() {
         </ParallaxLayer>
 
         <ParallaxLayer
-          offset={4}
+          offset={5}
         >
           <div>
             <lottie-player
@@ -155,39 +165,18 @@ export default function Home() {
                 id="skillsbg"
                 data-preserve-aspect-ratio ="none"
                 mode="normal"
-                // background="background: -webkit-linear-gradient(-70deg, #a2facf 0%, #64acff 100%);"
-                // background= "linear-gradient(to right, #e96ace, #e96ace)"
+                // background="-webkit-linear-gradient(-70deg, #a2facf 0%, #64acff 100%);"
+                // background= "linear-gradient(to bottom, #764ba2, #764ba2)"
                 src="https://assets7.lottiefiles.com/datafiles/csP6U2eWv5hDhkq/data.json"
                 // src="https://assets5.lottiefiles.com/packages/lf20_yolfhtxf.json"
                 style={{
-                    height: '100%'
+                  // height: '100vh',
+                  // width: 'max-content'
+                    width: '100%'
                 }}
                 ></lottie-player>
             </div>
       </ParallaxLayer>
-
-        <ParallaxLayer
-          offset={5}
-        >
-        <div>
-          <lottie-player
-              autoplay
-              loop
-              id="educationbg"
-              data-preserve-aspect-ratio ="none"
-              mode="bounce"
-              background=  "linear-gradient(to right, #360033, #0b8793)"
-              // background='linear-gradient(to right, #23074d, #cc5333)'
-              src="https://assets9.lottiefiles.com/packages/lf20_p11ajyds.json"
-              // background='linear-gradient( 99deg, #1C0F55 10.6%, rgba(28,28,28,1) 118% )'
-              // src="https://assets4.lottiefiles.com/packages/lf20_WAPsSQ.json"
-              // src="https://assets2.lottiefiles.com/packages/lf20_qsgqcwag.json" underwater
-              style={{
-                  height: '100%'
-              }}
-              ></lottie-player>
-          </div>
-          </ParallaxLayer>
 
         <ParallaxLayer
           offset={6}
@@ -198,12 +187,14 @@ export default function Home() {
                 id="contactbg"
                 // data-preserve-aspect-ratio ="none"
                 mode="normal"
+                background="#334756"//, #053F5E", "#1F6E8C", "#0B5269", "#045757"
                 // background=  "darkslategray"
                 // src="https://assets7.lottiefiles.com/packages/lf20_gTE2BO.json"
-              src="https://assets4.lottiefiles.com/packages/lf20_WAPsSQ.json"
+                src="https://lottie.host/4e54a9dd-5d7e-4af0-b3d5-0391dd32392e/yovZS1Z0bL.json"
+              // src="https://assets4.lottiefiles.com/packages/lf20_WAPsSQ.json"
                 // src="https://assets10.lottiefiles.com/packages/lf20_zxbzlgot.json"
                 style={{
-                    // height: '100%',
+                    height: '100vh',
                     width: 'max-content'
                     // position: 'absolute',
                     // top: 0,
@@ -329,7 +320,7 @@ export default function Home() {
             justifyContent: "center",
           }}
         >
-        <MainHero parallax={parallax}/>
+        <MainHero useOnScreen={useOnScreen} rootRef={rootRef} parallax={parallax}/>
         </ParallaxLayer>
 
         <ParallaxLayer
@@ -346,8 +337,22 @@ export default function Home() {
         </ParallaxLayer>
 
         <ParallaxLayer
-          id="experience"
+          id="education"
           offset={2}
+          // speed={0.1}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            // backgroundImage :  "linear-gradient(to right, #360033, #0b8793)"
+          }}
+        >
+          <Education useOnScreen={useOnScreen} rootRef={rootRef} parallax={parallax} />
+        </ParallaxLayer>
+
+        <ParallaxLayer
+          id="experience"
+          offset={3}
           // speed={0.1}
           style={{
             alignItems: "center",
@@ -360,7 +365,7 @@ export default function Home() {
 
         <ParallaxLayer
           id="projects"
-          offset={3}
+          offset={4}
           // speed={0.1}
           style={{
             display: "flex",
@@ -374,7 +379,7 @@ export default function Home() {
 
         <ParallaxLayer
           id="skills"
-          offset={4}
+          offset={5}
           // speed={0.1}
           style={{
             display: "flex",
@@ -384,20 +389,6 @@ export default function Home() {
           }}
         >
           <Skills useOnScreen={useOnScreen} rootRef={rootRef} parallax={parallax} />
-        </ParallaxLayer>
-
-        <ParallaxLayer
-          id="education"
-          offset={5}
-          // speed={0.1}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            // backgroundImage :  "linear-gradient(to right, #360033, #0b8793)"
-          }}
-        >
-          <Education useOnScreen={useOnScreen} rootRef={rootRef} parallax={parallax} />
         </ParallaxLayer>
 
         <ParallaxLayer

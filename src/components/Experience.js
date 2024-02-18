@@ -102,7 +102,7 @@ export default function Experience({useOnScreen, parallax}) {
     <React.Fragment>
     <section className="main-container">
         <div className="header-container">
-            <div className="lottie-container">
+            {/* <div className="lottie-container">
                   <lottie-player
                       id="experienceAnim"
                       hover
@@ -111,17 +111,32 @@ export default function Experience({useOnScreen, parallax}) {
                       src="https://assets1.lottiefiles.com/packages/lf20_lhijyuoc.json"
                       style={{width: 80, marginRight: '2vh'}}
                     />
-              </div>
-              <h1 ref={rootRef} className="experienceHeadingAnim heading heading-experience">Where I've worked</h1>
+              </div> */}
+              <h1 ref={rootRef} className="experienceHeadingAnim heading content heading-experience">Where I've worked</h1>
           </div>
 
     <LazyShow>
         <div className="content-main-dad">
+        <div className="lottie-main">
+            <lottie-player
+                hover
+                loop
+                mode="normal"
+                id="experienceAnim"
+                // src="https://assets7.lottiefiles.com/packages/lf20_hske6rvv.json"
+                src="https://lottie.host/4c6313b9-aade-4a7e-9ad5-573fb19cac82/g9f0ZUbvAQ.json"
+                style={{
+                  width: 350,
+                  marginTop: 20,
+                  marginLeft:60
+                }}
+              ></lottie-player>
+            </div>    
           <div className="content-box">
             <div className="content text-white">
             <div className="content-bg-experience">
               <Box
-                sx={{ flexGrow: 2, bgcolor: 'background.paper', display: 'flex', marginLeft: 20 }}
+                sx={{ flexGrow: 0, display: 'flex', marginLeft: -10 }}
               >
                 <Tabs
                   orientation="vertical"
@@ -129,7 +144,7 @@ export default function Experience({useOnScreen, parallax}) {
                   value={value}
                   onChange={handleChange}
                   aria-label="experience tab"
-                  sx={{ borderRight: 1, borderColor: 'divider' }}
+                  sx={{ borderRight: 2, borderColor: 'divider', paddingTop: 2.5 }}
                 >
                   {experience && experience.map((experienceData, index) => (
                       <Tab className="experience-tab" label={experienceData.company_name}
@@ -140,9 +155,11 @@ export default function Experience({useOnScreen, parallax}) {
                 <TabPanel value={value} index={index}>
                     <p className="experience-jobtitle">{experienceData.job_title} @</p>
                     <h3 className="experience-data-heading">{experienceData.company_name}</h3>
-                    <p className="experience-place">{experienceData.place}</p>
-                    <div className="experience-data-dates">
-                      <p>{Moment(experienceData.date_from).format('MMM yyyy')} - {Moment(experienceData.date_to).format('MMM yyyy')}</p>
+                    <div style={{ display: 'flex', justifyContent: 'space-between'}}>
+                      <p className="experience-place">{experienceData.place}</p>
+                      <div className="experience-data-dates">
+                        <p>{Moment(experienceData.date_from).format('MMM yyyy')} - {Moment(experienceData.date_to).format('MMM yyyy')}</p>
+                      </div>
                     </div>
                     <p className="experience-description">{experienceData.description}</p>
                     {/* <p>{experienceData.link}</p> */}
@@ -151,26 +168,12 @@ export default function Experience({useOnScreen, parallax}) {
               </Box>
               </div>
             </div>
-          </div>
-          <div className="lottie-main">
-            <lottie-player
-                autoplay
-                loop
-                mode="normal"
-                id="experienceAnim"
-                src="https://assets7.lottiefiles.com/packages/lf20_hske6rvv.json"
-                style={{
-                  width: 300,
-                  // marginTop:'-15vh',
-                  paddingTop: '3%'
-                }}
-              ></lottie-player>
-            </div>      
+          </div>  
         </div>
-        </LazyShow>
+      </LazyShow>
 
         <div className="button-box">
-        <button className="contact-btn" onClick={() => parallax.current.scrollTo(3)}>
+        <button className="contact-btn" onClick={() => parallax.current.scrollTo(4)}>
           {/* <lottie-player
                   hover
                   loop

@@ -24,14 +24,14 @@ export default function MainHero({parallax}) {
 
     useEffect(() => {
 
-        new Rellax(".animate", {
-          speed: -10,
-          center: false,
-          wrapper: null,
-          round: true,
-          vertical: true,
-          horizontal: false,
-        });
+        // new Rellax(".animate", {
+        //   speed: -10,
+        //   center: false,
+        //   wrapper: null,
+        //   round: true,
+        //   vertical: true,
+        //   horizontal: false,
+        // });
 
         sanityClient.fetch(`*[_type == "author"]{
             name,

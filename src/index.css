@@ -415,12 +415,11 @@ body {
 }
 
 .contact-inner {
-  font-size: 20px;
+  font-size: 34px;
   color: white;
   letter-spacing: 1px;
-  font-weight: 200;
   /* font-family: "BlinkMacSystemFont", San Francisco; */
-  font-family: 'Cera Pro Light';
+  /* font-family: 'Cera Pro Light'; */
   padding: 30px;
   /* display: grid;
   grid-template-columns: 3fr 2fr;
@@ -467,15 +466,15 @@ ul.skills-list {
   /* overflow: scroll; */
 }
 
-.content-bg-about {
+/* .content-bg-about {
     background: linear-gradient(
 145deg, #23054d, #2a065b);
     box-shadow: 20px 20px 60px #210548, -20px -20px 60px #2d0762;
     border-radius: 25px;
     opacity: 0.9;
-}
+} */
 
-.content-bg-experience {
+/* .content-bg-experience {
   padding: 10px;
   overflow: unset!important;
   overflow-x: unset;
@@ -484,25 +483,25 @@ ul.skills-list {
     background: linear-gradient(145deg, #01072d, #043873);
     box-shadow:  20px 20px 60px #0a2052, -20px -20px 60px #030f2a;
                 opacity: 0.9;
-}
+} */
 
-.content-bg-skills {
+/* .content-bg-skills {
   padding: 10px!important;
   opacity: 0.9;
   border-radius: 25px;
   background: linear-gradient(145deg, #33204c, #3d255a);
   box-shadow:  20px 20px 60px #301e47,
              -20px -20px 60px #160c3e;
-}
+} */
 
-.content-bg-education {
+/* .content-bg-education {
   padding: 10px!important;
   opacity: 0.9;
   border-radius: 25px;
   background: linear-gradient(145deg, #3d345e, #217e90);
   box-shadow:  20px 20px 60px #1a6473,
               -20px -20px 60px #39355c;
-}
+} */
 
 .content {
   margin-top: 3vh;
@@ -564,7 +563,8 @@ ul.skills-list {
       -70deg, #ff7170 0%, #64acff 100%)!important; */
   /* -webkit-background-clip: text!important; */
   /* background-clip: text!important; */
-    color:#c596f1;
+    /* color:#c596f1; */
+    color:#f778ba;
     padding-top: 10px;
     padding-bottom: 10px;
   }
@@ -648,7 +648,7 @@ ul.skills-list {
     90deg, rgb(37, 47, 255) -100%, rgb(37, 106, 243) -50%, rgb(124, 192, 226) 0%, rgb(37, 106, 243) 50%, rgb(37, 47, 255) 100%); */
     -webkit-text-fill-color: transparent; 
     /* background-image: linear-gradient(to right, #237A57 30%, #093028 70%); */
-    background-image: linear-gradient(to right, #db469f 0%, #2188ff 100%);
+    background-image: linear-gradient(to right, #36133f 0%, #492753 100%);
     -webkit-background-clip: text;
     font-size: 34px;
     line-height: 1.2105263158;
@@ -694,7 +694,7 @@ ul.skills-list {
   line-height: 1.2105263158;
   font-weight: 600;
   letter-spacing: .012em;
-  background-image: linear-gradient(to right, #db469f 0%, #2188ff 100%);
+  background-image: linear-gradient(to right, #ff7170 0%, #ff7170 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -713,6 +713,7 @@ ul.skills-list {
   font-family: 'Cera Pro Light';
   letter-spacing: 1px;
   font-weight: 100;
+  padding-bottom: 15px;
 }
 
 .skills-description {
@@ -770,7 +771,7 @@ transform: matrix(1, 0, 0, 1, 0, 0);
 }
 
 .heading {
-  font-size: 70px;
+  font-size: 50px;
   font-weight: 600!important;
   font-family: "Nanum Pen Script", San Francisco;
 }
@@ -780,7 +781,7 @@ transform: matrix(1, 0, 0, 1, 0, 0);
   -webkit-background-clip: text!important;
   background-clip: text!important;
   font-weight: 100;
-  color: #fff;
+  color: #64acff;
   /* font-family: "Nanum Pen Script", San Francisco; */
 }
 
@@ -882,9 +883,7 @@ transform: matrix(1, 0, 0, 1, 0, 0);
 
 .experience-place {
   font-size: 1.2em;
-  line-height: 1.2353641176;
-  font-weight: 500;
-  letter-spacing: -0.022em;
+  font-weight: 200;
   color: #59c8df;
   letter-spacing: 1px;
   font-weight: 200;
@@ -909,8 +908,13 @@ transform: matrix(1, 0, 0, 1, 0, 0);
   /* margin: 50px 0px 0px; */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 15px;
+  gap: 20px;
   position: relative;
+}
+
+.project-box {
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .project-individual {
@@ -921,9 +925,9 @@ transform: matrix(1, 0, 0, 1, 0, 0);
   opacity: 1;
   transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
   border-radius: 20px;
-  background: linear-gradient(145deg, #0d1a2a, #0f1f32);
-  box-shadow:  20px 20px 60px #0c1928,
-             -20px -20px 60px #102136;
+  background: linear-gradient(145deg, #064663, #064663);
+  /* box-shadow:  20px 20px 60px #0c1928,
+             -20px -20px 60px #102136; */
   /* background: #112240; */
   /* box-shadow: 0 10px 30px -15px #020c1bb3; */
 }
@@ -1078,7 +1082,7 @@ body {
   left: auto;
   right: 40px;
   z-index: 10;
-  color: #a8b2d1;
+  color: #fff;
 }
 
 .jJFfEJ a {

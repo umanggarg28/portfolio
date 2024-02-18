@@ -57,7 +57,7 @@ export default function Education({useOnScreen, parallax}) {
     <React.Fragment>
     <section className="main-container">
         <div className="header-container">
-            <div className="lottie-container">
+            {/* <div className="lottie-container">
                 <lottie-player
                   id="schoolAnim"
                   hover
@@ -66,20 +66,21 @@ export default function Education({useOnScreen, parallax}) {
                   src="https://assets4.lottiefiles.com/packages/lf20_3mvi6d9c.json"
                   style={{width: 80, marginRight:'2vh'}}
                 />
-            </div>
-            <h1 ref={rootRef} className="educationHeadingAnim heading heading-education">Schools and stuff</h1>
+            </div> */}
+            <h1 ref={rootRef} className="educationHeadingAnim heading content heading-education">Education</h1>
         </div>
         <LazyShow>
           <div className="content-main-dad">
-                <div className="lottie-main" style={{marginRight: '-3vh'}}>
+                <div className="lottie-main">
                   <lottie-player
-                    autoplay
+                    hover
                     loop
                     mode="bounce"
                     id="secondLottie"
                     // src="https://assets8.lottiefiles.com/packages/lf20_1omohnse.json"
-                    src="https://assets10.lottiefiles.com/private_files/lf30_G9r0Hr.json"
-                    style={{width: 500}}
+                    // src="https://assets10.lottiefiles.com/private_files/lf30_G9r0Hr.json"
+                    src="https://lottie.host/e4ab62ae-e9b4-40a9-8879-5ed7ba66fef9/1AfSq1oqev.json"
+                    style={{width: 350}}
                   ></lottie-player>
                 </div>
                 <div className="content-box">
@@ -108,7 +109,7 @@ export default function Education({useOnScreen, parallax}) {
             </LazyShow>              
 
       <div className="button-box">
-      <button onClick={() => parallax.current.scrollTo(6)} className="contact-btn py-2 px-4">
+      <button onClick={() => parallax.current.scrollTo(3)} className="contact-btn py-2 px-4">
                 <lottie-player
                         autoplay
                         loop

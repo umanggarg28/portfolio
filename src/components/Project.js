@@ -65,7 +65,7 @@ export default function Project({useOnScreen, parallax}) {
         <React.Fragment>    
         <section className="main-container">
             <div className="header-container" style={{marginTop: '10vh!important'}}>
-                    <div className="lottie-container">
+                    {/* <div className="lottie-container">
                         <lottie-player
                             autoplay
                             loop
@@ -73,8 +73,8 @@ export default function Project({useOnScreen, parallax}) {
                             src="https://assets1.lottiefiles.com/packages/lf20_3luimzqq.json"
                             style={{width: 70, marginRight: '2vh', marginLeft: '2vh'}}
                         />
-                    </div>
-                <h1 ref={rootRef} className="projectHeadingAnim heading heading-project">Some projects</h1>
+                    </div> */}
+                <h1 ref={rootRef} className="projectHeadingAnim heading content heading-project">Projects</h1>
             </div>
 
             <div className="content-main-dad">
@@ -85,15 +85,15 @@ export default function Project({useOnScreen, parallax}) {
                         mode="normal"
                         id="project"
                         // src="https://assets3.lottiefiles.com/packages/lf20_ihsy8p2a.json"
-                        src="https://assets1.lottiefiles.com/packages/lf20_eiubpejs.json"
+                        src="https://assets7.lottiefiles.com/packages/lf20_hske6rvv.json"
                         style={{
-                            width: 400,
-                            marginTop: -40
+                            width: 300,
                         }}
                     />
                     </div>
                     <div className="content-box">
                         <div className="content text-white">
+                            <div className="project-box">
                         <ul 
                                 ref={rootRef}
                                 className="projects-grid"
@@ -135,11 +135,12 @@ export default function Project({useOnScreen, parallax}) {
                             ))}
                         </ul>
                         </div>
+                        </div>
                     </div>
                 </div>
 
             <div className="button-box">
-            <button onClick={() => parallax.current.scrollTo(4)} className="contact-btn py-2 px-4">
+            <button onClick={() => parallax.current.scrollTo(5)} className="contact-btn py-2 px-4">
                 <lottie-player
                         autoplay
                         loop

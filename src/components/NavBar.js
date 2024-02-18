@@ -39,38 +39,38 @@ export default function NavBar({ navColor, navSize }) {
             <HashLink
               smooth to="#about"
               activeClassName="text-red-100 nav_item_active bg-red-700"
-              className="pri-font whittish inline-flex item-center px-3 my-6 text-red-200"
-            >ABOUT
+              className="whittish inline-flex item-center px-3 my-6 text-red-200"
+            >About
             </HashLink>
             <HashLink
               smooth to="#experience"
               activeClassName="text-red-100 nav_item_active bg-red-700"
-              className="pri-font whittish inline-flex item-center px-3 my-6 text-red-200"
-            >EXPERIENCE
+              className="whittish inline-flex item-center px-3 my-6 text-red-200"
+            >Experience
             </HashLink>
             <HashLink
               smooth to="#projects"
               activeClassName="text-red-100 nav_item_active bg-red-700"
-              className="pri-font whittish inline-flex item-center px-3 my-6 text-red-200"
-            >PROJECTS
+              className="whittish inline-flex item-center px-3 my-6 text-red-200"
+            >Projects
             </HashLink>
             <HashLink
               smooth to="#skills"
               activeClassName="text-red-100 nav_item_active bg-red-700"
-              className="pri-font whittish inline-flex item-center px-3 my-6 text-red-200"
-            >SKILLS
+              className="whittish inline-flex item-center px-3 my-6 text-red-200"
+            >Skills
             </HashLink>
             <HashLink
               smooth to="#education"
               activeClassName="text-red-100 nav_item_active bg-red-700"
-              className="pri-font whittish inline-flex item-center px-3 my-6 text-red-200"
-            >EDUCATION
+              className="whittish inline-flex item-center px-3 my-6 text-red-200"
+            >Education
             </HashLink>
             <HashLink
               smooth to="#contact"
               activeClassName="text-red-100 nav_item_active bg-red-700"
-              className="pri-font whittish inline-flex item-center px-3 my-6 text-red-200"
-            >CONTACT
+              className="whittish inline-flex item-center px-3 my-6 text-red-200"
+            >Contact
             </HashLink>
             {/* <HashLink
               activeClassName="text-red-100 nav_item_active bg-red-700"

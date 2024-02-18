@@ -54,7 +54,7 @@ export default function About({useOnScreen, parallax}) {
         <section className="main-container">
         <div
         className="header-container">
-            <div className="lottie-container">
+            {/* <div className="lottie-container">
                 <lottie-player
                     id="userAnim"
                     hover
@@ -63,8 +63,8 @@ export default function About({useOnScreen, parallax}) {
                     src="https://assets7.lottiefiles.com/packages/lf20_3hj053ag.json"
                     style={{width: 80, marginRight: '2vh'}}
                 />
-                </div>
-            <h1 ref={rootRef} className="aboutHeadingAnim heading heading-about">A bit about me</h1>
+            </div> */}
+            <h1 ref={rootRef} className="aboutHeadingAnim content heading heading-about">A bit about me</h1>
         </div>
         <LazyShow>
             <div className="content-main-dad">
