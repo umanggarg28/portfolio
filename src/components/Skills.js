@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
-import sanityClient from "../client";
+import React, { useEffect } from "react";
 import LazyShow from "./LazyShow";
 import anime from "animejs";
 
-export default function Skills({useOnScreen, parallax}) {
+export default function Skills({useOnScreen, parallax, skills}) {
 
   const rootRef = React.createRef();
 
@@ -33,54 +32,17 @@ export default function Skills({useOnScreen, parallax}) {
           }
       }, [onScreen]);
 
-  const [skills, setSkillsData] = useState(null);
-
-  useEffect(() => {
-
-    sanityClient.fetch(`*[_type == "skills"]{
-        skill_category,
-        language
-      }`).then((data) => setSkillsData(data))
-      .catch(console.error);
-
-  }, []);
-
   return (
     <React.Fragment>
           <section className="main-container">
             <div className="header-container">
-               {/* <div className="lottie-container">
-                    <lottie-player
-                      hover
-                      loop
-                      mode="normal"
-                      src="https://assets10.lottiefiles.com/packages/lf20_optuv2ro.json"
-                      style={{width: 70, marginRight: '2vh'}}
-                    />
-                </div> */}
-                <h1 ref={rootRef} className="skillsHeadingAnim heading content heading-skills">Professional Skills</h1>
+                <h1 ref={rootRef} className="skillsHeadingAnim heading content heading-skills">/ professional skills</h1>
             </div>
             <LazyShow>
               <div className="content-main-dad">
-                <div className="lottie-main">
-                    <lottie-player
-                      id="skillsAnim"
-                      loop
-                      hover
-                      mode="normal"
-                      // src="https://assets6.lottiefiles.com/packages/lf20_miikvucn.json"
-                      // src="https://lottie.host/06fb3383-0a06-44d2-b67b-503874b05495/Prdy0W1SU8.json"
-                      // src="https://lottie.host/25f99c3e-9ace-471c-a0af-97d940f29698/roztZJXBlI.json"
-                      src="https://lottie.host/ee6080d2-54df-4ecb-9ac8-67ecd6020ca2/WOlWxajJc3.json"
-                      // src="https://assets2.lottiefiles.com/packages/lf20_lln7m43m.json"
-                      style={{width: 350,
-                        marginTop: 20,
-                        marginLeft:60
-                      }}
-                    ></lottie-player>
-                  </div>
                   <div className="content-box">
-                        <div className="content content-bg-skills text-white">
+                        <div className="content text-white">
+                          <div className="skills-box">
                         {skills && skills.map((skillsData) => (
                           <div class="px-6 py-4">
                           <h3 className="skills-data-heading">{skillsData.skill_category}</h3>
@@ -88,6 +50,7 @@ export default function Skills({useOnScreen, parallax}) {
                             </div>
                         ))}
                         </div>
+                    </div>
                     </div>
                     </div>
               </LazyShow>         
@@ -100,7 +63,7 @@ export default function Skills({useOnScreen, parallax}) {
                 id="scrollButton"
                 src="https://assets6.lottiefiles.com/packages/lf20_RbdjIx.json"
                 style={{
-                    width: 50
+                    width: 40
                 }}
         ></lottie-player>
         </button>

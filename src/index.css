@@ -1,5 +1,4 @@
-/* @import url("https://unpkg.com/@tailwindcss/typography@0.4.x/dist/typography.min.css"); */
-@import url("https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css");
+/* @import url("https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"); */
 @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100;300&family=Roboto:wght@100;400&family=Source+Code+Pro:wght@200;300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
 @font-face {
@@ -16,10 +15,21 @@
                             'embedded-opentype', and 'svg' */
 }
 
+@font-face {
+  font-family: 'ClashDisplay-Regular';
+  src: local('ClashDisplay-Regular'), url(./ClashDisplay_Complete/Fonts/OTF/ClashDisplay-Regular.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'ClashDisplay-Medium';
+  src: local('ClashDisplay-Medium'), url(./ClashDisplay_Complete/Fonts/OTF/ClashDisplay-Medium.otf) format('opentype');
+}
+
+
 body {
   /* font-family: 'BlinkMacSystemFont'!important; */
   /* font-family: 'Nanum Pen Script'!important; */
-  font-family: 'Cera Pro Medium';
+  font-family: 'ClashDisplay-Regular'!important;
 }
 @font-face {
   font-family: "BlinkMacSystemFont", San Francisco;
@@ -27,6 +37,10 @@ body {
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
 }
 
+
+.main-container{
+  min-width: 100%;
+}
 
 .cursive {
   /* font-family: 'San Francisco', sans-serif; */
@@ -258,11 +272,11 @@ body {
   margin-right: 4vh;
 }
 
-.content {
+/* .content {
   margin-top: 0px!important;
   margin-left: 4vh;
   max-height: 350px;
-}
+} */
 
 .inner {
   padding-bottom: 0px!important;
@@ -277,12 +291,12 @@ body {
 
 
 
-/* .lazy-div {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-} */
+.lazy-div {
+  /* display: flex; */
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 1.5em;
+}
 
 .about-pic-box {
   margin-left: 5%;
@@ -380,16 +394,18 @@ body {
   max-width: 550px;
   /* font-weight: 400; */
   word-break: break-word;
-  margin-top: -40px;
+  /* margin-top: -40px; */
 }
 
 .about-description {
-  font-size: 28px;
-  color: white;
+  font-size: 24px;
+  /* color: white; */
+  color:#a1a1a6;
   letter-spacing: 1px;
   /* font-weight: 200; */
   /* font-family: "BlinkMacSystemFont", San Francisco; */
-  font-family: 'Cera Pro Light';
+  /* font-family: 'Cera Pro Light'; */
+  font-family: 'ClashDisplay-Regular';
 }
 
 .about-display {
@@ -407,20 +423,24 @@ body {
   letter-spacing: 1px;
   font-weight: 200;
   /* font-family: "BlinkMacSystemFont", San Francisco; */
-  font-family: 'Cera Pro Light';
-  padding: 30px;
+  /* font-family: 'Cera Pro Light'; */
+  /* padding: 30px; */
+  margin-left: 10%;
+  margin-right: 10%;
   /* display: grid;
   grid-template-columns: 3fr 2fr;
   gap: 50px; */
 }
 
 .contact-inner {
-  font-size: 34px;
-  color: white;
+  font-size: 26px;
+  /* color: white; */
+  color: #a1a1a6;
   letter-spacing: 1px;
   /* font-family: "BlinkMacSystemFont", San Francisco; */
   /* font-family: 'Cera Pro Light'; */
-  padding: 30px;
+  /* padding: 60px; */
+  font-family: 'Cera Pro Light';
   /* display: grid;
   grid-template-columns: 3fr 2fr;
   gap: 50px; */
@@ -436,33 +456,51 @@ body {
 
 .about-me {
   font-size: 1.2em;
+  color: #a1a1a6;
 }
 
 ul.skills-list {
   display: grid;
-  grid-template-columns: repeat(2, minmax(140px, 200px));
+  grid-template-columns: repeat(4, minmax(140px, 200px));
   gap: 0px 10px;
-  padding: 0px;
   margin: 20px 0px 0px;
   overflow: hidden;
-  list-style: none;
+  color: white;
+  /* list-style: none; */
+}
+
+ul.skills-list li{
+  padding-bottom: 16px;
+  padding-left: 30px;
+  position: relative;
+}
+
+ul.skills-list li:before{
+  color: #ff7170!important;
+  content: "▹ ";
+  left: 0;
+  position: absolute;
 }
 
 
 .content-main-dad {
   display: flex;
-  padding-left: 10vh;
-  padding-right: 10vh;
+  /* padding-left: 10vh;
+  padding-right: 10vh; */
+  justify-content: center;
 }
 
 .header-container {
-  margin-left: 10%;
+  margin-left: 20%;
+  margin-right: 20%;
+
   display: flex;
-  padding-top: 6vh;
+  /* padding-top: 10%; */
 }
 
 .content-box {
   display: flex;
+  /* width: 900px; */
   /* overflow: scroll; */
 }
 
@@ -504,16 +542,17 @@ ul.skills-list {
 } */
 
 .content {
-  margin-top: 3vh;
+  /* margin-top: 3vh;
   margin-right: 4vh;
-  float: left;
-  font-family: 'Cera Pro Medium'!important;
+  float: left; */
+  /* font-family: 'Cera Pro Medium'!important; */
+  font-family: 'ClashDisplay-Regular'!important;
 }
 
 .lottie-main {
-  margin-left: 2vh;
+  /* margin-left: 2vh;
   margin-right: 15vh;
-  display: block;
+  display: block; */
 }
 
 .button-box {
@@ -522,7 +561,7 @@ ul.skills-list {
 }
 
 .box-content {
-  margin-left: 30vh;
+  /* margin-left: 30vh; */
   margin-top: 20vh;
 }
 
@@ -552,10 +591,10 @@ ul.skills-list {
   display: inline-block;
   position: relative;
   top: -20px;
-  width: 250px;
+  width: 300px;
   height: 1px;
   margin-left: 20px;
-  background-color: #a8b2d1;
+  background-color: #233554;
 }
 
 .heading-about{
@@ -564,9 +603,11 @@ ul.skills-list {
   /* -webkit-background-clip: text!important; */
   /* background-clip: text!important; */
     /* color:#c596f1; */
-    color:#f778ba;
+    /* color:#f778ba; */
+    color: #ff7170;
     padding-top: 10px;
     padding-bottom: 10px;
+    font-family: 'ClashDisplay-Regular';
   }
   
   .heading-about::after {
@@ -574,10 +615,10 @@ ul.skills-list {
     display: inline-block;
     position: relative;
     top: -20px;
-    width: 200px;
+    width: 300px;
     height: 1px;
     margin-left: 20px;
-    background-color: #a8b2d1;
+    background-color: #233554;
   }
 
 .heading-skills {
@@ -596,10 +637,10 @@ ul.skills-list {
   display: inline-block;
   position: relative;
   top: -20px;
-  width: 350px;
+  width: 300px;
   height: 1px;
   margin-left: 20px;
-  background-color: #a8b2d1;
+  background-color: #233554;
 }
 
 .education-description {
@@ -618,7 +659,8 @@ ul.skills-list {
   letter-spacing: 1px;
   font-weight: 200;
   /* font-family: "BlinkMacSystemFont", San Francisco; */
-  font-family: 'Cera Pro Light';
+  /* font-family: 'Cera Pro Light'; */
+  font-family: 'ClashDisplay-Regular';
 }
 
 .heading-education {
@@ -629,7 +671,8 @@ ul.skills-list {
   -webkit-background-clip: text!important;
   background-clip: text!important;
   -webkit-text-fill-color: transparent!important; */
-  color: #ffffff;
+  color: #cc5333;
+  /* color: #ffffff; */
 }
 
 .heading-education::after {
@@ -637,10 +680,10 @@ ul.skills-list {
   display: inline-block;
   position: relative;
   top: -20px;
-  width: 350px;
+  width: 300px;
   height: 1px;
   margin-left: 20px;
-  background-color: #a8b2d1;
+  background-color: #233554;
 }
 
 .education-data-heading {
@@ -648,22 +691,28 @@ ul.skills-list {
     90deg, rgb(37, 47, 255) -100%, rgb(37, 106, 243) -50%, rgb(124, 192, 226) 0%, rgb(37, 106, 243) 50%, rgb(37, 47, 255) 100%); */
     -webkit-text-fill-color: transparent; 
     /* background-image: linear-gradient(to right, #237A57 30%, #093028 70%); */
-    background-image: linear-gradient(to right, #36133f 0%, #492753 100%);
+    /* background-image: linear-gradient(to right, #36133f 0%, #492753 100%); */
+    /* background-color: white; */
+    background-color: #a1a1a6;
     -webkit-background-clip: text;
     font-size: 34px;
+    padding-bottom: 5px;
     line-height: 1.2105263158;
     font-weight: 600;
     letter-spacing: .012em;
+    font-family: 'ClashDisplay-Regular';
 }
 
 .education-data-degree {
   float: left;
-  color: white;
+  color: #fff;
   font-size: 24px;
   letter-spacing: 1px;
   font-weight: 200;
   /* font-family: "BlinkMacSystemFont", San Francisco; */
-  font-family: 'Cera Pro Light';
+  /* font-family: 'Cera Pro Light'; */
+  font-family: 'ClashDisplay-Regular';
+  padding-top: 5px;
 }
 
 .education-data-dates {
@@ -673,12 +722,13 @@ ul.skills-list {
 }
 
 .education-place {
-  font-size: 20px;
+  font-size: 22px;
   line-height: 1.2353641176;
   /* font-weight: 500; */
+  color: #a1a1a6;
   letter-spacing: -0.022em;
   /* color: #86868b; */
-  color: white;
+  /* color: white; */
 }
 
 .education-gpa {
@@ -689,8 +739,13 @@ ul.skills-list {
   letter-spacing: -0.022em;
 }
 
+.education-box {
+  width: 750px;
+  display: grid;
+}
+
 .skills-data-heading {
-  font-size: 34px!important;
+  font-size: 30px!important;
   line-height: 1.2105263158;
   font-weight: 600;
   letter-spacing: .012em;
@@ -699,18 +754,21 @@ ul.skills-list {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: 1px;
-  font-weight: 100;
+  font-weight: bold;
   /* font-family: "BlinkMacSystemFont", San Francisco; */
-  font-family: 'Cera Pro Light';
+  /* font-family: 'Cera Pro Light'; */
+  font-family: 'ClashDisplay-Regular';
 }
 
 .skills-data-degree {
   float: left;
-  color: #ffffff;
+  /* color: #ffffff; */
+  color: #a1a1a6;
   white-space: pre-wrap;
   font-size: 1.2em!important;
   /* font-family: "BlinkMacSystemFont", San Francisco; */
-  font-family: 'Cera Pro Light';
+  /* font-family: 'Cera Pro Light'; */
+  font-family: 'ClashDisplay-Regular';
   letter-spacing: 1px;
   font-weight: 100;
   padding-bottom: 15px;
@@ -729,10 +787,16 @@ ul.skills-list {
 .skills-display {
   display: block;
   /* font-family: 'Nanum Pen Script'!important; */
-  font-family: 'Cera Pro Light'!important;
+  /* font-family: 'Cera Pro Light'!important; */
+  font-family: 'ClashDisplay-Regular'!important;
   margin-right: 5%;
   /* margin-top: 40px; */
   margin-bottom: 20px;}
+
+  .skills-box {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
 
 .bar-mask {
   position: relative;
@@ -756,13 +820,16 @@ ul.skills-list {
 .badge .badge-content {
   position: relative;
   z-index: 1;
-  color: #86868b;
+  /* color: #86868b; */
+  color: #cc5333;
 }
 
 .bar {
   width: 30%;
-  background: linear-gradient(
-45deg,#ff9fe1,#8727ff);
+  /* background: linear-gradient(
+45deg,#ff9fe1,#8727ff); */
+background: linear-gradient(
+45deg,#cc5333,#cc5333);
 transform: matrix(1, 0, 0, 1, 0, 0);
   opacity: 1;
   height: 100%;
@@ -773,7 +840,19 @@ transform: matrix(1, 0, 0, 1, 0, 0);
 .heading {
   font-size: 50px;
   font-weight: 600!important;
-  font-family: "Nanum Pen Script", San Francisco;
+  /* font-family: "Nanum Pen Script", San Francisco; */
+  font-family: 'ClashDisplay-Regular';
+}
+
+
+.mainHeadingAnim {
+  font-size: 60px!important;
+  font-weight: 600!important;
+}
+
+.heading-mainhero {
+  color: #00fff5; 
+  /* 00fff5 */
 }
 
 #btn-contact {
@@ -809,93 +888,122 @@ transform: matrix(1, 0, 0, 1, 0, 0);
   width: 300px;
   height: 1px;
   margin-left: 20px;
-  background-color: #a8b2d1;
+  background-color: #233554;
 }
 
 .experience-tab {
-  color: #59c8df!important;
+  color: #64acff!important;
   font-size: 18px!important;
   letter-spacing: 1px;
   font-weight: 200;
   /* font-family: "BlinkMacSystemFont", San Francisco; */
-  font-family: 'Cera Pro Light';
+  /* font-family: 'Cera Pro Light'; */
 }
 
 .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
   color: #fff!important;
 }
 
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
+  font-family: 'ClashDisplay-Regular'!important;
+}
+
+.MuiTabs-vertical {
+  max-width: 15em;
+  font-family: 'ClashDisplay-Regular'!important;
+}
+
+.MuiBox-root {
+  margin: unset!important;
+}
+
 .experience-description {
   display: inline-block;
   margin: 5px;
   padding-top: 20px;
-  color: #ffffff;
+  /* color: #ffffff; */
+  color: #a1a1a6;
   white-space: pre-wrap;
   font-size: 18px!important;
   letter-spacing: 1px;
   font-weight: 200;
   /* font-family: "BlinkMacSystemFont", San Francisco; */
-  font-family: 'Cera Pro Light';
+  /* font-family: 'Cera Pro Light'; */
+  font-family: 'ClashDisplay-Regular';
   height: 300px;
   width: 500px;
   overflow: scroll;
 }
+
+.experience-description li {
+  font-size: 18px;
+  padding-bottom: 16px;
+  padding-left: 30px;
+  position: relative;
+}
+
+.experience-description li:before {
+  color: #64acff!important;
+  content: "▹ ";
+  left: 0;
+  position: absolute;
+}
+
 
 .experience-data-heading {
   font-size: 34px!important;
   line-height: 1.2105263158;
   font-weight: 600;
   letter-spacing: .012em;
-  background: -webkit-linear-gradient(
--70deg, #ffe57f 0%, #64acff 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  letter-spacing: 1px;
-  font-weight: 200;
   /* font-family: "BlinkMacSystemFont", San Francisco; */
-  font-family: 'Cera Pro Light';
+  /* font-family: 'Cera Pro Light'; */
+  font-family: 'ClashDisplay-Regular';
 }
 
 .experience-jobtitle {
+  /* background: -webkit-linear-gradient(
+    -70deg, #64acff 0%, #64acff 100%); */
   background: -webkit-linear-gradient(
-    -70deg, #a2facf 0%, #64acff 100%);
+    -70deg, #a1a1a6 0%, #a1a1a6 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;  
   font-size: 24px;
   letter-spacing: 1px;
-  font-weight: 400;
   /* font-family: "BlinkMacSystemFont", San Francisco; */
-  font-family: 'Cera Pro Light';
+  /* font-family: 'Cera Pro Light'; */
+  font-family: 'ClashDisplay-Regular';
+  font-weight: 200;
 }
 
 
 .experience-data-dates {
   float: right;
-  color: #59c8df;
+  /* color: #64acff; */
+  color: #a1a1a6;
   font-size: 1.2em;
   letter-spacing: 1px;
   font-weight: 200;
   /* font-family: "BlinkMacSystemFont", San Francisco; */
-  font-family: 'Cera Pro Light';
+  /* font-family: 'Cera Pro Light'; */
+  font-family: 'ClashDisplay-Regular';
 }
 
 .experience-place {
-  font-size: 1.2em;
-  font-weight: 200;
-  color: #59c8df;
-  letter-spacing: 1px;
-  font-weight: 200;
-  float: left;
-  /* font-family: "BlinkMacSystemFont", San Francisco; */
-  font-family: 'Cera Pro Light';
+  /* color: #64acff; */
+  color: #a1a1a6;
+  font-size: 22px;
+  line-height: 1.2353641176;
+  letter-spacing: -0.022em;
+  /* font-family: 'Cera Pro Light'; */
+  font-family: 'ClashDisplay-Regular';
 }
 
 .project-display {
   display: block;
   /* font-family: 'Nanum Pen Script'!important; */
-  font-family: 'Cera Pro Light'!important;
+  /* font-family: 'Cera Pro Light'!important; */
+  font-family: 'ClashDisplay-Regular'!important;
   margin-right: 5%;
   /* margin-top: 40px; */
   margin-bottom: 20px;
@@ -913,8 +1021,9 @@ transform: matrix(1, 0, 0, 1, 0, 0);
 }
 
 .project-box {
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 18%;
+  padding-right: 18%;
+  margin-top: 20px;
 }
 
 .project-individual {
@@ -924,8 +1033,8 @@ transform: matrix(1, 0, 0, 1, 0, 0);
   visibility: visible;
   opacity: 1;
   transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  border-radius: 20px;
-  background: linear-gradient(145deg, #064663, #064663);
+  border-radius: 15px;
+  background: linear-gradient(145deg, #13273f, #13273f);
   /* box-shadow:  20px 20px 60px #0c1928,
              -20px -20px 60px #102136; */
   /* background: #112240; */
@@ -959,13 +1068,14 @@ transform: matrix(1, 0, 0, 1, 0, 0);
   justify-content: space-between;
   -webkit-box-align: center;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   color: white; 
-  font-size: 16px;
+  font-size: 18px;
   letter-spacing: 1px;
-  font-weight: 400;
+  font-weight: bold;
   /* font-family: "BlinkMacSystemFont", San Francisco; */
-  font-family: 'Cera Pro Light';
+  /* font-family: 'Cera Pro Light'; */
+  font-family: 'ClashDisplay-Regular';
 }
 
 .project-title {
@@ -979,13 +1089,15 @@ transform: matrix(1, 0, 0, 1, 0, 0);
 
 .project-description {
   /* color: #ccd6f6; */
-  color: #ffffff;
+  /* color: #ffffff; */
+  color: #a1a1a6;
   white-space: pre-wrap;
-  font-size: 14px!important;
+  font-size: 13px!important;
   letter-spacing: 1px;
   font-weight: 200;
   /* font-family: "BlinkMacSystemFont", San Francisco; */
-  font-family: 'Cera Pro Light';
+  /* font-family: 'Cera Pro Light'; */
+  font-family: 'ClashDisplay-Regular';
 }
  .project-tech-list {
   display: flex;
@@ -994,13 +1106,14 @@ transform: matrix(1, 0, 0, 1, 0, 0);
   flex-grow: 1;
   flex-wrap: wrap;
   padding: 0px;
-  margin: 20px 0 px 0 px;
+  margin: 10px 0 px 0 px;
   list-style: none;
   /* font-family: "BlinkMacSystemFont", San Francisco; */
-  font-family: 'Cera Pro Light';
+  /* font-family: 'Cera Pro Light'; */
+  font-family: 'ClashDisplay-Regular';
   font-size: 10px!important;
   justify-content: space-evenly;
-  color: #a8b2d1;
+  color: #a1f9cf;
 }
 
 .contact-btn {
@@ -1024,14 +1137,14 @@ html, body { height: 100% }
 body {
   /* display: flex;
   align-items: center; */
-  /* background: radial-gradient(at 85% 55%,#082754 0%, #040e21 40%); */
+  background: -webkit-linear-gradient( -70deg ,#040e21 0%, #040e21 40%);
   /* background:-webkit-linear-gradient( 
     -70deg, #136a8a 0%, #267871 100%); */
   /* background:-webkit-linear-gradient( 
     -40deg, #240b36 0%, #c31432  100%); */
     /* background: -webkit-linear-gradient( -40deg, #240b36 0%, #c31432  100%); */
     /* font-family: 'ui-monospace'!important; */
-  background-color: #1C0F55;
+  /* background-color: #1C0F55; */
 }
 
 .light-gray {
@@ -1082,7 +1195,7 @@ body {
   left: auto;
   right: 40px;
   z-index: 10;
-  color: #fff;
+  color: #a8b2d1;
 }
 
 .jJFfEJ a {
@@ -1297,15 +1410,6 @@ animation: move-wave 3s;
 	--sunset: #cae5f7;
 }
 
-pappu {
-	position: fixed;
-	bottom: 2rem;
-	width: 100%;
-	text-align: center;
-	font-family: sans-serif;
-	opacity: 0.8;
-}
-
 #parallax {
 	position: fixed;
 	top: 50%;
@@ -1356,7 +1460,7 @@ pappu {
   .header-container {
     margin: unset!important;
     display: flow-root;
-    padding-top: 5vh;
+    /* padding-top: 5vh; */
   }
 
   .lottie-container {
@@ -1377,29 +1481,29 @@ pappu {
     background-color: #a8b2d1;
   }
 
-  .heading-project::after {
+  /* .heading-project::after {
     margin: unset;
     width: 200px;
     background-color: #a8b2d1;
-  }
+  } */
 
-  .heading-skills::after {
+  /* .heading-skills::after {
     margin: unset;
     width: 250px;
     background-color: #a8b2d1;
-  }
+  } */
 
-  .heading-education::after {
+  /* .heading-education::after {
     margin: unset;
     width: 250px;
     background-color: #a8b2d1;
-  }
+  } */
 
-  .heading-contact::after {
+  /* .heading-contact::after {
     margin: unset;
     width: 200px;
     background-color: #a8b2d1;
-  }
+  } */
 
   .lazy-div {
     display: block;

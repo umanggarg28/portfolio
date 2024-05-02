@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import Rellax from "rellax";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import MainHero from "./MainHero";
 import Education from "./Education";
@@ -8,17 +7,91 @@ import Skills from "./Skills";
 import Project from "./Project";
 import About from "./About";
 import Contact from "./Contact";
-import { width } from "@mui/system";
+import sanityClient from "../client";
 
 export default function Home() {
 
   const parallax = useRef(null);
+  const [authorData, setAuthorData] = useState(null);
+  const [educationData, setEducationData] = useState(null);
+  const [experienceData, setExperienceData] = useState(null);
+  const [projectData, setProjectData] = useState(null);
+  const [skillsData, setSkillsData] = useState(null);
+
+  useEffect(() => {
+    const fetchAuthorData = () => {
+        sanityClient.fetch(`*[_type == "author"]{
+          name,
+          image,
+          bio,
+          featured_skills,
+          main_page_headline
+        }`).then((data) => setAuthorData(data))
+        .catch(console.error);
+      }
+    fetchAuthorData();
+
+    const fetchEducationData = () => {
+        sanityClient.fetch(`*[_type == "education"]{
+          university_name,
+          degree,
+          date_from,
+          date_to,
+          place,
+          gpa
+        }`).then((data) => setEducationData(data))
+        .catch(console.error);
+    }
+    fetchEducationData();
+
+    const fetchExperienceData = () => {
+        sanityClient.fetch(`*[_type == "experience"]{
+          company_name,
+          job_title,
+          date_from,
+          date_to,
+          place,
+          description,
+          link
+        }`).then((data) => setExperienceData(data))
+        .catch(console.error);
+    }
+    fetchExperienceData();
+
+    const fetchProjectData = () => {
+        sanityClient.fetch(`*[_type == "project"]{
+          title,
+          date,
+          place,
+          description,
+          technologies_used,
+          projectType,
+          link,
+          tags
+      }`
+      ).then((data)=>setProjectData(data))
+      .catch(console.error)
+    }
+    fetchProjectData();
+
+    const fetchSkillsData = () => {
+        sanityClient.fetch(`*[_type == "skills"]{
+          skill_category,
+          language
+        }`).then((data) => setSkillsData(data))
+        .catch(console.error);
+      }
+      fetchSkillsData();
+
+  }, []);
+
 
   function useOnScreen(ref, rootMargin = "0px") {
     // State and setter for storing whether element is visible
     const [isIntersecting, setIntersecting] = useState(false);
   
     useEffect(() => {
+      
       let currentRef = null;
       const observer = new IntersectionObserver(
         ([entry]) => {
@@ -39,6 +112,7 @@ export default function Home() {
     }, [ref, rootMargin]); // Empty array ensures that effect is only run on mount and unmount
   
     return isIntersecting;
+    
   }
 
     const rootRef = useRef();
@@ -48,160 +122,39 @@ export default function Home() {
       <Parallax ref={parallax} pages={7}>
         <ParallaxLayer
           offset={0}
-          style={{ 
-            // background: '#1b1363'
-            // backgroundImage: 'linear-gradient(to top, #86377b 20%, #27273c 80%)'
-        }} //main background-color
-        >
-          <div>
-          <lottie-player
-              autoplay
-              mode="normal"
-              id="mainherobg"
-              background= "#045757" //"#4477CE", #053F5E", "#1F6E8C", "#0B5269", "#045757"
-              // data-preserve-aspect-ratio ="xMinYMin slice"
-              data-preserve-aspect-ratio ="none"
-              // background="darkslategray"
-              // src="https://assets7.lottiefiles.com/packages/lf20_zprb9vzj.json"
-              // src="https://assets9.lottiefiles.com/packages/lf20_lq0d2x0h.json" rocket
-              src="https://assets4.lottiefiles.com/packages/lf20_pQHwaL.json"
-              // src="https://assets8.lottiefiles.com/packages/lf20_kov0rtv5.json"
-              style={{
-                  height: '100%'
-              }}
-              ></lottie-player>
-              </div>
+          >
         </ParallaxLayer>
 
 
         <ParallaxLayer
           offset={1}
         >
-            <div>
-          <lottie-player
-              autoplay
-              loop
-              mode="bounce"
-              id="aboutbg"
-              data-preserve-aspect-ratio ="none"
-              src="https://assets7.lottiefiles.com/private_files/lf30_3zjr9l1k.json"
-              style={{
-                  height: '100%'
-              }}
-              ></lottie-player>
-          </div>
         </ParallaxLayer>
 
         <ParallaxLayer
           offset={2}
         >
-        <div>
-          <lottie-player
-              autoplay
-              loop
-              id="educationbg"
-              data-preserve-aspect-ratio ="none"
-              mode="bounce"
-              // background=  "linear-gradient(to right, #aa076b, #61045f)"
-              background='linear-gradient(to right, #23074d, #cc5333)'
-              src="https://assets9.lottiefiles.com/packages/lf20_p11ajyds.json"
-              // background='linear-gradient( 99deg, #1C0F55 10.6%, rgba(28,28,28,1) 118% )'
-              // src="https://assets4.lottiefiles.com/packages/lf20_WAPsSQ.json"
-              // src="https://assets2.lottiefiles.com/packages/lf20_qsgqcwag.json" underwater
-              style={{
-                  height: '100%'
-              }}
-              ></lottie-player>
-          </div>
-          </ParallaxLayer>
+        </ParallaxLayer>
 
         <ParallaxLayer
           offset={3}
         >
-          <div>
-            <lottie-player
-              autoplay
-              loop
-              mode="bounce"
-              id="experiencebg"
-              data-preserve-aspect-ratio ="none"
-              background='linear-gradient(to right, #000428, #004e92)'
-              src="https://assets8.lottiefiles.com/packages/lf20_pbgzoeho.json"
-              // src="https://lottie.host/0548b74f-f884-42b7-8a78-531d4a5d13d6/kFsSOrIlN2.json"
-              style={{
-                  height: '100%'
-              }}
-              ></lottie-player>
-          </div>
         </ParallaxLayer>
 
 
         <ParallaxLayer
           offset={4}
-          // style={{ backgroundImage :  "linear-gradient(to right, #000428, #004e92)"}} //projects background-color
         >
-          <div>
-            <lottie-player
-              autoplay
-              loop
-              mode="normal"
-              id="projectsbg"
-              data-preserve-aspect-ratio ="none"
-              src="https://assets6.lottiefiles.com/packages/lf20_xROXkJ.json"
-              style={{
-                  height: '100%'
-              }}
-              ></lottie-player>
-          </div>
         </ParallaxLayer>
 
         <ParallaxLayer
           offset={5}
         >
-          <div>
-            <lottie-player
-                autoplay
-                loop
-                id="skillsbg"
-                data-preserve-aspect-ratio ="none"
-                mode="normal"
-                // background="-webkit-linear-gradient(-70deg, #a2facf 0%, #64acff 100%);"
-                // background= "linear-gradient(to bottom, #764ba2, #764ba2)"
-                src="https://assets7.lottiefiles.com/datafiles/csP6U2eWv5hDhkq/data.json"
-                // src="https://assets5.lottiefiles.com/packages/lf20_yolfhtxf.json"
-                style={{
-                  // height: '100vh',
-                  // width: 'max-content'
-                    width: '100%'
-                }}
-                ></lottie-player>
-            </div>
-      </ParallaxLayer>
+        </ParallaxLayer>
 
         <ParallaxLayer
           offset={6}
-          ><div style={{height: '100vh'}}>
-            <lottie-player
-                autoplay
-                loop
-                id="contactbg"
-                // data-preserve-aspect-ratio ="none"
-                mode="normal"
-                background="#334756"//, #053F5E", "#1F6E8C", "#0B5269", "#045757"
-                // background=  "darkslategray"
-                // src="https://assets7.lottiefiles.com/packages/lf20_gTE2BO.json"
-                src="https://lottie.host/4e54a9dd-5d7e-4af0-b3d5-0391dd32392e/yovZS1Z0bL.json"
-              // src="https://assets4.lottiefiles.com/packages/lf20_WAPsSQ.json"
-                // src="https://assets10.lottiefiles.com/packages/lf20_zxbzlgot.json"
-                style={{
-                    height: '100vh',
-                    width: 'max-content'
-                    // position: 'absolute',
-                    // top: 0,
-                    // bottom: 0,
-                }}
-                ></lottie-player>
-          </div>
+        >
         </ParallaxLayer>
         {/* <ParallaxLayer
           offset={7}
@@ -314,40 +267,57 @@ export default function Home() {
         <ParallaxLayer
           id="mainHero"
           offset={0}
-          // speed={0.1}
+          // speed={0.2}
           style={{
             alignItems: "center",
             justifyContent: "center",
+            // backgroundImage :  'linear-gradient(to right, #000000, #000000)'
           }}
         >
-        <MainHero useOnScreen={useOnScreen} rootRef={rootRef} parallax={parallax}/>
+        <MainHero 
+          useOnScreen={useOnScreen} 
+          rootRef={rootRef} 
+          parallax={parallax}
+          author={authorData} 
+        />
         </ParallaxLayer>
 
         <ParallaxLayer
           id="about"
           offset={1}
-          // speed={0.1}
-          style={{
-            alignItems: "center",
-            justifyContent: "center",
-            // backgroundImage: 'linear-gradient( 99deg, rgba(115,18,81,1) 10.6%, rgba(28,28,28,1) 118% )'
-          }}
-        >
-        <About useOnScreen={useOnScreen} rootRef={rootRef} parallax={parallax} />
-        </ParallaxLayer>
-
-        <ParallaxLayer
-          id="education"
-          offset={2}
-          // speed={0.1}
+          // speed={0.2}
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            // backgroundImage :  "linear-gradient(to right, #360033, #0b8793)"
+            // backgroundImage :  'linear-gradient(to right, #000000, #000000)'
           }}
         >
-          <Education useOnScreen={useOnScreen} rootRef={rootRef} parallax={parallax} />
+        <About 
+          useOnScreen={useOnScreen} 
+          rootRef={rootRef} 
+          parallax={parallax} 
+          author={authorData} 
+        />
+        </ParallaxLayer>
+
+          <ParallaxLayer
+            id="education"
+            offset={2}
+            // speed={0.2}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              // backgroundImage :  'linear-gradient(to right, #000000, #000000)'
+            }}
+          >
+          <Education 
+            useOnScreen={useOnScreen} 
+            rootRef={rootRef} 
+            parallax={parallax} 
+            education={educationData}
+          />
         </ParallaxLayer>
 
         <ParallaxLayer
@@ -355,12 +325,17 @@ export default function Home() {
           offset={3}
           // speed={0.1}
           style={{
+            display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            // backgroundImage: 'linear-gradient(to right, #ad5389, #3c1053)'
+            // backgroundImage :  'linear-gradient(to right, #000000, #000000)'
           }}
         >
-          <Experience useOnScreen={useOnScreen} rootRef={rootRef} parallax={parallax} />
+          <Experience 
+            useOnScreen={useOnScreen} 
+            rootRef={rootRef} 
+            parallax={parallax} 
+            experience={experienceData}/>
         </ParallaxLayer>
 
         <ParallaxLayer
@@ -371,10 +346,14 @@ export default function Home() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            // backgroundImage :  'linear-gradient(to right, #000428, #004e92)'
+            // backgroundImage :  'linear-gradient(to right, #000000, #000000)'
           }}
         >
-          <Project useOnScreen={useOnScreen} rootRef={rootRef} parallax={parallax} />
+          <Project 
+            useOnScreen={useOnScreen} 
+            rootRef={rootRef} 
+            parallax={parallax} 
+            projectData={projectData} />
         </ParallaxLayer>
 
         <ParallaxLayer
@@ -385,10 +364,14 @@ export default function Home() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            // backgroundImage: "linear-gradient(to right, #23074d, #cc5333)"
+            // backgroundImage :  'linear-gradient(to right, #000000, #000000)'
           }}
         >
-          <Skills useOnScreen={useOnScreen} rootRef={rootRef} parallax={parallax} />
+          <Skills 
+            useOnScreen={useOnScreen} 
+            rootRef={rootRef} 
+            parallax={parallax} 
+            skills={skillsData} />
         </ParallaxLayer>
 
         <ParallaxLayer
@@ -396,8 +379,10 @@ export default function Home() {
           offset={6}
           // speed={0.1}
           style={{
+            display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            // backgroundImage :  'linear-gradient(to right, #000000, #000000)'
           }}
         >
         <Contact useOnScreen={useOnScreen} rootRef={rootRef} parallax={parallax}/>

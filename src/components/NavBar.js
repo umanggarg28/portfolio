@@ -18,7 +18,7 @@ export default function NavBar({ navColor, navSize }) {
           <HashLink
             smooth to="#mainHero"
             exact
-            activeClassName="text-white"
+            activeclassname="text-white"
           >
             <div className="float-left bright heading-font inline-flex items-center tracking-widest">
             <lottie-player
@@ -38,42 +38,42 @@ export default function NavBar({ navColor, navSize }) {
           <div className="nav-right float-right">
             <HashLink
               smooth to="#about"
-              activeClassName="text-red-100 nav_item_active bg-red-700"
+              activeclassname="text-red-100 nav_item_active bg-red-700"
               className="whittish inline-flex item-center px-3 my-6 text-red-200"
             >About
             </HashLink>
             <HashLink
+              smooth to="#education"
+              activeclassname="text-red-100 nav_item_active bg-red-700"
+              className="whittish inline-flex item-center px-3 my-6 text-red-200"
+            >Education
+            </HashLink>
+            <HashLink
               smooth to="#experience"
-              activeClassName="text-red-100 nav_item_active bg-red-700"
+              activeclassname="text-red-100 nav_item_active bg-red-700"
               className="whittish inline-flex item-center px-3 my-6 text-red-200"
             >Experience
             </HashLink>
             <HashLink
               smooth to="#projects"
-              activeClassName="text-red-100 nav_item_active bg-red-700"
+              activeclassname="text-red-100 nav_item_active bg-red-700"
               className="whittish inline-flex item-center px-3 my-6 text-red-200"
             >Projects
             </HashLink>
             <HashLink
               smooth to="#skills"
-              activeClassName="text-red-100 nav_item_active bg-red-700"
+              activeclassname="text-red-100 nav_item_active bg-red-700"
               className="whittish inline-flex item-center px-3 my-6 text-red-200"
             >Skills
             </HashLink>
             <HashLink
-              smooth to="#education"
-              activeClassName="text-red-100 nav_item_active bg-red-700"
-              className="whittish inline-flex item-center px-3 my-6 text-red-200"
-            >Education
-            </HashLink>
-            <HashLink
               smooth to="#contact"
-              activeClassName="text-red-100 nav_item_active bg-red-700"
+              activeclassname="text-red-100 nav_item_active bg-red-700"
               className="whittish inline-flex item-center px-3 my-6 text-red-200"
             >Contact
             </HashLink>
             {/* <HashLink
-              activeClassName="text-red-100 nav_item_active bg-red-700"
+              activeclassname="text-red-100 nav_item_active bg-red-700"
               className="pri-font whittish inline-flex item-center px-3 my-6 text-red-200"
               to="/public/Resume.pdf" target="_blank" download>Resume
             </HashLink> */}

@@ -31,16 +31,22 @@ function useOnScreen(ref, rootMargin = "0px") {
 const LazyShow = ({ children }) => {
   const controls = useAnimation();
   const rootRef = useRef();
-  const onScreen = useOnScreen(rootRef);
+  const onScreen = useOnScreen(rootRef, "-50px");
   useEffect(() => {
     if (onScreen) {
       controls.start({
         x: 0,
         opacity: 1,
         transition: {
-          duration: 2,
+          duration: 3,
           ease: "linear"
         }
+      });
+    } else {
+      // Reset animation when the element is not on screen
+      controls.start({
+        x: -10,
+        opacity: 0,
       });
     }
   }, [onScreen, controls]);

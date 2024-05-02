@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
-import sanityClient from "../client";
+import React, { useEffect } from "react";
 import Moment from 'moment';
 import LazyShow from "./LazyShow";
 import anime from "animejs";
 
-export default function Education({useOnScreen, parallax}) {
+export default function Education({useOnScreen, parallax, education}) {
 
   const rootRef = React.createRef();
 
@@ -35,69 +34,30 @@ export default function Education({useOnScreen, parallax}) {
           }
       }, [onScreen]);
 
-  const [education, setEducationData] = useState(null);
-
-  useEffect(() => {
-    sanityClient
-      .fetch(
-        `*[_type == "education"]{
-            university_name,
-            degree,
-            date_from,
-            date_to,
-            place,
-            gpa
-      }`
-      )
-      .then((data) => setEducationData(data))
-      .catch(console.error);
-  }, []);
-
   return (
     <React.Fragment>
     <section className="main-container">
         <div className="header-container">
-            {/* <div className="lottie-container">
-                <lottie-player
-                  id="schoolAnim"
-                  hover
-                  loop
-                  mode="normal"
-                  src="https://assets4.lottiefiles.com/packages/lf20_3mvi6d9c.json"
-                  style={{width: 80, marginRight:'2vh'}}
-                />
-            </div> */}
-            <h1 ref={rootRef} className="educationHeadingAnim heading content heading-education">Education</h1>
+            <h1 ref={rootRef} className="educationHeadingAnim heading content heading-education">/ education</h1>
         </div>
         <LazyShow>
           <div className="content-main-dad">
-                <div className="lottie-main">
-                  <lottie-player
-                    hover
-                    loop
-                    mode="bounce"
-                    id="secondLottie"
-                    // src="https://assets8.lottiefiles.com/packages/lf20_1omohnse.json"
-                    // src="https://assets10.lottiefiles.com/private_files/lf30_G9r0Hr.json"
-                    src="https://lottie.host/e4ab62ae-e9b4-40a9-8879-5ed7ba66fef9/1AfSq1oqev.json"
-                    style={{width: 350}}
-                  ></lottie-player>
-                </div>
                 <div className="content-box">
-                        <div className="content content-bg-education text-white">
+                        <div className="content text-white">
                           {education && education.map((educationData, index) => (
-                              <div key={index} class="px-6 py-4">
+                              <div key={index} class="education-box px-6 py-6">
                               <h3 className="education-data-heading">{educationData.university_name}</h3>
                               <p className="education-place">{educationData.place}</p>
-                              <div style={{'display': 'flex', 'justify-content': 'space-between', marginTop: 10}}>
+                              <div>
+                                 {/* style={{'display': 'flex', 'justify-content': 'space-between', marginTop: 10}}> */}
                                 <p className="education-data-degree">{educationData.degree}</p>
                                 <div className="education-data-dates">
                                   <p>{Moment(educationData.date_from).format('MMM yyyy')} - {Moment(educationData.date_to).format('MMM yyyy')}</p>
                                 </div>
                               </div>
-                              <div className="bar-mask">
+                              {/* <div className="bar-mask">
                                 <div className="bar"></div>
-                              </div>
+                              </div> */}
                               <div className="badge">
                                 <div className="badge-content">GPA: {educationData.gpa}</div>
                               </div>
@@ -117,7 +77,7 @@ export default function Education({useOnScreen, parallax}) {
                         id="scrollButton"
                         src="https://assets6.lottiefiles.com/packages/lf20_RbdjIx.json"
                         style={{
-                            width: 50
+                            width: 40
                         }}
                 ></lottie-player>
             </button>

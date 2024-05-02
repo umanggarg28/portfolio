@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react"
-import sanityClient from "../client"
+import React, { useEffect } from "react"
 import { motion, useAnimation } from "framer-motion";
 import anime from "animejs";
 
-export default function Project({useOnScreen, parallax}) {
+export default function Project({useOnScreen, parallax, projectData}) {
 
     const rootRef = React.createRef();
     
@@ -33,7 +32,6 @@ export default function Project({useOnScreen, parallax}) {
           }
       }, [onScreen]);
 
-    const [projectData, setProjectData] = useState(null);
     const controls = useAnimation();
 
     useEffect(() => {
@@ -43,23 +41,14 @@ export default function Project({useOnScreen, parallax}) {
           x: 0,
           transition: { delay: i * 0.2 },
         }))
+        } else {
+        // Reset animation when the element is not on screen
+        controls.start({
+            x: -10,
+            opacity: 0,
+        });
         }
       }, [onScreen, controls])
-
-    useEffect(() => {
-        sanityClient.fetch(`*[_type == "project"]{
-            title,
-            date,
-            place,
-            description,
-            technologies_used,
-            projectType,
-            link,
-            tags
-        }`
-        ).then((data)=>setProjectData(data))
-        .catch(console.error)
-    }, []);
 
     return (
         <React.Fragment>    
@@ -74,23 +63,10 @@ export default function Project({useOnScreen, parallax}) {
                             style={{width: 70, marginRight: '2vh', marginLeft: '2vh'}}
                         />
                     </div> */}
-                <h1 ref={rootRef} className="projectHeadingAnim heading content heading-project">Projects</h1>
+                <h1 ref={rootRef} className="projectHeadingAnim heading content heading-project">/ projects</h1>
             </div>
 
             <div className="content-main-dad">
-                    <div className="lottie-main" style={{marginRight: '2vh'}}>
-                    <lottie-player
-                        autoplay
-                        loop
-                        mode="normal"
-                        id="project"
-                        // src="https://assets3.lottiefiles.com/packages/lf20_ihsy8p2a.json"
-                        src="https://assets7.lottiefiles.com/packages/lf20_hske6rvv.json"
-                        style={{
-                            width: 300,
-                        }}
-                    />
-                    </div>
                     <div className="content-box">
                         <div className="content text-white">
                             <div className="project-box">
@@ -148,7 +124,7 @@ export default function Project({useOnScreen, parallax}) {
                         id="scrollButton"
                         src="https://assets6.lottiefiles.com/packages/lf20_RbdjIx.json"
                         style={{
-                            width: 50,
+                            width: 40,
                             zIndex: 99999
                         }}
                 ></lottie-player>

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import Rellax from "rellax";
 import TextAnimation from "react-animate-text";
 import { useSpring, animated } from "react-spring";
-import sanityClient from "../client";
 import LazyShow from "./LazyShow";
+import anime from "animejs";
 
-export default function MainHero({parallax}) {
+export default function MainHero({useOnScreen, parallax, author}) {
 
-    const [author, setAuthorData] = useState(null);
+    const rootRef = React.createRef();
+
+    const onScreen = useOnScreen(rootRef);
 
     const [flip, set] = useState(false);
     const props = useSpring({
@@ -19,29 +20,31 @@ export default function MainHero({parallax}) {
       onRest: () => set(!flip),
     });
 
-    // const container = useRef(null);
-    
-
     useEffect(() => {
+        if (onScreen) {
+          var textWrapper = document.querySelector('.mainHeadingAnim');
+          textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+  
+          anime.timeline({loop: false})
+              .add({
+                  targets: '.mainHeadingAnim .letter',
+                  scale: [4,1],
+                  opacity: [0,1],
+                  translateZ: 0,
+                  easing: "easeOutExpo",
+                  duration: 950,
+                  delay: (el, i) => 70*i
+              }).add({
+                  targets: '.mainHeadingAnim',
+                  opacity: 1,
+                  duration: 1000,
+                  easing: "easeOutExpo",
+                  delay: 1000
+              });
+          }
+      }, [onScreen]);
 
-        // new Rellax(".animate", {
-        //   speed: -10,
-        //   center: false,
-        //   wrapper: null,
-        //   round: true,
-        //   vertical: true,
-        //   horizontal: false,
-        // });
-
-        sanityClient.fetch(`*[_type == "author"]{
-            name,
-            image,
-            bio,
-            main_page_headline
-          }`).then((data) => setAuthorData(data))
-          .catch(console.error);
-    }, []);
-
+    // const container = useRef(null);
 
     return (
         <React.Fragment>
@@ -50,27 +53,26 @@ export default function MainHero({parallax}) {
             <LazyShow>
                 <div className="box-content">
                 <TextAnimation charInterval="50">
-                    <p className="about-description bright">Hello! I'm</p>
+                    <p className="about-description bright">Hello, I'm</p>
                 </TextAnimation>
                 <animated.h1
                 style={props}
                 className="text-xl text-green-100 cursive leading-none home-name"
                 >
-                    {author && author[0].name}
+                    {author && author[0].name}!
                 </animated.h1>
-                <h3 className="sub-heading">I build things for the web
-                <lottie-player
+                <h1 ref={rootRef} className="mainHeadingAnim heading-mainhero">{'{'} I build things for the web {'}'}</h1>
+                {/* <lottie-player
                     id="webAnim"
                     autoplay
                     loop
                     mode="normal"
                     // src="https://assets9.lottiefiles.com/packages/lf20_5inj20n2.json"
                     src="https://assets3.lottiefiles.com/packages/lf20_bfdhvjtv.json"
-                    style={{height: 250, marginLeft: -150, marginTop: -75, width: '55%'}}
-                ></lottie-player>
-                </h3>
+                    style={{height: 300, marginLeft: 375, marginTop: -195, width: '55%', position: 'fixed'}}
+                ></lottie-player> */}
                 <div className="description">
-                    <p className="about-description white">
+                    <p className="about-description">
                         {author && author[0].main_page_headline}
                     </p>
                 </div>
@@ -106,10 +108,15 @@ export default function MainHero({parallax}) {
                             loop
                             mode="normal"
                             id="scrollButton1"
-                            src="https://assets2.lottiefiles.com/packages/lf20_go4bqcz3.json"
+                            // src="https://assets2.lottiefiles.com/packages/lf20_go4bqcz3.json"
+                            // style={{
+                            //     width: 60,
+                            //     marginTop:'2vh'
+                            // }}
+                            src="https://assets6.lottiefiles.com/packages/lf20_RbdjIx.json"
                             style={{
-                                width: 60,
-                                marginTop:'2vh'
+                                width: 40,
+                                marginTop: 50
                             }}
                     ></lottie-player>
                 </button>

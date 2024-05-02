@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import sanityClient from "../client";
+import React, { useEffect } from "react";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Tabs from '@mui/material/Tabs';
@@ -8,7 +7,7 @@ import Moment from 'moment';
 import LazyShow from "./LazyShow";
 import anime from "animejs";
 
-export default function Experience({useOnScreen, parallax}) {
+export default function Experience({useOnScreen, parallax, experience}) {
 
   const rootRef = React.createRef();
   
@@ -65,7 +64,6 @@ export default function Experience({useOnScreen, parallax}) {
     };
   }
 
-  const [experience, setExperienceData] = useState(null);
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -79,24 +77,6 @@ export default function Experience({useOnScreen, parallax}) {
   //   }https://awv3node-homepage.surge.sh/build/assets/${name}.svg${
   //     wrap ? ")" : ""
   //   }`;
-
-  useEffect(() => {
-
-    sanityClient.fetch(`*[_type == "experience"]{
-        company_name,
-        job_title,
-        date_from,
-        date_to,
-        place,
-        description,
-        link
-      }`).then((data) => setExperienceData(data))
-      .catch(console.error);
-
-  }, []);
-
-  console.log("experience data:");
-  console.log(experience);
 
   return (
     <React.Fragment>
@@ -112,13 +92,13 @@ export default function Experience({useOnScreen, parallax}) {
                       style={{width: 80, marginRight: '2vh'}}
                     />
               </div> */}
-              <h1 ref={rootRef} className="experienceHeadingAnim heading content heading-experience">Where I've worked</h1>
+              <h1 ref={rootRef} className="experienceHeadingAnim heading content heading-experience">/ where I've worked</h1>
           </div>
 
     <LazyShow>
         <div className="content-main-dad">
         <div className="lottie-main">
-            <lottie-player
+            {/* <lottie-player
                 hover
                 loop
                 mode="normal"
@@ -130,11 +110,10 @@ export default function Experience({useOnScreen, parallax}) {
                   marginTop: 20,
                   marginLeft:60
                 }}
-              ></lottie-player>
+              ></lottie-player> */}
             </div>    
           <div className="content-box">
             <div className="content text-white">
-            <div className="content-bg-experience">
               <Box
                 sx={{ flexGrow: 0, display: 'flex', marginLeft: -10 }}
               >
@@ -155,19 +134,22 @@ export default function Experience({useOnScreen, parallax}) {
                 <TabPanel value={value} index={index}>
                     <p className="experience-jobtitle">{experienceData.job_title} @</p>
                     <h3 className="experience-data-heading">{experienceData.company_name}</h3>
-                    <div style={{ display: 'flex', justifyContent: 'space-between'}}>
-                      <p className="experience-place">{experienceData.place}</p>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '5px', paddingBottom: '5px'}}>
+                      {/* <p className="experience-place">{experienceData.place}</p> */}
                       <div className="experience-data-dates">
                         <p>{Moment(experienceData.date_from).format('MMM yyyy')} - {Moment(experienceData.date_to).format('MMM yyyy')}</p>
                       </div>
                     </div>
-                    <p className="experience-description">{experienceData.description}</p>
+                    <ul className="experience-description">
+                      {experienceData.description.split('\n').map((paragraph, index) => (
+                        <li key={index}>{paragraph}</li>
+                      ))}
+                    </ul>
                     {/* <p>{experienceData.link}</p> */}
                   </TabPanel>
               ))}
               </Box>
               </div>
-            </div>
           </div>  
         </div>
       </LazyShow>
@@ -191,7 +173,7 @@ export default function Experience({useOnScreen, parallax}) {
                     id="scrollButton"
                     src="https://assets6.lottiefiles.com/packages/lf20_RbdjIx.json"
                     style={{
-                        width: 50
+                        width: 40
                     }}
             ></lottie-player>
         </button>

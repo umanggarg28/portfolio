@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
-import sanityClient from "../client";
+import React, { useEffect } from "react";
 import LazyShow from "./LazyShow";
 import anime from "animejs";
 
-export default function About({useOnScreen, parallax}) {
+export default function About({useOnScreen, parallax, author}) {
 
     const rootRef = React.createRef();
 
@@ -34,21 +33,6 @@ export default function About({useOnScreen, parallax}) {
           }
       }, [onScreen]);
 
-    const [author, setAuthorData] = useState(null);
-
-    useEffect(() => {
-
-        sanityClient.fetch(`*[_type == "author"]{
-            name,
-            image,
-            bio,
-            featured_skills
-          }`).then((data) => setAuthorData(data))
-          .catch(console.error);
-    }, []);
-
-
-
     return (
         <React.Fragment>
         <section className="main-container">
@@ -64,12 +48,12 @@ export default function About({useOnScreen, parallax}) {
                     style={{width: 80, marginRight: '2vh'}}
                 />
             </div> */}
-            <h1 ref={rootRef} className="aboutHeadingAnim content heading heading-about">A bit about me</h1>
+            <h1 ref={rootRef} className="aboutHeadingAnim content heading heading-about">/ about me</h1>
         </div>
         <LazyShow>
             <div className="content-main-dad">
-            <div className="lottie-main" style={{marginRight: 0}}>
-            <lottie-player
+            <div className="lottie-main">
+            {/* <lottie-player
                 autoplay
                 loop
                 mode="normal"
@@ -79,7 +63,7 @@ export default function About({useOnScreen, parallax}) {
                 style={{
                     width: '60vh'
                 }}
-                ></lottie-player>
+                ></lottie-player> */}
             </div>
             <div className="content-box content-bg-about">
             <div className="content text-white">
@@ -91,9 +75,9 @@ export default function About({useOnScreen, parallax}) {
                         </div>
                         <ul className="skills-list">
                             {author && author.map((authorData, index) => (
-                                authorData.featured_skills && authorData.featured_skills.split(',').map((item)=> <li>{item}{"\n"}</li>)
+                                authorData.featured_skills && authorData.featured_skills.split(',').map((item)=> <li key={index}>{item}</li>)
                             ))}
-                            </ul>
+                        </ul>
                         </div>
                     </div>
             </div>
@@ -111,7 +95,7 @@ export default function About({useOnScreen, parallax}) {
                             id="scrollButton"
                             src="https://assets6.lottiefiles.com/packages/lf20_RbdjIx.json"
                             style={{
-                                width: 50
+                                width: 40
                             }}
                     ></lottie-player>
             </button>
