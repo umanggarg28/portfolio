@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ec6f6cb9.css",
+    "main.js": "/static/js/main.f850011c.js",
+    "static/media/CeraProMedium.otf": "/static/media/CeraProMedium.2bc02ae84a1e73c231d6.otf",
+    "static/media/CeraProLight.otf": "/static/media/CeraProLight.e46c8e0b3ab25af6d9eb.otf",
+    "static/media/ClashDisplay-Medium.otf": "/static/media/ClashDisplay-Medium.afcc86306d88484344b4.otf",
+    "static/media/ClashDisplay-Regular.otf": "/static/media/ClashDisplay-Regular.ccc51e2a3c40ce9bca53.otf",
+    "index.html": "/index.html",
+    "main.ec6f6cb9.css.map": "/static/css/main.ec6f6cb9.css.map",
+    "main.f850011c.js.map": "/static/js/main.f850011c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ec6f6cb9.css",
+    "static/js/main.f850011c.js"
+  ]
+}
