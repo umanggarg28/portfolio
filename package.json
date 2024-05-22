@@ -28,7 +28,7 @@
     "react": "^17.0.0",
     "react-animate-text": "^0.4.0",
     "react-animated-css": "^1.2.1",
-    "react-dom": "^16.7.0",
+    "react-dom": "^17.0.0",
     "react-ga": "^3.3.0",
     "react-gsap": "^3.2.1",
     "react-micron": "^1.2.1",
@@ -48,7 +48,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build",
+    "postdeploy": "echo 'Deployed to GitHub Pages!'"
   },
   "eslintConfig": {
     "extends": [
@@ -76,5 +78,9 @@
     "@babel/helper-create-class-features-plugin": "7.19.0",
     "@babel/helper-module-transforms": "7.19.6",
     "babel-loader": "8.2.5"
-  }
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
+  },
+  "homepage": "https://umanggarg28.github.io/portfolio"
 }
