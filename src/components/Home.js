@@ -84,6 +84,7 @@ export default function Home() {
       fetchSkillsData();
 
   }, []);
+  console.log(authorData);
 
 
   function useOnScreen(ref, rootMargin = "0px") {
