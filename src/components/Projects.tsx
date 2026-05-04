@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { featuredProject, projects } from '@/content/portfolio'
 
 export default function Projects() {
   const wrapRef = useRef<HTMLDivElement>(null)
@@ -90,29 +91,24 @@ export default function Projects() {
         <div className="project-featured-left appear">
           <div className="project-featured-index" aria-hidden="true">01</div>
           <div>
-            <div className="project-kicker">Featured Project · 2025</div>
-            <div className="project-big-title">CARTOGRAPHER</div>
+            <div className="project-kicker">{featuredProject.kicker}</div>
+            <div className="project-big-title">{featuredProject.title}</div>
             <p className="project-desc-text">
-              Codebase reasoning engine that indexes any GitHub repo and answers natural-language questions with source citations and line numbers. Every retrieval layer hand-built — no LangChain, no LlamaIndex. tree-sitter AST chunking, contextual LLM descriptions (35–49% retrieval improvement per Anthropic benchmarks), Qdrant hybrid search (dense + BM25 + RRF), Cohere cross-encoder reranking, HyDE + query expansion, and a full ReAct agent via MCP with 10 tools, working memory, and parallel async execution.
+              {featuredProject.description}
             </p>
           </div>
           <div className="project-bottom">
             <div className="project-stack-row">
-              <span className="p-tag">FastAPI</span>
-              <span className="p-tag">React/Vite</span>
-              <span className="p-tag">Qdrant Cloud</span>
-              <span className="p-tag">tree-sitter</span>
-              <span className="p-tag">FastMCP</span>
-              <span className="p-tag">Cohere</span>
-              <span className="p-tag">Docker</span>
+              {featuredProject.tags.map((tag) => (
+                <span className="p-tag" key={tag}>{tag}</span>
+              ))}
             </div>
             <div className="project-links">
-              <a href="https://cartographer-app.vercel.app" target="_blank" rel="noopener noreferrer" className="p-link">
-                Live Demo →
-              </a>
-              <a href="https://github.com/umanggarg28/Cartographer" target="_blank" rel="noopener noreferrer" className="p-link">
-                GitHub →
-              </a>
+              {featuredProject.links.map((link) => (
+                <a href={link.href} target="_blank" rel="noopener noreferrer" className="p-link" key={link.href}>
+                  {link.label} →
+                </a>
+              ))}
             </div>
           </div>
         </div>
@@ -161,58 +157,38 @@ export default function Projects() {
             <span ref={indexRef}>02 / 05</span>
           </div>
           <div className="hscroll-track" ref={trackRef}>
-            <div className="project-cell project-cell--static appear hscroll-cell">
-              <span className="pc-num">02</span>
-              <div className="pc-kicker">AI · Computer Vision · Production · 2025</div>
-              <div className="pc-title">CLEARSTAIN PIPELINE</div>
-              <p className="pc-desc">AI virtual HE staining pipeline for unstained brightfield whole slide images, built at PictorLabs.ai (UCLA spinoff, venture-backed). Owned end-to-end: fine-tuned Google&apos;s PathFoundation vision model in PyTorch, built Django API with organ/species/diagnosis-based predictor routing, Kafka job orchestration, and TorchServe model serving.</p>
-              <div className="pc-tags">
-                <span className="p-tag">PyTorch</span>
-                <span className="p-tag">Django</span>
-                <span className="p-tag">Kafka</span>
-                <span className="p-tag">TorchServe</span>
-                <span className="p-tag">OpenSlide</span>
-                <span className="p-tag">AWS ECS</span>
-              </div>
-              <span className="pc-note">Closed-source · proprietary</span>
-            </div>
-            <a className="project-cell appear hscroll-cell" href="https://github.com/umanggarg28/rag-research-copilot" target="_blank" rel="noopener noreferrer">
-              <span className="pc-num">03</span>
-              <div className="pc-kicker">RAG · Full Stack · 2025</div>
-              <div className="pc-title">RAG RESEARCH COPILOT</div>
-              <p className="pc-desc">RAG system for querying research papers — grounding answers in document content with full source citations. Custom semantic search (MiniLM embeddings + ChromaDB), BM25 keyword search, and hybrid retrieval via RRF fusion. No LangChain. Precursor to Cartographer — built to understand retrieval internals from first principles.</p>
-              <div className="pc-tags">
-                <span className="p-tag">FastAPI</span>
-                <span className="p-tag">React</span>
-                <span className="p-tag">BM25</span>
-                <span className="p-tag">ChromaDB</span>
-                <span className="p-tag">Hybrid Search</span>
-              </div>
-            </a>
-            <a className="project-cell appear hscroll-cell" href="https://github.com/umanggarg28/transformer-from-scratch" target="_blank" rel="noopener noreferrer">
-              <span className="pc-num">04</span>
-              <div className="pc-kicker">Deep Learning · PyTorch · 2025</div>
-              <div className="pc-title">TRANSFORMER FROM SCRATCH</div>
-              <p className="pc-desc">Full encoder-decoder transformer implemented in PyTorch — multi-head attention, positional encoding, layer norm, greedy decoding, label smoothing, LR warmup. Trained EN→ES on the Opus Books dataset, end-to-end from &quot;Attention Is All You Need&quot;.</p>
-              <div className="pc-tags">
-                <span className="p-tag">PyTorch</span>
-                <span className="p-tag">Attention</span>
-                <span className="p-tag">Transformers</span>
-                <span className="p-tag">NLP</span>
-              </div>
-            </a>
-            <a className="project-cell appear hscroll-cell" href="https://github.com/umanggarg28/reinforcement-learning" target="_blank" rel="noopener noreferrer">
-              <span className="pc-num">05</span>
-              <div className="pc-kicker">Reinforcement Learning · 2025</div>
-              <div className="pc-title">RL EXPERIMENTS</div>
-              <p className="pc-desc">Q-learning, DQN (Breakout), and PPO (LunarLander) trained on Gymnasium with Stable Baselines 3 — plus a custom multi-agent dual-taxi environment built from scratch (observation space, reward shaping, training loop). Domain breadth: not just LLMs.</p>
-              <div className="pc-tags">
-                <span className="p-tag">PyTorch</span>
-                <span className="p-tag">Gymnasium</span>
-                <span className="p-tag">SB3</span>
-                <span className="p-tag">DQN · PPO</span>
-              </div>
-            </a>
+            {projects.map((project) => {
+              const body = (
+                <>
+                  <span className="pc-num">{project.idx}</span>
+                  <div className="pc-kicker">{project.kicker}</div>
+                  <div className="pc-title">{project.title}</div>
+                  <p className="pc-desc">{project.description}</p>
+                  <div className="pc-tags">
+                    {project.tags.map((tag) => (
+                      <span className="p-tag" key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                  {project.note ? <span className="pc-note">{project.note}</span> : null}
+                </>
+              )
+
+              return project.href ? (
+                <a
+                  className="project-cell appear hscroll-cell"
+                  href={project.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  key={project.idx}
+                >
+                  {body}
+                </a>
+              ) : (
+                <div className="project-cell project-cell--static appear hscroll-cell" key={project.idx}>
+                  {body}
+                </div>
+              )
+            })}
           </div>
         </div>
       </div>
