@@ -103,7 +103,6 @@ html.intro-active #hero .appear-delay-3 { transition-delay: 0ms; }
   --bg-2: #11120f;
   --fg: #f0ede6;
   --accent: #b8ff57;
-  --accent-2: #6bd6ff;
   --accent-dim: rgba(184,255,87,0.12);
   --mid: rgba(240,237,230,0.45);
   --dim: rgba(240,237,230,0.22);
@@ -299,33 +298,6 @@ nav.scrolled {
 .nav-links a:hover::after,
 .nav-links a.nav-active::after { transform: scaleX(1); }
 
-/* ── Hero WebGL sphere ── */
-#hero-visual {
-  position: absolute;
-  top: 47%;
-  right: 5%;
-  transform: translateY(-52%);
-  width: min(34vw, 460px);
-  height: min(34vw, 460px);
-  pointer-events: none;
-  z-index: 0;
-  overflow: visible;
-  opacity: 0.56;
-  filter: drop-shadow(0 0 24px rgba(184,255,87,0.08));
-}
-.orbit-ring {
-  transform-origin: 250px 250px;
-}
-.orbit-1 { animation: orbit-1-spin 38s linear infinite; }
-.orbit-2 { animation: orbit-2-spin 24s linear infinite; }
-.orbit-3 { animation: orbit-3-spin 15s linear infinite; }
-@keyframes orbit-1-spin { from { transform: rotate(-12deg);  } to { transform: rotate(348deg);  } }
-@keyframes orbit-2-spin { from { transform: rotate(58deg);   } to { transform: rotate(-302deg); } }
-@keyframes orbit-3-spin { from { transform: rotate(-35deg);  } to { transform: rotate(325deg);  } }
-@media (max-width: 900px) {
-  #hero-visual { display: none; }
-}
-
 /* ── Hero atmosphere ── */
 #hero::before {
   content: none;
@@ -456,7 +428,6 @@ nav.scrolled {
   .hero-headline .char-mag { transition: none; opacity: 1 !important; filter: none !important; }
   .dot-pulse { animation: none; }
   .marquee-track { animation-duration: 60s; }
-  .orbit-1, .orbit-2, .orbit-3 { animation: none; }
 }
 
 .hero-bottom {
