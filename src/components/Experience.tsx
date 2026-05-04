@@ -34,7 +34,7 @@ const experiences: ExpEntry[] = [
     id: 'e2',
     idx: '02',
     role: 'SOFTWARE ENGINEER 2',
-    company: 'Medhaz Corp — Healthcare Workforce Platform',
+    company: 'Medhaz Corp — Workforce Platform',
     location: 'Charlotte, NC',
     tags: ['Django REST', 'React 18', 'Python'],
     period: 'May 2024 — Nov 2024',
@@ -129,7 +129,7 @@ export default function Experience() {
                 <div className="exp-role">{exp.role}</div>
                 <div className="exp-company-row">
                   <span className="exp-company">{exp.company}</span>
-                  <span className="exp-location exp-location--mobile">{exp.location}</span>
+                  <span className="exp-location exp-location--inline">{exp.location}</span>
                 </div>
                 <div className="exp-tags">
                   {exp.tags.map((tag) => (
@@ -139,7 +139,6 @@ export default function Experience() {
               </div>
               <div className="exp-right">
                 <div className="exp-period">{exp.period}</div>
-                <div className="exp-location">{exp.location}</div>
               </div>
               <div className="exp-toggle" aria-hidden="true">
                 <span />
