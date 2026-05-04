@@ -6,10 +6,10 @@ const HEADLINE = 'UMANG GARG'
 const GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ@#*+/<>=$%01'
 const PHRASES = [
   'Software & AI Engineer',
-  'Full-Stack Engineer',
-  'AI Engineer',
-  'Agentic AI Engineer',
-  'LLM Engineer',
+  'Full-Stack Engineering',
+  'LLM Engineering',
+  'Agentic Workflows',
+  'Production AI',
 ]
 
 export default function Hero() {
