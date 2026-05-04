@@ -140,9 +140,7 @@ export default function Hero() {
           <div className="hero-bottom-left">
             <div className="hero-availability">
               <span className="dot-pulse" />
-              <span>
-                Available · AI Engineering roles · Remote-first, US relocation · H1-B cap-exempt
-              </span>
+              <span>Available · AI Engineering roles · Open to remote</span>
             </div>
             <p className="hero-desc">
               I build production AI systems end-to-end — from fine-tuned models to shipped product.
