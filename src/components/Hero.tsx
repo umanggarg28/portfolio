@@ -8,7 +8,9 @@ const PHRASES = [
   'Software & AI Engineer',
   'Full-Stack Engineering',
   'LLM Engineering',
+  'Systems Engineering',
   'Agentic Workflows',
+  'Distributed Systems',
   'Production AI',
 ]
 
