@@ -36,8 +36,8 @@ export default function Hero() {
         return
       }
 
-      const stagger = 55
-      const holdMs = 380
+      const stagger = 65
+      const holdMs = 415
       const start = performance.now()
       let lastFlip = 0
       let raf = 0
