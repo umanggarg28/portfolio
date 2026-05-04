@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import HeroAtmosphere from './HeroAtmosphere'
 
 const HEADLINE = 'UMANG GARG'
 const GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ@#*+/<>=$%01'
@@ -254,6 +255,7 @@ export default function Hero() {
 
   return (
     <section id="hero">
+      <HeroAtmosphere />
       <div className="hero-bg-number" aria-hidden="true">08</div>
       <div className="hero-scroll-hint" aria-hidden="true">
         <div className="hero-scroll-line" />
