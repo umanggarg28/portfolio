@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 
 const HEADLINE = 'UMANG GARG'
+const GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ@#*+/<>=$%01'
 
 export default function Hero() {
   const headlineRef = useRef<HTMLHeadingElement>(null)
@@ -10,14 +11,71 @@ export default function Hero() {
   useEffect(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-    // Kick the entrance once intro loader is gone (or immediately if skipped)
     const triggerEntrance = () => {
       const heroEls = document.querySelectorAll<HTMLElement>('#hero .appear')
       heroEls.forEach((el, i) => {
         setTimeout(() => el.classList.add('in'), 80 + i * 130)
       })
-      setTimeout(() => headlineRef.current?.classList.add('in'), 60)
+      runScramble()
     }
+
+    const runScramble = () => {
+      const charEls = Array.from(
+        document.querySelectorAll<HTMLElement>('.hero-headline .char-mag')
+      )
+      if (!charEls.length) return
+      const finals = charEls.map((el) => el.dataset.final ?? el.textContent ?? '')
+
+      if (reduced) {
+        charEls.forEach((el, i) => {
+          el.textContent = finals[i]
+          el.style.opacity = '1'
+          el.style.filter = ''
+        })
+        headlineRef.current?.classList.add('in')
+        return
+      }
+
+      const stagger = 55
+      const holdMs = 380
+      const start = performance.now()
+      let lastFlip = 0
+      let raf = 0
+      const tick = (now: number) => {
+        const elapsed = now - start
+        const flip = elapsed - lastFlip >= 55
+        let allSettled = true
+        charEls.forEach((cel, i) => {
+          const settleAt = i * stagger + holdMs
+          if (finals[i] === ' ') {
+            cel.textContent = ' '
+            cel.style.opacity = '1'
+            cel.style.filter = ''
+            return
+          }
+          if (elapsed >= settleAt) {
+            if (cel.textContent !== finals[i]) cel.textContent = finals[i]
+            cel.style.opacity = '1'
+            cel.style.filter = ''
+          } else {
+            const t = Math.max(0, elapsed / settleAt)
+            cel.style.opacity = String(0.15 + 0.85 * t)
+            cel.style.filter = `blur(${(1 - t) * 6}px)`
+            if (flip) {
+              const g = GLYPHS[Math.floor(Math.random() * GLYPHS.length)]
+              cel.textContent = g
+            }
+            allSettled = false
+          }
+        })
+        if (flip) lastFlip = elapsed
+        if (!allSettled) raf = requestAnimationFrame(tick)
+        else headlineRef.current?.classList.add('in')
+      }
+      raf = requestAnimationFrame(tick)
+      return () => cancelAnimationFrame(raf)
+    }
+
     if (document.documentElement.classList.contains('intro-done')) {
       triggerEntrance()
     } else {
@@ -30,7 +88,6 @@ export default function Hero() {
       obs.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
     }
 
-    // Scroll reveal for non-hero `.appear`
     const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -50,7 +107,7 @@ export default function Hero() {
       return () => revealObserver.disconnect()
     }
 
-    // Cursor-proximity per-letter pull (kinetic typography)
+    // Cursor magnetism — per-letter pull + magnetic CTA
     const chars = Array.from(document.querySelectorAll<HTMLElement>('.hero-headline .char-mag'))
     const cta = document.querySelector<HTMLElement>('.hero-cta')
     const heroSection = document.getElementById('hero')
@@ -65,8 +122,7 @@ export default function Hero() {
     document.addEventListener('mousemove', onMouseMove, { passive: true })
 
     const animate = () => {
-      const radius = 220
-      // Per-letter magnetism — only when cursor is inside hero
+      const radius = 280
       const inHero = heroSection ? my <= heroSection.getBoundingClientRect().bottom : true
       chars.forEach((char) => {
         if (!inHero) {
@@ -80,14 +136,13 @@ export default function Hero() {
         const dy = my - cy
         const dist = Math.hypot(dx, dy)
         if (dist < radius) {
-          const pull = Math.pow(1 - dist / radius, 2) * 0.28
+          const pull = (1 - dist / radius) * 0.45
           char.style.transform = `translate(${dx * pull}px, ${dy * pull}px)`
         } else {
           char.style.transform = ''
         }
       })
 
-      // Magnetic CTA
       if (cta) {
         const r = cta.getBoundingClientRect()
         const cx = r.left + r.width / 2
@@ -127,9 +182,13 @@ export default function Hero() {
         <h1 className="hero-headline" ref={headlineRef} aria-label="Umang Garg">
           <span className="hero-headline-row">
             {HEADLINE.split('').map((c, i) => (
-              <span className="char" key={i} style={{ ['--i' as never]: i }} aria-hidden="true">
-                <span className="char-mask">
-                  <span className="char-mag">{c === ' ' ? ' ' : c}</span>
+              <span className="char" key={i} aria-hidden="true">
+                <span
+                  className="char-mag"
+                  data-final={c}
+                  style={{ opacity: 0.15 }}
+                >
+                  {c === ' ' ? ' ' : c}
                 </span>
               </span>
             ))}
