@@ -38,14 +38,14 @@ export default function About() {
         </div>
         <div className="about-right appear appear-delay-2">
           <div className="cert-section-title">Education</div>
-          <div className="cert-row">
+          <div className="cert-row cert-row--education">
             <span className="cert-name">
               MS Software Engineering — Rochester Institute of Technology
               <span className="cert-location">New York, USA</span>
             </span>
             <span className="cert-badge">GPA 3.94</span>
           </div>
-          <div className="cert-row">
+          <div className="cert-row cert-row--education">
             <span className="cert-name">
               B.Tech Mechanical Engineering — ITM University
               <span className="cert-location">Gurgaon, India</span>

@@ -735,13 +735,20 @@ nav.scrolled {
   gap: 16px;
 }
 .cert-name { font-size: 13px; color: var(--mid); line-height: 1.4; }
+.cert-row--education {
+  padding: 18px 0;
+}
+.cert-row--education .cert-name {
+  font-size: 15px;
+  color: rgba(240,237,230,0.72);
+}
 .cert-location {
   display: block;
-  margin-top: 4px;
+  margin-top: 6px;
   font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--dim);
+  color: rgba(184,255,87,0.56);
 }
 .cert-provider-title {
   font-size: 11px;
