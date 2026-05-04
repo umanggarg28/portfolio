@@ -1,30 +1,36 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
+
+const HEADLINE = 'UMANG GARG'
 
 export default function Hero() {
+  const headlineRef = useRef<HTMLHeadingElement>(null)
+
   useEffect(() => {
-    // Hero cursor parallax
-    const heroHeadline = document.querySelector<HTMLElement>('.hero-headline')
-    const heroSection = document.getElementById('hero')
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-    const onMouseMove = (e: MouseEvent) => {
-      if (!heroSection || !heroHeadline) return
-      const rect = heroSection.getBoundingClientRect()
-      if (e.clientY > rect.bottom) return
-      const cx = (e.clientX / window.innerWidth - 0.5) * 2
-      const cy = (e.clientY / window.innerHeight - 0.5) * 2
-      heroHeadline.style.transform = `translate(${cx * 8}px, ${cy * 5}px)`
+    // Kick the entrance once intro loader is gone (or immediately if skipped)
+    const triggerEntrance = () => {
+      const heroEls = document.querySelectorAll<HTMLElement>('#hero .appear')
+      heroEls.forEach((el, i) => {
+        setTimeout(() => el.classList.add('in'), 80 + i * 130)
+      })
+      setTimeout(() => headlineRef.current?.classList.add('in'), 60)
     }
-    document.addEventListener('mousemove', onMouseMove)
+    if (document.documentElement.classList.contains('intro-done')) {
+      triggerEntrance()
+    } else {
+      const obs = new MutationObserver(() => {
+        if (document.documentElement.classList.contains('intro-done')) {
+          triggerEntrance()
+          obs.disconnect()
+        }
+      })
+      obs.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
+    }
 
-    // Hero entrance animation
-    const heroEls = document.querySelectorAll<HTMLElement>('#hero .appear')
-    heroEls.forEach((el, i) => {
-      setTimeout(() => el.classList.add('in'), 120 + i * 150)
-    })
-
-    // Scroll reveal for non-hero elements
+    // Scroll reveal for non-hero `.appear`
     const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -40,31 +46,74 @@ export default function Hero() {
       revealObserver.observe(el)
     })
 
-    // Magnetic CTA
-    const cta = document.querySelector<HTMLElement>('.hero-cta')
-    const onCtaMouseMove = (e: MouseEvent) => {
-      if (!cta) return
-      const rect = cta.getBoundingClientRect()
-      const cx = rect.left + rect.width / 2
-      const cy = rect.top + rect.height / 2
-      const dx = e.clientX - cx
-      const dy = e.clientY - cy
-      const dist = Math.sqrt(dx * dx + dy * dy)
-      const radius = 90
-      if (dist < radius) {
-        const pull = (1 - dist / radius) * 0.35
-        cta.style.transform = `translate(${dx * pull}px, ${dy * pull}px)`
-      } else {
-        cta.style.transform = ''
-      }
+    if (reduced) {
+      return () => revealObserver.disconnect()
     }
-    document.addEventListener('mousemove', onCtaMouseMove)
+
+    // Cursor-proximity per-letter pull (kinetic typography)
+    const chars = Array.from(document.querySelectorAll<HTMLElement>('.hero-headline .char-mag'))
+    const cta = document.querySelector<HTMLElement>('.hero-cta')
+    const heroSection = document.getElementById('hero')
+
+    let mx = -9999, my = -9999
+    let rafId = 0
+
+    const onMouseMove = (e: MouseEvent) => {
+      mx = e.clientX
+      my = e.clientY
+    }
+    document.addEventListener('mousemove', onMouseMove, { passive: true })
+
+    const animate = () => {
+      const radius = 220
+      // Per-letter magnetism — only when cursor is inside hero
+      const inHero = heroSection ? my <= heroSection.getBoundingClientRect().bottom : true
+      chars.forEach((char) => {
+        if (!inHero) {
+          char.style.transform = ''
+          return
+        }
+        const r = char.getBoundingClientRect()
+        const cx = r.left + r.width / 2
+        const cy = r.top + r.height / 2
+        const dx = mx - cx
+        const dy = my - cy
+        const dist = Math.hypot(dx, dy)
+        if (dist < radius) {
+          const pull = Math.pow(1 - dist / radius, 2) * 0.28
+          char.style.transform = `translate(${dx * pull}px, ${dy * pull}px)`
+        } else {
+          char.style.transform = ''
+        }
+      })
+
+      // Magnetic CTA
+      if (cta) {
+        const r = cta.getBoundingClientRect()
+        const cx = r.left + r.width / 2
+        const cy = r.top + r.height / 2
+        const dx = mx - cx
+        const dy = my - cy
+        const dist = Math.hypot(dx, dy)
+        const ctaRadius = 110
+        if (dist < ctaRadius) {
+          const pull = (1 - dist / ctaRadius) * 0.32
+          cta.style.transform = `translate(${dx * pull}px, ${dy * pull}px)`
+        } else {
+          cta.style.transform = ''
+        }
+      }
+
+      rafId = requestAnimationFrame(animate)
+    }
+    rafId = requestAnimationFrame(animate)
 
     return () => {
+      cancelAnimationFrame(rafId)
       document.removeEventListener('mousemove', onMouseMove)
-      document.removeEventListener('mousemove', onCtaMouseMove)
-      if (cta) cta.style.transform = ''
       revealObserver.disconnect()
+      chars.forEach((c) => (c.style.transform = ''))
+      if (cta) cta.style.transform = ''
     }
   }, [])
 
@@ -75,16 +124,29 @@ export default function Hero() {
         <div className="hero-scroll-line" />
       </div>
       <div className="hero-content">
-        <h1 className="hero-headline appear appear-delay-1">
-          UMANG GARG<br />
-          <span className="italic-word">Software &amp; AI Engineer</span>
+        <h1 className="hero-headline" ref={headlineRef} aria-label="Umang Garg">
+          <span className="hero-headline-row">
+            {HEADLINE.split('').map((c, i) => (
+              <span className="char" key={i} style={{ ['--i' as never]: i }} aria-hidden="true">
+                <span className="char-mask">
+                  <span className="char-mag">{c === ' ' ? ' ' : c}</span>
+                </span>
+              </span>
+            ))}
+          </span>
+          <span className="italic-word appear appear-delay-1">Software &amp; AI Engineer</span>
         </h1>
         <div className="hero-bottom appear appear-delay-2">
           <div className="hero-bottom-left">
+            <div className="hero-availability">
+              <span className="dot-pulse" />
+              <span>
+                Available · AI Engineering roles · Remote-first, US relocation · H1-B cap-exempt
+              </span>
+            </div>
             <p className="hero-desc">
-              8+ years building production-grade systems at the intersection of
-              software engineering and applied AI — LLM tooling, agentic workflows,
-              and full-stack platforms.
+              I build production AI systems end-to-end — from fine-tuned models to shipped product.
+              8 years engineering; the last two on LLM tooling and agentic workflows.
             </p>
             <a href="#projects" className="hero-cta">View Work →</a>
           </div>

@@ -1,46 +1,65 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function PageLoader() {
+  const [progress, setProgress] = useState(0)
+  const [phase, setPhase] = useState<'count' | 'reveal' | 'lift' | 'done'>('count')
+  const [skip, setSkip] = useState<boolean | null>(null)
+
   useEffect(() => {
-    const overlay = document.createElement('div')
-    overlay.id = 'page-loader'
-    overlay.innerHTML = '<div class="loader-bar"></div>'
-    document.body.appendChild(overlay)
+    const seen = sessionStorage.getItem('ug:loaded') === '1'
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (seen || reduced) {
+      setSkip(true)
+      document.documentElement.classList.add('intro-done')
+      return
+    }
+    setSkip(false)
+    document.documentElement.classList.add('intro-active')
 
-    const style = document.createElement('style')
-    style.textContent = `
-      #page-loader {
-        position: fixed; inset: 0; z-index: 9000;
-        background: #0d0d0d;
-        display: flex; align-items: flex-end;
-        padding: 48px;
-        transition: opacity 0.6s cubic-bezier(0.23,1,0.32,1);
-      }
-      #page-loader.done { opacity: 0; pointer-events: none; }
-      .loader-bar {
-        width: 0; height: 1px;
-        background: var(--accent);
-        transition: width 0.7s cubic-bezier(0.23,1,0.32,1);
-      }
-    `
-    document.head.appendChild(style)
-
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        const bar = overlay.querySelector<HTMLElement>('.loader-bar')
-        if (bar) bar.style.width = '100%'
+    const start = performance.now()
+    const duration = 1100
+    let raf = 0
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / duration)
+      const eased = 1 - Math.pow(1 - t, 3)
+      setProgress(Math.round(eased * 100))
+      if (t < 1) raf = requestAnimationFrame(tick)
+      else {
+        setPhase('reveal')
+        setTimeout(() => setPhase('lift'), 700)
         setTimeout(() => {
-          overlay.classList.add('done')
-          setTimeout(() => {
-            overlay.remove()
-            style.remove()
-          }, 500)
-        }, 550)
-      })
-    })
+          setPhase('done')
+          document.documentElement.classList.remove('intro-active')
+          document.documentElement.classList.add('intro-done')
+          sessionStorage.setItem('ug:loaded', '1')
+        }, 1500)
+      }
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
   }, [])
 
-  return null
+  if (skip === null || skip) return null
+  if (phase === 'done') return null
+
+  const name = 'UMANG GARG'
+
+  return (
+    <div id="page-loader" className={`pl-${phase}`} aria-hidden="true">
+      <div className="pl-top">
+        <span className="pl-label">Loading</span>
+        <span className="pl-count">{String(progress).padStart(3, '0')}</span>
+      </div>
+      <div className="pl-name">
+        {name.split('').map((c, i) => (
+          <span className="pl-char" key={i} style={{ ['--i' as never]: i }}>
+            <span className="pl-char-inner">{c === ' ' ? ' ' : c}</span>
+          </span>
+        ))}
+      </div>
+      <div className="pl-bar"><div className="pl-bar-fill" style={{ transform: `scaleX(${progress / 100})` }} /></div>
+    </div>
+  )
 }

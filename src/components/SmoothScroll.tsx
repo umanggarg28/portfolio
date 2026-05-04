@@ -1,24 +1,45 @@
 'use client'
 
-import { useEffect, ReactNode } from 'react'
+import { useEffect } from 'react'
 import Lenis from 'lenis'
 
-export default function SmoothScroll({ children }: { children: ReactNode }) {
+export default function SmoothScroll() {
   useEffect(() => {
-    const lenis = new Lenis({ lerp: 0.12, smoothWheel: true })
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
-    let rafId: number
-    function raf(time: number) {
+    const lenis = new Lenis({
+      duration: 1.15,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      touchMultiplier: 1.5,
+      wheelMultiplier: 1,
+    })
+
+    let rafId = 0
+    const raf = (time: number) => {
       lenis.raf(time)
       rafId = requestAnimationFrame(raf)
     }
     rafId = requestAnimationFrame(raf)
 
+    const onAnchorClick = (e: MouseEvent) => {
+      const a = (e.target as HTMLElement).closest('a[href^="#"]') as HTMLAnchorElement | null
+      if (!a) return
+      const id = a.getAttribute('href')
+      if (!id || id === '#') return
+      const el = document.querySelector(id) as HTMLElement | null
+      if (!el) return
+      e.preventDefault()
+      lenis.scrollTo(el, { offset: -8, duration: 1.4 })
+    }
+    document.addEventListener('click', onAnchorClick)
+
     return () => {
       cancelAnimationFrame(rafId)
+      document.removeEventListener('click', onAnchorClick)
       lenis.destroy()
     }
   }, [])
 
-  return <>{children}</>
+  return null
 }
