@@ -3,9 +3,9 @@ import { useEffect, useRef } from 'react'
 
 const W = 500
 const H = 500
-const PARTICLE_COUNT = 155
-const CONNECTION_DIST = 78
-const REPULSION_R = 110
+const PARTICLE_COUNT = 135
+const CONNECTION_DIST = 72
+const REPULSION_R = 104
 
 interface Particle {
   x: number; y: number
@@ -54,8 +54,8 @@ export default function HeroVisual() {
       mouseY = (e.clientY - rect.top) * (H / rect.height)
     }
     const onLeave = () => { mouseX = -999; mouseY = -999 }
-    canvas.addEventListener('mousemove', onMove)
-    canvas.addEventListener('mouseleave', onLeave)
+    window.addEventListener('mousemove', onMove, { passive: true })
+    window.addEventListener('mouseleave', onLeave)
 
     // Radial fade mask: opacity multiplier based on distance from center
     const radialFade = (x: number, y: number) => {
@@ -66,6 +66,18 @@ export default function HeroVisual() {
 
     const tick = () => {
       ctx.clearRect(0, 0, W, H)
+
+      // Faint guide rings keep the field structured without turning the hero into a dashboard.
+      ctx.save()
+      ctx.translate(W / 2, H / 2)
+      ctx.strokeStyle = 'rgba(240,237,230,0.025)'
+      ctx.lineWidth = 1
+      for (const radius of [118, 196]) {
+        ctx.beginPath()
+        ctx.arc(0, 0, radius, 0, Math.PI * 2)
+        ctx.stroke()
+      }
+      ctx.restore()
 
       for (const p of particles) {
         // Organic drift: small random walk
@@ -147,14 +159,24 @@ export default function HeroVisual() {
         ctx.fill()
       }
 
+      const pulse = 0.75 + Math.sin(performance.now() / 520) * 0.25
+      const core = ctx.createRadialGradient(W / 2, H / 2, 0, W / 2, H / 2, 72)
+      core.addColorStop(0, `rgba(184,255,87,${(0.08 * pulse).toFixed(3)})`)
+      core.addColorStop(0.45, `rgba(184,255,87,${(0.035 * pulse).toFixed(3)})`)
+      core.addColorStop(1, 'rgba(184,255,87,0)')
+      ctx.fillStyle = core
+      ctx.beginPath()
+      ctx.arc(W / 2, H / 2, 72, 0, Math.PI * 2)
+      ctx.fill()
+
       raf = requestAnimationFrame(tick)
     }
 
     tick()
     return () => {
       cancelAnimationFrame(raf)
-      canvas.removeEventListener('mousemove', onMove)
-      canvas.removeEventListener('mouseleave', onLeave)
+      window.removeEventListener('mousemove', onMove)
+      window.removeEventListener('mouseleave', onLeave)
     }
   }, [])
 

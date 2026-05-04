@@ -10,12 +10,12 @@ export default function PageLoader() {
   useEffect(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reduced) {
-      setShow(false)
       document.documentElement.classList.add('intro-done')
+      requestAnimationFrame(() => setShow(false))
       return
     }
-    setShow(true)
     document.documentElement.classList.add('intro-active')
+    requestAnimationFrame(() => setShow(true))
 
     const start = performance.now()
     const duration = 1000
