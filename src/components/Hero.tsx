@@ -1,12 +1,35 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const HEADLINE = 'UMANG GARG'
 const GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ@#*+/<>=$%01'
+const PHRASES = [
+  'Software & AI Engineer',
+  'LLM Engineering',
+  'Agentic Workflows',
+  'RAG Systems',
+  'Production AI',
+]
 
 export default function Hero() {
   const headlineRef = useRef<HTMLHeadingElement>(null)
+  const [clock, setClock] = useState('--:--:--')
+
+  // Editorial anchor — live clock (no timezone shown to keep geo-neutral)
+  useEffect(() => {
+    const update = () => {
+      const d = new Date()
+      setClock(
+        [d.getHours(), d.getMinutes(), d.getSeconds()]
+          .map((n) => String(n).padStart(2, '0'))
+          .join(':')
+      )
+    }
+    update()
+    const id = setInterval(update, 1000)
+    return () => clearInterval(id)
+  }, [])
 
   useEffect(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -17,6 +40,63 @@ export default function Hero() {
         setTimeout(() => el.classList.add('in'), 80 + i * 130)
       })
       runScramble()
+      startPhraseCycle()
+    }
+
+    // Cycling italic line — scramble between specialties every ~4.5s
+    let phraseIdx = 0
+    let phraseTimer: ReturnType<typeof setTimeout> | undefined
+    let phraseCancel: (() => void) | undefined
+
+    const scrambleSwap = (el: HTMLElement, to: string, duration = 720) => {
+      const start = performance.now()
+      let lastFlip = 0
+      let raf = 0
+      const toLen = to.length
+
+      const tick = (now: number) => {
+        const elapsed = now - start
+        const progress = Math.min(1, elapsed / duration)
+        if (progress >= 1) {
+          el.textContent = to
+          return
+        }
+        const flip = elapsed - lastFlip >= 55
+        if (flip) {
+          let out = ''
+          for (let i = 0; i < toLen; i++) {
+            const settle = i / Math.max(1, toLen - 1)
+            const settleAt = settle * 0.55 + 0.38
+            const ch = to[i]
+            if (progress > settleAt) {
+              out += ch
+            } else if (ch === ' ' || ch === '&') {
+              out += ch
+            } else {
+              out += GLYPHS[Math.floor(Math.random() * GLYPHS.length)]
+            }
+          }
+          el.textContent = out
+          lastFlip = elapsed
+        }
+        raf = requestAnimationFrame(tick)
+      }
+
+      raf = requestAnimationFrame(tick)
+      return () => cancelAnimationFrame(raf)
+    }
+
+    const startPhraseCycle = () => {
+      if (reduced) return
+      const italic = document.querySelector<HTMLElement>('.italic-word')
+      if (!italic) return
+
+      const cycle = () => {
+        phraseIdx = (phraseIdx + 1) % PHRASES.length
+        phraseCancel = scrambleSwap(italic, PHRASES[phraseIdx])
+        phraseTimer = setTimeout(cycle, 4500)
+      }
+      phraseTimer = setTimeout(cycle, 4500)
     }
 
     const scrambleTextNode = (node: Text, duration = 520) => {
@@ -249,11 +329,21 @@ export default function Hero() {
       window.removeEventListener('scroll', scheduleMeasure)
       revealObserver.disconnect()
       resetMagnetism()
+      if (phraseTimer) clearTimeout(phraseTimer)
+      if (phraseCancel) phraseCancel()
     }
   }, [])
 
   return (
     <section id="hero">
+      <div className="hero-anchor hero-anchor--tl" aria-hidden="true">
+        INDEX / 00
+      </div>
+      <div className="hero-anchor hero-anchor--tr" aria-hidden="true">
+        <span>ED. 2026</span>
+        <span className="hero-anchor-sep">/</span>
+        <span className="hero-clock">{clock}</span>
+      </div>
       <div className="hero-bg-number" aria-hidden="true">08</div>
       <div className="hero-scroll-hint" aria-hidden="true">
         <div className="hero-scroll-line" />
