@@ -40,8 +40,30 @@ export default function Hero() {
       revealObserver.observe(el)
     })
 
+    // Magnetic CTA
+    const cta = document.querySelector<HTMLElement>('.hero-cta')
+    const onCtaMouseMove = (e: MouseEvent) => {
+      if (!cta) return
+      const rect = cta.getBoundingClientRect()
+      const cx = rect.left + rect.width / 2
+      const cy = rect.top + rect.height / 2
+      const dx = e.clientX - cx
+      const dy = e.clientY - cy
+      const dist = Math.sqrt(dx * dx + dy * dy)
+      const radius = 90
+      if (dist < radius) {
+        const pull = (1 - dist / radius) * 0.35
+        cta.style.transform = `translate(${dx * pull}px, ${dy * pull}px)`
+      } else {
+        cta.style.transform = ''
+      }
+    }
+    document.addEventListener('mousemove', onCtaMouseMove)
+
     return () => {
       document.removeEventListener('mousemove', onMouseMove)
+      document.removeEventListener('mousemove', onCtaMouseMove)
+      if (cta) cta.style.transform = ''
       revealObserver.disconnect()
     }
   }, [])
@@ -50,7 +72,6 @@ export default function Hero() {
     <section id="hero">
       <div className="hero-bg-number" aria-hidden="true">08</div>
       <div className="hero-scroll-hint" aria-hidden="true">
-        <span>scroll</span>
         <div className="hero-scroll-line" />
       </div>
       <div className="hero-content">
@@ -71,7 +92,7 @@ export default function Hero() {
             <div className="hero-meta-item">Role · <span>Full Stack + AI</span></div>
             <div className="hero-meta-item">Stack · <span>Python · React · AWS</span></div>
             <div className="hero-meta-item">Focus · <span>LLMs · RAG · Agents</span></div>
-            <div className="hero-meta-item">Education · <span>MS @ Rochester Institute of Technology · 3.94 GPA</span></div>
+            <div className="hero-meta-item">Education · <span>MS @ RIT · 3.94 GPA</span></div>
           </div>
         </div>
       </div>

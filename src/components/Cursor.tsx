@@ -10,10 +10,7 @@ export default function Cursor() {
 
     let mx = -100, my = -100, rx = -100, ry = -100
 
-    const onMouseMove = (e: MouseEvent) => {
-      mx = e.clientX
-      my = e.clientY
-    }
+    const onMouseMove = (e: MouseEvent) => { mx = e.clientX; my = e.clientY }
     document.addEventListener('mousemove', onMouseMove)
 
     let rafId: number
@@ -26,17 +23,23 @@ export default function Cursor() {
     }
     rafId = requestAnimationFrame(animateCursor)
 
-    const addLink = () => document.body.classList.add('cursor-link')
-    const removeLink = () => document.body.classList.remove('cursor-link')
-
-    document.addEventListener('mouseover', (e) => {
+    const onMouseOver = (e: MouseEvent) => {
       const t = e.target as Element
-      if (t.closest('a, button, .exp-row, .project-cell')) addLink()
-      else removeLink()
-    })
+      if (t.closest('.project-cell')) {
+        document.body.classList.add('cursor-project')
+        document.body.classList.remove('cursor-link')
+      } else if (t.closest('a, button, .exp-row')) {
+        document.body.classList.add('cursor-link')
+        document.body.classList.remove('cursor-project')
+      } else {
+        document.body.classList.remove('cursor-link', 'cursor-project')
+      }
+    }
+    document.addEventListener('mouseover', onMouseOver)
 
     return () => {
       document.removeEventListener('mousemove', onMouseMove)
+      document.removeEventListener('mouseover', onMouseOver)
       cancelAnimationFrame(rafId)
     }
   }, [])
@@ -44,7 +47,7 @@ export default function Cursor() {
   return (
     <>
       <div id="cursor" />
-      <div id="cursor-ring" />
+      <div id="cursor-ring"><span id="cursor-label" /></div>
     </>
   )
 }

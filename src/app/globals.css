@@ -1,5 +1,32 @@
 /* Next.js resets */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+a, button, [role="button"], label, select, input { cursor: none; }
+::selection { background: var(--accent); color: var(--bg); }
+
+/* ── SCROLL PROGRESS ── */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  z-index: 9500;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* ── GRAIN ── */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 8000;
+  pointer-events: none;
+  opacity: 0.055;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
 
 /* ── TOKENS ── */
 :root {
@@ -67,6 +94,26 @@ body.cursor-link #cursor-ring {
   border-color: var(--accent);
   background: var(--accent-dim);
 }
+body.cursor-project #cursor { width: 0; height: 0; opacity: 0; }
+body.cursor-project #cursor-ring {
+  width: 72px; height: 72px;
+  border-color: var(--accent);
+  background: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+}
+#cursor-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--bg);
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+  font-family: var(--sans);
+}
+#cursor-label::after { content: 'VIEW'; }
+body.cursor-project #cursor-label { opacity: 1; }
 
 /* ── NAV ── */
 nav {
@@ -104,7 +151,7 @@ nav.scrolled {
   display: none;
   flex-direction: column;
   gap: 5px;
-  cursor: pointer;
+  cursor: none;
   background: none;
   border: none;
   padding: 4px;
@@ -164,8 +211,22 @@ nav.scrolled {
   color: var(--mid);
   text-decoration: none;
   transition: color 0.2s;
+  position: relative;
 }
-.nav-links a:hover { color: var(--fg); }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 100%; height: 1px;
+  background: var(--fg);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.23,1,0.32,1);
+}
+.nav-links a:hover,
+.nav-links a.nav-active { color: var(--fg); }
+.nav-links a:hover::after,
+.nav-links a.nav-active::after { transform: scaleX(1); }
 
 /* ── Hero WebGL sphere ── */
 #hero-visual {
@@ -208,25 +269,18 @@ nav.scrolled {
 /* ── HERO SCROLL HINT ── */
 .hero-scroll-hint {
   position: absolute;
-  right: 48px;
-  bottom: 64px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
   z-index: 1;
-}
-.hero-scroll-hint span {
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--dim);
-  writing-mode: vertical-rl;
 }
 .hero-scroll-line {
   width: 1px;
-  height: 48px;
-  background: linear-gradient(to bottom, var(--dim), transparent);
+  height: 56px;
+  background: linear-gradient(to bottom, rgba(240,237,230,0.2), transparent);
 }
 @media (max-width: 900px) {
   .hero-scroll-hint { display: none; }
@@ -356,6 +410,7 @@ nav.scrolled {
   gap: 0;
   animation: marquee 28s linear infinite;
 }
+.marquee-band:hover .marquee-track { animation-play-state: paused; }
 .marquee-track.reverse { animation-direction: reverse; }
 .marquee-item {
   display: inline-flex;
@@ -490,7 +545,7 @@ nav.scrolled {
   padding: 36px 48px;
   border-bottom: 1px solid var(--border);
   align-items: start;
-  cursor: pointer;
+  cursor: none;
   transition: background 0.25s;
   position: relative;
   overflow: hidden;
@@ -653,8 +708,21 @@ nav.scrolled {
   gap: 8px;
   white-space: nowrap;
   transition: gap 0.25s cubic-bezier(0.23,1,0.32,1), opacity 0.2s;
+  position: relative;
+  cursor: none;
+}
+.p-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 100%; height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.23,1,0.32,1);
 }
 .p-link:hover { gap: 16px; }
+.p-link:hover::after { transform: scaleX(1); }
 
 .project-featured-right {
   background: #0a0a0a;
@@ -739,18 +807,19 @@ nav.scrolled {
   border-bottom: 1px solid var(--border);
   position: relative;
   overflow: hidden;
-  transition: background 0.3s;
+  transition: background 0.35s, border-color 0.35s;
+  cursor: none;
 }
 .project-cell:nth-child(2n) { border-right: none; }
-.project-cell:hover { background: rgba(255,255,255,0.02); }
+.project-cell:hover { background: rgba(184,255,87,0.025); border-color: rgba(184,255,87,0.12); }
 .project-cell::after {
   content: '';
   position: absolute;
   bottom: 0; left: 0;
-  height: 2px;
+  height: 1px;
   width: 0;
   background: var(--accent);
-  transition: width 0.4s cubic-bezier(0.23,1,0.32,1);
+  transition: width 0.5s cubic-bezier(0.23,1,0.32,1);
 }
 .project-cell:hover::after { width: 100%; }
 .pc-num { display: none; }
@@ -768,7 +837,9 @@ nav.scrolled {
   color: var(--fg);
   margin-bottom: 16px;
   line-height: 1;
+  transition: color 0.25s;
 }
+.project-cell:hover .pc-title { color: var(--accent); }
 .pc-desc {
   font-size: 13px;
   color: var(--mid);
@@ -1055,7 +1126,7 @@ footer {
   .contact-right { align-items: flex-start; }
   .contact-headline { font-size: clamp(48px, 14vw, 80px); }
   footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
-  body { cursor: auto; }
+  body, a, button, [role="button"] { cursor: auto; }
   #cursor, #cursor-ring { display: none; }
 }
 @media (max-width: 600px) {

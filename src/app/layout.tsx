@@ -3,7 +3,6 @@ import { Bebas_Neue, DM_Sans, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import Cursor from '@/components/Cursor'
 import PageLoader from '@/components/PageLoader'
-import SmoothScroll from '@/components/SmoothScroll'
 
 const bebasNeue = Bebas_Neue({
   weight: '400',
@@ -51,9 +50,10 @@ export default function RootLayout({
       }
     >
       <body>
+        <div className="grain" aria-hidden="true" />
         <Cursor />
         <PageLoader />
-        <SmoothScroll>{children}</SmoothScroll>
+        {children}
       </body>
     </html>
   )
