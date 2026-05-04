@@ -350,21 +350,6 @@ nav.scrolled {
   .hero-scroll-hint { display: none; }
 }
 
-/* ── Hero canvas atmosphere (drifting particle field) ── */
-.hero-atmosphere {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.9;
-  mix-blend-mode: screen;
-}
-@media (max-width: 600px) {
-  .hero-atmosphere { opacity: 0.6; }
-}
-
 /* ── HERO BG NUMBER ── */
 .hero-bg-number {
   display: none;
