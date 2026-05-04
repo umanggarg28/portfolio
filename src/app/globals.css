@@ -659,7 +659,19 @@ nav.scrolled {
 }
 
 /* ── EXPERIENCE ── */
-#experience { background: #111; }
+#experience { background: #111; position: relative; }
+#experience .section-header {
+  position: sticky;
+  top: 0;
+  background: #111;
+  z-index: 10;
+}
+.exp-stat {
+  color: var(--fg);
+  font-weight: 500;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 1px;
+}
 .exp-row {
   display: grid;
   grid-template-columns: 80px 1fr auto;

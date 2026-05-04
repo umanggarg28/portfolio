@@ -8,10 +8,13 @@ export default function About() {
       <div className="about-body">
         <div className="about-left appear">
           <p className="about-para">
-            Software engineer with experience delivering complex full-stack and AI systems. My work spans backend APIs, React frontends, LLM-integrated pipelines, and cloud infrastructure.
+            Software engineer with 8 years shipping production systems across healthcare AI, biotech, and enterprise. My work spans backend APIs, React frontends, LLM-integrated pipelines, and the cloud infrastructure underneath — taking complex systems end-to-end.
           </p>
           <p className="about-para">
             Most recently at <strong>PictorLabs.ai</strong> — a UCLA spinoff in digital pathology — fine-tuning Google&apos;s PathFoundation vision model, building LLM tooling with Claude API and LangGraph, and leading delivery of an AI virtual staining pipeline for whole slide images.
+          </p>
+          <p className="about-para">
+            I&apos;m at my best where AI engineering meets real production engineering — training pipelines, retrieval systems, API design, and the infrastructure that holds it all up. Engineering fundamentals first, frameworks second.
           </p>
         </div>
         <div className="about-right appear appear-delay-2">

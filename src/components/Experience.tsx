@@ -50,7 +50,7 @@ const experiences: ExpEntry[] = [
     period: 'Jun 2022 — Mar 2024',
     delayClass: 'appear-delay-2',
     bullets: [
-      'Lead dev of the Entitlement Engine — insurance claim eligibility API serving 40,000+ users weekly; 99% uptime via optimized Node.js architecture.',
+      'Lead dev of the Entitlement Engine — insurance claim eligibility API serving <stat>40,000+ users weekly</stat> at 99% uptime via optimized Node.js architecture.',
       'Monolith→micro-frontend migration enabling independently deployable release cycles and faster iteration across teams.',
       'Serverless event-driven Python data pipelines using AWS Lambda, API Gateway, S3, SQS, and CloudWatch.',
     ],
@@ -119,9 +119,14 @@ export default function Experience() {
           </div>
           <div className={`exp-detail${openId === exp.id ? ' open' : ''}`} id={exp.id}>
             <div className="exp-detail-inner">
-              {exp.bullets.map((bullet, i) => (
-                <div className="exp-bullet" key={i}>{bullet}</div>
-              ))}
+              {exp.bullets.map((bullet, i) => {
+                const html = bullet
+                  .replace(/<stat>/g, '<span class="exp-stat">')
+                  .replace(/<\/stat>/g, '</span>')
+                return (
+                  <div className="exp-bullet" key={i} dangerouslySetInnerHTML={{ __html: html }} />
+                )
+              })}
             </div>
           </div>
         </div>
