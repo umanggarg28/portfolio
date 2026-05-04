@@ -9,9 +9,41 @@ export default function Cursor() {
     if (!cursor || !ring) return
 
     let mx = -100, my = -100, rx = -100, ry = -100
+    let stateRaf = 0
 
-    const onMouseMove = (e: MouseEvent) => { mx = e.clientX; my = e.clientY }
+    const updateCursorState = () => {
+      stateRaf = 0
+      const t = document.elementFromPoint(mx, my)
+
+      if (t?.closest('#contact')) {
+        document.body.classList.add('cursor-contact')
+      } else {
+        document.body.classList.remove('cursor-contact')
+      }
+
+      if (t?.closest('.project-cell:not(.project-cell--static)')) {
+        document.body.classList.add('cursor-project')
+        document.body.classList.remove('cursor-link')
+      } else if (t?.closest('a, button, .exp-row')) {
+        document.body.classList.add('cursor-link')
+        document.body.classList.remove('cursor-project')
+      } else {
+        document.body.classList.remove('cursor-link', 'cursor-project')
+      }
+    }
+
+    const scheduleCursorState = () => {
+      if (stateRaf) return
+      stateRaf = requestAnimationFrame(updateCursorState)
+    }
+
+    const onMouseMove = (e: MouseEvent) => {
+      mx = e.clientX
+      my = e.clientY
+      scheduleCursorState()
+    }
     document.addEventListener('mousemove', onMouseMove)
+    window.addEventListener('scroll', scheduleCursorState, { passive: true })
 
     let rafId: number
     function animateCursor() {
@@ -23,23 +55,11 @@ export default function Cursor() {
     }
     rafId = requestAnimationFrame(animateCursor)
 
-    const onMouseOver = (e: MouseEvent) => {
-      const t = e.target as Element
-      if (t.closest('.project-cell:not(.project-cell--static)')) {
-        document.body.classList.add('cursor-project')
-        document.body.classList.remove('cursor-link')
-      } else if (t.closest('a, button, .exp-row')) {
-        document.body.classList.add('cursor-link')
-        document.body.classList.remove('cursor-project')
-      } else {
-        document.body.classList.remove('cursor-link', 'cursor-project')
-      }
-    }
-    document.addEventListener('mouseover', onMouseOver)
-
     return () => {
       document.removeEventListener('mousemove', onMouseMove)
-      document.removeEventListener('mouseover', onMouseOver)
+      window.removeEventListener('scroll', scheduleCursorState)
+      cancelAnimationFrame(stateRaf)
+      document.body.classList.remove('cursor-contact', 'cursor-link', 'cursor-project')
       cancelAnimationFrame(rafId)
     }
   }, [])

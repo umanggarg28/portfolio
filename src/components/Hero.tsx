@@ -19,6 +19,58 @@ export default function Hero() {
       runScramble()
     }
 
+    const scrambleTextNode = (node: Text, duration = 520) => {
+      const finalText = node.textContent ?? ''
+      if (!finalText.trim()) return
+
+      const start = performance.now()
+      let lastFlip = 0
+      let raf = 0
+
+      const tick = (now: number) => {
+        const elapsed = now - start
+        const progress = Math.min(1, elapsed / duration)
+        const flip = elapsed - lastFlip >= 62
+
+        if (progress >= 1) {
+          node.textContent = finalText
+          return
+        }
+
+        if (flip) {
+          node.textContent = finalText
+            .split('')
+            .map((char, i) => {
+              if (!/[A-Z]/.test(char)) return char
+              const settle = i / Math.max(1, finalText.length - 1)
+              if (progress > settle * 0.65 + 0.28) return char
+              return GLYPHS[Math.floor(Math.random() * GLYPHS.length)]
+            })
+            .join('')
+          lastFlip = elapsed
+        }
+
+        raf = requestAnimationFrame(tick)
+      }
+
+      raf = requestAnimationFrame(tick)
+      return () => cancelAnimationFrame(raf)
+    }
+
+    const scrambleSectionTitle = (el: Element) => {
+      const title = el as HTMLElement
+      if (title.dataset.scrambled === 'true') return
+      title.dataset.scrambled = 'true'
+      title.classList.add('is-resolving')
+
+      Array.from(title.childNodes).forEach((node) => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          scrambleTextNode(node as Text)
+        }
+      })
+      setTimeout(() => title.classList.remove('is-resolving'), 620)
+    }
+
     const runScramble = () => {
       const charEls = Array.from(
         document.querySelectorAll<HTMLElement>('.hero-headline .char-mag')
@@ -93,6 +145,9 @@ export default function Hero() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('in')
+            if (!reduced && entry.target.classList.contains('section-title')) {
+              scrambleSectionTitle(entry.target)
+            }
             revealObserver.unobserve(entry.target)
           }
         })
@@ -112,63 +167,88 @@ export default function Hero() {
     const cta = document.querySelector<HTMLElement>('.hero-cta')
     const heroSection = document.getElementById('hero')
 
-    let mx = -9999, my = -9999
-    let rafId = 0
+    let heroBottom = heroSection?.getBoundingClientRect().bottom ?? window.innerHeight
+    let charCenters: Array<{ el: HTMLElement; x: number; y: number }> = []
+    let ctaCenter: { x: number; y: number } | null = null
+    let measureRaf = 0
 
-    const onMouseMove = (e: MouseEvent) => {
-      mx = e.clientX
-      my = e.clientY
+    const resetMagnetism = () => {
+      chars.forEach((char) => (char.style.transform = ''))
+      if (cta) cta.style.transform = ''
     }
-    document.addEventListener('mousemove', onMouseMove, { passive: true })
 
-    const animate = () => {
-      const radius = 280
-      const inHero = heroSection ? my <= heroSection.getBoundingClientRect().bottom : true
-      chars.forEach((char) => {
-        if (!inHero) {
-          char.style.transform = ''
-          return
-        }
-        const r = char.getBoundingClientRect()
-        const cx = r.left + r.width / 2
-        const cy = r.top + r.height / 2
-        const dx = mx - cx
-        const dy = my - cy
-        const dist = Math.hypot(dx, dy)
-        if (dist < radius) {
-          const pull = (1 - dist / radius) * 0.45
-          char.style.transform = `translate(${dx * pull}px, ${dy * pull}px)`
-        } else {
-          char.style.transform = ''
+    const measureMagneticTargets = () => {
+      heroBottom = heroSection?.getBoundingClientRect().bottom ?? window.innerHeight
+      charCenters = chars.map((el) => {
+        const rect = el.getBoundingClientRect()
+        return {
+          el,
+          x: rect.left + rect.width / 2,
+          y: rect.top + rect.height / 2,
         }
       })
 
       if (cta) {
-        const r = cta.getBoundingClientRect()
-        const cx = r.left + r.width / 2
-        const cy = r.top + r.height / 2
-        const dx = mx - cx
-        const dy = my - cy
+        const rect = cta.getBoundingClientRect()
+        ctaCenter = {
+          x: rect.left + rect.width / 2,
+          y: rect.top + rect.height / 2,
+        }
+      }
+    }
+
+    const scheduleMeasure = () => {
+      cancelAnimationFrame(measureRaf)
+      measureRaf = requestAnimationFrame(measureMagneticTargets)
+    }
+
+    const onMouseMove = (e: MouseEvent) => {
+      const mx = e.clientX
+      const my = e.clientY
+      if (my > heroBottom) {
+        resetMagnetism()
+        return
+      }
+
+      const radius = 280
+      charCenters.forEach(({ el, x, y }) => {
+        const dx = mx - x
+        const dy = my - y
+        const dist = Math.hypot(dx, dy)
+        if (dist < radius) {
+          const pull = (1 - dist / radius) * 0.45
+          el.style.transform = `translate3d(${dx * pull}px, ${dy * pull}px, 0)`
+        } else {
+          el.style.transform = ''
+        }
+      })
+
+      if (cta && ctaCenter) {
+        const dx = mx - ctaCenter.x
+        const dy = my - ctaCenter.y
         const dist = Math.hypot(dx, dy)
         const ctaRadius = 110
         if (dist < ctaRadius) {
           const pull = (1 - dist / ctaRadius) * 0.32
-          cta.style.transform = `translate(${dx * pull}px, ${dy * pull}px)`
+          cta.style.transform = `translate3d(${dx * pull}px, ${dy * pull}px, 0)`
         } else {
           cta.style.transform = ''
         }
       }
-
-      rafId = requestAnimationFrame(animate)
     }
-    rafId = requestAnimationFrame(animate)
+
+    setTimeout(measureMagneticTargets, 80)
+    document.addEventListener('mousemove', onMouseMove, { passive: true })
+    window.addEventListener('resize', scheduleMeasure, { passive: true })
+    window.addEventListener('scroll', scheduleMeasure, { passive: true })
 
     return () => {
-      cancelAnimationFrame(rafId)
+      cancelAnimationFrame(measureRaf)
       document.removeEventListener('mousemove', onMouseMove)
+      window.removeEventListener('resize', scheduleMeasure)
+      window.removeEventListener('scroll', scheduleMeasure)
       revealObserver.disconnect()
-      chars.forEach((c) => (c.style.transform = ''))
-      if (cta) cta.style.transform = ''
+      resetMagnetism()
     }
   }, [])
 
