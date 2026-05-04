@@ -7,6 +7,11 @@ export default function About() {
       </div>
       <div className="about-body">
         <div className="about-left appear">
+          <div className="about-statement">
+            <span>I BUILD</span>
+            <strong>AI SYSTEMS</strong>
+            <em>that ship</em>
+          </div>
           <p className="about-para">
             Software engineer with 8 years shipping production systems across healthcare AI, biotech, and enterprise. My work spans backend APIs, React frontends, LLM-integrated pipelines, and the cloud infrastructure underneath — taking complex systems end-to-end.
           </p>
@@ -16,6 +21,20 @@ export default function About() {
           <p className="about-para">
             I&apos;m at my best where AI engineering meets real production engineering — training pipelines, retrieval systems, API design, and the infrastructure that holds it all up. Engineering fundamentals first, frameworks second.
           </p>
+          <div className="about-signal-grid" aria-label="Career signals">
+            <div className="about-signal">
+              <span>BUILD</span>
+              <p>Production systems end-to-end</p>
+            </div>
+            <div className="about-signal">
+              <span>LEARN</span>
+              <p>AI fundamentals from first principles</p>
+            </div>
+            <div className="about-signal">
+              <span>SHIP</span>
+              <p>Product, infra, and model pipelines</p>
+            </div>
+          </div>
         </div>
         <div className="about-right appear appear-delay-2">
           <div className="cert-section-title">Education</div>

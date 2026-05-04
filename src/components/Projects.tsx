@@ -9,6 +9,7 @@ export default function Projects() {
       {/* Featured: Cartographer */}
       <div className="project-featured">
         <div className="project-featured-left appear">
+          <div className="project-featured-index" aria-hidden="true">01</div>
           <div>
             <div className="project-kicker">Featured Project · 2025</div>
             <div className="project-big-title">CARTOGRAPHER</div>
@@ -26,12 +27,14 @@ export default function Projects() {
               <span className="p-tag">Cohere</span>
               <span className="p-tag">Docker</span>
             </div>
-            <a href="https://cartographer-app.vercel.app" target="_blank" rel="noopener noreferrer" className="p-link">
-              Live Demo →
-            </a>
-            <a href="https://github.com/umanggarg28/Cartographer" target="_blank" rel="noopener noreferrer" className="p-link" style={{ marginLeft: '16px' }}>
-              GitHub →
-            </a>
+            <div className="project-links">
+              <a href="https://cartographer-app.vercel.app" target="_blank" rel="noopener noreferrer" className="p-link">
+                Live Demo →
+              </a>
+              <a href="https://github.com/umanggarg28/Cartographer" target="_blank" rel="noopener noreferrer" className="p-link">
+                GitHub →
+              </a>
+            </div>
           </div>
         </div>
         <div className="project-featured-right appear appear-delay-2">
@@ -71,6 +74,7 @@ export default function Projects() {
       {/* Project grid */}
       <div className="project-grid">
         <div className="project-cell project-cell--static appear">
+          <span className="pc-num">02</span>
           <div className="pc-kicker">AI · Computer Vision · Production · 2025</div>
           <div className="pc-title">CLEARSTAIN PIPELINE</div>
           <p className="pc-desc">AI virtual HE staining pipeline for unstained brightfield whole slide images, built at PictorLabs.ai (UCLA spinoff, venture-backed). Owned end-to-end: fine-tuned Google&apos;s PathFoundation vision model in PyTorch, built Django API with organ/species/diagnosis-based predictor routing, Kafka job orchestration, and TorchServe model serving.</p>
@@ -85,6 +89,7 @@ export default function Projects() {
           <span className="pc-note">Closed-source · proprietary</span>
         </div>
         <a className="project-cell appear appear-delay-1" href="https://github.com/umanggarg28/rag-research-copilot" target="_blank" rel="noopener noreferrer">
+          <span className="pc-num">03</span>
           <div className="pc-kicker">RAG · Full Stack · 2025</div>
           <div className="pc-title">RAG RESEARCH COPILOT</div>
           <p className="pc-desc">RAG system for querying research papers — grounding answers in document content with full source citations. Custom semantic search (MiniLM embeddings + ChromaDB), BM25 keyword search, and hybrid retrieval via RRF fusion. No LangChain. Precursor to Cartographer, built to understand retrieval internals from first principles.</p>
@@ -97,6 +102,7 @@ export default function Projects() {
           </div>
         </a>
         <a className="project-cell appear" href="https://github.com/umanggarg28/react-agent-from-scratch" target="_blank" rel="noopener noreferrer">
+          <span className="pc-num">04</span>
           <div className="pc-kicker">Agents · From Scratch · 2025</div>
           <div className="pc-title">REACT AGENT FROM SCRATCH</div>
           <p className="pc-desc">Minimal Python implementation of the ReAct (Reason + Act) loop — no LangChain, no AutoGen. Every step explicit: think, generate JSON tool call, execute, inject result, repeat. Built to prove that agents are fundamentally structured prompting + a loop, before reaching for frameworks like LangGraph.</p>
@@ -108,6 +114,7 @@ export default function Projects() {
           </div>
         </a>
         <a className="project-cell appear appear-delay-1" href="https://github.com/umanggarg28/transformer-from-scratch" target="_blank" rel="noopener noreferrer">
+          <span className="pc-num">05</span>
           <div className="pc-kicker">Deep Learning · PyTorch · 2025</div>
           <div className="pc-title">TRANSFORMER FROM SCRATCH</div>
           <p className="pc-desc">Full encoder-decoder transformer in PyTorch from first principles — multi-head attention, positional encoding, layer norm, greedy decoding — trained on EN→ES translation using the Opus Books dataset. Every component manual, following &quot;Attention Is All You Need&quot;. Includes TensorBoard monitoring, label smoothing, and LR warmup.</p>

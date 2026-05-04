@@ -6,7 +6,7 @@ export default function Skills() {
         <h2 className="section-title appear appear-delay-1">TECH <em>stack</em></h2>
       </div>
       <div className="skills-body">
-        <div className="skill-col appear">
+        <div className="skill-col skill-col--primary appear">
           <div className="skill-col-num">01 — AI / LLMs</div>
           <div className="skill-col-title">INTELLIGENCE LAYER</div>
           <div className="skill-pills">
@@ -24,7 +24,7 @@ export default function Skills() {
             <span className="skill-pill">LLMOps</span>
           </div>
         </div>
-        <div className="skill-col appear appear-delay-1">
+        <div className="skill-col skill-col--primary appear appear-delay-1">
           <div className="skill-col-num">02 — ML / Vision</div>
           <div className="skill-col-title">MODELS LAYER</div>
           <div className="skill-pills">
@@ -38,7 +38,7 @@ export default function Skills() {
             <span className="skill-pill">HuggingFace</span>
           </div>
         </div>
-        <div className="skill-col appear appear-delay-2">
+        <div className="skill-col skill-col--primary appear appear-delay-2">
           <div className="skill-col-num">03 — Full Stack</div>
           <div className="skill-col-title">PRODUCT LAYER</div>
           <div className="skill-pills">
@@ -54,7 +54,7 @@ export default function Skills() {
             <span className="skill-pill">SQL</span>
           </div>
         </div>
-        <div className="skill-col appear">
+        <div className="skill-col skill-col--primary appear">
           <div className="skill-col-num">04 — Infrastructure</div>
           <div className="skill-col-title">INFRA LAYER</div>
           <div className="skill-pills">
