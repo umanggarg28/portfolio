@@ -10,6 +10,14 @@ const NAV_LINKS = [
   { href: '#contact',    label: 'Contact',  id: 'contact'    },
 ]
 
+const SECTION_TITLES: Record<string, { num: string; title: string; accent: string }> = {
+  about: { num: '01', title: 'ABOUT', accent: 'me' },
+  experience: { num: '02', title: 'WORK', accent: 'history' },
+  projects: { num: '03', title: 'SELECTED', accent: 'work' },
+  skills: { num: '04', title: 'TECH', accent: 'stack' },
+  contact: { num: '05', title: 'CONTACT', accent: 'me' },
+}
+
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [peek, setPeek] = useState(false)
@@ -52,6 +60,7 @@ export default function Nav() {
   }, [])
 
   const hidden = scrolled && !peek && !drawerOpen
+  const activeSection = SECTION_TITLES[activeId]
 
   const closeDrawer = useCallback(() => {
     setDrawerOpen(false)
@@ -94,6 +103,24 @@ export default function Nav() {
         {NAV_LINKS.map(({ href, label, id }) => (
           <a key={id} href={href} onClick={closeDrawer}>{label}</a>
         ))}
+      </div>
+
+      <div
+        className={[
+          'mobile-section-indicator',
+          activeSection && scrolled ? 'visible' : '',
+          hidden ? 'nav-is-hidden' : '',
+        ].filter(Boolean).join(' ')}
+        aria-hidden="true"
+      >
+        {activeSection ? (
+          <>
+            <span className="mobile-section-num">{activeSection.num}</span>
+            <span className="mobile-section-title">
+              {activeSection.title} <em>{activeSection.accent}</em>
+            </span>
+          </>
+        ) : null}
       </div>
     </>
   )
