@@ -7,6 +7,7 @@ interface ExpEntry {
   idx: string
   role: string
   company: string
+  location: string
   tags: string[]
   period: string
   bullets: string[]
@@ -19,6 +20,7 @@ const experiences: ExpEntry[] = [
     idx: '01',
     role: 'AI & FULL STACK ENGINEER',
     company: 'PictorLabs.ai — AI Digital Pathology (UCLA Spinoff)',
+    location: 'Remote · India',
     tags: ['Claude API', 'LangGraph', 'PyTorch', 'Kafka', 'React', 'Django', 'AWS ECS/EKS'],
     period: 'Jun 2025 — Feb 2026',
     bullets: [
@@ -33,6 +35,7 @@ const experiences: ExpEntry[] = [
     idx: '02',
     role: 'SOFTWARE ENGINEER 2',
     company: 'Medhaz Corp — Healthcare Workforce Platform',
+    location: 'Charlotte, NC',
     tags: ['Django REST', 'React 18', 'Python'],
     period: 'May 2024 — Nov 2024',
     delayClass: 'appear-delay-1',
@@ -46,6 +49,7 @@ const experiences: ExpEntry[] = [
     idx: '03',
     role: 'SOFTWARE ENGINEER 2',
     company: 'Asurion — Insurance Tech, 40K+ users/week',
+    location: 'Charlotte, NC',
     tags: ['Node.js', 'React', 'AWS Lambda', 'SQS', 'Micro-frontend'],
     period: 'Jun 2022 — Mar 2024',
     delayClass: 'appear-delay-2',
@@ -60,6 +64,7 @@ const experiences: ExpEntry[] = [
     idx: '04',
     role: 'REACT DEVELOPER',
     company: 'HYR Global Source — Client: The Kroger Co.',
+    location: 'Charlotte, NC',
     tags: ['React ES6', 'Redux', 'Jest'],
     period: 'Oct 2021 — Jun 2022',
     delayClass: 'appear-delay-3',
@@ -73,6 +78,7 @@ const experiences: ExpEntry[] = [
     idx: '05',
     role: 'SOFTWARE DEVELOPER',
     company: 'GTR Event Technology',
+    location: 'Charlotte, NC',
     tags: ['Node.js', 'MongoDB', 'OpenCV', 'GraphQL'],
     period: 'Mar 2019 — Jul 2021',
     delayClass: 'appear-delay-4',
@@ -121,7 +127,10 @@ export default function Experience() {
               <div className="exp-idx">{exp.idx}</div>
               <div className="exp-center">
                 <div className="exp-role">{exp.role}</div>
-                <div className="exp-company">{exp.company}</div>
+                <div className="exp-company-row">
+                  <span className="exp-company">{exp.company}</span>
+                  <span className="exp-location exp-location--mobile">{exp.location}</span>
+                </div>
                 <div className="exp-tags">
                   {exp.tags.map((tag) => (
                     <span className="exp-tag" key={tag}>{tag}</span>
@@ -130,6 +139,7 @@ export default function Experience() {
               </div>
               <div className="exp-right">
                 <div className="exp-period">{exp.period}</div>
+                <div className="exp-location">{exp.location}</div>
               </div>
               <div className="exp-toggle" aria-hidden="true">
                 <span />

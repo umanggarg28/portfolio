@@ -10,6 +10,7 @@ export default function Cursor() {
 
     let mx = -100, my = -100, rx = -100, ry = -100
     let stateRaf = 0
+    const hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)')
 
     const updateCursorState = () => {
       stateRaf = 0
@@ -21,7 +22,7 @@ export default function Cursor() {
         document.body.classList.remove('cursor-contact')
       }
 
-      if (t?.closest('.project-cell:not(.project-cell--static)')) {
+      if (hasFinePointer.matches && t?.closest('.project-cell:not(.project-cell--static)')) {
         document.body.classList.add('cursor-project')
         document.body.classList.remove('cursor-link')
       } else if (t?.closest('a, button, .exp-row')) {
