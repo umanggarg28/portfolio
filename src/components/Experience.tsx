@@ -17,7 +17,7 @@ const experiences: ExpEntry[] = [
   {
     id: 'e1',
     idx: '01',
-    role: 'FULL STACK DEVELOPER 2',
+    role: 'AI & FULL STACK ENGINEER',
     company: 'PictorLabs.ai — AI Digital Pathology (UCLA Spinoff)',
     tags: ['Claude API', 'LangGraph', 'PyTorch', 'Kafka', 'React', 'Django', 'AWS ECS/EKS'],
     period: 'Jun 2025 — Feb 2026',

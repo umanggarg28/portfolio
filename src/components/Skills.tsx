@@ -80,14 +80,15 @@ export default function Skills() {
           </div>
         </div>
         <div className="skill-col appear appear-delay-2" style={{ borderRight: 'none' }}>
-          <div className="skill-col-num">06 — Currently learning</div>
-          <div className="skill-col-title">WHAT&apos;S NEXT</div>
+          <div className="skill-col-num">06 — Languages</div>
+          <div className="skill-col-title">WRITTEN IN</div>
           <div className="skill-pills">
-            <span className="skill-pill">Advanced MCP patterns</span>
-            <span className="skill-pill">Multi-agent orchestration</span>
-            <span className="skill-pill">Eval frameworks</span>
-            <span className="skill-pill">RL for LLMs</span>
-            <span className="skill-pill">Structured outputs</span>
+            <span className="skill-pill">Python</span>
+            <span className="skill-pill">TypeScript</span>
+            <span className="skill-pill">JavaScript</span>
+            <span className="skill-pill">SQL</span>
+            <span className="skill-pill">Java</span>
+            <span className="skill-pill">Bash</span>
           </div>
         </div>
       </div>

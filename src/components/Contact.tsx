@@ -4,10 +4,10 @@ export default function Contact() {
       <div className="contact-inner">
         <div className="contact-left">
           <div className="contact-headline appear">
-            OPEN TO<br /><em>great</em><br />WORK
+            LET&apos;S<br /><em>build</em><br />TOGETHER
           </div>
           <p className="contact-sub appear appear-delay-1">
-            I&apos;m looking for senior software engineering and AI engineering roles. If you&apos;re building something at the frontier of AI + systems, I want to hear about it.
+            If you&apos;re building production AI systems and want someone who can go from model training to shipped product — reach out.
           </p>
         </div>
         <div className="contact-right appear appear-delay-2">

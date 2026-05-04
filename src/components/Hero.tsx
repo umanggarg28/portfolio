@@ -49,6 +49,10 @@ export default function Hero() {
   return (
     <section id="hero">
       <div className="hero-bg-number" aria-hidden="true">08</div>
+      <div className="hero-scroll-hint" aria-hidden="true">
+        <span>scroll</span>
+        <div className="hero-scroll-line" />
+      </div>
       <div className="hero-content">
         <h1 className="hero-headline appear appear-delay-1">
           UMANG GARG<br />
