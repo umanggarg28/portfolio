@@ -75,27 +75,27 @@ export const certifications: CertificationGroup[] = [
     items: [
       {
         name: 'Model Context Protocol: Advanced Topics',
-        url: 'https://verify.skilljar.com/c/keg2nrthk7ah',
-      },
-      {
-        name: 'Introduction to Model Context Protocol',
-        url: 'https://verify.skilljar.com/c/95t69p7y4mqy',
-      },
-      {
-        name: 'Claude Code in Action',
-        url: 'https://verify.skilljar.com/c/95t69p7y4mqy',
-      },
-      {
-        name: 'Claude with Amazon Bedrock',
         url: 'https://verify.skilljar.com/c/igx2jsq7tiqg',
       },
       {
-        name: 'Introduction to Agent Skills',
+        name: 'Introduction to Model Context Protocol',
         url: 'https://verify.skilljar.com/c/4zz76jtmt39e',
       },
       {
-        name: 'Introduction to Subagents',
+        name: 'Claude Code in Action',
         url: 'https://verify.skilljar.com/c/m88oi85kopvt',
+      },
+      {
+        name: 'Claude with Amazon Bedrock',
+        url: 'https://verify.skilljar.com/c/keg2nrthk7ah',
+      },
+      {
+        name: 'Introduction to Agent Skills',
+        url: 'https://verify.skilljar.com/c/95t69p7y4mqy',
+      },
+      {
+        name: 'Introduction to Subagents',
+        url: 'https://verify.skilljar.com/c/95t69p7y4mqy',
       },
     ],
   },
@@ -108,11 +108,11 @@ export const certifications: CertificationGroup[] = [
       },
       {
         name: 'Agentic AI',
-        url: 'https://learn.deeplearning.ai/certificates/8f16637d-e2ca-459d-85b0-6adeb8f9a036',
+        url: 'https://learn.deeplearning.ai/certificates/83de0338-d6cc-4d3a-96cc-0d75b572be0e',
       },
       {
         name: 'PyTorch & Deep Learning',
-        url: 'https://learn.deeplearning.ai/certificates/83de0338-d6cc-4d3a-96cc-0d75b572be0e',
+        url: 'https://learn.deeplearning.ai/certificates/8f16637d-e2ca-459d-85b0-6adeb8f9a036',
       },
     ],
   },
