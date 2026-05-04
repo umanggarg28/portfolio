@@ -48,7 +48,7 @@ const experiences: ExpEntry[] = [
     id: 'e3',
     idx: '03',
     role: 'SOFTWARE ENGINEER 2',
-    company: 'Asurion — Insurance Tech, 40K+ users/week',
+    company: 'Asurion — Insurance Tech',
     location: 'Charlotte, NC',
     tags: ['Node.js', 'React', 'AWS Lambda', 'SQS', 'Micro-frontend'],
     period: 'Jun 2022 — Mar 2024',
