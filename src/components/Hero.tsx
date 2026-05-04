@@ -6,10 +6,10 @@ const HEADLINE = 'UMANG GARG'
 const GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ@#*+/<>=$%01'
 const PHRASES = [
   'Software & AI Engineer',
-  'LLM Engineering',
-  'Agentic Workflows',
-  'RAG Systems',
-  'Production AI',
+  'Full-Stack Engineer',
+  'AI Engineer',
+  'Agentic AI Engineer',
+  'LLM Engineer',
 ]
 
 export default function Hero() {
@@ -93,10 +93,10 @@ export default function Hero() {
 
       const cycle = () => {
         phraseIdx = (phraseIdx + 1) % PHRASES.length
-        phraseCancel = scrambleSwap(italic, PHRASES[phraseIdx])
-        phraseTimer = setTimeout(cycle, 4500)
+        phraseCancel = scrambleSwap(italic, PHRASES[phraseIdx], 820)
+        phraseTimer = setTimeout(cycle, 6200)
       }
-      phraseTimer = setTimeout(cycle, 4500)
+      phraseTimer = setTimeout(cycle, 6200)
     }
 
     const scrambleTextNode = (node: Text, duration = 520) => {
@@ -340,7 +340,7 @@ export default function Hero() {
         INDEX / 00
       </div>
       <div className="hero-anchor hero-anchor--tr" aria-hidden="true">
-        <span>ED. 2026</span>
+        <span>EDITION · 2026</span>
         <span className="hero-anchor-sep">/</span>
         <span className="hero-clock">{clock}</span>
       </div>
