@@ -25,7 +25,7 @@ export default function Cursor() {
 
     const onMouseOver = (e: MouseEvent) => {
       const t = e.target as Element
-      if (t.closest('.project-cell')) {
+      if (t.closest('.project-cell:not(.project-cell--static)')) {
         document.body.classList.add('cursor-project')
         document.body.classList.remove('cursor-link')
       } else if (t.closest('a, button, .exp-row')) {

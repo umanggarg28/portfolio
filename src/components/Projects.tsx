@@ -70,7 +70,7 @@ export default function Projects() {
 
       {/* Project grid */}
       <div className="project-grid">
-        <div className="project-cell appear">
+        <div className="project-cell project-cell--static appear">
           <div className="pc-kicker">AI · Computer Vision · Production · 2025</div>
           <div className="pc-title">CLEARSTAIN PIPELINE</div>
           <p className="pc-desc">AI virtual HE staining pipeline for unstained brightfield whole slide images, built at PictorLabs.ai (UCLA spinoff, venture-backed). Owned end-to-end: fine-tuned Google&apos;s PathFoundation vision model in PyTorch, built Django API with organ/species/diagnosis-based predictor routing, Kafka job orchestration, and TorchServe model serving.</p>
@@ -82,8 +82,9 @@ export default function Projects() {
             <span className="p-tag">OpenSlide</span>
             <span className="p-tag">AWS ECS</span>
           </div>
+          <span className="pc-note">Closed-source · proprietary</span>
         </div>
-        <div className="project-cell appear appear-delay-1">
+        <a className="project-cell appear appear-delay-1" href="https://github.com/umanggarg28/rag-research-copilot" target="_blank" rel="noopener noreferrer">
           <div className="pc-kicker">RAG · Full Stack · 2025</div>
           <div className="pc-title">RAG RESEARCH COPILOT</div>
           <p className="pc-desc">RAG system for querying research papers — grounding answers in document content with full source citations. Custom semantic search (MiniLM embeddings + ChromaDB), BM25 keyword search, and hybrid retrieval via RRF fusion. No LangChain. Precursor to Cartographer, built to understand retrieval internals from first principles.</p>
@@ -94,9 +95,8 @@ export default function Projects() {
             <span className="p-tag">Hybrid Search</span>
             <span className="p-tag">Python</span>
           </div>
-          <a href="https://github.com/umanggarg28/rag-research-copilot" target="_blank" rel="noopener noreferrer" className="p-link" style={{ marginTop: '20px' }}>GitHub →</a>
-        </div>
-        <div className="project-cell appear">
+        </a>
+        <a className="project-cell appear" href="https://github.com/umanggarg28/react-agent-from-scratch" target="_blank" rel="noopener noreferrer">
           <div className="pc-kicker">Agents · From Scratch · 2025</div>
           <div className="pc-title">REACT AGENT FROM SCRATCH</div>
           <p className="pc-desc">Minimal Python implementation of the ReAct (Reason + Act) loop — no LangChain, no AutoGen. Every step explicit: think, generate JSON tool call, execute, inject result, repeat. Built to prove that agents are fundamentally structured prompting + a loop, before reaching for frameworks like LangGraph.</p>
@@ -106,9 +106,8 @@ export default function Projects() {
             <span className="p-tag">Tool Use</span>
             <span className="p-tag">HuggingFace</span>
           </div>
-          <a href="https://github.com/umanggarg28/react-agent-from-scratch" target="_blank" rel="noopener noreferrer" className="p-link" style={{ marginTop: '20px' }}>GitHub →</a>
-        </div>
-        <div className="project-cell appear appear-delay-1">
+        </a>
+        <a className="project-cell appear appear-delay-1" href="https://github.com/umanggarg28/transformer-from-scratch" target="_blank" rel="noopener noreferrer">
           <div className="pc-kicker">Deep Learning · PyTorch · 2025</div>
           <div className="pc-title">TRANSFORMER FROM SCRATCH</div>
           <p className="pc-desc">Full encoder-decoder transformer in PyTorch from first principles — multi-head attention, positional encoding, layer norm, greedy decoding — trained on EN→ES translation using the Opus Books dataset. Every component manual, following &quot;Attention Is All You Need&quot;. Includes TensorBoard monitoring, label smoothing, and LR warmup.</p>
@@ -118,8 +117,7 @@ export default function Projects() {
             <span className="p-tag">Attention</span>
             <span className="p-tag">NLP</span>
           </div>
-          <a href="https://github.com/umanggarg28/transformer-from-scratch" target="_blank" rel="noopener noreferrer" className="p-link" style={{ marginTop: '20px' }}>GitHub →</a>
-        </div>
+        </a>
       </div>
     </section>
   )

@@ -937,6 +937,17 @@ nav.scrolled {
   overflow: hidden;
   transition: background 0.35s, border-color 0.35s;
   cursor: none;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.pc-note {
+  display: inline-block;
+  margin-top: 24px;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dim);
 }
 .project-cell:nth-child(2n) { border-right: none; }
 .project-cell:hover { background: rgba(184,255,87,0.025); border-color: rgba(184,255,87,0.12); }
