@@ -54,7 +54,7 @@ export default function About() {
                   key={`${group.provider}-${cert.name}`}
                 >
                   <span className="cert-name">{cert.name}</span>
-                  <span className="cert-proof" aria-hidden="true">Certificate</span>
+                  <span className="cert-proof contact-link-arrow contact-link-arrow--external" aria-hidden="true" />
                 </a>
               ))}
             </div>
