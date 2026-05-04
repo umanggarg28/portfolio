@@ -1,4 +1,72 @@
+'use client'
+
+import { useEffect, useRef } from 'react'
+
 export default function Projects() {
+  const wrapRef = useRef<HTMLDivElement>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const wrap = wrapRef.current
+    const track = trackRef.current
+    if (!wrap || !track) return
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const mqMobile = window.matchMedia('(max-width: 900px)')
+
+    let distance = 0
+
+    const measure = () => {
+      if (mqMobile.matches) {
+        wrap.style.height = ''
+        track.style.transform = ''
+        distance = 0
+        return
+      }
+      const trackWidth = track.scrollWidth
+      const vw = window.innerWidth
+      distance = Math.max(0, trackWidth - vw)
+      wrap.style.height = `${window.innerHeight + distance}px`
+    }
+
+    const update = () => {
+      if (mqMobile.matches || distance === 0) return
+      const rect = wrap.getBoundingClientRect()
+      const total = wrap.offsetHeight - window.innerHeight
+      const scrolled = -rect.top
+      const progress = Math.max(0, Math.min(1, scrolled / total))
+      const x = -progress * distance
+      track.style.transform = `translate3d(${x}px, 0, 0)`
+    }
+
+    measure()
+    update()
+    if (reduced) return
+
+    let raf = 0
+    const onScroll = () => {
+      if (raf) return
+      raf = requestAnimationFrame(() => {
+        raf = 0
+        update()
+      })
+    }
+    const onResize = () => {
+      measure()
+      update()
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onResize)
+    mqMobile.addEventListener('change', onResize)
+
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onResize)
+      mqMobile.removeEventListener('change', onResize)
+      cancelAnimationFrame(raf)
+    }
+  }, [])
+
   return (
     <section id="projects">
       <div className="section-header">
@@ -71,59 +139,78 @@ export default function Projects() {
         </div>
       </div>
 
-      {/* Project grid */}
-      <div className="project-grid">
-        <div className="project-cell project-cell--static appear">
-          <span className="pc-num">02</span>
-          <div className="pc-kicker">AI · Computer Vision · Production · 2025</div>
-          <div className="pc-title">CLEARSTAIN PIPELINE</div>
-          <p className="pc-desc">AI virtual HE staining pipeline for unstained brightfield whole slide images, built at PictorLabs.ai (UCLA spinoff, venture-backed). Owned end-to-end: fine-tuned Google&apos;s PathFoundation vision model in PyTorch, built Django API with organ/species/diagnosis-based predictor routing, Kafka job orchestration, and TorchServe model serving.</p>
-          <div className="pc-tags">
-            <span className="p-tag">PyTorch</span>
-            <span className="p-tag">Django</span>
-            <span className="p-tag">Kafka</span>
-            <span className="p-tag">TorchServe</span>
-            <span className="p-tag">OpenSlide</span>
-            <span className="p-tag">AWS ECS</span>
+      {/* Horizontal-scroll project track */}
+      <div className="hscroll-wrap" ref={wrapRef}>
+        <div className="hscroll-pin">
+          <div className="hscroll-meta">
+            <span className="hscroll-meta-label">Drag — or scroll vertically</span>
+            <span className="hscroll-meta-arrow">→</span>
           </div>
-          <span className="pc-note">Closed-source · proprietary</span>
+          <div className="hscroll-track" ref={trackRef}>
+            <div className="project-cell project-cell--static appear hscroll-cell">
+              <span className="pc-num">02</span>
+              <div className="pc-kicker">AI · Computer Vision · Production · 2025</div>
+              <div className="pc-title">CLEARSTAIN PIPELINE</div>
+              <p className="pc-desc">AI virtual HE staining pipeline for unstained brightfield whole slide images, built at PictorLabs.ai (UCLA spinoff, venture-backed). Owned end-to-end: fine-tuned Google&apos;s PathFoundation vision model in PyTorch, built Django API with organ/species/diagnosis-based predictor routing, Kafka job orchestration, and TorchServe model serving.</p>
+              <div className="pc-tags">
+                <span className="p-tag">PyTorch</span>
+                <span className="p-tag">Django</span>
+                <span className="p-tag">Kafka</span>
+                <span className="p-tag">TorchServe</span>
+                <span className="p-tag">OpenSlide</span>
+                <span className="p-tag">AWS ECS</span>
+              </div>
+              <span className="pc-note">Closed-source · proprietary</span>
+            </div>
+            <a className="project-cell appear hscroll-cell" href="https://github.com/umanggarg28/rag-research-copilot" target="_blank" rel="noopener noreferrer">
+              <span className="pc-num">03</span>
+              <div className="pc-kicker">RAG · Full Stack · 2025</div>
+              <div className="pc-title">RAG RESEARCH COPILOT</div>
+              <p className="pc-desc">RAG system for querying research papers — grounding answers in document content with full source citations. Custom semantic search (MiniLM embeddings + ChromaDB), BM25 keyword search, and hybrid retrieval via RRF fusion. No LangChain. Precursor to Cartographer — built to understand retrieval internals from first principles.</p>
+              <div className="pc-tags">
+                <span className="p-tag">FastAPI</span>
+                <span className="p-tag">React</span>
+                <span className="p-tag">BM25</span>
+                <span className="p-tag">ChromaDB</span>
+                <span className="p-tag">Hybrid Search</span>
+              </div>
+            </a>
+            <a className="project-cell appear hscroll-cell" href="https://github.com/umanggarg28/transformer-from-scratch" target="_blank" rel="noopener noreferrer">
+              <span className="pc-num">04</span>
+              <div className="pc-kicker">Deep Learning · PyTorch · 2025</div>
+              <div className="pc-title">TRANSFORMER FROM SCRATCH</div>
+              <p className="pc-desc">Full encoder-decoder transformer implemented in PyTorch following Umar Jamil&apos;s &quot;Coding a Transformer from scratch&quot; tutorial — multi-head attention, positional encoding, layer norm, greedy decoding, label smoothing, LR warmup. Trained EN→ES on the Opus Books dataset. The point: knowing how attention actually works at the tensor level, not just where to import it from.</p>
+              <div className="pc-tags">
+                <span className="p-tag">PyTorch</span>
+                <span className="p-tag">Attention</span>
+                <span className="p-tag">Transformers</span>
+                <span className="p-tag">NLP</span>
+              </div>
+            </a>
+            <a className="project-cell appear hscroll-cell" href="https://github.com/umanggarg28/reinforcement-learning" target="_blank" rel="noopener noreferrer">
+              <span className="pc-num">05</span>
+              <div className="pc-kicker">Reinforcement Learning · 2025</div>
+              <div className="pc-title">RL EXPERIMENTS</div>
+              <p className="pc-desc">Q-learning, DQN (Breakout), and PPO (LunarLander) trained on Gymnasium with Stable Baselines 3 — plus a custom multi-agent dual-taxi environment built from scratch (observation space, reward shaping, training loop). Domain breadth: not just LLMs.</p>
+              <div className="pc-tags">
+                <span className="p-tag">PyTorch</span>
+                <span className="p-tag">Gymnasium</span>
+                <span className="p-tag">SB3</span>
+                <span className="p-tag">DQN · PPO</span>
+              </div>
+            </a>
+          </div>
         </div>
-        <a className="project-cell appear appear-delay-1" href="https://github.com/umanggarg28/rag-research-copilot" target="_blank" rel="noopener noreferrer">
-          <span className="pc-num">03</span>
-          <div className="pc-kicker">RAG · Full Stack · 2025</div>
-          <div className="pc-title">RAG RESEARCH COPILOT</div>
-          <p className="pc-desc">RAG system for querying research papers — grounding answers in document content with full source citations. Custom semantic search (MiniLM embeddings + ChromaDB), BM25 keyword search, and hybrid retrieval via RRF fusion. No LangChain. Precursor to Cartographer, built to understand retrieval internals from first principles.</p>
-          <div className="pc-tags">
-            <span className="p-tag">FastAPI</span>
-            <span className="p-tag">React</span>
-            <span className="p-tag">BM25</span>
-            <span className="p-tag">Hybrid Search</span>
-            <span className="p-tag">Python</span>
-          </div>
-        </a>
-        <a className="project-cell appear" href="https://github.com/umanggarg28/react-agent-from-scratch" target="_blank" rel="noopener noreferrer">
-          <span className="pc-num">04</span>
-          <div className="pc-kicker">Agents · From Scratch · 2025</div>
-          <div className="pc-title">REACT AGENT FROM SCRATCH</div>
-          <p className="pc-desc">Minimal Python implementation of the ReAct (Reason + Act) loop — no LangChain, no AutoGen. Every step explicit: think, generate JSON tool call, execute, inject result, repeat. Built to prove that agents are fundamentally structured prompting + a loop, before reaching for frameworks like LangGraph.</p>
-          <div className="pc-tags">
-            <span className="p-tag">Python</span>
-            <span className="p-tag">ReAct Pattern</span>
-            <span className="p-tag">Tool Use</span>
-            <span className="p-tag">HuggingFace</span>
-          </div>
-        </a>
-        <a className="project-cell appear appear-delay-1" href="https://github.com/umanggarg28/transformer-from-scratch" target="_blank" rel="noopener noreferrer">
-          <span className="pc-num">05</span>
-          <div className="pc-kicker">Deep Learning · PyTorch · 2025</div>
-          <div className="pc-title">TRANSFORMER FROM SCRATCH</div>
-          <p className="pc-desc">Full encoder-decoder transformer in PyTorch from first principles — multi-head attention, positional encoding, layer norm, greedy decoding — trained on EN→ES translation using the Opus Books dataset. Every component manual, following &quot;Attention Is All You Need&quot;. Includes TensorBoard monitoring, label smoothing, and LR warmup.</p>
-          <div className="pc-tags">
-            <span className="p-tag">PyTorch</span>
-            <span className="p-tag">Transformers</span>
-            <span className="p-tag">Attention</span>
-            <span className="p-tag">NLP</span>
-          </div>
+      </div>
+
+      <div className="projects-foot">
+        <a
+          className="p-link"
+          href="https://github.com/umanggarg28"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          More on GitHub →
         </a>
       </div>
     </section>

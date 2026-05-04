@@ -1104,7 +1104,99 @@ nav.scrolled {
   background-size: 32px 32px;
 }
 
-/* ── PROJECT GRID ── */
+/* ── HORIZONTAL-SCROLL PROJECT TRACK ── */
+.hscroll-wrap {
+  position: relative;
+  background: var(--bg);
+}
+.hscroll-pin {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1px solid var(--border);
+}
+.hscroll-meta {
+  position: absolute;
+  top: 32px; left: 48px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mid);
+  z-index: 2;
+  pointer-events: none;
+}
+.hscroll-meta-arrow {
+  color: var(--accent);
+  font-size: 16px;
+  animation: hscroll-arrow 1.6s var(--motion-ease, cubic-bezier(0.23,1,0.32,1)) infinite;
+}
+@keyframes hscroll-arrow {
+  0%, 100% { transform: translateX(0); opacity: 0.6; }
+  50%      { transform: translateX(8px); opacity: 1; }
+}
+.hscroll-track {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  padding: 0 48px;
+  will-change: transform;
+}
+.hscroll-cell {
+  flex: 0 0 auto;
+  width: clamp(380px, 46vw, 560px);
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-right: 1px solid var(--border);
+  border-bottom: none;
+  border-top: 1px solid var(--border);
+}
+.hscroll-cell:last-child { border-right: 1px solid var(--border); }
+.hscroll-cell:first-child { border-left: 1px solid var(--border); }
+
+/* Foot link below the horizontal track */
+.projects-foot {
+  display: flex;
+  justify-content: flex-end;
+  padding: 32px 48px;
+  border-bottom: 1px solid var(--border);
+}
+
+@media (max-width: 900px) {
+  .hscroll-wrap { height: auto !important; }
+  .hscroll-pin {
+    position: static;
+    height: auto;
+    overflow: visible;
+    flex-direction: column;
+    border-bottom: none;
+  }
+  .hscroll-meta { display: none; }
+  .hscroll-track {
+    flex-direction: column;
+    padding: 0;
+    transform: none !important;
+  }
+  .hscroll-cell {
+    width: 100%;
+    min-height: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    border-top: none;
+    border-left: none !important;
+  }
+  .projects-foot { padding: 24px; justify-content: flex-start; }
+}
+
+/* ── PROJECT GRID (legacy, kept for fallback / unused) ── */
 .project-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
