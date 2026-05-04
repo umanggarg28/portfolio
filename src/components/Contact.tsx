@@ -15,22 +15,22 @@ export default function Contact() {
           <a href="mailto:umanggarg28@gmail.com" className="contact-link-row">
             <span className="contact-link-index">01</span>
             <span>Email me</span>
-            <span className="contact-link-arrow">→</span>
+            <span className="contact-link-arrow contact-link-arrow--right" />
           </a>
           <a href="https://linkedin.com/in/umanggarg28" target="_blank" rel="noopener noreferrer" className="contact-link-row">
             <span className="contact-link-index">02</span>
             <span>LinkedIn</span>
-            <span className="contact-link-arrow">↗</span>
+            <span className="contact-link-arrow contact-link-arrow--external" />
           </a>
           <a href="https://github.com/umanggarg28" target="_blank" rel="noopener noreferrer" className="contact-link-row">
             <span className="contact-link-index">03</span>
             <span>GitHub</span>
-            <span className="contact-link-arrow">↗</span>
+            <span className="contact-link-arrow contact-link-arrow--external" />
           </a>
           <a href="/assets/resume.pdf" target="_blank" rel="noopener noreferrer" className="contact-link-row">
             <span className="contact-link-index">04</span>
             <span>Resume</span>
-            <span className="contact-link-arrow">↓</span>
+            <span className="contact-link-arrow contact-link-arrow--down" />
           </a>
         </div>
       </div>

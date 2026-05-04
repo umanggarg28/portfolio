@@ -5,6 +5,8 @@ import { useEffect, useRef } from 'react'
 export default function Projects() {
   const wrapRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
+  const progressRef = useRef<HTMLDivElement>(null)
+  const indexRef = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
     const wrap = wrapRef.current
@@ -20,6 +22,8 @@ export default function Projects() {
       if (mqMobile.matches) {
         wrap.style.height = ''
         track.style.transform = ''
+        if (progressRef.current) progressRef.current.style.transform = 'scaleX(0)'
+        if (indexRef.current) indexRef.current.textContent = '02 / 05'
         distance = 0
         return
       }
@@ -37,6 +41,13 @@ export default function Projects() {
       const progress = Math.max(0, Math.min(1, scrolled / total))
       const x = -progress * distance
       track.style.transform = `translate3d(${x}px, 0, 0)`
+      if (progressRef.current) {
+        progressRef.current.style.transform = `scaleX(${progress})`
+      }
+      if (indexRef.current) {
+        const current = Math.min(5, Math.max(2, 2 + Math.floor(progress * 4)))
+        indexRef.current.textContent = `${String(current).padStart(2, '0')} / 05`
+      }
     }
 
     measure()
@@ -142,6 +153,13 @@ export default function Projects() {
       {/* Horizontal-scroll project track */}
       <div className="hscroll-wrap" ref={wrapRef}>
         <div className="hscroll-pin">
+          <div className="hscroll-affordance" aria-hidden="true">
+            <span>Scroll to explore</span>
+            <div className="hscroll-progress">
+              <div className="hscroll-progress-fill" ref={progressRef} />
+            </div>
+            <span ref={indexRef}>02 / 05</span>
+          </div>
           <div className="hscroll-track" ref={trackRef}>
             <div className="project-cell project-cell--static appear hscroll-cell">
               <span className="pc-num">02</span>

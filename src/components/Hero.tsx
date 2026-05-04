@@ -45,12 +45,12 @@ export default function Hero() {
       startPhraseCycle()
     }
 
-    // Cycling italic line — scramble between specialties every ~4.5s
+    // Cycling italic line — slow secondary signal, less prominent than the name resolve.
     let phraseIdx = 0
     let phraseTimer: ReturnType<typeof setTimeout> | undefined
     let phraseCancel: (() => void) | undefined
 
-    const scrambleSwap = (el: HTMLElement, to: string, duration = 720) => {
+    const scrambleSwap = (el: HTMLElement, to: string, duration = 540) => {
       const start = performance.now()
       let lastFlip = 0
       let raf = 0
@@ -63,12 +63,12 @@ export default function Hero() {
           el.textContent = to
           return
         }
-        const flip = elapsed - lastFlip >= 55
+        const flip = elapsed - lastFlip >= 72
         if (flip) {
           let out = ''
           for (let i = 0; i < toLen; i++) {
             const settle = i / Math.max(1, toLen - 1)
-            const settleAt = settle * 0.55 + 0.38
+            const settleAt = settle * 0.45 + 0.34
             const ch = to[i]
             if (progress > settleAt) {
               out += ch
@@ -95,10 +95,10 @@ export default function Hero() {
 
       const cycle = () => {
         phraseIdx = (phraseIdx + 1) % PHRASES.length
-        phraseCancel = scrambleSwap(italic, PHRASES[phraseIdx], 820)
-        phraseTimer = setTimeout(cycle, 6200)
+        phraseCancel = scrambleSwap(italic, PHRASES[phraseIdx])
+        phraseTimer = setTimeout(cycle, 9600)
       }
-      phraseTimer = setTimeout(cycle, 6200)
+      phraseTimer = setTimeout(cycle, 9600)
     }
 
     const scrambleTextNode = (node: Text, duration = 520) => {
@@ -374,8 +374,8 @@ export default function Hero() {
               <span>Available · AI Engineering roles · Open to remote</span>
             </div>
             <p className="hero-desc">
-              I build production AI systems end-to-end — from fine-tuned models to shipped product.
-              8 years engineering; the last two on LLM tooling and agentic workflows.
+              I build production software end-to-end across product, infrastructure, and applied AI.
+              Eight years engineering systems that move from architecture to shipped product.
             </p>
             <a href="#projects" className="hero-cta">View Work →</a>
           </div>
