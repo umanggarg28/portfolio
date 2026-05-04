@@ -142,10 +142,6 @@ export default function Projects() {
       {/* Horizontal-scroll project track */}
       <div className="hscroll-wrap" ref={wrapRef}>
         <div className="hscroll-pin">
-          <div className="hscroll-meta">
-            <span className="hscroll-meta-label">Drag — or scroll vertically</span>
-            <span className="hscroll-meta-arrow">→</span>
-          </div>
           <div className="hscroll-track" ref={trackRef}>
             <div className="project-cell project-cell--static appear hscroll-cell">
               <span className="pc-num">02</span>
@@ -179,7 +175,7 @@ export default function Projects() {
               <span className="pc-num">04</span>
               <div className="pc-kicker">Deep Learning · PyTorch · 2025</div>
               <div className="pc-title">TRANSFORMER FROM SCRATCH</div>
-              <p className="pc-desc">Full encoder-decoder transformer implemented in PyTorch following Umar Jamil&apos;s &quot;Coding a Transformer from scratch&quot; tutorial — multi-head attention, positional encoding, layer norm, greedy decoding, label smoothing, LR warmup. Trained EN→ES on the Opus Books dataset. The point: knowing how attention actually works at the tensor level, not just where to import it from.</p>
+              <p className="pc-desc">Full encoder-decoder transformer implemented in PyTorch — multi-head attention, positional encoding, layer norm, greedy decoding, label smoothing, LR warmup. Trained EN→ES on the Opus Books dataset, end-to-end from &quot;Attention Is All You Need&quot;.</p>
               <div className="pc-tags">
                 <span className="p-tag">PyTorch</span>
                 <span className="p-tag">Attention</span>
