@@ -25,37 +25,45 @@ export default function Nav() {
   const [activeId, setActiveId] = useState('')
 
   useEffect(() => {
-    // Scroll state + progress bar
     const bar = document.getElementById('scroll-progress')
+    const sections = NAV_LINKS
+      .map(({ id }) => document.getElementById(id))
+      .filter((section): section is HTMLElement => Boolean(section))
+
+    const updateActiveSection = () => {
+      const marker = window.innerWidth <= 900 ? 112 : Math.round(window.innerHeight * 0.38)
+      const bottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2
+      let current = ''
+
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= marker) {
+          current = section.id
+        }
+      }
+
+      setActiveId(bottom ? NAV_LINKS[NAV_LINKS.length - 1].id : current)
+    }
+
     const onScroll = () => {
       setScrolled(window.scrollY > 80)
       if (bar) {
         const total = document.documentElement.scrollHeight - window.innerHeight
         bar.style.transform = `scaleX(${total > 0 ? window.scrollY / total : 0})`
       }
+      updateActiveSection()
     }
     window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', updateActiveSection)
+    onScroll()
 
     // Mouse peek
     const onMouseMove = (e: MouseEvent) => setPeek(e.clientY < 72)
     document.addEventListener('mousemove', onMouseMove)
 
-    // Active section via IntersectionObserver
-    const sections = document.querySelectorAll('section[id]')
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveId(entry.target.id)
-        })
-      },
-      { threshold: 0.35 }
-    )
-    sections.forEach((s) => observer.observe(s))
-
     return () => {
       window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', updateActiveSection)
       document.removeEventListener('mousemove', onMouseMove)
-      observer.disconnect()
     }
   }, [])
 
