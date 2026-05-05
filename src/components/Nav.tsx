@@ -31,12 +31,19 @@ export default function Nav() {
       .filter((section): section is HTMLElement => Boolean(section))
 
     const updateActiveSection = () => {
-      const marker = window.innerWidth <= 900 ? 112 : Math.round(window.innerHeight * 0.38)
+      const isMobile = window.innerWidth <= 900
+      const marker = isMobile ? 0 : Math.round(window.innerHeight * 0.38)
       const bottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2
       let current = ''
 
       for (const section of sections) {
-        if (section.getBoundingClientRect().top <= marker) {
+        const header = section.querySelector('.section-header')
+        const rect = isMobile && header
+          ? header.getBoundingClientRect()
+          : section.getBoundingClientRect()
+        const edge = isMobile ? rect.bottom : rect.top
+
+        if (edge <= marker) {
           current = section.id
         }
       }
