@@ -28,9 +28,24 @@ const playfairDisplay = Playfair_Display({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://umanggarg.dev'),
   title: 'Umang Garg — Software & AI Engineer',
   description:
     '8+ years building production-grade systems at the intersection of software engineering and applied AI — LLM tooling, agentic workflows, and full-stack platforms.',
+  openGraph: {
+    title: 'Umang Garg — Software & AI Engineer',
+    description:
+      '8+ years building production-grade systems at the intersection of software engineering and applied AI.',
+    url: 'https://umanggarg.dev',
+    siteName: 'Umang Garg',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Umang Garg — Software & AI Engineer',
+    description:
+      '8+ years building production-grade systems at the intersection of software engineering and applied AI.',
+  },
 }
 
 export default function RootLayout({

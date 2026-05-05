@@ -4,7 +4,7 @@ export default function About() {
   return (
     <section id="about">
       <div className="section-header">
-        <div className="section-num appear">— 01</div>
+        <div className="section-num appear">INDEX <span className="section-num-sep">/</span> 01</div>
         <h2 className="section-title appear appear-delay-1">ABOUT <em>me</em></h2>
       </div>
       <div className="about-body">

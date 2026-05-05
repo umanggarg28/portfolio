@@ -2,7 +2,7 @@ export default function Learning() {
   return (
     <section id="learning">
       <div className="section-header">
-        <div className="section-num appear">— 04</div>
+        <div className="section-num appear">INDEX <span className="section-num-sep">/</span> 05</div>
         <h2 className="section-title appear appear-delay-1">GOING <em>deep</em></h2>
       </div>
       <div className="learning-body">

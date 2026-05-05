@@ -15,7 +15,7 @@ const SECTION_TITLES: Record<string, { num: string; title: string; accent: strin
   experience: { num: '02', title: 'WORK', accent: 'history' },
   projects: { num: '03', title: 'SELECTED', accent: 'work' },
   skills: { num: '04', title: 'TECH', accent: 'stack' },
-  contact: { num: '05', title: 'CONTACT', accent: 'me' },
+  contact: { num: '06', title: 'CONTACT', accent: 'me' },
 }
 
 export default function Nav() {

@@ -7,6 +7,7 @@ const GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ@#*+/<>=$%01'
 const PHRASES = [
   'Software & AI Engineer',
   'Full-Stack Engineering',
+  'Web Development',
   'LLM Engineering',
   'Systems Engineering',
   'Agentic Workflows',
