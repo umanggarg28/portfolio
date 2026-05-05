@@ -1936,7 +1936,7 @@ footer {
   .terminal { font-size: 10px; }
   .terminal-body { padding: 12px; overflow-x: auto; }
   .t-ln { white-space: nowrap; }
-  .exp-row { grid-template-columns: 48px 1fr 34px; gap: 0; padding: 24px; }
+  .exp-row { grid-template-columns: 56px 1fr 34px; gap: 14px; padding: 24px; }
   .exp-right { display: none; }
   .exp-idx { gap: 8px; padding-top: 4px; }
   .exp-idx-year { font-size: 9px; letter-spacing: 0.12em; }
