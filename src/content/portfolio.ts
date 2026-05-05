@@ -91,7 +91,7 @@ export const certifications: CertificationGroup[] = [
       },
       {
         name: 'Introduction to Agent Skills',
-        url: 'https://verify.skilljar.com/c/95t69p7y4mqy',
+        url: 'https://verify.skilljar.com/c/5qjt57mzuyvx',
       },
       {
         name: 'Introduction to Subagents',
