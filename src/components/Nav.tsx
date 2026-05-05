@@ -26,13 +26,15 @@ export default function Nav() {
 
   useEffect(() => {
     const bar = document.getElementById('scroll-progress')
+    const nav = document.getElementById('main-nav')
     const sections = NAV_LINKS
       .map(({ id }) => document.getElementById(id))
       .filter((section): section is HTMLElement => Boolean(section))
 
     const updateActiveSection = () => {
       const isMobile = window.innerWidth <= 900
-      const marker = isMobile ? 0 : Math.round(window.innerHeight * 0.38)
+      const navBottom = nav ? Math.max(0, Math.round(nav.getBoundingClientRect().bottom)) : 61
+      const marker = isMobile ? navBottom : Math.round(window.innerHeight * 0.38)
       const bottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2
       let current = ''
 
