@@ -43,9 +43,7 @@ export default function Nav() {
         const rect = isMobile && header
           ? header.getBoundingClientRect()
           : section.getBoundingClientRect()
-        const edge = isMobile ? rect.bottom : rect.top
-
-        if (edge <= marker) {
+        if (rect.top <= marker) {
           current = section.id
         }
       }
