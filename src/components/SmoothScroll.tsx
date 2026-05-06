@@ -30,7 +30,8 @@ export default function SmoothScroll() {
       const el = document.querySelector(id) as HTMLElement | null
       if (!el) return
       e.preventDefault()
-      lenis.scrollTo(el, { offset: -8, duration: 1.4 })
+      const isMobile = window.innerWidth <= 900
+      lenis.scrollTo(el, { offset: isMobile ? 0 : -8, duration: 1.4 })
     }
     document.addEventListener('click', onAnchorClick)
 
