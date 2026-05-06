@@ -559,11 +559,11 @@ nav.scrolled {
   font-family: var(--display);
   font-size: 14px;
   letter-spacing: 0.16em;
-  color: rgba(240,237,230,0.18);
+  color: rgba(240,237,230,0.40);
   transition: color var(--motion-fast) var(--motion-ease);
 }
 .marquee-band:hover .marquee-item {
-  color: rgba(240,237,230,0.28);
+  color: rgba(240,237,230,0.62);
 }
 .marquee-item .dot {
   width: 4px;
@@ -840,8 +840,8 @@ nav.scrolled {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(240,237,230,0.032) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(240,237,230,0.026) 1px, transparent 1px);
+    linear-gradient(rgba(240,237,230,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(240,237,230,0.05) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: linear-gradient(to bottom, black, transparent 70%);
 }
