@@ -130,7 +130,9 @@ export default function Nav() {
       >
         {activeSection ? (
           <>
-            <span className="mobile-section-num">{activeSection.num}</span>
+            <span className="mobile-section-num">
+              INDEX <span className="section-num-sep">/</span> {activeSection.num}
+            </span>
             <span className="mobile-section-title">
               {activeSection.title} <em>{activeSection.accent}</em>
             </span>

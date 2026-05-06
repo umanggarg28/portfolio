@@ -29,12 +29,19 @@ export default function Experience() {
 
     const measureRail = () => {
       const dots = section.querySelectorAll<HTMLElement>('.exp-idx')
-      if (!dots.length) return
+      const items = section.querySelectorAll<HTMLElement>('.exp-item')
+      if (!dots.length || !items.length) return
       const sectionTop = section.getBoundingClientRect().top + window.scrollY
       const first = dots[0].getBoundingClientRect()
-      const last = dots[dots.length - 1].getBoundingClientRect()
+      const lastDot = dots[dots.length - 1].getBoundingClientRect()
+      const lastItem = items[items.length - 1]
+      const lastIsOpen = lastItem.classList.contains('open')
+
       const top = first.top + window.scrollY - sectionTop + first.height / 2
-      const bottom = last.top + window.scrollY - sectionTop + last.height / 2
+      const bottom = lastIsOpen
+        ? lastItem.getBoundingClientRect().bottom + window.scrollY - sectionTop - 28
+        : lastDot.top + window.scrollY - sectionTop + lastDot.height / 2
+
       section.style.setProperty('--rail-top', `${top}px`)
       section.style.setProperty('--rail-height', `${bottom - top}px`)
     }
