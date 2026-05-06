@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Bebas_Neue, DM_Sans, Playfair_Display } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import Cursor from '@/components/Cursor'
 import PageLoader from '@/components/PageLoader'
@@ -71,6 +72,7 @@ export default function RootLayout({
         <SmoothScroll />
         <PageLoader />
         {children}
+        <Analytics />
       </body>
     </html>
   )
