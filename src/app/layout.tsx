@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Bebas_Neue, DM_Sans, Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
+import ChatPanelMount from '@/components/ChatPanelMount'
 import Cursor from '@/components/Cursor'
 import PageLoader from '@/components/PageLoader'
 import SmoothScroll from '@/components/SmoothScroll'
@@ -72,6 +73,7 @@ export default function RootLayout({
         <SmoothScroll />
         <PageLoader />
         {children}
+        <ChatPanelMount />
         <Analytics />
       </body>
     </html>
