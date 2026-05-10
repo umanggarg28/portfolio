@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 
 type TraceRow = {
   id: string
@@ -14,6 +14,8 @@ type TraceRow = {
   finishReason: string | null
   toolCalls: Array<{ name: string; durationMs?: number }>
   lastUserMessage: string | null
+  input: Array<{ role: string; text: string }> | null
+  output: string | null
   scores: Record<string, number>
   leaked: boolean
 }
@@ -57,6 +59,15 @@ export default function OpsPage() {
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
   const [submitting, setSubmitting] = useState(false)
+  const [expanded, setExpanded] = useState<Set<string>>(new Set())
+
+  const toggleRow = (id: string) =>
+    setExpanded((prev) => {
+      const next = new Set(prev)
+      if (next.has(id)) next.delete(id)
+      else next.add(id)
+      return next
+    })
 
   // Try a saved passcode on mount — but only mark authed if it actually works.
   useEffect(() => {
@@ -235,35 +246,68 @@ export default function OpsPage() {
             </tr>
           </thead>
           <tbody>
-            {traces.map((t) => (
-              <tr key={t.id} style={t.leaked ? rowLeak : row}>
-                <td style={td}>{new Date(t.timestamp).toLocaleString()}</td>
-                <td style={td}>
-                  {t.tags.map((tag) => (
-                    <span key={tag} style={tagPill(tag)}>
-                      {tag}
-                    </span>
-                  ))}
-                </td>
-                <td style={{ ...td, maxWidth: 320 }}>{t.lastUserMessage ?? '—'}</td>
-                <td style={td}>
-                  {t.toolCalls.length === 0
-                    ? '—'
-                    : t.toolCalls
-                        .map((tc) => `${tc.name}${tc.durationMs ? `·${tc.durationMs}ms` : ''}`)
-                        .join(', ')}
-                </td>
-                <td style={{ ...td, textAlign: 'right' }}>{ms(t.latencyMs)}</td>
-                <td style={{ ...td, textAlign: 'right' }}>{money(t.totalCost)}</td>
-                <td style={td}>
-                  {Object.entries(t.scores).map(([n, v]) => (
-                    <span key={n} style={tagPill(`${n}:${v.toFixed(2)}`)}>
-                      {n}:{v.toFixed(2)}
-                    </span>
-                  ))}
-                </td>
-              </tr>
-            ))}
+            {traces.map((t) => {
+              const isOpen = expanded.has(t.id)
+              const hasConvo = (t.input && t.input.length > 0) || !!t.output
+              return (
+                <Fragment key={t.id}>
+                  <tr
+                    style={{
+                      ...(t.leaked ? rowLeak : row),
+                      cursor: hasConvo ? 'pointer' : 'default',
+                    }}
+                    onClick={() => hasConvo && toggleRow(t.id)}
+                  >
+                    <td style={td}>
+                      <span style={caret}>{hasConvo ? (isOpen ? '▾' : '▸') : ' '}</span>
+                      {new Date(t.timestamp).toLocaleString()}
+                    </td>
+                    <td style={td}>
+                      {t.tags.map((tag) => (
+                        <span key={tag} style={tagPill(tag)}>
+                          {tag}
+                        </span>
+                      ))}
+                    </td>
+                    <td style={{ ...td, maxWidth: 320 }}>{t.lastUserMessage ?? '—'}</td>
+                    <td style={td}>
+                      {t.toolCalls.length === 0
+                        ? '—'
+                        : t.toolCalls
+                            .map((tc) => `${tc.name}${tc.durationMs ? `·${tc.durationMs}ms` : ''}`)
+                            .join(', ')}
+                    </td>
+                    <td style={{ ...td, textAlign: 'right' }}>{ms(t.latencyMs)}</td>
+                    <td style={{ ...td, textAlign: 'right' }}>{money(t.totalCost)}</td>
+                    <td style={td}>
+                      {Object.entries(t.scores).map(([n, v]) => (
+                        <span key={n} style={tagPill(`${n}:${v.toFixed(2)}`)}>
+                          {n}:{v.toFixed(2)}
+                        </span>
+                      ))}
+                    </td>
+                  </tr>
+                  {isOpen && hasConvo ? (
+                    <tr style={t.leaked ? rowLeak : row}>
+                      <td colSpan={7} style={convoCell}>
+                        {(t.input ?? []).map((m, i) => (
+                          <div key={i} style={msgBlock}>
+                            <div style={msgRole(m.role)}>{m.role.toUpperCase()}</div>
+                            <div style={msgText}>{m.text || <em style={muted}>(empty)</em>}</div>
+                          </div>
+                        ))}
+                        {t.output ? (
+                          <div style={msgBlock}>
+                            <div style={msgRole('assistant')}>ASSISTANT</div>
+                            <div style={msgText}>{t.output}</div>
+                          </div>
+                        ) : null}
+                      </td>
+                    </tr>
+                  ) : null}
+                </Fragment>
+              )
+            })}
           </tbody>
         </table>
       </section>
@@ -422,6 +466,36 @@ const muted: React.CSSProperties = {
   color: 'rgba(240,237,230,0.45)',
   fontSize: 12,
   marginTop: 16,
+}
+const caret: React.CSSProperties = {
+  display: 'inline-block',
+  width: 14,
+  color: 'rgba(240,237,230,0.4)',
+}
+const convoCell: React.CSSProperties = {
+  padding: '14px 18px 18px 32px',
+  background: 'rgba(240,237,230,0.02)',
+  borderBottom: '1px solid rgba(240,237,230,0.06)',
+}
+const msgBlock: React.CSSProperties = {
+  marginBottom: 12,
+}
+const msgRole = (role: string): React.CSSProperties => ({
+  fontSize: 9,
+  letterSpacing: '0.2em',
+  marginBottom: 4,
+  color:
+    role === 'assistant'
+      ? '#b8ff57'
+      : role === 'user'
+        ? 'rgba(240,237,230,0.7)'
+        : 'rgba(240,237,230,0.4)',
+})
+const msgText: React.CSSProperties = {
+  whiteSpace: 'pre-wrap',
+  fontSize: 12.5,
+  lineHeight: 1.55,
+  color: '#e8e5dc',
 }
 const tagPill = (tag: string): React.CSSProperties => ({
   display: 'inline-block',

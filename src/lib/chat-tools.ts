@@ -3,7 +3,7 @@ import { z } from 'zod'
 
 import { detail } from '@/content/knowledge'
 import { ragSearch } from '@/lib/chat-rag'
-import { notifyLead, notifyUnknownQuestion } from '@/lib/notify'
+import { notifyLead, notifyUnknownQuestion, sendResumeToVisitor } from '@/lib/notify'
 
 export const CHAT_MODEL = 'claude-haiku-4-5' as const
 
@@ -153,11 +153,41 @@ export function buildTools(ctx: ToolContext) {
 
     get_resume_url: tool({
       description:
-        "Return the URL of Umang's resume PDF. Use when the visitor asks for the resume or to download / view his CV.",
+        "Return the URL of Umang's resume PDF. Use when the visitor wants a link only (e.g. just to view it). If they want it sent to their inbox, use send_resume_email instead.",
       inputSchema: z.object({}),
       execute: async () => {
         onToolCall({ name: 'get_resume_url', input: {}, durationMs: 0 })
         return { url: 'https://umanggarg.dev/UmangGargResume.pdf' }
+      },
+    }),
+
+    send_resume_email: tool({
+      description:
+        "Email Umang's resume PDF to the visitor's address. Use when the visitor asks to receive the resume by email or to have it sent to them. Requires a confirmed email address (don't guess — ask if not provided).",
+      inputSchema: z.object({
+        email: z.string().describe("Visitor's email address — must be confirmed by them."),
+        name: z.string().optional().describe('Visitor name, if known.'),
+      }),
+      execute: async ({ email, name }) => {
+        const [r, durationMs] = await time(() => sendResumeToVisitor({ email, name }))
+        onToolCall({
+          name: 'send_resume_email',
+          input: { email, name },
+          durationMs,
+          metadata: { ok: r.ok, ...(r.error ? { error: r.error } : {}) },
+        })
+        if (r.ok) {
+          return {
+            sent: true,
+            message: `Resume sent to ${email}. Check your inbox in the next minute (and spam, just in case).`,
+          }
+        }
+        return {
+          sent: false,
+          message:
+            "Hit an issue sending — you can grab the PDF directly at https://umanggarg.dev/UmangGargResume.pdf, or I can pass your address to Umang to follow up.",
+          error: r.error,
+        }
       },
     }),
   }

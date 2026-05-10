@@ -50,21 +50,37 @@ async function sendTelegram(text: string): Promise<void> {
   }
 }
 
-async function sendEmail(subject: string, html: string): Promise<void> {
+type SendEmailOpts = {
+  to?: string
+  subject: string
+  html: string
+  attachments?: Array<{ filename: string; content: string }>
+  replyTo?: string
+}
+
+async function sendEmail(opts: SendEmailOpts): Promise<{ ok: boolean; error?: string }> {
   const apiKey = process.env.RESEND_API_KEY
-  if (!apiKey) return
+  if (!apiKey) return { ok: false, error: 'RESEND_API_KEY not set' }
 
   try {
     const { Resend } = await import('resend')
     const resend = new Resend(apiKey)
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: process.env.RESEND_FROM ?? 'Portfolio Bot <onboarding@resend.dev>',
-      to: NOTIFY_EMAIL,
-      subject,
-      html,
+      to: opts.to ?? NOTIFY_EMAIL,
+      subject: opts.subject,
+      html: opts.html,
+      ...(opts.attachments ? { attachments: opts.attachments } : {}),
+      ...(opts.replyTo ? { replyTo: opts.replyTo } : {}),
     })
+    if (error) {
+      console.error('[notify] resend error', error)
+      return { ok: false, error: error.message }
+    }
+    return { ok: true }
   } catch (err) {
     console.error('[notify] resend failed', err)
+    return { ok: false, error: (err as Error).message }
   }
 }
 
@@ -91,7 +107,10 @@ export async function notifyLead(p: LeadPayload): Promise<void> {
     </div>
   `
 
-  await Promise.all([sendTelegram(tg), sendEmail(`New lead: ${p.email}`, html)])
+  await Promise.all([
+    sendTelegram(tg),
+    sendEmail({ subject: `New lead: ${p.email}`, html }),
+  ])
 }
 
 export async function notifyUnknownQuestion(p: UnknownQuestionPayload): Promise<void> {
@@ -115,6 +134,64 @@ export async function notifyUnknownQuestion(p: UnknownQuestionPayload): Promise<
 
   await Promise.all([
     sendTelegram(tg),
-    sendEmail(`Unanswered: ${p.question.slice(0, 60)}`, html),
+    sendEmail({ subject: `Unanswered: ${p.question.slice(0, 60)}`, html }),
   ])
+}
+
+export type SendResumePayload = {
+  email: string
+  name?: string
+}
+
+const RESUME_URL = 'https://umanggarg.dev/UmangGargResume.pdf'
+
+export async function sendResumeToVisitor(
+  p: SendResumePayload
+): Promise<{ ok: boolean; error?: string }> {
+  let attachment: { filename: string; content: string } | null = null
+  try {
+    const r = await fetch(RESUME_URL, { cache: 'no-store' })
+    if (r.ok) {
+      const buf = Buffer.from(await r.arrayBuffer())
+      attachment = { filename: 'Umang-Garg-Resume.pdf', content: buf.toString('base64') }
+    }
+  } catch (err) {
+    console.error('[notify] resume fetch failed', err)
+  }
+
+  const greet = p.name ? `Hi ${p.name},` : 'Hi,'
+  const html = `
+    <div style="font-family:system-ui,sans-serif;max-width:560px;line-height:1.55;color:#222">
+      <p>${greet}</p>
+      <p>Thanks for the interest — my resume is attached${
+        attachment ? '' : `, and you can also <a href="${RESUME_URL}">download it here</a>`
+      }.</p>
+      ${attachment ? `<p>If the attachment doesn't open, the PDF is also at <a href="${RESUME_URL}">${RESUME_URL}</a>.</p>` : ''}
+      <p>Happy to chat further — just reply to this email.</p>
+      <p>— Umang</p>
+    </div>
+  `
+
+  const result = await sendEmail({
+    to: p.email,
+    subject: 'Umang Garg — Resume',
+    html,
+    replyTo: 'umanggarg28@gmail.com',
+    ...(attachment ? { attachments: [attachment] } : {}),
+  })
+
+  // Ping owner so they know a resume went out, even if visitor never replies.
+  if (result.ok) {
+    const tg = [
+      '📄 *Resume sent*',
+      `*To:* ${escapeMd(p.email)}`,
+      p.name ? `*Name:* ${escapeMd(p.name)}` : null,
+      attachment ? '*Attached:* PDF' : '*Attached:* link only \\(fetch failed\\)',
+    ]
+      .filter(Boolean)
+      .join('\n')
+    await sendTelegram(tg)
+  }
+
+  return result
 }
