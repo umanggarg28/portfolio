@@ -24,6 +24,8 @@ type TraceRow = {
   finishReason: string | null
   toolCalls: Array<{ name: string; durationMs?: number }>
   lastUserMessage: string | null
+  input: Array<{ role: string; text: string }> | null
+  output: string | null
   scores: Record<string, number>
   leaked: boolean
 }
@@ -99,6 +101,15 @@ export async function GET(req: Request) {
           (meta.toolCalls as Array<{ name: string; durationMs?: number }>) ??
           [],
         lastUserMessage: (meta.lastUserMessage as string | null) ?? null,
+        input: Array.isArray(t.input)
+          ? (t.input as Array<{ role: string; text: string }>)
+          : null,
+        output:
+          typeof t.output === 'string'
+            ? (t.output as string)
+            : t.output != null
+              ? JSON.stringify(t.output)
+              : null,
         scores,
         leaked: meta.leaked === true,
       }

@@ -166,6 +166,14 @@ export async function POST(req: Request) {
       const leaked = detectLeak(text, canary)
 
       trace?.update({
+        input: messages.map((m) => ({
+          role: m.role,
+          text: m.parts
+            .filter((p): p is { type: 'text'; text: string } => p.type === 'text')
+            .map((p) => p.text)
+            .join(' '),
+        })),
+        output: text,
         tags: [
           ...intentTags,
           `prompt:${promptVersion}`,
