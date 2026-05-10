@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Bebas_Neue, DM_Sans, Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
+import AnalyticsShell from '@/components/AnalyticsShell'
 import ChatPanelMount from '@/components/ChatPanelMount'
 import Cursor from '@/components/Cursor'
 import PageLoader from '@/components/PageLoader'
@@ -68,13 +69,15 @@ export default function RootLayout({
       }
     >
       <body>
-        <div className="grain" aria-hidden="true" />
-        <Cursor />
-        <SmoothScroll />
-        <PageLoader />
-        {children}
-        <ChatPanelMount />
-        <Analytics />
+        <AnalyticsShell>
+          <div className="grain" aria-hidden="true" />
+          <Cursor />
+          <SmoothScroll />
+          <PageLoader />
+          {children}
+          <ChatPanelMount />
+          <Analytics />
+        </AnalyticsShell>
       </body>
     </html>
   )

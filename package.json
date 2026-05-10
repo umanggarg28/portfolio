@@ -15,6 +15,7 @@
     "@ai-sdk/anthropic": "^3.0.75",
     "@ai-sdk/openai": "^3.0.62",
     "@ai-sdk/react": "^3.0.177",
+    "@posthog/next": "^0.4.44",
     "@splinetool/react-spline": "^4.1.0",
     "@splinetool/runtime": "^1.12.90",
     "@upstash/ratelimit": "^2.0.8",
