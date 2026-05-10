@@ -54,7 +54,8 @@ type SendEmailOpts = {
   to?: string
   subject: string
   html: string
-  attachments?: Array<{ filename: string; content: string }>
+  text?: string
+  attachments?: Array<{ filename: string; path: string }>
   replyTo?: string
 }
 
@@ -70,6 +71,7 @@ async function sendEmail(opts: SendEmailOpts): Promise<{ ok: boolean; error?: st
       to: opts.to ?? NOTIFY_EMAIL,
       subject: opts.subject,
       html: opts.html,
+      ...(opts.text ? { text: opts.text } : {}),
       ...(opts.attachments ? { attachments: opts.attachments } : {}),
       ...(opts.replyTo ? { replyTo: opts.replyTo } : {}),
     })
@@ -148,45 +150,38 @@ const RESUME_URL = 'https://umanggarg.dev/UmangGargResume.pdf'
 export async function sendResumeToVisitor(
   p: SendResumePayload
 ): Promise<{ ok: boolean; error?: string }> {
-  let attachment: { filename: string; content: string } | null = null
-  try {
-    const r = await fetch(RESUME_URL, { cache: 'no-store' })
-    if (r.ok) {
-      const buf = Buffer.from(await r.arrayBuffer())
-      attachment = { filename: 'Umang-Garg-Resume.pdf', content: buf.toString('base64') }
-    }
-  } catch (err) {
-    console.error('[notify] resume fetch failed', err)
-  }
-
   const greet = p.name ? `Hi ${p.name},` : 'Hi,'
+
   const html = `
     <div style="font-family:system-ui,sans-serif;max-width:560px;line-height:1.55;color:#222">
       <p>${greet}</p>
-      <p>Thanks for the interest — my resume is attached${
-        attachment ? '' : `, and you can also <a href="${RESUME_URL}">download it here</a>`
-      }.</p>
-      ${attachment ? `<p>If the attachment doesn't open, the PDF is also at <a href="${RESUME_URL}">${RESUME_URL}</a>.</p>` : ''}
-      <p>Happy to chat further — just reply to this email.</p>
+      <p>Thanks for reaching out — my resume is attached.</p>
+      <p>You can also browse my work at <a href="https://umanggarg.dev">umanggarg.dev</a>. Happy to jump on a call if anything looks interesting — just reply to this email.</p>
       <p>— Umang</p>
     </div>
   `
+  const text = `${greet}
+
+Thanks for reaching out — my resume is attached.
+
+You can also browse my work at https://umanggarg.dev. Happy to jump on a call if anything looks interesting — just reply to this email.
+
+— Umang`
 
   const result = await sendEmail({
     to: p.email,
     subject: 'Umang Garg — Resume',
     html,
+    text,
     replyTo: 'umanggarg28@gmail.com',
-    ...(attachment ? { attachments: [attachment] } : {}),
+    attachments: [{ filename: 'Umang-Garg-Resume.pdf', path: RESUME_URL }],
   })
 
-  // Ping owner so they know a resume went out, even if visitor never replies.
   if (result.ok) {
     const tg = [
       '📄 *Resume sent*',
       `*To:* ${escapeMd(p.email)}`,
       p.name ? `*Name:* ${escapeMd(p.name)}` : null,
-      attachment ? '*Attached:* PDF' : '*Attached:* link only \\(fetch failed\\)',
     ]
       .filter(Boolean)
       .join('\n')
