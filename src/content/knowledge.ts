@@ -57,7 +57,7 @@ export const contact = {
   email: 'umanggarg28@gmail.com',
   linkedin: 'https://linkedin.com/in/umanggarg28',
   github: 'https://github.com/umanggarg28',
-  resume: '/UmangGargResume.pdf',
+  resume: '/assets/resume.pdf',
   domain: 'umanggarg.dev',
 }
 

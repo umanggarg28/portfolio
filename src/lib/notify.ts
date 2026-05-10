@@ -145,7 +145,7 @@ export type SendResumePayload = {
   name?: string
 }
 
-const RESUME_URL = 'https://umanggarg.dev/UmangGargResume.pdf'
+const RESUME_URL = 'https://umanggarg.dev/assets/resume.pdf'
 
 export async function sendResumeToVisitor(
   p: SendResumePayload

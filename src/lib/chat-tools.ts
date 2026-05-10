@@ -157,7 +157,7 @@ export function buildTools(ctx: ToolContext) {
       inputSchema: z.object({}),
       execute: async () => {
         onToolCall({ name: 'get_resume_url', input: {}, durationMs: 0 })
-        return { url: 'https://umanggarg.dev/UmangGargResume.pdf' }
+        return { url: 'https://umanggarg.dev/assets/resume.pdf' }
       },
     }),
 
@@ -185,7 +185,7 @@ export function buildTools(ctx: ToolContext) {
         return {
           sent: false,
           message:
-            "Hit an issue sending — you can grab the PDF directly at https://umanggarg.dev/UmangGargResume.pdf, or I can pass your address to Umang to follow up.",
+            "Hit an issue sending — you can grab the PDF directly at https://umanggarg.dev/assets/resume.pdf, or I can pass your address to Umang to follow up.",
           error: r.error,
         }
       },
