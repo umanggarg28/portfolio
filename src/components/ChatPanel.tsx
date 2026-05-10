@@ -2,6 +2,7 @@
 
 import { useChat } from '@ai-sdk/react'
 import { DefaultChatTransport, type UIMessage } from 'ai'
+import { usePostHog } from '@posthog/next'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 
@@ -60,6 +61,7 @@ export default function ChatPanel() {
   const inputRef = useRef<HTMLInputElement>(null)
   const scrollerRef = useRef<HTMLDivElement>(null)
   const warmedRef = useRef(false)
+  const posthog = usePostHog()
 
   const transport = useMemo(
     () => new DefaultChatTransport({ api: '/api/chat' }),
@@ -113,8 +115,9 @@ export default function ChatPanel() {
     inputRef.current?.focus()
     if (warmedRef.current) return
     warmedRef.current = true
+    posthog?.capture('chat_opened', { session_label: sessionLabel })
     fetch('/api/chat/warm', { method: 'POST', keepalive: true }).catch(() => {})
-  }, [open])
+  }, [open, posthog, sessionLabel])
 
   // Auto-scroll to bottom on new content (skipped if user has scrolled up).
   const isAtBottomRef = useRef(true)
@@ -201,10 +204,15 @@ export default function ChatPanel() {
     })
   }, [isStreaming, messages])
 
-  const submit = (text: string) => {
+  const submit = (text: string, source: 'input' | 'suggested' = 'input') => {
     const trimmed = text.trim()
     if (!trimmed) return
     if (status === 'streaming' || status === 'submitted') return
+    posthog?.capture('chat_message_sent', {
+      source,
+      length: trimmed.length,
+      message_index: messages.length,
+    })
     sendMessage({ text: trimmed })
     setInput('')
   }
@@ -297,7 +305,7 @@ export default function ChatPanel() {
                     type="button"
                     className="chat-suggested-chip"
                     style={{ ['--chip-i' as string]: i }}
-                    onClick={() => submit(p.label)}
+                    onClick={() => submit(p.label, 'suggested')}
                   >
                     <span className="chat-suggested-chip-icon" aria-hidden>
                       {p.icon}
