@@ -372,11 +372,11 @@ export default function Hero() {
           <div className="hero-bottom-left">
             <div className="hero-availability">
               <span className="dot-pulse" />
-              <span>Available · AI Engineering roles · Open to remote</span>
+              <span>Available · software / AI engineer · open to remote</span>
             </div>
             <p className="hero-desc">
-              I build production software end-to-end across product, infrastructure, and applied AI.
-              Eight years engineering systems that move from architecture to shipped product.
+              Eight years building production systems end-to-end across backend, frontend, and cloud infrastructure.
+              Currently focused on LLM tooling, RAG, and agentic / multi-agent systems.
             </p>
             <a href="#projects" className="hero-cta">View Work →</a>
           </div>

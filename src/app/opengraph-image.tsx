@@ -126,7 +126,7 @@ export default async function Image() {
                 background: ink,
               }}
             />
-            <span>AVAILABLE · LLMs · RAG · AGENTS</span>
+            <span>AVAILABLE · SOFTWARE / AI ENGINEER</span>
           </div>
           <div
             style={{
