@@ -554,8 +554,8 @@ nav.scrolled {
 .marquee-item {
   display: inline-flex;
   align-items: center;
-  gap: 28px;
-  padding: 0 34px;
+  gap: 48px;
+  padding: 0 24px;
   font-family: var(--display);
   font-size: 14px;
   letter-spacing: 0.16em;

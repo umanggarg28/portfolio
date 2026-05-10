@@ -3,12 +3,12 @@ export default function Contact() {
     <section id="contact">
       <div className="contact-inner">
         <div className="contact-left">
-          <div className="contact-kicker appear">Available for senior AI engineering work</div>
+          <div className="contact-kicker appear">Available for senior software & AI engineering work</div>
           <div className="contact-headline appear">
             LET&apos;S<br /><em>build</em><br />TOGETHER
           </div>
           <p className="contact-sub appear appear-delay-1">
-            If you&apos;re building production AI systems and want someone who can go from model training to shipped product — reach out.
+            If you&apos;re building production AI or full-stack systems and want someone who can take it from architecture to shipped product — reach out.
           </p>
         </div>
         <div className="contact-right appear appear-delay-2">

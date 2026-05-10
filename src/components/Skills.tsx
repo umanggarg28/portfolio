@@ -14,14 +14,22 @@ export default function Skills() {
             <span className="skill-pill">HyDE</span>
             <span className="skill-pill">Hybrid Search</span>
             <span className="skill-pill">Reranking</span>
+            <span className="skill-pill">ReAct</span>
+            <span className="skill-pill">Multi-agent</span>
+            <span className="skill-pill">Tool Use</span>
             <span className="skill-pill">LangChain</span>
             <span className="skill-pill">LangGraph</span>
+            <span className="skill-pill">CrewAI</span>
+            <span className="skill-pill">OpenAI Agents SDK</span>
+            <span className="skill-pill">AutoGen</span>
             <span className="skill-pill">MCP</span>
             <span className="skill-pill">Claude API</span>
             <span className="skill-pill">Qdrant</span>
-            <span className="skill-pill">ChromaDB</span>
             <span className="skill-pill">Prompt Engineering</span>
+            <span className="skill-pill">Guardrails</span>
             <span className="skill-pill">LLMOps</span>
+            <span className="skill-pill">Langfuse</span>
+            <span className="skill-pill">Evals</span>
           </div>
         </div>
         <div className="skill-col skill-col--primary appear appear-delay-1">
@@ -35,7 +43,10 @@ export default function Skills() {
             <span className="skill-pill">TorchServe</span>
             <span className="skill-pill">tree-sitter</span>
             <span className="skill-pill">Fine-tuning</span>
+            <span className="skill-pill">LoRA / QLoRA</span>
+            <span className="skill-pill">PEFT</span>
             <span className="skill-pill">HuggingFace</span>
+            <span className="skill-pill">Gradio</span>
           </div>
         </div>
         <div className="skill-col skill-col--primary appear appear-delay-2">

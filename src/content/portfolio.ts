@@ -45,7 +45,7 @@ export interface ProjectItem {
 export const aboutCopy = {
   paragraphs: [
     'Software engineer with 8 years shipping production systems across healthcare AI, biotech, and enterprise. My work spans backend APIs, React frontends, LLM-integrated pipelines, and the cloud infrastructure underneath — taking complex systems end-to-end.',
-    "Most recently at PictorLabs.ai — a UCLA spinoff in digital pathology — fine-tuning Google's PathFoundation vision model, building LLM tooling with Claude API and LangGraph, and leading delivery of an AI virtual staining pipeline for whole slide images.",
+    "Most recently at PictorLabs.ai — a UCLA spinoff in digital pathology — fine-tuning Google's PathFoundation vision model for automated stain-type detection, building LLM tooling with Claude API and LangGraph, and leading delivery of ClearStain, an AI virtual H&E staining pipeline for whole slide images.",
     "I'm at my best where AI engineering meets real production engineering — training pipelines, retrieval systems, API design, and the infrastructure that holds it all up. Engineering fundamentals first, frameworks second.",
   ],
   signals: [
@@ -129,8 +129,8 @@ export const experiences: ExperienceItem[] = [
     period: 'Jun 2025 — Feb 2026',
     bullets: [
       'LLM-powered internal tooling using Claude API and LangGraph — RAG over clinical documentation, multi-step agent workflows for automated reasoning by clinical and engineering teams.',
-      "Fine-tuned Google's PathFoundation on histopathology images in PyTorch; built full training pipeline with OpenSlide patch extraction and Macenko stain normalization.",
-      'Led delivery of ClearStain — AI virtual HE staining pipeline for unstained brightfield WSIs; owned Django API, Kafka orchestration, TorchServe model serving.',
+      'Led delivery of ClearStain — AI virtual H&E staining pipeline for unstained brightfield WSIs, a major new undertaking integrated end-to-end into the existing VSH (Virtual Slide Hub) system. Owned Django API routing (organ / species / diagnosis-based predictor selection), Kafka job orchestration, and TorchServe model-serving integration.',
+      "Within ClearStain, fine-tuned Google's PathFoundation vision model in PyTorch for automated stain-type detection (validation pipeline) — built full training pipeline including OpenSlide WSI patch extraction, tissue masking, and Macenko stain normalization.",
       'Built adaptive chunked multipart upload (React Web Workers + S3) with concurrent worker pool, exponential backoff, and resumable support for multi-tenant SaaS.',
     ],
   },
@@ -145,7 +145,7 @@ export const experiences: ExperienceItem[] = [
     delayClass: 'appear-delay-1',
     bullets: [
       'Built candidate data management portal using Python/Django REST Framework and React.js, processing structured workforce data across organizations.',
-      'Led React 15→18 migration, optimizing performance via Concurrent Rendering and React Suspense; ensured full backward compatibility.',
+      'Led React 15→18 migration, optimizing performance via Concurrent Rendering and React Suspense.',
     ],
   },
   {
@@ -160,7 +160,7 @@ export const experiences: ExperienceItem[] = [
     bullets: [
       'Lead dev of the Entitlement Engine — insurance claim eligibility API serving <stat>40,000+ users weekly</stat> at 99% uptime via optimized Node.js architecture.',
       'Monolith→micro-frontend migration enabling independently deployable release cycles and faster iteration across teams.',
-      'Serverless event-driven Python data pipelines using AWS Lambda, API Gateway, S3, SQS, and CloudWatch.',
+      'Designed and maintained serverless event-driven Python data pipelines on AWS Lambda + API Gateway + S3 + SQS + CloudWatch — automated downstream workflows at scale.',
     ],
   },
   {
@@ -173,7 +173,7 @@ export const experiences: ExperienceItem[] = [
     period: 'Oct 2021 — Jun 2022',
     delayClass: 'appear-delay-3',
     bullets: [
-      'Cross-functional frontend architecture and reusable React components deployed across multiple Kroger entities in an enterprise agile environment.',
+      'Built cross-functional frontend architecture and reusable React components deployed across multiple Kroger entities in an enterprise agile environment.',
       'Built test suites with Jest and React Testing Library, increasing coverage by 50%.',
     ],
   },
@@ -188,17 +188,17 @@ export const experiences: ExperienceItem[] = [
     delayClass: 'appear-delay-4',
     bullets: [
       'Built event registration and CEU platforms with automated CI/CD pipelines using React, Node.js, Express, MongoDB, and RESTful APIs.',
-      'Computer vision-based automated image classification using Python and OpenCV — eliminated 50+ hours of manual work per event.',
+      'Built a computer-vision system in Python + OpenCV for booth-layout detection from event floor plans — eliminated 50+ hours of manual work per event.',
     ],
   },
 ]
 
 export const featuredProject = {
-  kicker: 'Featured Project · 2025',
+  kicker: 'Featured Project · 2025–2026',
   title: 'CARTOGRAPHER',
   description:
-    'Codebase reasoning engine that indexes any GitHub repo and answers natural-language questions with source citations and line numbers. Every retrieval layer hand-built — no LangChain, no LlamaIndex. tree-sitter AST chunking, contextual LLM descriptions (35–49% retrieval improvement per Anthropic benchmarks), Qdrant hybrid search (dense + BM25 + RRF), Cohere cross-encoder reranking, HyDE + query expansion, and a full ReAct agent via MCP with 10 tools, working memory, and parallel async execution.',
-  tags: ['FastAPI', 'React/Vite', 'Qdrant Cloud', 'tree-sitter', 'FastMCP', 'Cohere', 'Docker'],
+    "Codebase reasoning engine that turns any GitHub repository into an interactive, navigable knowledge surface — natural-language Q&A with source citations, on-demand Mermaid diagrams (architecture / class hierarchy / call graph), and three-phase agent-generated concept tours. Every stage of the AI pipeline is visible to the user in real time. Underneath: a production ReAct agent with 12 MCP tools, working memory, and parallel async tool execution, sitting on a hand-rolled retrieval pipeline (tree-sitter AST chunking, contextual LLM descriptions per Anthropic's pattern, Qdrant hybrid search with RRF, Cohere reranking, HyDE + query expansion). Every layer built from scratch — no LangChain, no LlamaIndex.",
+  tags: ['FastAPI', 'React/Vite', 'Qdrant Cloud', 'tree-sitter', 'FastMCP', 'Voyage', 'Cohere', 'Docker'],
   links: [
     { label: 'Live Demo', href: 'https://cartographer-app.vercel.app' },
     { label: 'GitHub', href: 'https://github.com/umanggarg28/Cartographer' },
@@ -211,7 +211,7 @@ export const projects: ProjectItem[] = [
     kicker: 'AI · Computer Vision · Production · 2025',
     title: 'CLEARSTAIN PIPELINE',
     description:
-      "AI virtual HE staining pipeline for unstained brightfield whole slide images, built at PictorLabs.ai (UCLA spinoff, venture-backed). Owned end-to-end: fine-tuned Google's PathFoundation vision model in PyTorch, built Django API with organ/species/diagnosis-based predictor routing, Kafka job orchestration, and TorchServe model serving.",
+      "AI virtual H&E staining pipeline for unstained brightfield whole slide images at PictorLabs.ai (UCLA spinoff, venture-backed). Led delivery of a major new undertaking — integrated a new staining model end-to-end into the existing VSH (Virtual Slide Hub) system. Fine-tuned Google's PathFoundation vision model in PyTorch for automated stain-type detection feeding the validation pipeline. Owned Django API routing (organ / species / diagnosis-based predictor selection), Kafka job orchestration, and TorchServe model-serving integration.",
     tags: ['PyTorch', 'Django', 'Kafka', 'TorchServe', 'OpenSlide', 'AWS ECS'],
     note: 'Closed-source · proprietary',
   },
