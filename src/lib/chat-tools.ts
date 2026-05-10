@@ -163,7 +163,7 @@ export function buildTools(ctx: ToolContext) {
 
     send_resume_email: tool({
       description:
-        "Email Umang's resume PDF to the visitor's address. Use when the visitor asks to receive the resume by email or to have it sent to them. Requires a confirmed email address (don't guess — ask if not provided).",
+        "Email Umang's resume PDF to a specific email address. CALL THIS whenever the visitor asks to have the resume emailed/sent/mailed to them — including repeat requests in the same conversation (e.g. 'send it again', 'resend', 'try a different address'). You CAN send emails via this tool — never tell the visitor you can't. Requires a confirmed email address; ask if not provided.",
       inputSchema: z.object({
         email: z.string().describe("Visitor's email address — must be confirmed by them."),
         name: z.string().optional().describe('Visitor name, if known.'),
