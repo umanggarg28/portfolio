@@ -14,9 +14,11 @@ const PHRASES = [
   'Distributed Systems',
   'Production AI',
 ]
+const ASCII_CHARS = '01·*+-=<>{}[]()/\\|'
 
 export default function Hero() {
   const headlineRef = useRef<HTMLHeadingElement>(null)
+  const asciiRainRef = useRef<HTMLPreElement>(null)
   const [clock, setClock] = useState('--:--:--')
 
   // Editorial anchor — live clock (no timezone shown to keep geo-neutral)
@@ -337,8 +339,72 @@ export default function Hero() {
     }
   }, [])
 
+  useEffect(() => {
+    const el = asciiRainRef.current
+    if (!el) return
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    let cols = 0
+    let rows = 0
+    let grid: string[][] = []
+    let drops: number[] = []
+    let timer: ReturnType<typeof setTimeout> | undefined
+
+    const size = () => {
+      const rect = el.getBoundingClientRect()
+      cols = Math.max(1, Math.floor(rect.width / 9))
+      rows = Math.max(1, Math.floor(rect.height / 16))
+      grid = Array.from({ length: rows }, () => Array(cols).fill(' '))
+      drops = Array.from({ length: cols }, () => Math.random() * rows)
+    }
+
+    const draw = () => {
+      if (!cols || !rows) return
+
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          if (grid[r][c] !== ' ' && Math.random() < 0.045) grid[r][c] = ' '
+        }
+      }
+
+      for (let c = 0; c < cols; c++) {
+        if (Math.random() < 0.46) continue
+        const r = Math.floor(drops[c])
+        if (r >= 0 && r < rows) {
+          grid[r][c] = ASCII_CHARS[Math.floor(Math.random() * ASCII_CHARS.length)]
+        }
+        drops[c] += 0.22 + Math.random() * 0.22
+        if (drops[c] > rows + 5) drops[c] = -Math.random() * 10
+      }
+
+      el.textContent = grid.map((row) => row.join('')).join('\n')
+      timer = setTimeout(draw, 110)
+    }
+
+    const onResize = () => {
+      size()
+      if (reduced) {
+        el.textContent = grid.map((row) => row.map(() => (Math.random() > 0.92 ? '·' : ' ')).join('')).join('\n')
+      }
+    }
+
+    size()
+    if (reduced) {
+      onResize()
+    } else {
+      draw()
+    }
+    window.addEventListener('resize', onResize)
+
+    return () => {
+      if (timer) clearTimeout(timer)
+      window.removeEventListener('resize', onResize)
+    }
+  }, [])
+
   return (
     <section id="hero">
+      <pre className="ascii-rain" ref={asciiRainRef} aria-hidden="true" />
       <div className="hero-anchor hero-anchor--tl" aria-hidden="true">
         INDEX / 00
       </div>

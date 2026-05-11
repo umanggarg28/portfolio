@@ -1,6 +1,9 @@
+import SignalArtifacts from './SignalArtifacts'
+
 export default function Skills() {
   return (
     <section id="skills">
+      <SignalArtifacts variant="skills" />
       <div className="section-header">
         <div className="section-num appear">INDEX <span className="section-num-sep">/</span> 04</div>
         <h2 className="section-title appear appear-delay-1">TECH <em>stack</em></h2>
