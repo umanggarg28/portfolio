@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Bebas_Neue, DM_Sans, Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
@@ -7,6 +7,7 @@ import ChatPanelMount from '@/components/ChatPanelMount'
 import Cursor from '@/components/Cursor'
 import PageLoader from '@/components/PageLoader'
 import SmoothScroll from '@/components/SmoothScroll'
+import { SITE_PALETTE, SITE_THEME } from '@/lib/theme'
 
 const bebasNeue = Bebas_Neue({
   weight: '400',
@@ -49,6 +50,13 @@ export const metadata: Metadata = {
     description:
       '8+ years building production-grade systems at the intersection of software engineering and applied AI.',
   },
+  icons: {
+    icon: '/icon',
+  },
+}
+
+export const viewport: Viewport = {
+  themeColor: SITE_PALETTE.bg,
 }
 
 export default function RootLayout({
@@ -59,7 +67,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-theme="hermes"
+      data-theme={SITE_THEME}
       className={`${bebasNeue.variable} ${dmSans.variable} ${playfairDisplay.variable}`}
       style={
         {

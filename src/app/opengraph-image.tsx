@@ -1,6 +1,7 @@
 import { ImageResponse } from 'next/og'
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
+import { SITE_PALETTE } from '@/lib/theme'
 
 export const alt = 'Umang Garg — Software & AI Engineer'
 export const size = { width: 1200, height: 630 }
@@ -13,10 +14,10 @@ export default async function Image() {
     readFile(join(fontsDir, 'PlayfairDisplay-Italic.ttf')),
   ])
 
-  const lime = '#b8ff57'
-  const ink = '#080908'
-  const inkDim = 'rgba(8,9,8,0.55)'
-  const inkLine = 'rgba(8,9,8,0.20)'
+  const bg = SITE_PALETTE.accent
+  const ink = SITE_PALETTE.bg
+  const inkDim = `rgba(${SITE_PALETTE.bgRgb},0.62)`
+  const inkLine = `rgba(${SITE_PALETTE.bgRgb},0.22)`
 
   return new ImageResponse(
     (
@@ -24,7 +25,7 @@ export default async function Image() {
         style={{
           width: '100%',
           height: '100%',
-          background: lime,
+          background: bg,
           color: ink,
           display: 'flex',
           flexDirection: 'column',
@@ -123,7 +124,7 @@ export default async function Image() {
                 width: 12,
                 height: 12,
                 borderRadius: 999,
-                background: ink,
+              background: ink,
               }}
             />
             <span>AVAILABLE · SOFTWARE / AI ENGINEER</span>
