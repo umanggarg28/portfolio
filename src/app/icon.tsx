@@ -12,16 +12,29 @@ export default function Icon() {
           width: '100%',
           height: '100%',
           background: SITE_PALETTE.bg,
+          border: `2px solid ${SITE_PALETTE.accent}`,
           color: SITE_PALETTE.accent,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          fontSize: 17,
+          fontSize: 16,
           fontWeight: 900,
           fontFamily: 'Impact, Arial Narrow, sans-serif',
           letterSpacing: 0.5,
+          position: 'relative',
         }}
       >
+        <div
+          style={{
+            position: 'absolute',
+            right: 4,
+            top: 4,
+            width: 4,
+            height: 4,
+            borderRadius: 999,
+            background: SITE_PALETTE.accent,
+          }}
+        />
         UG
       </div>
     ),
