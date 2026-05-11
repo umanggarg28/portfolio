@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import { experiences } from '@/content/portfolio'
+import SignalArtifacts from './SignalArtifacts'
 
 const startYear = (period: string) => period.match(/(\d{4})/)?.[1] ?? ''
 
@@ -100,6 +101,7 @@ export default function Experience() {
 
   return (
     <section id="experience" ref={sectionRef}>
+      <SignalArtifacts variant="experience" />
       <div className="section-header">
         <div className="section-num appear">INDEX <span className="section-num-sep">/</span> 02</div>
         <h2 className="section-title appear appear-delay-1">WORK <em>history</em></h2>

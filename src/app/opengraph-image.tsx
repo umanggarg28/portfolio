@@ -1,6 +1,7 @@
 import { ImageResponse } from 'next/og'
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
+import { SITE_PALETTE } from '@/lib/theme'
 
 export const alt = 'Umang Garg — Software & AI Engineer'
 export const size = { width: 1200, height: 630 }
@@ -13,10 +14,12 @@ export default async function Image() {
     readFile(join(fontsDir, 'PlayfairDisplay-Italic.ttf')),
   ])
 
-  const lime = '#b8ff57'
-  const ink = '#080908'
-  const inkDim = 'rgba(8,9,8,0.55)'
-  const inkLine = 'rgba(8,9,8,0.20)'
+  const bg = SITE_PALETTE.bg
+  const fg = SITE_PALETTE.fg
+  const accent = SITE_PALETTE.accent
+  const fgDim = `rgba(${SITE_PALETTE.fgRgb},0.58)`
+  const fgLine = `rgba(${SITE_PALETTE.fgRgb},0.18)`
+  const accentDim = `rgba(${SITE_PALETTE.accentRgb},0.18)`
 
   return new ImageResponse(
     (
@@ -24,8 +27,8 @@ export default async function Image() {
         style={{
           width: '100%',
           height: '100%',
-          background: lime,
-          color: ink,
+          background: bg,
+          color: fg,
           display: 'flex',
           flexDirection: 'column',
           padding: 64,
@@ -33,16 +36,30 @@ export default async function Image() {
           position: 'relative',
         }}
       >
-        {/* dotted grid overlay */}
+        {/* grid + signal atmosphere */}
         <div
           style={{
             position: 'absolute',
             inset: 0,
             backgroundImage:
-              'radial-gradient(circle, rgba(8,9,8,0.10) 1px, transparent 1px)',
+              `linear-gradient(${accentDim} 1px, transparent 1px), linear-gradient(90deg, ${accentDim} 1px, transparent 1px)`,
             backgroundSize: '32px 32px',
           }}
         />
+        <div
+          style={{
+            position: 'absolute',
+            right: 70,
+            top: 72,
+            fontFamily: 'monospace',
+            fontSize: 28,
+            lineHeight: 1.35,
+            color: `rgba(${SITE_PALETTE.accentRgb},0.32)`,
+            whiteSpace: 'pre',
+          }}
+        >
+          {'0  {  1  >\n  /  +  }  0\n[  =  <  *\n  1  ]  /'}
+        </div>
 
         {/* top row: editorial anchors */}
         <div
@@ -52,8 +69,7 @@ export default async function Image() {
             fontFamily: 'Bebas Neue',
             fontSize: 22,
             letterSpacing: '0.2em',
-            color: inkDim,
-            zIndex: 1,
+            color: fgDim,
           }}
         >
           <div style={{ display: 'flex' }}>INDEX / 00</div>
@@ -67,7 +83,6 @@ export default async function Image() {
             flexDirection: 'column',
             flex: 1,
             justifyContent: 'center',
-            zIndex: 1,
           }}
         >
           <div
@@ -76,7 +91,7 @@ export default async function Image() {
               fontSize: 220,
               letterSpacing: '-0.01em',
               lineHeight: 0.9,
-              color: ink,
+              color: fg,
               display: 'flex',
             }}
           >
@@ -87,7 +102,7 @@ export default async function Image() {
               fontFamily: 'Playfair Display',
               fontStyle: 'italic',
               fontSize: 60,
-              color: ink,
+              color: accent,
               marginTop: 12,
               display: 'flex',
             }}
@@ -103,8 +118,7 @@ export default async function Image() {
             justifyContent: 'space-between',
             alignItems: 'flex-end',
             paddingTop: 28,
-            borderTop: `1px solid ${inkLine}`,
-            zIndex: 1,
+            borderTop: `1px solid ${fgLine}`,
           }}
         >
           <div
@@ -115,7 +129,7 @@ export default async function Image() {
               fontFamily: 'Bebas Neue',
               fontSize: 24,
               letterSpacing: '0.16em',
-              color: ink,
+              color: fg,
             }}
           >
             <div
@@ -123,7 +137,7 @@ export default async function Image() {
                 width: 12,
                 height: 12,
                 borderRadius: 999,
-                background: ink,
+                background: accent,
               }}
             />
             <span>AVAILABLE · SOFTWARE / AI ENGINEER</span>
@@ -133,7 +147,7 @@ export default async function Image() {
               fontFamily: 'Bebas Neue',
               fontSize: 28,
               letterSpacing: '0.1em',
-              color: ink,
+              color: accent,
               display: 'flex',
             }}
           >

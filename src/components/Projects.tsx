@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import { featuredProject, projects } from '@/content/portfolio'
+import SignalArtifacts from './SignalArtifacts'
 
 export default function Projects() {
   const wrapRef = useRef<HTMLDivElement>(null)
@@ -81,6 +82,7 @@ export default function Projects() {
 
   return (
     <section id="projects">
+      <SignalArtifacts variant="projects" />
       <div className="section-header">
         <div className="section-num appear">INDEX <span className="section-num-sep">/</span> 03</div>
         <h2 className="section-title appear appear-delay-1">SELECTED <em>work</em></h2>
