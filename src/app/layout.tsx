@@ -59,6 +59,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-theme="hermes"
       className={`${bebasNeue.variable} ${dmSans.variable} ${playfairDisplay.variable}`}
       style={
         {
