@@ -1533,9 +1533,30 @@ nav.scrolled {
 
 /* ── SKILLS ── */
 #skills {
+  --bg: #041c1c;
+  --bg-2: #062525;
+  --fg: #ffe6cb;
+  --accent: #ffbd38;
+  --accent-dim: rgba(255,189,56,0.13);
+  --mid: rgba(255,230,203,0.64);
+  --dim: rgba(255,230,203,0.44);
+  --border: rgba(255,230,203,0.18);
   background: var(--bg-2);
   position: relative;
   overflow: hidden;
+}
+#skills::before {
+  background-image:
+    linear-gradient(rgba(255,230,203,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,230,203,0.038) 1px, transparent 1px);
+}
+#skills .section-header {
+  background:
+    linear-gradient(90deg, rgba(255,189,56,0.052), transparent 32%),
+    #041c1c;
+}
+#skills .signal-fragment {
+  color: rgba(255,189,56,0.35);
 }
 .skills-body {
   display: grid;
@@ -1550,7 +1571,7 @@ nav.scrolled {
   right: 48px;
   top: 50%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(184,255,87,0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255,189,56,0.24), transparent);
   pointer-events: none;
 }
 .skill-col {
@@ -1560,11 +1581,11 @@ nav.scrolled {
   transition: background var(--motion-fast) var(--motion-ease), border-color var(--motion-fast) var(--motion-ease);
   position: relative;
   min-height: 300px;
-  background: rgba(17,18,15,0.72);
+  background: rgba(4,28,28,0.74);
 }
 .skill-col:hover {
-  background: rgba(184,255,87,0.024);
-  border-color: rgba(184,255,87,0.12);
+  background: rgba(255,189,56,0.04);
+  border-color: rgba(255,189,56,0.22);
 }
 .skill-col:nth-child(4n) { border-right: none; }
 .skill-col:nth-child(5) {
@@ -1584,7 +1605,7 @@ nav.scrolled {
   right: -8px;
   width: 15px;
   height: 15px;
-  border: 1px solid rgba(184,255,87,0.28);
+  border: 1px solid rgba(255,189,56,0.36);
   background: var(--bg-2);
   transform: translateY(-50%) rotate(45deg);
   z-index: 2;
