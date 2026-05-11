@@ -1171,7 +1171,7 @@ nav.scrolled {
   border-bottom: 1px solid var(--border);
   position: relative;
 }
-.exp-detail.open { max-height: 600px; }
+.exp-detail.open { max-height: 1400px; }
 .exp-detail-inner {
   padding: 34px 48px 38px calc(48px + 80px);
   display: grid;
